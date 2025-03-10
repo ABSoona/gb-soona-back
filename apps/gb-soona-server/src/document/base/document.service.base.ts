@@ -15,9 +15,16 @@ import {
   Document as PrismaDocument,
   Contact as PrismaContact,
 } from "@prisma/client";
+import { LocalStorageService } from "src/storage/providers/local/local.storage.service";
+import { InputJsonValue } from "src/types";
+import { FileDownload, FileUpload } from "src/storage/base/storage.types";
+import { LocalStorageFile } from "src/storage/providers/local/local.storage.types";
 
 export class DocumentServiceBase {
-  constructor(protected readonly prisma: PrismaService) {}
+  constructor(
+    protected readonly prisma: PrismaService,
+    protected readonly localStorageService: LocalStorageService
+  ) {}
 
   async count(args: Omit<Prisma.DocumentCountArgs, "select">): Promise<number> {
     return this.prisma.document.count(args);
@@ -47,6 +54,62 @@ export class DocumentServiceBase {
     args: Prisma.DocumentDeleteArgs
   ): Promise<PrismaDocument> {
     return this.prisma.document.delete(args);
+  }
+
+  async uploadContenu<T extends Prisma.DocumentFindUniqueArgs>(
+    args: Prisma.SelectSubset<T, Prisma.DocumentFindUniqueArgs>,
+    file: FileUpload
+  ): Promise<PrismaDocument> {
+    file.filename = `profilePicture-${args.where.id}.${file.filename
+      .split(".")
+      .pop()}`;
+    const containerPath = "/uploads";
+    const contenu = await this.localStorageService.uploadFile(
+      file,
+      [],
+      1000000,
+      containerPath
+    );
+
+    return await this.prisma.document.update({
+      where: args.where,
+
+      data: {
+        contenu: contenu as InputJsonValue,
+      },
+    });
+  }
+
+  async downloadContenu<T extends Prisma.DocumentFindUniqueArgs>(
+    args: Prisma.SelectSubset<T, Prisma.DocumentFindUniqueArgs>
+  ): Promise<FileDownload> {
+    const { contenu } = await this.prisma.document.findUniqueOrThrow({
+      where: args.where,
+    });
+
+    return await this.localStorageService.downloadFile(
+      contenu as unknown as LocalStorageFile
+    );
+  }
+
+  async deleteContenu<T extends Prisma.DocumentFindUniqueArgs>(
+    args: Prisma.SelectSubset<T, Prisma.DocumentFindUniqueArgs>
+  ): Promise<PrismaDocument> {
+    const { contenu } = await this.prisma.document.findUniqueOrThrow({
+      where: args.where,
+    });
+
+    await this.localStorageService.deleteFile(
+      contenu as unknown as LocalStorageFile
+    );
+
+    return await this.prisma.document.update({
+      where: args.where,
+
+      data: {
+        contenu: Prisma.DbNull,
+      },
+    });
   }
 
   async getContact(parentId: string): Promise<PrismaContact | null> {
