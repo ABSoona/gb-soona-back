@@ -12,7 +12,13 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
+import {
+  ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  MaxLength,
+} from "class-validator";
 import { Type } from "class-transformer";
 
 @InputType()
@@ -28,6 +34,29 @@ class VisiteCreateInput {
     nullable: true,
   })
   contact?: ContactWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dateVisite?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(12560)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  rapportVisite?: string | null;
 }
 
 export { VisiteCreateInput as VisiteCreateInput };

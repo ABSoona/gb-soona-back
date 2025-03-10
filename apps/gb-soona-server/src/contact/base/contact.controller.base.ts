@@ -274,9 +274,11 @@ export class ContactControllerBase {
         createdAt: true,
         dateAide: true,
         dateExpiration: true,
+        frequence: true,
         id: true,
         montant: true,
         paiementRecurrent: true,
+        status: true,
         typeField: true,
         updatedAt: true,
       },
@@ -495,6 +497,7 @@ export class ContactControllerBase {
           },
         },
 
+        contenu: true,
         createdAt: true,
         id: true,
         updatedAt: true,
@@ -597,7 +600,9 @@ export class ContactControllerBase {
         },
 
         createdAt: true,
+        dateVisite: true,
         id: true,
+        rapportVisite: true,
         updatedAt: true,
       },
     });

@@ -8,16 +8,18 @@ generator client {
 }
 
 model Aide {
-  contact           Contact?  @relation(fields: [contactId], references: [id])
+  contact           Contact?           @relation(fields: [contactId], references: [id])
   contactId         Int?
-  createdAt         DateTime  @default(now())
+  createdAt         DateTime           @default(now())
   dateAide          DateTime?
   dateExpiration    DateTime?
-  id                Int       @id @default(autoincrement())
+  frequence         EnumAideFrequence?
+  id                Int                @id @default(autoincrement())
   montant           Int?
   paiementRecurrent Boolean?
+  status            String?
   typeField         String?
-  updatedAt         DateTime  @updatedAt
+  updatedAt         DateTime           @updatedAt
 }
 
 model Demande {
@@ -80,17 +82,27 @@ model User {
 }
 
 model Visite {
-  contact   Contact? @relation(fields: [contactId], references: [id])
-  contactId Int?
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
+  contact       Contact?  @relation(fields: [contactId], references: [id])
+  contactId     Int?
+  createdAt     DateTime  @default(now())
+  dateVisite    DateTime?
+  id            String    @id @default(cuid())
+  rapportVisite String?
+  updatedAt     DateTime  @updatedAt
 }
 
 model Document {
   contact   Contact? @relation(fields: [contactId], references: [id])
   contactId Int?
+  contenu   Json?
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
+}
+
+enum EnumAideFrequence {
+  Mensuelle
+  BiMensuelle
+  Trimestrielle
+  Hebdomadaire
 }

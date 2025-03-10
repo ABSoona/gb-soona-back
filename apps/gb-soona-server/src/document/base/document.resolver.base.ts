@@ -17,6 +17,8 @@ import * as nestAccessControl from "nest-access-control";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
+import { GraphQLUpload } from "graphql-upload";
+import { FileUpload } from "src/storage/base/storage.types";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Document } from "./Document";
@@ -157,6 +159,27 @@ export class DocumentResolverBase {
       }
       throw error;
     }
+  }
+
+  @graphql.Mutation(() => Document)
+  async uploadContenu(
+    @graphql.Args({
+      name: "file",
+      type: () => GraphQLUpload,
+    })
+    file: FileUpload,
+    @graphql.Args()
+    args: DocumentFindUniqueArgs
+  ): Promise<Document> {
+    return await this.service.uploadContenu(args, file);
+  }
+
+  @graphql.Mutation(() => Document)
+  async deleteContenu(
+    @graphql.Args()
+    args: DocumentFindUniqueArgs
+  ): Promise<Document> {
+    return await this.service.deleteContenu(args);
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
