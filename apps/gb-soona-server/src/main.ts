@@ -9,11 +9,17 @@ import {
   swaggerDocumentOptions,
   swaggerSetupOptions,
 } from "./swagger";
+import { graphqlUploadExpress } from "graphql-upload";
 
 const { PORT = 3000 } = process.env;
 
 async function main() {
   const app = await NestFactory.create(AppModule, { cors: true });
+
+  app.use(
+    "/graphql",
+    graphqlUploadExpress({ maxFileSize: 50000000, maxFiles: 10 })
+  );
 
   app.setGlobalPrefix("api");
   app.useGlobalPipes(

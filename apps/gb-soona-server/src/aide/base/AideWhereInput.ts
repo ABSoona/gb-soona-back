@@ -12,9 +12,10 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { EnumAideFrequence } from "./EnumAideFrequence";
 import { IntFilter } from "../../util/IntFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
@@ -58,6 +59,17 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumAideFrequence,
+  })
+  @IsEnum(EnumAideFrequence)
+  @IsOptional()
+  @Field(() => EnumAideFrequence, {
+    nullable: true,
+  })
+  frequence?: "Mensuelle" | "BiMensuelle" | "Trimestrielle" | "Hebdomadaire";
+
+  @ApiProperty({
+    required: false,
     type: IntFilter,
   })
   @Type(() => IntFilter)
@@ -88,6 +100,17 @@ class AideWhereInput {
     nullable: true,
   })
   paiementRecurrent?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  status?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

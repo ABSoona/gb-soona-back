@@ -14,6 +14,9 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Contact } from "../../contact/base/Contact";
 import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { JsonValue } from "type-fest";
 
 @ObjectType()
 class Document {
@@ -25,6 +28,16 @@ class Document {
   @Type(() => Contact)
   @IsOptional()
   contact?: Contact | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  contenu!: JsonValue;
 
   @ApiProperty({
     required: true,

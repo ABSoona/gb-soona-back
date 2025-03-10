@@ -12,7 +12,13 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { Contact } from "../../contact/base/Contact";
-import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
+import {
+  ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  MaxLength,
+} from "class-validator";
 import { Type } from "class-transformer";
 
 @ObjectType()
@@ -35,12 +41,35 @@ class Visite {
   createdAt!: Date;
 
   @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dateVisite!: Date | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(12560)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  rapportVisite!: string | null;
 
   @ApiProperty({
     required: true,

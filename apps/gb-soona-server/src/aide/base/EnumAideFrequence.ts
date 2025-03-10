@@ -9,11 +9,15 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
-import { Module } from "@nestjs/common";
-import { ACLModule } from "../../auth/acl.module";
-import { StorageModule } from "src/storage/storage.module";
-@Module({
-  imports: [StorageModule, ACLModule],
-  exports: [StorageModule, ACLModule],
-})
-export class DocumentModuleBase {}
+import { registerEnumType } from "@nestjs/graphql";
+
+export enum EnumAideFrequence {
+  Mensuelle = "Mensuelle",
+  BiMensuelle = "BiMensuelle",
+  Trimestrielle = "Trimestrielle",
+  Hebdomadaire = "Hebdomadaire",
+}
+
+registerEnumType(EnumAideFrequence, {
+  name: "EnumAideFrequence",
+});

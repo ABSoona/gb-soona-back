@@ -17,6 +17,7 @@ import {
   ValidateNested,
   IsOptional,
   IsDate,
+  IsEnum,
   IsInt,
   Max,
   IsBoolean,
@@ -25,6 +26,7 @@ import {
 } from "class-validator";
 
 import { Type } from "class-transformer";
+import { EnumAideFrequence } from "./EnumAideFrequence";
 
 @InputType()
 class AideCreateInput {
@@ -64,6 +66,22 @@ class AideCreateInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumAideFrequence,
+  })
+  @IsEnum(EnumAideFrequence)
+  @IsOptional()
+  @Field(() => EnumAideFrequence, {
+    nullable: true,
+  })
+  frequence?:
+    | "Mensuelle"
+    | "BiMensuelle"
+    | "Trimestrielle"
+    | "Hebdomadaire"
+    | null;
+
+  @ApiProperty({
+    required: false,
     type: Number,
   })
   @IsInt()
@@ -84,6 +102,18 @@ class AideCreateInput {
     nullable: true,
   })
   paiementRecurrent?: boolean | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(256)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status?: string | null;
 
   @ApiProperty({
     required: false,

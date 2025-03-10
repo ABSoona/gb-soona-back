@@ -24,6 +24,7 @@ const CREATE_INPUT = {
   id: 42,
   montant: 42,
   paiementRecurrent: "true",
+  status: "exampleStatus",
   typeField: "exampleTypeField",
   updatedAt: new Date(),
 };
@@ -34,6 +35,7 @@ const CREATE_RESULT = {
   id: 42,
   montant: 42,
   paiementRecurrent: "true",
+  status: "exampleStatus",
   typeField: "exampleTypeField",
   updatedAt: new Date(),
 };
@@ -45,6 +47,7 @@ const FIND_MANY_RESULT = [
     id: 42,
     montant: 42,
     paiementRecurrent: "true",
+    status: "exampleStatus",
     typeField: "exampleTypeField",
     updatedAt: new Date(),
   },
@@ -56,6 +59,7 @@ const FIND_ONE_RESULT = {
   id: 42,
   montant: 42,
   paiementRecurrent: "true",
+  status: "exampleStatus",
   typeField: "exampleTypeField",
   updatedAt: new Date(),
 };

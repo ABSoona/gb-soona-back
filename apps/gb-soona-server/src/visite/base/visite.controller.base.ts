@@ -64,7 +64,9 @@ export class VisiteControllerBase {
         },
 
         createdAt: true,
+        dateVisite: true,
         id: true,
+        rapportVisite: true,
         updatedAt: true,
       },
     });
@@ -94,7 +96,9 @@ export class VisiteControllerBase {
         },
 
         createdAt: true,
+        dateVisite: true,
         id: true,
+        rapportVisite: true,
         updatedAt: true,
       },
     });
@@ -125,7 +129,9 @@ export class VisiteControllerBase {
         },
 
         createdAt: true,
+        dateVisite: true,
         id: true,
+        rapportVisite: true,
         updatedAt: true,
       },
     });
@@ -173,7 +179,9 @@ export class VisiteControllerBase {
           },
 
           createdAt: true,
+          dateVisite: true,
           id: true,
+          rapportVisite: true,
           updatedAt: true,
         },
       });
@@ -212,7 +220,9 @@ export class VisiteControllerBase {
           },
 
           createdAt: true,
+          dateVisite: true,
           id: true,
+          rapportVisite: true,
           updatedAt: true,
         },
       });

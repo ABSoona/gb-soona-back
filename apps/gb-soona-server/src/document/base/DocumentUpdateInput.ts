@@ -14,6 +14,9 @@ import { ApiProperty } from "@nestjs/swagger";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 
 @InputType()
 class DocumentUpdateInput {
@@ -28,6 +31,16 @@ class DocumentUpdateInput {
     nullable: true,
   })
   contact?: ContactWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  contenu?: InputJsonValue;
 }
 
 export { DocumentUpdateInput as DocumentUpdateInput };

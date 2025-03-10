@@ -19,24 +19,32 @@ const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   createdAt: new Date(),
+  dateVisite: new Date(),
   id: "exampleId",
+  rapportVisite: "exampleRapportVisite",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
+  dateVisite: new Date(),
   id: "exampleId",
+  rapportVisite: "exampleRapportVisite",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
     createdAt: new Date(),
+    dateVisite: new Date(),
     id: "exampleId",
+    rapportVisite: "exampleRapportVisite",
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
   createdAt: new Date(),
+  dateVisite: new Date(),
   id: "exampleId",
+  rapportVisite: "exampleRapportVisite",
   updatedAt: new Date(),
 };
 
@@ -123,6 +131,7 @@ describe("Visite", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -135,6 +144,7 @@ describe("Visite", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          dateVisite: FIND_MANY_RESULT[0].dateVisite.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -158,6 +168,7 @@ describe("Visite", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        dateVisite: FIND_ONE_RESULT.dateVisite.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -171,6 +182,7 @@ describe("Visite", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {
