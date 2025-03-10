@@ -1,0 +1,96 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Aide {
+  contact           Contact?  @relation(fields: [contactId], references: [id])
+  contactId         Int?
+  createdAt         DateTime  @default(now())
+  dateAide          DateTime?
+  dateExpiration    DateTime?
+  id                Int       @id @default(autoincrement())
+  montant           Int?
+  paiementRecurrent Boolean?
+  typeField         String?
+  updatedAt         DateTime  @updatedAt
+}
+
+model Demande {
+  agesEnfants              String?
+  apl                      Int?
+  autresAides              String?
+  autresCharges            Int?
+  contact                  Contact? @relation(fields: [contactId], references: [id])
+  contactId                Int?
+  createdAt                DateTime @default(now())
+  dettes                   Int?
+  facturesEnergie          Int?
+  id                       Int      @id @default(autoincrement())
+  loyer                    Int?
+  natureDettes             String?
+  nombreEnfants            Int?
+  remarques                String?
+  revenus                  Int?
+  revenusConjoint          Int?
+  situationFamiliale       String?
+  situationProConjoint     String?
+  situationProfessionnelle String?
+  status                   String?
+  updatedAt                DateTime @updatedAt
+}
+
+model Contact {
+  adresse         String?
+  age             Int?
+  aides           Aide[]
+  codePostal      Int?
+  createdAt       DateTime   @default(now())
+  demandes        Demande[]
+  documents       Document[]
+  email           String?
+  id              Int        @id @default(autoincrement())
+  nom             String?
+  numBeneficiaire String?
+  prenom          String?
+  remarques       String?
+  status          String?
+  telephone       String?
+  updatedAt       DateTime   @updatedAt
+  ville           String?
+  visites         Visite[]
+}
+
+model User {
+  createdAt DateTime @default(now())
+  email     String?  @unique
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  role      String?
+  roles     Json
+  status    String?
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+model Visite {
+  contact   Contact? @relation(fields: [contactId], references: [id])
+  contactId Int?
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model Document {
+  contact   Contact? @relation(fields: [contactId], references: [id])
+  contactId Int?
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
