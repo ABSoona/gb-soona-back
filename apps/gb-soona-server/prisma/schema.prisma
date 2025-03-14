@@ -17,8 +17,9 @@ model Aide {
   id                Int                @id @default(autoincrement())
   montant           Int?
   paiementRecurrent Boolean?
+  reexaminer        Boolean?
   status            String?
-  typeField         String?
+  typeField         EnumAideTypeField?
   updatedAt         DateTime           @updatedAt
 }
 
@@ -105,4 +106,9 @@ enum EnumAideFrequence {
   BiMensuelle
   Trimestrielle
   Hebdomadaire
+  Unefois
+}
+
+enum EnumAideTypeField {
+  Alimentaire
 }

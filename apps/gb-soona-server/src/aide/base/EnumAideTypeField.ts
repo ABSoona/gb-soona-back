@@ -11,14 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { registerEnumType } from "@nestjs/graphql";
 
-export enum EnumAideFrequence {
-  Mensuelle = "Mensuelle",
-  BiMensuelle = "BiMensuelle",
-  Trimestrielle = "Trimestrielle",
-  Hebdomadaire = "Hebdomadaire",
-  UneFois = "Unefois",
+export enum EnumAideTypeField {
+  Alimentaire = "Alimentaire",
 }
 
-registerEnumType(EnumAideFrequence, {
-  name: "EnumAideFrequence",
+registerEnumType(EnumAideTypeField, {
+  name: "EnumAideTypeField",
 });
