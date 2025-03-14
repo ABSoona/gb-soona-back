@@ -137,7 +137,7 @@ class AideUpdateInput {
   @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: "Alimentaire" | null;
+  typeField?: "Alimentaire" | "FinanciRe" | null;
 }
 
 export { AideUpdateInput as AideUpdateInput };

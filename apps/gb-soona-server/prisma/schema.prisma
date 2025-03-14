@@ -111,4 +111,5 @@ enum EnumAideFrequence {
 
 enum EnumAideTypeField {
   Alimentaire
+  FinanciRe
 }

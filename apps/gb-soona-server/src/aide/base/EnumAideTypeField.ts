@@ -13,6 +13,7 @@ import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumAideTypeField {
   Alimentaire = "Alimentaire",
+  FinanciRe = "FinanciRe",
 }
 
 registerEnumType(EnumAideTypeField, {

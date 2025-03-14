@@ -138,7 +138,7 @@ class AideWhereInput {
   @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: "Alimentaire";
+  typeField?: "Alimentaire" | "FinanciRe";
 }
 
 export { AideWhereInput as AideWhereInput };

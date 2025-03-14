@@ -150,7 +150,7 @@ class Aide {
   @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: "Alimentaire" | null;
+  typeField?: "Alimentaire" | "FinanciRe" | null;
 
   @ApiProperty({
     required: true,
