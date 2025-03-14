@@ -19,7 +19,6 @@ import { EnumAideFrequence } from "./EnumAideFrequence";
 import { IntFilter } from "../../util/IntFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { EnumAideTypeField } from "./EnumAideTypeField";
 
 @InputType()
@@ -105,29 +104,7 @@ class AideWhereInput {
   @Field(() => BooleanNullableFilter, {
     nullable: true,
   })
-  paiementRecurrent?: BooleanNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: BooleanNullableFilter,
-  })
-  @Type(() => BooleanNullableFilter)
-  @IsOptional()
-  @Field(() => BooleanNullableFilter, {
-    nullable: true,
-  })
-  reexaminer?: BooleanNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  status?: StringNullableFilter;
+  suspendue?: BooleanNullableFilter;
 
   @ApiProperty({
     required: false,

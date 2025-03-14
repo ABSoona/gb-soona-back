@@ -12,7 +12,6 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
-
 import {
   ValidateNested,
   IsOptional,
@@ -21,10 +20,7 @@ import {
   IsInt,
   Max,
   IsBoolean,
-  IsString,
-  MaxLength,
 } from "class-validator";
-
 import { Type } from "class-transformer";
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { EnumAideTypeField } from "./EnumAideTypeField";
@@ -103,30 +99,7 @@ class AideCreateInput {
   @Field(() => Boolean, {
     nullable: true,
   })
-  paiementRecurrent?: boolean | null;
-
-  @ApiProperty({
-    required: false,
-    type: Boolean,
-  })
-  @IsBoolean()
-  @IsOptional()
-  @Field(() => Boolean, {
-    nullable: true,
-  })
-  reexaminer?: boolean | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @MaxLength(256)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  status?: string | null;
+  suspendue?: boolean | null;
 
   @ApiProperty({
     required: false,

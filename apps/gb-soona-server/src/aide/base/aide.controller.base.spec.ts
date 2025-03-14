@@ -23,9 +23,7 @@ const CREATE_INPUT = {
   dateExpiration: new Date(),
   id: 42,
   montant: 42,
-  paiementRecurrent: "true",
-  reexaminer: "true",
-  status: "exampleStatus",
+  suspendue: "true",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
@@ -34,9 +32,7 @@ const CREATE_RESULT = {
   dateExpiration: new Date(),
   id: 42,
   montant: 42,
-  paiementRecurrent: "true",
-  reexaminer: "true",
-  status: "exampleStatus",
+  suspendue: "true",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
@@ -46,9 +42,7 @@ const FIND_MANY_RESULT = [
     dateExpiration: new Date(),
     id: 42,
     montant: 42,
-    paiementRecurrent: "true",
-    reexaminer: "true",
-    status: "exampleStatus",
+    suspendue: "true",
     updatedAt: new Date(),
   },
 ];
@@ -58,9 +52,7 @@ const FIND_ONE_RESULT = {
   dateExpiration: new Date(),
   id: 42,
   montant: 42,
-  paiementRecurrent: "true",
-  reexaminer: "true",
-  status: "exampleStatus",
+  suspendue: "true",
   updatedAt: new Date(),
 };
 
