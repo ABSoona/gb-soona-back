@@ -137,7 +137,7 @@ class AideCreateInput {
   @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: "Alimentaire" | null;
+  typeField?: "Alimentaire" | "FinanciRe" | null;
 }
 
 export { AideCreateInput as AideCreateInput };
