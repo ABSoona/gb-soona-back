@@ -27,6 +27,7 @@ import {
 
 import { Type } from "class-transformer";
 import { EnumAideFrequence } from "./EnumAideFrequence";
+import { EnumAideTypeField } from "./EnumAideTypeField";
 
 @InputType()
 class AideUpdateInput {
@@ -78,6 +79,7 @@ class AideUpdateInput {
     | "BiMensuelle"
     | "Trimestrielle"
     | "Hebdomadaire"
+    | "Unefois"
     | null;
 
   @ApiProperty({
@@ -105,6 +107,17 @@ class AideUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  reexaminer?: boolean | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -117,15 +130,14 @@ class AideUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
+    enum: EnumAideTypeField,
   })
-  @IsString()
-  @MaxLength(1000)
+  @IsEnum(EnumAideTypeField)
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: string | null;
+  typeField?: "Alimentaire" | null;
 }
 
 export { AideUpdateInput as AideUpdateInput };

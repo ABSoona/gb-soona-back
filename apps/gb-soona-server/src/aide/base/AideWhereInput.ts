@@ -20,6 +20,7 @@ import { IntFilter } from "../../util/IntFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { EnumAideTypeField } from "./EnumAideTypeField";
 
 @InputType()
 class AideWhereInput {
@@ -66,7 +67,12 @@ class AideWhereInput {
   @Field(() => EnumAideFrequence, {
     nullable: true,
   })
-  frequence?: "Mensuelle" | "BiMensuelle" | "Trimestrielle" | "Hebdomadaire";
+  frequence?:
+    | "Mensuelle"
+    | "BiMensuelle"
+    | "Trimestrielle"
+    | "Hebdomadaire"
+    | "Unefois";
 
   @ApiProperty({
     required: false,
@@ -103,6 +109,17 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
+    type: BooleanNullableFilter,
+  })
+  @Type(() => BooleanNullableFilter)
+  @IsOptional()
+  @Field(() => BooleanNullableFilter, {
+    nullable: true,
+  })
+  reexaminer?: BooleanNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -114,14 +131,14 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringNullableFilter,
+    enum: EnumAideTypeField,
   })
-  @Type(() => StringNullableFilter)
+  @IsEnum(EnumAideTypeField)
   @IsOptional()
-  @Field(() => StringNullableFilter, {
+  @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: StringNullableFilter;
+  typeField?: "Alimentaire";
 }
 
 export { AideWhereInput as AideWhereInput };

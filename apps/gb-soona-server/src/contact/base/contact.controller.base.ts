@@ -278,6 +278,7 @@ export class ContactControllerBase {
         id: true,
         montant: true,
         paiementRecurrent: true,
+        reexaminer: true,
         status: true,
         typeField: true,
         updatedAt: true,
