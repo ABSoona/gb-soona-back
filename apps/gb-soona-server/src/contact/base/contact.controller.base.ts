@@ -277,6 +277,7 @@ export class ContactControllerBase {
         frequence: true,
         id: true,
         montant: true,
+        nombreVersements: true,
         suspendue: true,
         typeField: true,
         updatedAt: true,

@@ -8,17 +8,18 @@ generator client {
 }
 
 model Aide {
-  contact        Contact?           @relation(fields: [contactId], references: [id])
-  contactId      Int?
-  createdAt      DateTime           @default(now())
-  dateAide       DateTime?
-  dateExpiration DateTime?
-  frequence      EnumAideFrequence?
-  id             Int                @id @default(autoincrement())
-  montant        Int?
-  suspendue      Boolean?
-  typeField      EnumAideTypeField?
-  updatedAt      DateTime           @updatedAt
+  contact          Contact?           @relation(fields: [contactId], references: [id])
+  contactId        Int?
+  createdAt        DateTime           @default(now())
+  dateAide         DateTime?
+  dateExpiration   DateTime?
+  frequence        EnumAideFrequence?
+  id               Int                @id @default(autoincrement())
+  montant          Int?
+  nombreVersements Int?
+  suspendue        Boolean?
+  typeField        EnumAideTypeField?
+  updatedAt        DateTime           @updatedAt
 }
 
 model Demande {
