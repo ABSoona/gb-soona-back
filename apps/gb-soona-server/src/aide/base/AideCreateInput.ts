@@ -92,6 +92,18 @@ class AideCreateInput {
 
   @ApiProperty({
     required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  nombreVersements?: number | null;
+
+  @ApiProperty({
+    required: false,
     type: Boolean,
   })
   @IsBoolean()
