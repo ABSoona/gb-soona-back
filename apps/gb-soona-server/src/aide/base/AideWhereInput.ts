@@ -14,9 +14,11 @@ import { ApiProperty } from "@nestjs/swagger";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
+import { EnumAideCrediteur } from "./EnumAideCrediteur";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { IntFilter } from "../../util/IntFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { EnumAideTypeField } from "./EnumAideTypeField";
@@ -34,6 +36,17 @@ class AideWhereInput {
     nullable: true,
   })
   contact?: ContactWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumAideCrediteur,
+  })
+  @IsEnum(EnumAideCrediteur)
+  @IsOptional()
+  @Field(() => EnumAideCrediteur, {
+    nullable: true,
+  })
+  crediteur?: "LeBNFiciaire" | "UnCrAncier";
 
   @ApiProperty({
     required: false,
@@ -86,6 +99,17 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  infosCrediteur?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: IntNullableFilter,
   })
   @Type(() => IntNullableFilter)
@@ -105,6 +129,17 @@ class AideWhereInput {
     nullable: true,
   })
   nombreVersements?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  remarque?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

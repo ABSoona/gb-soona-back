@@ -12,16 +12,21 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
+
 import {
   ValidateNested,
   IsOptional,
-  IsDate,
   IsEnum,
+  IsDate,
+  IsString,
+  MaxLength,
   IsInt,
   Max,
   IsBoolean,
 } from "class-validator";
+
 import { Type } from "class-transformer";
+import { EnumAideCrediteur } from "./EnumAideCrediteur";
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { EnumAideTypeField } from "./EnumAideTypeField";
 
@@ -38,6 +43,17 @@ class AideUpdateInput {
     nullable: true,
   })
   contact?: ContactWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumAideCrediteur,
+  })
+  @IsEnum(EnumAideCrediteur)
+  @IsOptional()
+  @Field(() => EnumAideCrediteur, {
+    nullable: true,
+  })
+  crediteur?: "LeBNFiciaire" | "UnCrAncier" | null;
 
   @ApiProperty({
     required: false,
@@ -80,6 +96,18 @@ class AideUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  infosCrediteur?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: Number,
   })
   @IsInt()
@@ -101,6 +129,18 @@ class AideUpdateInput {
     nullable: true,
   })
   nombreVersements?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(10000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  remarque?: string | null;
 
   @ApiProperty({
     required: false,

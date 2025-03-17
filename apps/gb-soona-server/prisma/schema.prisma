@@ -11,12 +11,15 @@ model Aide {
   contact          Contact?           @relation(fields: [contactId], references: [id])
   contactId        Int?
   createdAt        DateTime           @default(now())
+  crediteur        EnumAideCrediteur?
   dateAide         DateTime?
   dateExpiration   DateTime?
   frequence        EnumAideFrequence?
   id               Int                @id @default(autoincrement())
+  infosCrediteur   String?
   montant          Int?
   nombreVersements Int?
+  remarque         String?
   suspendue        Boolean?
   typeField        EnumAideTypeField?
   updatedAt        DateTime           @updatedAt
@@ -98,6 +101,11 @@ model Document {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
+}
+
+enum EnumAideCrediteur {
+  LeBNFiciaire
+  UnCrAncier
 }
 
 enum EnumAideFrequence {
