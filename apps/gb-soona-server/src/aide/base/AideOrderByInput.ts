@@ -50,6 +50,17 @@ class AideOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  crediteur?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   dateAide?: SortOrder;
 
   @ApiProperty({
@@ -94,6 +105,17 @@ class AideOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  infosCrediteur?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   montant?: SortOrder;
 
   @ApiProperty({
@@ -106,6 +128,17 @@ class AideOrderByInput {
     nullable: true,
   })
   nombreVersements?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  remarque?: SortOrder;
 
   @ApiProperty({
     required: false,
