@@ -76,17 +76,6 @@ class VisiteWhereInput {
     nullable: true,
   })
   rapportVisite?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: DateTimeFilter,
-  })
-  @Type(() => DateTimeFilter)
-  @IsOptional()
-  @Field(() => DateTimeFilter, {
-    nullable: true,
-  })
-  updatedAt?: DateTimeFilter;
 }
 
 export { VisiteWhereInput as VisiteWhereInput };
