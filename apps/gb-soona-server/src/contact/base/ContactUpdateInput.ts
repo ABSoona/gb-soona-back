@@ -18,6 +18,7 @@ import {
   IsInt,
   Max,
   ValidateNested,
+  IsDate,
 } from "class-validator";
 import { AideUpdateManyWithoutContactsInput } from "./AideUpdateManyWithoutContactsInput";
 import { Type } from "class-transformer";
@@ -74,6 +75,17 @@ class ContactUpdateInput {
     nullable: true,
   })
   codePostal?: number | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dateCreation?: Date | null;
 
   @ApiProperty({
     required: false,
