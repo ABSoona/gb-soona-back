@@ -16,8 +16,9 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
-import { DateTimeFilter } from "../../util/DateTimeFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { IntFilter } from "../../util/IntFilter";
+import { DateTimeFilter } from "../../util/DateTimeFilter";
 
 @InputType()
 class DemandeWhereInput {
@@ -79,14 +80,14 @@ class DemandeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: DateTimeFilter,
+    type: DateTimeNullableFilter,
   })
-  @Type(() => DateTimeFilter)
+  @Type(() => DateTimeNullableFilter)
   @IsOptional()
-  @Field(() => DateTimeFilter, {
+  @Field(() => DateTimeNullableFilter, {
     nullable: true,
   })
-  createdAt?: DateTimeFilter;
+  createdAt?: DateTimeNullableFilter;
 
   @ApiProperty({
     required: false,

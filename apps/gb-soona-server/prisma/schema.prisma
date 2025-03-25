@@ -30,12 +30,12 @@ model Demande {
   apl                      Int?
   autresAides              String?
   autresCharges            Int?
-  contact                  Contact? @relation(fields: [contactId], references: [id])
+  contact                  Contact?  @relation(fields: [contactId], references: [id])
   contactId                Int?
-  createdAt                DateTime @default(now())
+  createdAt                DateTime? @default(now())
   dettes                   Int?
   facturesEnergie          Int?
-  id                       Int      @id @default(autoincrement())
+  id                       Int       @id @default(autoincrement())
   loyer                    Int?
   natureDettes             String?
   nombreEnfants            Int?
@@ -46,7 +46,7 @@ model Demande {
   situationProConjoint     String?
   situationProfessionnelle String?
   status                   String?
-  updatedAt                DateTime @updatedAt
+  updatedAt                DateTime  @updatedAt
 }
 
 model Contact {

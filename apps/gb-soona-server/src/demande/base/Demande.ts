@@ -83,12 +83,15 @@ class Demande {
   contact?: Contact | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
   })
   @IsDate()
   @Type(() => Date)
-  @Field(() => Date)
-  createdAt!: Date;
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  createdAt!: Date | null;
 
   @ApiProperty({
     required: false,
