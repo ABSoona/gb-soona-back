@@ -174,6 +174,17 @@ class AideWhereInput {
     nullable: true,
   })
   typeField?: "Alimentaire" | "FinanciRe";
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeFilter,
+  })
+  @Type(() => DateTimeFilter)
+  @IsOptional()
+  @Field(() => DateTimeFilter, {
+    nullable: true,
+  })
+  updatedAt?: DateTimeFilter;
 }
 
 export { AideWhereInput as AideWhereInput };
