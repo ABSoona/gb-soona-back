@@ -11,17 +11,21 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { IsInt } from "class-validator";
+import { Transform } from "class-transformer";
 
 @InputType()
 class DocumentWhereUniqueInput {
   @ApiProperty({
     required: true,
-    type: String,
+    type: Number,
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
+  @IsInt()
+  @Transform((prop) => parseInt(prop.value), {
+    toClassOnly: true,
+  })
+  @Field(() => Number)
+  id!: number;
 }
 
 export { DocumentWhereUniqueInput as DocumentWhereUniqueInput };

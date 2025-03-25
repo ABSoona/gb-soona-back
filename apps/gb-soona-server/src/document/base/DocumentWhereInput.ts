@@ -15,7 +15,7 @@ import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueIn
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { JsonFilter } from "../../util/JsonFilter";
-import { StringFilter } from "../../util/StringFilter";
+import { IntFilter } from "../../util/IntFilter";
 
 @InputType()
 class DocumentWhereInput {
@@ -44,14 +44,14 @@ class DocumentWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: IntFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => IntFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => IntFilter, {
     nullable: true,
   })
-  id?: StringFilter;
+  id?: IntFilter;
 }
 
 export { DocumentWhereInput as DocumentWhereInput };
