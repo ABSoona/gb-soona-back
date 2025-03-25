@@ -100,7 +100,7 @@ model Document {
   contactId Int?
   contenu   Json?
   createdAt DateTime @default(now())
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
 }
 

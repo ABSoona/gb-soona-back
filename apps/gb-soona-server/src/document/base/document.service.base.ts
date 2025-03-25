@@ -114,7 +114,7 @@ export class DocumentServiceBase {
     });
   }
 
-  async getContact(parentId: number): Promise<PrismaContact | null> {
+  async getContact(parentId: string): Promise<PrismaContact | null> {
     return this.prisma.document
       .findUnique({
         where: { id: parentId },
