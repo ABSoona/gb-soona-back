@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
+import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { EnumAideCrediteur } from "./EnumAideCrediteur";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { EnumAideFrequence } from "./EnumAideFrequence";
@@ -36,6 +37,17 @@ class AideWhereInput {
     nullable: true,
   })
   contact?: ContactWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeFilter,
+  })
+  @Type(() => DateTimeFilter)
+  @IsOptional()
+  @Field(() => DateTimeFilter, {
+    nullable: true,
+  })
+  createdAt?: DateTimeFilter;
 
   @ApiProperty({
     required: false,
@@ -162,6 +174,17 @@ class AideWhereInput {
     nullable: true,
   })
   typeField?: "Alimentaire" | "FinanciRe";
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeFilter,
+  })
+  @Type(() => DateTimeFilter)
+  @IsOptional()
+  @Field(() => DateTimeFilter, {
+    nullable: true,
+  })
+  updatedAt?: DateTimeFilter;
 }
 
 export { AideWhereInput as AideWhereInput };
