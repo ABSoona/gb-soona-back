@@ -17,6 +17,7 @@ import { IsOptional, ValidateNested } from "class-validator";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { AideListRelationFilter } from "../../aide/base/AideListRelationFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { DemandeListRelationFilter } from "../../demande/base/DemandeListRelationFilter";
 import { DocumentListRelationFilter } from "../../document/base/DocumentListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
@@ -79,6 +80,17 @@ class ContactWhereInput {
     nullable: true,
   })
   createdAt?: DateTimeFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  dateCreation?: DateTimeNullableFilter;
 
   @ApiProperty({
     required: false,

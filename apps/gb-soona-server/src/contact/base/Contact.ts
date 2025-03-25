@@ -83,6 +83,17 @@ class Contact {
 
   @ApiProperty({
     required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dateCreation!: Date | null;
+
+  @ApiProperty({
+    required: false,
     type: () => [Demande],
   })
   @ValidateNested()

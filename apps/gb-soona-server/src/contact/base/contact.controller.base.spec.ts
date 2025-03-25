@@ -22,6 +22,7 @@ const CREATE_INPUT = {
   age: 42,
   codePostal: 42,
   createdAt: new Date(),
+  dateCreation: new Date(),
   email: "exampleEmail",
   id: 42,
   nom: "exampleNom",
@@ -38,6 +39,7 @@ const CREATE_RESULT = {
   age: 42,
   codePostal: 42,
   createdAt: new Date(),
+  dateCreation: new Date(),
   email: "exampleEmail",
   id: 42,
   nom: "exampleNom",
@@ -55,6 +57,7 @@ const FIND_MANY_RESULT = [
     age: 42,
     codePostal: 42,
     createdAt: new Date(),
+    dateCreation: new Date(),
     email: "exampleEmail",
     id: 42,
     nom: "exampleNom",
@@ -72,6 +75,7 @@ const FIND_ONE_RESULT = {
   age: 42,
   codePostal: 42,
   createdAt: new Date(),
+  dateCreation: new Date(),
   email: "exampleEmail",
   id: 42,
   nom: "exampleNom",
@@ -167,6 +171,7 @@ describe("Contact", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateCreation: CREATE_RESULT.dateCreation.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -179,6 +184,7 @@ describe("Contact", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          dateCreation: FIND_MANY_RESULT[0].dateCreation.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -202,6 +208,7 @@ describe("Contact", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        dateCreation: FIND_ONE_RESULT.dateCreation.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -215,6 +222,7 @@ describe("Contact", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateCreation: CREATE_RESULT.dateCreation.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {
