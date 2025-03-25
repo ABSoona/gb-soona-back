@@ -55,7 +55,7 @@ model Contact {
   aides           Aide[]
   codePostal      Int?
   createdAt       DateTime   @default(now())
-  dateCreation    DateTime?  @default(now())
+  dateCreation    DateTime?
   demandes        Demande[]
   documents       Document[]
   email           String?
