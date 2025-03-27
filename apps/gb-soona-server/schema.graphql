@@ -82,6 +82,7 @@ input AideUpdateManyWithoutContactsInput {
 
 input AideWhereInput {
   contact: ContactWhereUniqueInput
+  createdAt: DateTimeFilter
   crediteur: EnumAideCrediteur
   dateAide: DateTimeNullableFilter
   dateExpiration: DateTimeNullableFilter
@@ -93,6 +94,7 @@ input AideWhereInput {
   remarque: StringNullableFilter
   suspendue: BooleanNullableFilter
   typeField: EnumAideTypeField
+  updatedAt: DateTimeFilter
 }
 
 input AideWhereUniqueInput {
@@ -110,6 +112,7 @@ type Contact {
   aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
   codePostal: Float
   createdAt: DateTime!
+  dateCreation: DateTime
   demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   email: String
@@ -130,6 +133,7 @@ input ContactCreateInput {
   age: Float
   aides: AideCreateNestedManyWithoutContactsInput
   codePostal: Float
+  dateCreation: DateTime
   demandes: DemandeCreateNestedManyWithoutContactsInput
   documents: DocumentCreateNestedManyWithoutContactsInput
   email: String
@@ -148,6 +152,7 @@ input ContactOrderByInput {
   age: SortOrder
   codePostal: SortOrder
   createdAt: SortOrder
+  dateCreation: SortOrder
   email: SortOrder
   id: SortOrder
   nom: SortOrder
@@ -165,6 +170,7 @@ input ContactUpdateInput {
   age: Float
   aides: AideUpdateManyWithoutContactsInput
   codePostal: Float
+  dateCreation: DateTime
   demandes: DemandeUpdateManyWithoutContactsInput
   documents: DocumentUpdateManyWithoutContactsInput
   email: String
@@ -183,6 +189,8 @@ input ContactWhereInput {
   age: IntNullableFilter
   aides: AideListRelationFilter
   codePostal: IntNullableFilter
+  createdAt: DateTimeFilter
+  dateCreation: DateTimeNullableFilter
   demandes: DemandeListRelationFilter
   documents: DocumentListRelationFilter
   email: StringNullableFilter
@@ -211,6 +219,17 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
 input DateTimeNullableFilter {
   equals: DateTime
   gt: DateTime
@@ -228,7 +247,7 @@ type Demande {
   autresAides: String
   autresCharges: Float
   contact: Contact
-  createdAt: DateTime!
+  createdAt: DateTime
   dettes: Float
   facturesEnergie: Float
   id: Float!
@@ -330,6 +349,7 @@ input DemandeWhereInput {
   autresAides: StringNullableFilter
   autresCharges: IntNullableFilter
   contact: ContactWhereUniqueInput
+  createdAt: DateTimeNullableFilter
   dettes: IntNullableFilter
   facturesEnergie: IntNullableFilter
   id: IntFilter
@@ -343,6 +363,7 @@ input DemandeWhereInput {
   situationProConjoint: StringNullableFilter
   situationProfessionnelle: StringNullableFilter
   status: StringNullableFilter
+  updatedAt: DateTimeFilter
 }
 
 input DemandeWhereUniqueInput {
@@ -667,6 +688,7 @@ input VisiteUpdateManyWithoutContactsInput {
 
 input VisiteWhereInput {
   contact: ContactWhereUniqueInput
+  createdAt: DateTimeFilter
   dateVisite: DateTimeNullableFilter
   id: StringFilter
   rapportVisite: StringNullableFilter

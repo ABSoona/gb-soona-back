@@ -1,0 +1,8 @@
+<mj-section background-color="#f4f4f4" padding="20px">
+  <mj-column>
+    <mj-text font-size="12px" color="#888888" align="center">
+      ©2025 absoona — Tous droits réservés<br/>
+      <a href="https://soona.fr/" style="color:#888888;">soona.fr</a>
+    </mj-text>
+  </mj-column>
+</mj-section>

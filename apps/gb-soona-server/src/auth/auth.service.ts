@@ -4,13 +4,18 @@ import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
 import { UserInfo } from "./UserInfo";
 import { UserService } from "../user/user.service";
+import { JwtService } from "@nestjs/jwt";
+import { User } from "@prisma/client";
+import { MailService } from "src/mail/mail.service";
+
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly passwordService: PasswordService,
     private readonly tokenService: TokenService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly mailService: MailService,
   ) {}
 
   async validateUser(
@@ -46,4 +51,37 @@ export class AuthService {
       ...user,
     };
   }
+
+  async passwordRequest({ email }: { email: string }): Promise<void> {
+    const users = await this.userService.users({ where: { email } });
+  
+    const user = users[0];
+    if (!user || !user.email) return;
+  
+    const token = await this.tokenService.createTokenForPasswordReset(user.id);
+    const resetLink = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
+  
+    await this.mailService.sendUserMail('forgot-password',user.email, {resetLink},'Réinitialisation de votre mot de passe');
+  }
+  
+
+  async resetPassword(data: {token:string,password:string} ): Promise<User> {
+   
+
+   const userId = await this.tokenService.decodeJwtToken(data.token)
+  
+    const user = await this.userService.user({
+      where: { id:userId },
+    });
+
+    if (user && user?.email)    
+    await this.mailService.sendUserMail('forgot-password',user.email, {},'Mot de passe modifié avec succès');
+    
+      return this.userService.updateUser({where:{id:userId},data:{password:data.password}})
+   
+
+  }
+
 }
+
+

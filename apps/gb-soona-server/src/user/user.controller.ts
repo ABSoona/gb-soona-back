@@ -3,6 +3,7 @@ import * as swagger from "@nestjs/swagger";
 import * as nestAccessControl from "nest-access-control";
 import { UserService } from "./user.service";
 import { UserControllerBase } from "./base/user.controller.base";
+import { AclValidateRequestInterceptor } from "src/interceptors/aclValidateRequest.interceptor";
 
 @swagger.ApiTags("users")
 @common.Controller("users")
@@ -13,5 +14,7 @@ export class UserController extends UserControllerBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {
     super(service, rolesBuilder);
+   
   }
+  
 }
