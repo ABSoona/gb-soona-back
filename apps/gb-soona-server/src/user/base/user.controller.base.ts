@@ -26,6 +26,9 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
+import { UserNotificationPreferenceFindManyArgs } from "../../userNotificationPreference/base/UserNotificationPreferenceFindManyArgs";
+import { UserNotificationPreference } from "../../userNotificationPreference/base/UserNotificationPreference";
+import { UserNotificationPreferenceWhereUniqueInput } from "../../userNotificationPreference/base/UserNotificationPreferenceWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -213,5 +216,114 @@ export class UserControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/userNotificationPreferences")
+  @ApiNestedQuery(UserNotificationPreferenceFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "UserNotificationPreference",
+    action: "read",
+    possession: "any",
+  })
+  async findUserNotificationPreferences(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<UserNotificationPreference[]> {
+    const query = plainToClass(
+      UserNotificationPreferenceFindManyArgs,
+      request.query
+    );
+    const results = await this.service.findUserNotificationPreferences(
+      params.id,
+      {
+        ...query,
+        select: {
+          active: true,
+          createdAt: true,
+          id: true,
+          typeField: true,
+          updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
+        },
+      }
+    );
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/userNotificationPreferences")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectUserNotificationPreferences(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userNotificationPreferences: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/userNotificationPreferences")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateUserNotificationPreferences(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userNotificationPreferences: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/userNotificationPreferences")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectUserNotificationPreferences(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userNotificationPreferences: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }
