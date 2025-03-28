@@ -50,21 +50,22 @@ export class VisiteControllerBase {
       data: {
         ...data,
 
-        contact: data.contact
+        demande: data.demande
           ? {
-              connect: data.contact,
+              connect: data.demande,
             }
           : undefined,
       },
       select: {
-        contact: {
+        createdAt: true,
+        dateVisite: true,
+
+        demande: {
           select: {
             id: true,
           },
         },
 
-        createdAt: true,
-        dateVisite: true,
         id: true,
         rapportVisite: true,
         updatedAt: true,
@@ -89,14 +90,15 @@ export class VisiteControllerBase {
     return this.service.visites({
       ...args,
       select: {
-        contact: {
+        createdAt: true,
+        dateVisite: true,
+
+        demande: {
           select: {
             id: true,
           },
         },
 
-        createdAt: true,
-        dateVisite: true,
         id: true,
         rapportVisite: true,
         updatedAt: true,
@@ -122,14 +124,15 @@ export class VisiteControllerBase {
     const result = await this.service.visite({
       where: params,
       select: {
-        contact: {
+        createdAt: true,
+        dateVisite: true,
+
+        demande: {
           select: {
             id: true,
           },
         },
 
-        createdAt: true,
-        dateVisite: true,
         id: true,
         rapportVisite: true,
         updatedAt: true,
@@ -165,21 +168,22 @@ export class VisiteControllerBase {
         data: {
           ...data,
 
-          contact: data.contact
+          demande: data.demande
             ? {
-                connect: data.contact,
+                connect: data.demande,
               }
             : undefined,
         },
         select: {
-          contact: {
+          createdAt: true,
+          dateVisite: true,
+
+          demande: {
             select: {
               id: true,
             },
           },
 
-          createdAt: true,
-          dateVisite: true,
           id: true,
           rapportVisite: true,
           updatedAt: true,
@@ -213,14 +217,15 @@ export class VisiteControllerBase {
       return await this.service.deleteVisite({
         where: params,
         select: {
-          contact: {
+          createdAt: true,
+          dateVisite: true,
+
+          demande: {
             select: {
               id: true,
             },
           },
 
-          createdAt: true,
-          dateVisite: true,
           id: true,
           rapportVisite: true,
           updatedAt: true,

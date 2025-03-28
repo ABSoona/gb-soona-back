@@ -13,7 +13,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Visite as PrismaVisite,
-  Contact as PrismaContact,
+  Demande as PrismaDemande,
 } from "@prisma/client";
 
 export class VisiteServiceBase {
@@ -41,11 +41,11 @@ export class VisiteServiceBase {
     return this.prisma.visite.delete(args);
   }
 
-  async getContact(parentId: string): Promise<PrismaContact | null> {
+  async getDemande(parentId: string): Promise<PrismaDemande | null> {
     return this.prisma.visite
       .findUnique({
         where: { id: parentId },
       })
-      .contact();
+      .demande();
   }
 }

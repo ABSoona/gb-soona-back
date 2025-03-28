@@ -35,9 +35,6 @@ import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueIn
 import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
 import { Document } from "../../document/base/Document";
 import { DocumentWhereUniqueInput } from "../../document/base/DocumentWhereUniqueInput";
-import { VisiteFindManyArgs } from "../../visite/base/VisiteFindManyArgs";
-import { Visite } from "../../visite/base/Visite";
-import { VisiteWhereUniqueInput } from "../../visite/base/VisiteWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -407,6 +404,12 @@ export class ContactControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
+
+        visites: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (results === null) {
@@ -575,109 +578,6 @@ export class ContactControllerBase {
   ): Promise<void> {
     const data = {
       documents: {
-        disconnect: body,
-      },
-    };
-    await this.service.updateContact({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/visites")
-  @ApiNestedQuery(VisiteFindManyArgs)
-  @nestAccessControl.UseRoles({
-    resource: "Visite",
-    action: "read",
-    possession: "any",
-  })
-  async findVisites(
-    @common.Req() request: Request,
-    @common.Param() params: ContactWhereUniqueInput
-  ): Promise<Visite[]> {
-    const query = plainToClass(VisiteFindManyArgs, request.query);
-    const results = await this.service.findVisites(params.id, {
-      ...query,
-      select: {
-        contact: {
-          select: {
-            id: true,
-          },
-        },
-
-        createdAt: true,
-        dateVisite: true,
-        id: true,
-        rapportVisite: true,
-        updatedAt: true,
-      },
-    });
-    if (results === null) {
-      throw new errors.NotFoundException(
-        `No resource was found for ${JSON.stringify(params)}`
-      );
-    }
-    return results;
-  }
-
-  @common.Post("/:id/visites")
-  @nestAccessControl.UseRoles({
-    resource: "Contact",
-    action: "update",
-    possession: "any",
-  })
-  async connectVisites(
-    @common.Param() params: ContactWhereUniqueInput,
-    @common.Body() body: VisiteWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      visites: {
-        connect: body,
-      },
-    };
-    await this.service.updateContact({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Patch("/:id/visites")
-  @nestAccessControl.UseRoles({
-    resource: "Contact",
-    action: "update",
-    possession: "any",
-  })
-  async updateVisites(
-    @common.Param() params: ContactWhereUniqueInput,
-    @common.Body() body: VisiteWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      visites: {
-        set: body,
-      },
-    };
-    await this.service.updateContact({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @common.Delete("/:id/visites")
-  @nestAccessControl.UseRoles({
-    resource: "Contact",
-    action: "update",
-    possession: "any",
-  })
-  async disconnectVisites(
-    @common.Param() params: ContactWhereUniqueInput,
-    @common.Body() body: VisiteWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      visites: {
         disconnect: body,
       },
     };

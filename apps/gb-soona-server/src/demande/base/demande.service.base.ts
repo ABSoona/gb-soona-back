@@ -10,10 +10,12 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
+
 import {
   Prisma,
   Demande as PrismaDemande,
   Contact as PrismaContact,
+  Visite as PrismaVisite,
 } from "@prisma/client";
 
 export class DemandeServiceBase {
@@ -47,5 +49,13 @@ export class DemandeServiceBase {
         where: { id: parentId },
       })
       .contact();
+  }
+
+  async getVisites(parentId: number): Promise<PrismaVisite | null> {
+    return this.prisma.demande
+      .findUnique({
+        where: { id: parentId },
+      })
+      .visites();
   }
 }

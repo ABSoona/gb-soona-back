@@ -21,7 +21,6 @@ import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { DemandeListRelationFilter } from "../../demande/base/DemandeListRelationFilter";
 import { DocumentListRelationFilter } from "../../document/base/DocumentListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
-import { VisiteListRelationFilter } from "../../visite/base/VisiteListRelationFilter";
 
 @InputType()
 class ContactWhereInput {
@@ -214,18 +213,6 @@ class ContactWhereInput {
     nullable: true,
   })
   ville?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => VisiteListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => VisiteListRelationFilter)
-  @IsOptional()
-  @Field(() => VisiteListRelationFilter, {
-    nullable: true,
-  })
-  visites?: VisiteListRelationFilter;
 }
 
 export { ContactWhereInput as ContactWhereInput };

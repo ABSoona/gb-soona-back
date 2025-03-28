@@ -24,7 +24,6 @@ import { AideCreateNestedManyWithoutContactsInput } from "./AideCreateNestedMany
 import { Type } from "class-transformer";
 import { DemandeCreateNestedManyWithoutContactsInput } from "./DemandeCreateNestedManyWithoutContactsInput";
 import { DocumentCreateNestedManyWithoutContactsInput } from "./DocumentCreateNestedManyWithoutContactsInput";
-import { VisiteCreateNestedManyWithoutContactsInput } from "./VisiteCreateNestedManyWithoutContactsInput";
 
 @InputType()
 class ContactCreateInput {
@@ -206,18 +205,6 @@ class ContactCreateInput {
     nullable: true,
   })
   ville?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => VisiteCreateNestedManyWithoutContactsInput,
-  })
-  @ValidateNested()
-  @Type(() => VisiteCreateNestedManyWithoutContactsInput)
-  @IsOptional()
-  @Field(() => VisiteCreateNestedManyWithoutContactsInput, {
-    nullable: true,
-  })
-  visites?: VisiteCreateNestedManyWithoutContactsInput;
 }
 
 export { ContactCreateInput as ContactCreateInput };

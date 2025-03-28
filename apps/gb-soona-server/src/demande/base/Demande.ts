@@ -22,6 +22,7 @@ import {
 } from "class-validator";
 import { Contact } from "../../contact/base/Contact";
 import { Type } from "class-transformer";
+import { Visite } from "../../visite/base/Visite";
 
 @ObjectType()
 class Demande {
@@ -252,6 +253,15 @@ class Demande {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => Visite,
+  })
+  @ValidateNested()
+  @Type(() => Visite)
+  @IsOptional()
+  visites?: Visite | null;
 }
 
 export { Demande as Demande };

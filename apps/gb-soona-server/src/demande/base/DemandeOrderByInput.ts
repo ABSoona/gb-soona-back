@@ -238,6 +238,17 @@ class DemandeOrderByInput {
     nullable: true,
   })
   updatedAt?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  visitesId?: SortOrder;
 }
 
 export { DemandeOrderByInput as DemandeOrderByInput };

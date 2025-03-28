@@ -24,7 +24,6 @@ import { AideUpdateManyWithoutContactsInput } from "./AideUpdateManyWithoutConta
 import { Type } from "class-transformer";
 import { DemandeUpdateManyWithoutContactsInput } from "./DemandeUpdateManyWithoutContactsInput";
 import { DocumentUpdateManyWithoutContactsInput } from "./DocumentUpdateManyWithoutContactsInput";
-import { VisiteUpdateManyWithoutContactsInput } from "./VisiteUpdateManyWithoutContactsInput";
 
 @InputType()
 class ContactUpdateInput {
@@ -206,18 +205,6 @@ class ContactUpdateInput {
     nullable: true,
   })
   ville?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => VisiteUpdateManyWithoutContactsInput,
-  })
-  @ValidateNested()
-  @Type(() => VisiteUpdateManyWithoutContactsInput)
-  @IsOptional()
-  @Field(() => VisiteUpdateManyWithoutContactsInput, {
-    nullable: true,
-  })
-  visites?: VisiteUpdateManyWithoutContactsInput;
 }
 
 export { ContactUpdateInput as ContactUpdateInput };

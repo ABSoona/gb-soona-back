@@ -17,7 +17,6 @@ import {
   Aide as PrismaAide,
   Demande as PrismaDemande,
   Document as PrismaDocument,
-  Visite as PrismaVisite,
 } from "@prisma/client";
 
 export class ContactServiceBase {
@@ -76,16 +75,5 @@ export class ContactServiceBase {
         where: { id: parentId },
       })
       .documents(args);
-  }
-
-  async findVisites(
-    parentId: number,
-    args: Prisma.VisiteFindManyArgs
-  ): Promise<PrismaVisite[]> {
-    return this.prisma.contact
-      .findUniqueOrThrow({
-        where: { id: parentId },
-      })
-      .visites(args);
   }
 }
