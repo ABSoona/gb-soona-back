@@ -101,6 +101,11 @@ input AideWhereUniqueInput {
   id: Float!
 }
 
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
 input BooleanNullableFilter {
   equals: Boolean
   not: Boolean
@@ -440,6 +445,14 @@ enum EnumAideTypeField {
   FinanciRe
 }
 
+enum EnumUserNotificationPreferenceTypeField {
+  AideExpir
+  ContactBan
+  DemandeEnCommission
+  DemandeEnVisite
+  NouvelleDemande
+}
+
 input IntFilter {
   equals: Int
   gt: Int
@@ -487,6 +500,7 @@ type Mutation {
   createDemande(data: DemandeCreateInput!): Demande!
   createDocument(data: DocumentCreateInput!): Document!
   createUser(data: UserCreateInput!): User!
+  createUserNotificationPreference(data: UserNotificationPreferenceCreateInput!): UserNotificationPreference!
   createVisite(data: VisiteCreateInput!): Visite!
   deleteAide(where: AideWhereUniqueInput!): Aide!
   deleteContact(where: ContactWhereUniqueInput!): Contact!
@@ -494,6 +508,7 @@ type Mutation {
   deleteDemande(where: DemandeWhereUniqueInput!): Demande!
   deleteDocument(where: DocumentWhereUniqueInput!): Document!
   deleteUser(where: UserWhereUniqueInput!): User!
+  deleteUserNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
   deleteVisite(where: VisiteWhereUniqueInput!): Visite!
   login(credentials: Credentials!): UserInfo!
   updateAide(data: AideUpdateInput!, where: AideWhereUniqueInput!): Aide!
@@ -501,6 +516,7 @@ type Mutation {
   updateDemande(data: DemandeUpdateInput!, where: DemandeWhereUniqueInput!): Demande!
   updateDocument(data: DocumentUpdateInput!, where: DocumentWhereUniqueInput!): Document!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  updateUserNotificationPreference(data: UserNotificationPreferenceUpdateInput!, where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
   updateVisite(data: VisiteUpdateInput!, where: VisiteWhereUniqueInput!): Visite!
   uploadContenu(file: Upload!, where: DocumentWhereUniqueInput!): Document!
 }
@@ -510,6 +526,7 @@ type Query {
   _contactsMeta(where: ContactWhereInput): MetaQueryPayload!
   _demandesMeta(where: DemandeWhereInput): MetaQueryPayload!
   _documentsMeta(where: DocumentWhereInput): MetaQueryPayload!
+  _userNotificationPreferencesMeta(where: UserNotificationPreferenceWhereInput): MetaQueryPayload!
   _usersMeta(where: UserWhereInput): MetaQueryPayload!
   _visitesMeta(where: VisiteWhereInput): MetaQueryPayload!
   aide(where: AideWhereUniqueInput!): Aide
@@ -522,6 +539,8 @@ type Query {
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   user(where: UserWhereUniqueInput!): User
   userInfo: UserInfo!
+  userNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference
+  userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
   users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
   visite(where: VisiteWhereUniqueInput!): Visite
   visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
@@ -580,6 +599,7 @@ type User {
   roles: JSON!
   status: String
   updatedAt: DateTime!
+  userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
   username: String!
 }
 
@@ -591,6 +611,7 @@ input UserCreateInput {
   role: String
   roles: JSON!
   status: String
+  userNotificationPreferences: UserNotificationPreferenceCreateNestedManyWithoutUsersInput
   username: String!
 }
 
@@ -599,6 +620,63 @@ type UserInfo {
   id: String!
   roles: [String!]!
   username: String!
+}
+
+type UserNotificationPreference {
+  active: Boolean!
+  createdAt: DateTime!
+  id: Float!
+  typeField: EnumUserNotificationPreferenceTypeField
+  updatedAt: DateTime!
+  user: User
+}
+
+input UserNotificationPreferenceCreateInput {
+  active: Boolean!
+  typeField: EnumUserNotificationPreferenceTypeField!
+  user: UserWhereUniqueInput!
+}
+
+input UserNotificationPreferenceCreateNestedManyWithoutUsersInput {
+  connect: [UserNotificationPreferenceWhereUniqueInput!]
+}
+
+input UserNotificationPreferenceListRelationFilter {
+  every: UserNotificationPreferenceWhereInput
+  none: UserNotificationPreferenceWhereInput
+  some: UserNotificationPreferenceWhereInput
+}
+
+input UserNotificationPreferenceOrderByInput {
+  active: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  typeField: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input UserNotificationPreferenceUpdateInput {
+  active: Boolean
+  typeField: EnumUserNotificationPreferenceTypeField
+  user: UserWhereUniqueInput
+}
+
+input UserNotificationPreferenceUpdateManyWithoutUsersInput {
+  connect: [UserNotificationPreferenceWhereUniqueInput!]
+  disconnect: [UserNotificationPreferenceWhereUniqueInput!]
+  set: [UserNotificationPreferenceWhereUniqueInput!]
+}
+
+input UserNotificationPreferenceWhereInput {
+  active: BooleanFilter
+  id: IntFilter
+  typeField: EnumUserNotificationPreferenceTypeField
+  user: UserWhereUniqueInput
+}
+
+input UserNotificationPreferenceWhereUniqueInput {
+  id: Float!
 }
 
 input UserOrderByInput {
@@ -623,6 +701,7 @@ input UserUpdateInput {
   role: String
   roles: JSON
   status: String
+  userNotificationPreferences: UserNotificationPreferenceUpdateManyWithoutUsersInput
   username: String
 }
 
@@ -633,6 +712,7 @@ input UserWhereInput {
   lastName: StringNullableFilter
   role: StringNullableFilter
   status: StringNullableFilter
+  userNotificationPreferences: UserNotificationPreferenceListRelationFilter
   username: StringFilter
 }
 
