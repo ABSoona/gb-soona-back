@@ -42,7 +42,7 @@ class AideUpdateInput {
   @Field(() => ContactWhereUniqueInput, {
     nullable: true,
   })
-  contact?: ContactWhereUniqueInput | null;
+  contact?: ContactWhereUniqueInput;
 
   @ApiProperty({
     required: false,

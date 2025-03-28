@@ -15,9 +15,9 @@ import { Contact } from "../../contact/base/Contact";
 
 import {
   ValidateNested,
-  IsOptional,
   IsDate,
   IsEnum,
+  IsOptional,
   IsInt,
   IsString,
   MaxLength,
@@ -33,13 +33,12 @@ import { EnumAideTypeField } from "./EnumAideTypeField";
 @ObjectType()
 class Aide {
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => Contact,
   })
   @ValidateNested()
   @Type(() => Contact)
-  @IsOptional()
-  contact?: Contact | null;
+  contact?: Contact;
 
   @ApiProperty({
     required: true,

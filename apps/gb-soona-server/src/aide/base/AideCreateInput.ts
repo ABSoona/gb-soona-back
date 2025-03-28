@@ -15,8 +15,8 @@ import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueIn
 
 import {
   ValidateNested,
-  IsOptional,
   IsEnum,
+  IsOptional,
   IsDate,
   IsString,
   MaxLength,
@@ -33,16 +33,13 @@ import { EnumAideTypeField } from "./EnumAideTypeField";
 @InputType()
 class AideCreateInput {
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => ContactWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => ContactWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ContactWhereUniqueInput, {
-    nullable: true,
-  })
-  contact?: ContactWhereUniqueInput | null;
+  @Field(() => ContactWhereUniqueInput)
+  contact!: ContactWhereUniqueInput;
 
   @ApiProperty({
     required: false,
