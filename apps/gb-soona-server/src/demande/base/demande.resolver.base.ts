@@ -27,6 +27,7 @@ import { CreateDemandeArgs } from "./CreateDemandeArgs";
 import { UpdateDemandeArgs } from "./UpdateDemandeArgs";
 import { DeleteDemandeArgs } from "./DeleteDemandeArgs";
 import { Contact } from "../../contact/base/Contact";
+import { Visite } from "../../visite/base/Visite";
 import { DemandeService } from "../demande.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Demande)
@@ -101,6 +102,12 @@ export class DemandeResolverBase {
               connect: args.data.contact,
             }
           : undefined,
+
+        visites: args.data.visites
+          ? {
+              connect: args.data.visites,
+            }
+          : undefined,
       },
     });
   }
@@ -124,6 +131,12 @@ export class DemandeResolverBase {
           contact: args.data.contact
             ? {
                 connect: args.data.contact,
+              }
+            : undefined,
+
+          visites: args.data.visites
+            ? {
+                connect: args.data.visites,
               }
             : undefined,
         },
@@ -171,6 +184,25 @@ export class DemandeResolverBase {
   })
   async getContact(@graphql.Parent() parent: Demande): Promise<Contact | null> {
     const result = await this.service.getContact(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Visite, {
+    nullable: true,
+    name: "visites",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Visite",
+    action: "read",
+    possession: "any",
+  })
+  async getVisites(@graphql.Parent() parent: Demande): Promise<Visite | null> {
+    const result = await this.service.getVisites(parent.id);
 
     if (!result) {
       return null;

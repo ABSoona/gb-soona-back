@@ -11,28 +11,16 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
+import { Type } from "class-transformer";
+import { IsOptional, ValidateNested } from "class-validator";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 
 @InputType()
 class VisiteWhereInput {
-  @ApiProperty({
-    required: false,
-    type: () => ContactWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => ContactWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ContactWhereUniqueInput, {
-    nullable: true,
-  })
-  contact?: ContactWhereUniqueInput;
-
   @ApiProperty({
     required: false,
     type: DateTimeFilter,
@@ -54,6 +42,18 @@ class VisiteWhereInput {
     nullable: true,
   })
   dateVisite?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DemandeWhereUniqueInput, {
+    nullable: true,
+  })
+  demande?: DemandeWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -11,30 +11,18 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import {
-  ValidateNested,
-  IsOptional,
   IsDate,
+  IsOptional,
+  ValidateNested,
   IsString,
   MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 
 @InputType()
 class VisiteUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: () => ContactWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => ContactWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ContactWhereUniqueInput, {
-    nullable: true,
-  })
-  contact?: ContactWhereUniqueInput | null;
-
   @ApiProperty({
     required: false,
   })
@@ -45,6 +33,18 @@ class VisiteUpdateInput {
     nullable: true,
   })
   dateVisite?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DemandeWhereUniqueInput, {
+    nullable: true,
+  })
+  demande?: DemandeWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

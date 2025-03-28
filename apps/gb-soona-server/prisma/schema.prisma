@@ -47,6 +47,7 @@ model Demande {
   situationProfessionnelle String?
   status                   String?
   updatedAt                DateTime  @updatedAt
+  visites                  Visite?
 }
 
 model Contact {
@@ -68,7 +69,6 @@ model Contact {
   telephone       String?
   updatedAt       DateTime   @updatedAt
   ville           String?
-  visites         Visite[]
 }
 
 model User {
@@ -87,10 +87,10 @@ model User {
 }
 
 model Visite {
-  contact       Contact?  @relation(fields: [contactId], references: [id])
-  contactId     Int?
   createdAt     DateTime  @default(now())
   dateVisite    DateTime?
+  demande       Demande?  @relation(fields: [demandeId], references: [id])
+  demandeId     Int?      @unique
   id            String    @id @default(cuid())
   rapportVisite String?
   updatedAt     DateTime  @updatedAt

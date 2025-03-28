@@ -24,7 +24,6 @@ import { Aide } from "../../aide/base/Aide";
 import { Type } from "class-transformer";
 import { Demande } from "../../demande/base/Demande";
 import { Document } from "../../document/base/Document";
-import { Visite } from "../../visite/base/Visite";
 
 @ObjectType()
 class Contact {
@@ -221,15 +220,6 @@ class Contact {
     nullable: true,
   })
   ville!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Visite],
-  })
-  @ValidateNested()
-  @Type(() => Visite)
-  @IsOptional()
-  visites?: Array<Visite>;
 }
 
 export { Contact as Contact };

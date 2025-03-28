@@ -11,27 +11,18 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { Contact } from "../../contact/base/Contact";
 import {
-  ValidateNested,
-  IsOptional,
   IsDate,
+  IsOptional,
+  ValidateNested,
   IsString,
   MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { Demande } from "../../demande/base/Demande";
 
 @ObjectType()
 class Visite {
-  @ApiProperty({
-    required: false,
-    type: () => Contact,
-  })
-  @ValidateNested()
-  @Type(() => Contact)
-  @IsOptional()
-  contact?: Contact | null;
-
   @ApiProperty({
     required: true,
   })
@@ -50,6 +41,15 @@ class Visite {
     nullable: true,
   })
   dateVisite!: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Demande,
+  })
+  @ValidateNested()
+  @Type(() => Demande)
+  @IsOptional()
+  demande?: Demande | null;
 
   @ApiProperty({
     required: true,

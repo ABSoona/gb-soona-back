@@ -57,6 +57,12 @@ export class DemandeControllerBase {
               connect: data.contact,
             }
           : undefined,
+
+        visites: data.visites
+          ? {
+              connect: data.visites,
+            }
+          : undefined,
       },
       select: {
         agesEnfants: true,
@@ -85,6 +91,12 @@ export class DemandeControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
+
+        visites: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -132,6 +144,12 @@ export class DemandeControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
+
+        visites: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -180,6 +198,12 @@ export class DemandeControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
+
+        visites: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -217,6 +241,12 @@ export class DemandeControllerBase {
                 connect: data.contact,
               }
             : undefined,
+
+          visites: data.visites
+            ? {
+                connect: data.visites,
+              }
+            : undefined,
         },
         select: {
           agesEnfants: true,
@@ -245,6 +275,12 @@ export class DemandeControllerBase {
           situationProfessionnelle: true,
           status: true,
           updatedAt: true,
+
+          visites: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -301,6 +337,12 @@ export class DemandeControllerBase {
           situationProfessionnelle: true,
           status: true,
           updatedAt: true,
+
+          visites: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
