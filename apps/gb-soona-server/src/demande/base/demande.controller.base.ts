@@ -52,11 +52,9 @@ export class DemandeControllerBase {
       data: {
         ...data,
 
-        contact: data.contact
-          ? {
-              connect: data.contact,
-            }
-          : undefined,
+        contact: {
+          connect: data.contact,
+        },
 
         visites: data.visites
           ? {
@@ -236,11 +234,9 @@ export class DemandeControllerBase {
         data: {
           ...data,
 
-          contact: data.contact
-            ? {
-                connect: data.contact,
-              }
-            : undefined,
+          contact: {
+            connect: data.contact,
+          },
 
           visites: data.visites
             ? {

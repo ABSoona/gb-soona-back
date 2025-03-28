@@ -74,16 +74,13 @@ class DemandeCreateInput {
   autresCharges?: number | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => ContactWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => ContactWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ContactWhereUniqueInput, {
-    nullable: true,
-  })
-  contact?: ContactWhereUniqueInput | null;
+  @Field(() => ContactWhereUniqueInput)
+  contact!: ContactWhereUniqueInput;
 
   @ApiProperty({
     required: false,

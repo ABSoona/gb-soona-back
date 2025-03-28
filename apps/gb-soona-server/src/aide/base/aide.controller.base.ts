@@ -50,11 +50,9 @@ export class AideControllerBase {
       data: {
         ...data,
 
-        contact: data.contact
-          ? {
-              connect: data.contact,
-            }
-          : undefined,
+        contact: {
+          connect: data.contact,
+        },
       },
       select: {
         contact: {
@@ -189,11 +187,9 @@ export class AideControllerBase {
         data: {
           ...data,
 
-          contact: data.contact
-            ? {
-                connect: data.contact,
-              }
-            : undefined,
+          contact: {
+            connect: data.contact,
+          },
         },
         select: {
           contact: {

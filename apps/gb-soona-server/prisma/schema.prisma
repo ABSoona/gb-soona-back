@@ -8,8 +8,8 @@ generator client {
 }
 
 model Aide {
-  contact          Contact?           @relation(fields: [contactId], references: [id])
-  contactId        Int?
+  contact          Contact            @relation(fields: [contactId], references: [id])
+  contactId        Int
   createdAt        DateTime           @default(now())
   crediteur        EnumAideCrediteur?
   dateAide         DateTime?
@@ -30,8 +30,8 @@ model Demande {
   apl                      Int?
   autresAides              String?
   autresCharges            Int?
-  contact                  Contact?  @relation(fields: [contactId], references: [id])
-  contactId                Int?
+  contact                  Contact   @relation(fields: [contactId], references: [id])
+  contactId                Int
   createdAt                DateTime? @default(now())
   dettes                   Int?
   facturesEnergie          Int?

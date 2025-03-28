@@ -97,11 +97,9 @@ export class DemandeResolverBase {
       data: {
         ...args.data,
 
-        contact: args.data.contact
-          ? {
-              connect: args.data.contact,
-            }
-          : undefined,
+        contact: {
+          connect: args.data.contact,
+        },
 
         visites: args.data.visites
           ? {
@@ -128,11 +126,9 @@ export class DemandeResolverBase {
         data: {
           ...args.data,
 
-          contact: args.data.contact
-            ? {
-                connect: args.data.contact,
-              }
-            : undefined,
+          contact: {
+            connect: args.data.contact,
+          },
 
           visites: args.data.visites
             ? {

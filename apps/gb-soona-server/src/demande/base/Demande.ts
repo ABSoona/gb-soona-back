@@ -75,13 +75,12 @@ class Demande {
   autresCharges!: number | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => Contact,
   })
   @ValidateNested()
   @Type(() => Contact)
-  @IsOptional()
-  contact?: Contact | null;
+  contact?: Contact;
 
   @ApiProperty({
     required: false,

@@ -90,11 +90,9 @@ export class AideResolverBase {
       data: {
         ...args.data,
 
-        contact: args.data.contact
-          ? {
-              connect: args.data.contact,
-            }
-          : undefined,
+        contact: {
+          connect: args.data.contact,
+        },
       },
     });
   }
@@ -113,11 +111,9 @@ export class AideResolverBase {
         data: {
           ...args.data,
 
-          contact: args.data.contact
-            ? {
-                connect: args.data.contact,
-              }
-            : undefined,
+          contact: {
+            connect: args.data.contact,
+          },
         },
       });
     } catch (error) {
