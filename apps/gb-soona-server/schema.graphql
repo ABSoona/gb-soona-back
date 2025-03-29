@@ -20,7 +20,7 @@ type Aide {
 }
 
 input AideCreateInput {
-  contact: ContactWhereUniqueInput
+  contact: ContactWhereUniqueInput!
   crediteur: EnumAideCrediteur
   dateAide: DateTime
   dateExpiration: DateTime
@@ -130,7 +130,6 @@ type Contact {
   telephone: String
   updatedAt: DateTime!
   ville: String
-  visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
 }
 
 input ContactCreateInput {
@@ -149,7 +148,6 @@ input ContactCreateInput {
   status: String
   telephone: String
   ville: String
-  visites: VisiteCreateNestedManyWithoutContactsInput
 }
 
 input ContactOrderByInput {
@@ -186,7 +184,6 @@ input ContactUpdateInput {
   status: String
   telephone: String
   ville: String
-  visites: VisiteUpdateManyWithoutContactsInput
 }
 
 input ContactWhereInput {
@@ -207,7 +204,6 @@ input ContactWhereInput {
   status: StringNullableFilter
   telephone: StringNullableFilter
   ville: StringNullableFilter
-  visites: VisiteListRelationFilter
 }
 
 input ContactWhereUniqueInput {
@@ -267,6 +263,7 @@ type Demande {
   situationProfessionnelle: String
   status: String
   updatedAt: DateTime!
+  visites: Visite
 }
 
 input DemandeCreateInput {
@@ -274,7 +271,7 @@ input DemandeCreateInput {
   apl: Float
   autresAides: String
   autresCharges: Float
-  contact: ContactWhereUniqueInput
+  contact: ContactWhereUniqueInput!
   dettes: Float
   facturesEnergie: Float
   loyer: Float
@@ -287,6 +284,7 @@ input DemandeCreateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  visites: VisiteWhereUniqueInput
 }
 
 input DemandeCreateNestedManyWithoutContactsInput {
@@ -320,6 +318,7 @@ input DemandeOrderByInput {
   situationProfessionnelle: SortOrder
   status: SortOrder
   updatedAt: SortOrder
+  visitesId: SortOrder
 }
 
 input DemandeUpdateInput {
@@ -340,6 +339,7 @@ input DemandeUpdateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  visites: VisiteWhereUniqueInput
 }
 
 input DemandeUpdateManyWithoutContactsInput {
@@ -369,6 +369,7 @@ input DemandeWhereInput {
   situationProfessionnelle: StringNullableFilter
   status: StringNullableFilter
   updatedAt: DateTimeFilter
+  visites: VisiteWhereUniqueInput
 }
 
 input DemandeWhereUniqueInput {
@@ -721,55 +722,39 @@ input UserWhereUniqueInput {
 }
 
 type Visite {
-  contact: Contact
   createdAt: DateTime!
   dateVisite: DateTime
+  demande: Demande
   id: String!
   rapportVisite: String
   updatedAt: DateTime!
 }
 
 input VisiteCreateInput {
-  contact: ContactWhereUniqueInput
   dateVisite: DateTime
+  demande: DemandeWhereUniqueInput
   rapportVisite: String
 }
 
-input VisiteCreateNestedManyWithoutContactsInput {
-  connect: [VisiteWhereUniqueInput!]
-}
-
-input VisiteListRelationFilter {
-  every: VisiteWhereInput
-  none: VisiteWhereInput
-  some: VisiteWhereInput
-}
-
 input VisiteOrderByInput {
-  contactId: SortOrder
   createdAt: SortOrder
   dateVisite: SortOrder
+  demandeId: SortOrder
   id: SortOrder
   rapportVisite: SortOrder
   updatedAt: SortOrder
 }
 
 input VisiteUpdateInput {
-  contact: ContactWhereUniqueInput
   dateVisite: DateTime
+  demande: DemandeWhereUniqueInput
   rapportVisite: String
 }
 
-input VisiteUpdateManyWithoutContactsInput {
-  connect: [VisiteWhereUniqueInput!]
-  disconnect: [VisiteWhereUniqueInput!]
-  set: [VisiteWhereUniqueInput!]
-}
-
 input VisiteWhereInput {
-  contact: ContactWhereUniqueInput
   createdAt: DateTimeFilter
   dateVisite: DateTimeNullableFilter
+  demande: DemandeWhereUniqueInput
   id: StringFilter
   rapportVisite: StringNullableFilter
 }
