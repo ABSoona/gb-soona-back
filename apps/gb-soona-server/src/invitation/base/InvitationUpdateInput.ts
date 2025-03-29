@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, MaxLength } from "class-validator";
+import { IsString, IsOptional, MaxLength, IsBoolean } from "class-validator";
 
 @InputType()
 class InvitationUpdateInput {
@@ -24,7 +24,7 @@ class InvitationUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  email?: string | null;
+  email?: string;
 
   @ApiProperty({
     required: false,
@@ -48,7 +48,7 @@ class InvitationUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  role?: string | null;
+  role?: string;
 
   @ApiProperty({
     required: false,
@@ -60,19 +60,18 @@ class InvitationUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  token?: string | null;
+  token?: string;
 
   @ApiProperty({
     required: false,
-    type: String,
+    type: Boolean,
   })
-  @IsString()
-  @MaxLength(1000)
+  @IsBoolean()
   @IsOptional()
-  @Field(() => String, {
+  @Field(() => Boolean, {
     nullable: true,
   })
-  used?: string | null;
+  used?: boolean;
 }
 
 export { InvitationUpdateInput as InvitationUpdateInput };

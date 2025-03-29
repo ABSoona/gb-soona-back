@@ -11,20 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, MaxLength } from "class-validator";
+import { IsString, MaxLength, IsOptional, IsBoolean } from "class-validator";
 
 @InputType()
 class InvitationCreateInput {
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email?: string | null;
+  @Field(() => String)
+  email!: string;
 
   @ApiProperty({
     required: false,
@@ -39,40 +36,30 @@ class InvitationCreateInput {
   message?: string | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  role?: string | null;
+  @Field(() => String)
+  role!: string;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  token?: string | null;
+  @Field(() => String)
+  token!: string;
 
   @ApiProperty({
-    required: false,
-    type: String,
+    required: true,
+    type: Boolean,
   })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  used?: string | null;
+  @IsBoolean()
+  @Field(() => Boolean)
+  used!: boolean;
 }
 
 export { InvitationCreateInput as InvitationCreateInput };

@@ -117,13 +117,13 @@ model UserNotificationPreference {
 
 model Invitation {
   createdAt DateTime @default(now())
-  email     String?
+  email     String
   id        String   @id @default(cuid())
   message   String?
-  role      String?
-  token     String?
+  role      String   @unique
+  token     String
   updatedAt DateTime @updatedAt
-  used      String?
+  used      Boolean
 }
 
 enum EnumAideCrediteur {
