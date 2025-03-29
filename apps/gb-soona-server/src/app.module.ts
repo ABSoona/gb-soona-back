@@ -6,6 +6,7 @@ import { UserModule } from "./user/user.module";
 import { VisiteModule } from "./visite/visite.module";
 import { DocumentModule } from "./document/document.module";
 import { UserNotificationPreferenceModule } from "./userNotificationPreference/userNotificationPreference.module";
+import { InvitationModule } from "./invitation/invitation.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -32,6 +33,7 @@ import { AuthModule } from "./auth/auth.module";
     VisiteModule,
     DocumentModule,
     UserNotificationPreferenceModule,
+    InvitationModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
