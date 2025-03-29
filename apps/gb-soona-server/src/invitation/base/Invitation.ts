@@ -11,7 +11,13 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString, IsOptional, MaxLength } from "class-validator";
+import {
+  IsDate,
+  IsString,
+  MaxLength,
+  IsOptional,
+  IsBoolean,
+} from "class-validator";
 import { Type } from "class-transformer";
 
 @ObjectType()
@@ -25,15 +31,12 @@ class Invitation {
   createdAt!: Date;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email!: string | null;
+  @Field(() => String)
+  email!: string;
 
   @ApiProperty({
     required: true,
@@ -56,28 +59,22 @@ class Invitation {
   message!: string | null;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  role!: string | null;
+  @Field(() => String)
+  role!: string;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  token!: string | null;
+  @Field(() => String)
+  token!: string;
 
   @ApiProperty({
     required: true,
@@ -88,16 +85,12 @@ class Invitation {
   updatedAt!: Date;
 
   @ApiProperty({
-    required: false,
-    type: String,
+    required: true,
+    type: Boolean,
   })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  used!: string | null;
+  @IsBoolean()
+  @Field(() => Boolean)
+  used!: boolean;
 }
 
 export { Invitation as Invitation };

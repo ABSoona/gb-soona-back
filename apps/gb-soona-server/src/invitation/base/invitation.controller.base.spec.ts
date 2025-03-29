@@ -25,7 +25,7 @@ const CREATE_INPUT = {
   role: "exampleRole",
   token: "exampleToken",
   updatedAt: new Date(),
-  used: "exampleUsed",
+  used: "true",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
@@ -35,7 +35,7 @@ const CREATE_RESULT = {
   role: "exampleRole",
   token: "exampleToken",
   updatedAt: new Date(),
-  used: "exampleUsed",
+  used: "true",
 };
 const FIND_MANY_RESULT = [
   {
@@ -46,7 +46,7 @@ const FIND_MANY_RESULT = [
     role: "exampleRole",
     token: "exampleToken",
     updatedAt: new Date(),
-    used: "exampleUsed",
+    used: "true",
   },
 ];
 const FIND_ONE_RESULT = {
@@ -57,7 +57,7 @@ const FIND_ONE_RESULT = {
   role: "exampleRole",
   token: "exampleToken",
   updatedAt: new Date(),
-  used: "exampleUsed",
+  used: "true",
 };
 
 const service = {
