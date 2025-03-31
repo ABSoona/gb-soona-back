@@ -121,7 +121,7 @@ model Invitation {
   email     String
   id        String   @id @default(cuid())
   message   String?
-  role      String   @unique
+  role      String
   token     String
   updatedAt DateTime @updatedAt
   used      Boolean
