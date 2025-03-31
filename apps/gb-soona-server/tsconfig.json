@@ -9,7 +9,7 @@
     "target": "es2022",
     "lib": ["es2023"],
     "sourceMap": true,
-    "outDir": "./public",
+    "outDir": "./dist",
     "incremental": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
