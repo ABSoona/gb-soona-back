@@ -16,7 +16,8 @@
     "docker:dev": "docker-compose -f docker-compose.dev.yml up -d",
     "package:container": "docker build .",
     "compose:up": "docker-compose up -d",
-    "compose:down": "docker-compose down --volumes"
+    "compose:down": "docker-compose down --volumes",
+    "start:vercel": "node dist/main.js"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",
