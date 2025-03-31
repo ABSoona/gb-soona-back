@@ -1,21 +1,6 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "dist/main.js",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": ["dist/**"]
-        }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "dist/main.js"
-      }
-    ],
     "buildCommand": "npm install && npm run build",
-    "outputDirectory": "dist"
+    "outputDirectory": "dist",
+    "framework": null
   }
-  
