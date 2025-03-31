@@ -3,14 +3,19 @@
     "builds": [
       {
         "src": "dist/main.js",
-        "use": "@vercel/node"
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": ["dist/**"]
+        }
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/dist/main.js"
+        "dest": "dist/main.js"
       }
-    ]
+    ],
+    "buildCommand": "npm install && npm run build",
+    "outputDirectory": "dist"
   }
   
