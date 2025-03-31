@@ -656,6 +656,7 @@ type User {
   role: String
   roles: JSON!
   status: String
+  token: String
   updatedAt: DateTime!
   userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
   username: String!
@@ -669,6 +670,7 @@ input UserCreateInput {
   role: String
   roles: JSON!
   status: String
+  token: String
   userNotificationPreferences: UserNotificationPreferenceCreateNestedManyWithoutUsersInput
   username: String!
 }
@@ -747,6 +749,7 @@ input UserOrderByInput {
   role: SortOrder
   roles: SortOrder
   status: SortOrder
+  token: SortOrder
   updatedAt: SortOrder
   username: SortOrder
 }
@@ -759,6 +762,7 @@ input UserUpdateInput {
   role: String
   roles: JSON
   status: String
+  token: String
   userNotificationPreferences: UserNotificationPreferenceUpdateManyWithoutUsersInput
   username: String
 }
@@ -770,6 +774,7 @@ input UserWhereInput {
   lastName: StringNullableFilter
   role: StringNullableFilter
   status: StringNullableFilter
+  token: StringNullableFilter
   userNotificationPreferences: UserNotificationPreferenceListRelationFilter
   username: StringFilter
 }
