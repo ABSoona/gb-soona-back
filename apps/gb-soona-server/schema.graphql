@@ -20,7 +20,7 @@ type Aide {
 }
 
 input AideCreateInput {
-  contact: ContactWhereUniqueInput
+  contact: ContactWhereUniqueInput!
   crediteur: EnumAideCrediteur
   dateAide: DateTime
   dateExpiration: DateTime
@@ -130,7 +130,6 @@ type Contact {
   telephone: String
   updatedAt: DateTime!
   ville: String
-  visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
 }
 
 input ContactCreateInput {
@@ -149,7 +148,6 @@ input ContactCreateInput {
   status: String
   telephone: String
   ville: String
-  visites: VisiteCreateNestedManyWithoutContactsInput
 }
 
 input ContactOrderByInput {
@@ -186,7 +184,6 @@ input ContactUpdateInput {
   status: String
   telephone: String
   ville: String
-  visites: VisiteUpdateManyWithoutContactsInput
 }
 
 input ContactWhereInput {
@@ -207,7 +204,6 @@ input ContactWhereInput {
   status: StringNullableFilter
   telephone: StringNullableFilter
   ville: StringNullableFilter
-  visites: VisiteListRelationFilter
 }
 
 input ContactWhereUniqueInput {
@@ -267,6 +263,7 @@ type Demande {
   situationProfessionnelle: String
   status: String
   updatedAt: DateTime!
+  visites: Visite
 }
 
 input DemandeCreateInput {
@@ -274,7 +271,7 @@ input DemandeCreateInput {
   apl: Float
   autresAides: String
   autresCharges: Float
-  contact: ContactWhereUniqueInput
+  contact: ContactWhereUniqueInput!
   dettes: Float
   facturesEnergie: Float
   loyer: Float
@@ -287,6 +284,7 @@ input DemandeCreateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  visites: VisiteWhereUniqueInput
 }
 
 input DemandeCreateNestedManyWithoutContactsInput {
@@ -320,6 +318,7 @@ input DemandeOrderByInput {
   situationProfessionnelle: SortOrder
   status: SortOrder
   updatedAt: SortOrder
+  visitesId: SortOrder
 }
 
 input DemandeUpdateInput {
@@ -340,6 +339,7 @@ input DemandeUpdateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  visites: VisiteWhereUniqueInput
 }
 
 input DemandeUpdateManyWithoutContactsInput {
@@ -369,6 +369,7 @@ input DemandeWhereInput {
   situationProfessionnelle: StringNullableFilter
   status: StringNullableFilter
   updatedAt: DateTimeFilter
+  visites: VisiteWhereUniqueInput
 }
 
 input DemandeWhereUniqueInput {
@@ -475,6 +476,57 @@ input IntNullableFilter {
   notIn: [Int!]
 }
 
+type Invitation {
+  createdAt: DateTime!
+  email: String!
+  id: String!
+  message: String
+  role: String!
+  token: String!
+  updatedAt: DateTime!
+  used: Boolean!
+}
+
+input InvitationCreateInput {
+  email: String!
+  message: String
+  role: String!
+  token: String!
+  used: Boolean!
+}
+
+input InvitationOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  id: SortOrder
+  message: SortOrder
+  role: SortOrder
+  token: SortOrder
+  updatedAt: SortOrder
+  used: SortOrder
+}
+
+input InvitationUpdateInput {
+  email: String
+  message: String
+  role: String
+  token: String
+  used: Boolean
+}
+
+input InvitationWhereInput {
+  email: StringFilter
+  id: StringFilter
+  message: StringNullableFilter
+  role: StringFilter
+  token: StringFilter
+  used: BooleanFilter
+}
+
+input InvitationWhereUniqueInput {
+  id: String!
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -499,6 +551,7 @@ type Mutation {
   createContact(data: ContactCreateInput!): Contact!
   createDemande(data: DemandeCreateInput!): Demande!
   createDocument(data: DocumentCreateInput!): Document!
+  createInvitation(data: InvitationCreateInput!): Invitation!
   createUser(data: UserCreateInput!): User!
   createUserNotificationPreference(data: UserNotificationPreferenceCreateInput!): UserNotificationPreference!
   createVisite(data: VisiteCreateInput!): Visite!
@@ -507,6 +560,7 @@ type Mutation {
   deleteContenu(where: DocumentWhereUniqueInput!): Document!
   deleteDemande(where: DemandeWhereUniqueInput!): Demande!
   deleteDocument(where: DocumentWhereUniqueInput!): Document!
+  deleteInvitation(where: InvitationWhereUniqueInput!): Invitation!
   deleteUser(where: UserWhereUniqueInput!): User!
   deleteUserNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
   deleteVisite(where: VisiteWhereUniqueInput!): Visite!
@@ -515,6 +569,7 @@ type Mutation {
   updateContact(data: ContactUpdateInput!, where: ContactWhereUniqueInput!): Contact!
   updateDemande(data: DemandeUpdateInput!, where: DemandeWhereUniqueInput!): Demande!
   updateDocument(data: DocumentUpdateInput!, where: DocumentWhereUniqueInput!): Document!
+  updateInvitation(data: InvitationUpdateInput!, where: InvitationWhereUniqueInput!): Invitation!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   updateUserNotificationPreference(data: UserNotificationPreferenceUpdateInput!, where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
   updateVisite(data: VisiteUpdateInput!, where: VisiteWhereUniqueInput!): Visite!
@@ -526,6 +581,7 @@ type Query {
   _contactsMeta(where: ContactWhereInput): MetaQueryPayload!
   _demandesMeta(where: DemandeWhereInput): MetaQueryPayload!
   _documentsMeta(where: DocumentWhereInput): MetaQueryPayload!
+  _invitationsMeta(where: InvitationWhereInput): MetaQueryPayload!
   _userNotificationPreferencesMeta(where: UserNotificationPreferenceWhereInput): MetaQueryPayload!
   _usersMeta(where: UserWhereInput): MetaQueryPayload!
   _visitesMeta(where: VisiteWhereInput): MetaQueryPayload!
@@ -537,6 +593,8 @@ type Query {
   demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
   document(where: DocumentWhereUniqueInput!): Document
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  invitation(where: InvitationWhereUniqueInput!): Invitation
+  invitations(orderBy: [InvitationOrderByInput!], skip: Float, take: Float, where: InvitationWhereInput): [Invitation!]!
   user(where: UserWhereUniqueInput!): User
   userInfo: UserInfo!
   userNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference
@@ -721,55 +779,39 @@ input UserWhereUniqueInput {
 }
 
 type Visite {
-  contact: Contact
   createdAt: DateTime!
   dateVisite: DateTime
+  demande: Demande
   id: String!
   rapportVisite: String
   updatedAt: DateTime!
 }
 
 input VisiteCreateInput {
-  contact: ContactWhereUniqueInput
   dateVisite: DateTime
+  demande: DemandeWhereUniqueInput
   rapportVisite: String
 }
 
-input VisiteCreateNestedManyWithoutContactsInput {
-  connect: [VisiteWhereUniqueInput!]
-}
-
-input VisiteListRelationFilter {
-  every: VisiteWhereInput
-  none: VisiteWhereInput
-  some: VisiteWhereInput
-}
-
 input VisiteOrderByInput {
-  contactId: SortOrder
   createdAt: SortOrder
   dateVisite: SortOrder
+  demandeId: SortOrder
   id: SortOrder
   rapportVisite: SortOrder
   updatedAt: SortOrder
 }
 
 input VisiteUpdateInput {
-  contact: ContactWhereUniqueInput
   dateVisite: DateTime
+  demande: DemandeWhereUniqueInput
   rapportVisite: String
 }
 
-input VisiteUpdateManyWithoutContactsInput {
-  connect: [VisiteWhereUniqueInput!]
-  disconnect: [VisiteWhereUniqueInput!]
-  set: [VisiteWhereUniqueInput!]
-}
-
 input VisiteWhereInput {
-  contact: ContactWhereUniqueInput
   createdAt: DateTimeFilter
   dateVisite: DateTimeNullableFilter
+  demande: DemandeWhereUniqueInput
   id: StringFilter
   rapportVisite: StringNullableFilter
 }
