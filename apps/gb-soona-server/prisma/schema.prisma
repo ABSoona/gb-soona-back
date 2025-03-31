@@ -81,6 +81,7 @@ model User {
   role                        String?
   roles                       Json
   status                      String?
+  token                       String?
   updatedAt                   DateTime                     @updatedAt
   userNotificationPreferences UserNotificationPreference[]
   username                    String                       @unique
