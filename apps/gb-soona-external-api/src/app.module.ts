@@ -1,3 +1,4 @@
+import { RedisModule } from "./redis/redis.module";
 import { Module } from "@nestjs/common";
 import { WebsiteDemandeModule } from "./websiteDemande/websiteDemande.module";
 import { HealthModule } from "./health/health.module";
@@ -35,6 +36,7 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
       inject: [ConfigService],
       imports: [ConfigModule],
     }),
+    RedisModule,
   ],
   providers: [],
 })
