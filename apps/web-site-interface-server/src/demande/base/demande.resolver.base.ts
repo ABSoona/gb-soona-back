@@ -17,6 +17,8 @@ import { Demande } from "./Demande";
 import { DemandeCountArgs } from "./DemandeCountArgs";
 import { DemandeFindManyArgs } from "./DemandeFindManyArgs";
 import { DemandeFindUniqueArgs } from "./DemandeFindUniqueArgs";
+import { CreateDemandeArgs } from "./CreateDemandeArgs";
+import { UpdateDemandeArgs } from "./UpdateDemandeArgs";
 import { DeleteDemandeArgs } from "./DeleteDemandeArgs";
 import { DemandeService } from "../demande.service";
 @graphql.Resolver(() => Demande)
@@ -48,6 +50,35 @@ export class DemandeResolverBase {
       return null;
     }
     return result;
+  }
+
+  @graphql.Mutation(() => Demande)
+  async createDemande(
+    @graphql.Args() args: CreateDemandeArgs
+  ): Promise<Demande> {
+    return await this.service.createDemande({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @graphql.Mutation(() => Demande)
+  async updateDemande(
+    @graphql.Args() args: UpdateDemandeArgs
+  ): Promise<Demande | null> {
+    try {
+      return await this.service.updateDemande({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => Demande)

@@ -8,6 +8,7 @@ generator client {
 }
 
 model Demande {
+  age       Int?
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt

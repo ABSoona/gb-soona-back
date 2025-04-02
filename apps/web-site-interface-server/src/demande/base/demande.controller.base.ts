@@ -33,6 +33,7 @@ export class DemandeControllerBase {
     return await this.service.createDemande({
       data: data,
       select: {
+        age: true,
         createdAt: true,
         id: true,
         updatedAt: true,
@@ -48,6 +49,7 @@ export class DemandeControllerBase {
     return this.service.demandes({
       ...args,
       select: {
+        age: true,
         createdAt: true,
         id: true,
         updatedAt: true,
@@ -64,6 +66,7 @@ export class DemandeControllerBase {
     const result = await this.service.demande({
       where: params,
       select: {
+        age: true,
         createdAt: true,
         id: true,
         updatedAt: true,
@@ -89,6 +92,7 @@ export class DemandeControllerBase {
         where: params,
         data: data,
         select: {
+          age: true,
           createdAt: true,
           id: true,
           updatedAt: true,
@@ -114,6 +118,7 @@ export class DemandeControllerBase {
       return await this.service.deleteDemande({
         where: params,
         select: {
+          age: true,
           createdAt: true,
           id: true,
           updatedAt: true,
