@@ -18,93 +18,104 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import * as nestAccessControl from "nest-access-control";
 import * as defaultAuthGuard from "../../auth/defaultAuth.guard";
-import { WebsiteDemandeService } from "../websiteDemande.service";
+import { UserService } from "../user.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { WebsiteDemandeCreateInput } from "./WebsiteDemandeCreateInput";
-import { WebsiteDemande } from "./WebsiteDemande";
-import { WebsiteDemandeFindManyArgs } from "./WebsiteDemandeFindManyArgs";
-import { WebsiteDemandeWhereUniqueInput } from "./WebsiteDemandeWhereUniqueInput";
-import { WebsiteDemandeUpdateInput } from "./WebsiteDemandeUpdateInput";
+import { UserCreateInput } from "./UserCreateInput";
+import { User } from "./User";
+import { UserFindManyArgs } from "./UserFindManyArgs";
+import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
+import { UserUpdateInput } from "./UserUpdateInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
-export class WebsiteDemandeControllerBase {
+export class UserControllerBase {
   constructor(
-    protected readonly service: WebsiteDemandeService,
+    protected readonly service: UserService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
-  @swagger.ApiCreatedResponse({ type: WebsiteDemande })
+  @swagger.ApiCreatedResponse({ type: User })
   @nestAccessControl.UseRoles({
-    resource: "WebsiteDemande",
+    resource: "User",
     action: "create",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async createWebsiteDemande(
-    @common.Body() data: WebsiteDemandeCreateInput
-  ): Promise<WebsiteDemande> {
-    return await this.service.createWebsiteDemande({
+  async createUser(@common.Body() data: UserCreateInput): Promise<User> {
+    return await this.service.createUser({
       data: data,
       select: {
         createdAt: true,
+        email: true,
+        firstName: true,
         id: true,
+        lastName: true,
+        roles: true,
         updatedAt: true,
+        username: true,
       },
     });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
-  @swagger.ApiOkResponse({ type: [WebsiteDemande] })
-  @ApiNestedQuery(WebsiteDemandeFindManyArgs)
+  @swagger.ApiOkResponse({ type: [User] })
+  @ApiNestedQuery(UserFindManyArgs)
   @nestAccessControl.UseRoles({
-    resource: "WebsiteDemande",
+    resource: "User",
     action: "read",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async websiteDemandes(
-    @common.Req() request: Request
-  ): Promise<WebsiteDemande[]> {
-    const args = plainToClass(WebsiteDemandeFindManyArgs, request.query);
-    return this.service.websiteDemandes({
+  async users(@common.Req() request: Request): Promise<User[]> {
+    const args = plainToClass(UserFindManyArgs, request.query);
+    return this.service.users({
       ...args,
       select: {
         createdAt: true,
+        email: true,
+        firstName: true,
         id: true,
+        lastName: true,
+        roles: true,
         updatedAt: true,
+        username: true,
       },
     });
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
-  @swagger.ApiOkResponse({ type: WebsiteDemande })
+  @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "WebsiteDemande",
+    resource: "User",
     action: "read",
     possession: "own",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async websiteDemande(
-    @common.Param() params: WebsiteDemandeWhereUniqueInput
-  ): Promise<WebsiteDemande | null> {
-    const result = await this.service.websiteDemande({
+  async user(
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<User | null> {
+    const result = await this.service.user({
       where: params,
       select: {
         createdAt: true,
+        email: true,
+        firstName: true,
         id: true,
+        lastName: true,
+        roles: true,
         updatedAt: true,
+        username: true,
       },
     });
     if (result === null) {
@@ -117,28 +128,33 @@ export class WebsiteDemandeControllerBase {
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Patch("/:id")
-  @swagger.ApiOkResponse({ type: WebsiteDemande })
+  @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "WebsiteDemande",
+    resource: "User",
     action: "update",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async updateWebsiteDemande(
-    @common.Param() params: WebsiteDemandeWhereUniqueInput,
-    @common.Body() data: WebsiteDemandeUpdateInput
-  ): Promise<WebsiteDemande | null> {
+  async updateUser(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() data: UserUpdateInput
+  ): Promise<User | null> {
     try {
-      return await this.service.updateWebsiteDemande({
+      return await this.service.updateUser({
         where: params,
         data: data,
         select: {
           createdAt: true,
+          email: true,
+          firstName: true,
           id: true,
+          lastName: true,
+          roles: true,
           updatedAt: true,
+          username: true,
         },
       });
     } catch (error) {
@@ -152,26 +168,31 @@ export class WebsiteDemandeControllerBase {
   }
 
   @common.Delete("/:id")
-  @swagger.ApiOkResponse({ type: WebsiteDemande })
+  @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @nestAccessControl.UseRoles({
-    resource: "WebsiteDemande",
+    resource: "User",
     action: "delete",
     possession: "any",
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async deleteWebsiteDemande(
-    @common.Param() params: WebsiteDemandeWhereUniqueInput
-  ): Promise<WebsiteDemande | null> {
+  async deleteUser(
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<User | null> {
     try {
-      return await this.service.deleteWebsiteDemande({
+      return await this.service.deleteUser({
         where: params,
         select: {
           createdAt: true,
+          email: true,
+          firstName: true,
           id: true,
+          lastName: true,
+          roles: true,
           updatedAt: true,
+          username: true,
         },
       });
     } catch (error) {

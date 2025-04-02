@@ -15,4 +15,4 @@ import { ACLModule } from "../../auth/acl.module";
   imports: [ACLModule],
   exports: [ACLModule],
 })
-export class WebsiteDemandeModuleBase {}
+export class UserModuleBase {}
