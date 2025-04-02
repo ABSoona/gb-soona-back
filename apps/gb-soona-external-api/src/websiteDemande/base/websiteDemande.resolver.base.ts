@@ -13,16 +13,31 @@ import * as graphql from "@nestjs/graphql";
 import { GraphQLError } from "graphql";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
+import * as nestAccessControl from "nest-access-control";
+import * as gqlACGuard from "../../auth/gqlAC.guard";
+import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
+import * as common from "@nestjs/common";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { WebsiteDemande } from "./WebsiteDemande";
 import { WebsiteDemandeCountArgs } from "./WebsiteDemandeCountArgs";
 import { WebsiteDemandeFindManyArgs } from "./WebsiteDemandeFindManyArgs";
 import { WebsiteDemandeFindUniqueArgs } from "./WebsiteDemandeFindUniqueArgs";
 import { DeleteWebsiteDemandeArgs } from "./DeleteWebsiteDemandeArgs";
 import { WebsiteDemandeService } from "../websiteDemande.service";
+@common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => WebsiteDemande)
 export class WebsiteDemandeResolverBase {
-  constructor(protected readonly service: WebsiteDemandeService) {}
+  constructor(
+    protected readonly service: WebsiteDemandeService,
+    protected readonly rolesBuilder: nestAccessControl.RolesBuilder
+  ) {}
 
+  @graphql.Query(() => MetaQueryPayload)
+  @nestAccessControl.UseRoles({
+    resource: "WebsiteDemande",
+    action: "read",
+    possession: "any",
+  })
   async _websiteDemandesMeta(
     @graphql.Args() args: WebsiteDemandeCountArgs
   ): Promise<MetaQueryPayload> {
@@ -32,14 +47,26 @@ export class WebsiteDemandeResolverBase {
     };
   }
 
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.Query(() => [WebsiteDemande])
+  @nestAccessControl.UseRoles({
+    resource: "WebsiteDemande",
+    action: "read",
+    possession: "any",
+  })
   async websiteDemandes(
     @graphql.Args() args: WebsiteDemandeFindManyArgs
   ): Promise<WebsiteDemande[]> {
     return this.service.websiteDemandes(args);
   }
 
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.Query(() => WebsiteDemande, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "WebsiteDemande",
+    action: "read",
+    possession: "own",
+  })
   async websiteDemande(
     @graphql.Args() args: WebsiteDemandeFindUniqueArgs
   ): Promise<WebsiteDemande | null> {
@@ -51,6 +78,11 @@ export class WebsiteDemandeResolverBase {
   }
 
   @graphql.Mutation(() => WebsiteDemande)
+  @nestAccessControl.UseRoles({
+    resource: "WebsiteDemande",
+    action: "delete",
+    possession: "any",
+  })
   async deleteWebsiteDemande(
     @graphql.Args() args: DeleteWebsiteDemandeArgs
   ): Promise<WebsiteDemande | null> {
