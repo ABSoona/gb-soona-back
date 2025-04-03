@@ -18,6 +18,7 @@ import {
   IsInt,
   Max,
   ValidateNested,
+  IsDate,
 } from "class-validator";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { Type } from "class-transformer";
@@ -83,6 +84,17 @@ class DemandeUpdateInput {
     nullable: true,
   })
   contact?: ContactWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dateVisite?: Date | null;
 
   @ApiProperty({
     required: false,

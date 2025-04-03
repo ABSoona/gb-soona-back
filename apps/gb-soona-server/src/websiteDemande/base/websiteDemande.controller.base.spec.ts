@@ -18,6 +18,7 @@ import { WebsiteDemandeService } from "../websiteDemande.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  ageDemandeur: 42,
   createdAt: new Date(),
   id: "exampleId",
   nomDemandeur: "exampleNomDemandeur",
@@ -25,6 +26,7 @@ const CREATE_INPUT = {
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
+  ageDemandeur: 42,
   createdAt: new Date(),
   id: "exampleId",
   nomDemandeur: "exampleNomDemandeur",
@@ -33,6 +35,7 @@ const CREATE_RESULT = {
 };
 const FIND_MANY_RESULT = [
   {
+    ageDemandeur: 42,
     createdAt: new Date(),
     id: "exampleId",
     nomDemandeur: "exampleNomDemandeur",
@@ -41,6 +44,7 @@ const FIND_MANY_RESULT = [
   },
 ];
 const FIND_ONE_RESULT = {
+  ageDemandeur: 42,
   createdAt: new Date(),
   id: "exampleId",
   nomDemandeur: "exampleNomDemandeur",

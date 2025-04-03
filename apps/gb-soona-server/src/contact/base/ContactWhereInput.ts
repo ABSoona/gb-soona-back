@@ -93,6 +93,17 @@ class ContactWhereInput {
 
   @ApiProperty({
     required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  dateVisite?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => DemandeListRelationFilter,
   })
   @ValidateNested()

@@ -69,6 +69,7 @@ export class DemandeControllerBase {
         },
 
         createdAt: true,
+        dateVisite: true,
         dettes: true,
         facturesEnergie: true,
         id: true,
@@ -116,6 +117,7 @@ export class DemandeControllerBase {
         },
 
         createdAt: true,
+        dateVisite: true,
         dettes: true,
         facturesEnergie: true,
         id: true,
@@ -164,6 +166,7 @@ export class DemandeControllerBase {
         },
 
         createdAt: true,
+        dateVisite: true,
         dettes: true,
         facturesEnergie: true,
         id: true,
@@ -227,6 +230,7 @@ export class DemandeControllerBase {
           },
 
           createdAt: true,
+          dateVisite: true,
           dettes: true,
           facturesEnergie: true,
           id: true,
@@ -283,6 +287,7 @@ export class DemandeControllerBase {
           },
 
           createdAt: true,
+          dateVisite: true,
           dettes: true,
           facturesEnergie: true,
           id: true,

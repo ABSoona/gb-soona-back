@@ -33,6 +33,7 @@ model Demande {
   contact                  Contact   @relation(fields: [contactId], references: [id])
   contactId                Int
   createdAt                DateTime? @default(now())
+  dateVisite               DateTime?
   dettes                   Int?
   facturesEnergie          Int?
   id                       Int       @id @default(autoincrement())
@@ -56,6 +57,7 @@ model Contact {
   codePostal      Int?
   createdAt       DateTime   @default(now())
   dateCreation    DateTime?
+  dateVisite      DateTime?
   demandes        Demande[]
   documents       Document[]
   email           String?
@@ -117,6 +119,7 @@ model Invitation {
 }
 
 model WebsiteDemande {
+  ageDemandeur    Int?
   createdAt       DateTime @default(now())
   id              String   @id @default(cuid())
   nomDemandeur    String?

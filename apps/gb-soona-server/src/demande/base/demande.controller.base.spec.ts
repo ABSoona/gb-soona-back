@@ -23,6 +23,7 @@ const CREATE_INPUT = {
   autresAides: "exampleAutresAides",
   autresCharges: 42,
   createdAt: new Date(),
+  dateVisite: new Date(),
   dettes: 42,
   facturesEnergie: 42,
   id: 42,
@@ -44,6 +45,7 @@ const CREATE_RESULT = {
   autresAides: "exampleAutresAides",
   autresCharges: 42,
   createdAt: new Date(),
+  dateVisite: new Date(),
   dettes: 42,
   facturesEnergie: 42,
   id: 42,
@@ -66,6 +68,7 @@ const FIND_MANY_RESULT = [
     autresAides: "exampleAutresAides",
     autresCharges: 42,
     createdAt: new Date(),
+    dateVisite: new Date(),
     dettes: 42,
     facturesEnergie: 42,
     id: 42,
@@ -88,6 +91,7 @@ const FIND_ONE_RESULT = {
   autresAides: "exampleAutresAides",
   autresCharges: 42,
   createdAt: new Date(),
+  dateVisite: new Date(),
   dettes: 42,
   facturesEnergie: 42,
   id: 42,
@@ -187,6 +191,7 @@ describe("Demande", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -199,6 +204,7 @@ describe("Demande", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
+          dateVisite: FIND_MANY_RESULT[0].dateVisite.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -222,6 +228,7 @@ describe("Demande", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
+        dateVisite: FIND_ONE_RESULT.dateVisite.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -235,6 +242,7 @@ describe("Demande", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
+        dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {
