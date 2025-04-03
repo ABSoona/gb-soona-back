@@ -404,12 +404,6 @@ export class ContactControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
-
-        visites: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (results === null) {

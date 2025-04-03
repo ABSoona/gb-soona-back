@@ -361,96 +361,6 @@
   },
   {
     "role": "admin",
-    "resource": "Visite",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Visite",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Visite",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Visite",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Visite",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Visite",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Visite",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Visite",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Visite",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Visite",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Visite",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Visite",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Visite",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Visite",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Visite",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
     "resource": "Document",
     "action": "read:own",
     "attributes": "*"
@@ -716,6 +626,96 @@
   {
     "role": "user",
     "resource": "Invitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
     "action": "read:any",
     "attributes": "*"
   }

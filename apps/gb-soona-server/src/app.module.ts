@@ -1,12 +1,13 @@
+import { RedisModule } from "./redis/redis.module";
 import { Module } from "@nestjs/common";
 import { AideModule } from "./aide/aide.module";
 import { DemandeModule } from "./demande/demande.module";
 import { ContactModule } from "./contact/contact.module";
 import { UserModule } from "./user/user.module";
-import { VisiteModule } from "./visite/visite.module";
 import { DocumentModule } from "./document/document.module";
 import { UserNotificationPreferenceModule } from "./userNotificationPreference/userNotificationPreference.module";
 import { InvitationModule } from "./invitation/invitation.module";
+import { WebsiteDemandeModule } from "./websiteDemande/websiteDemande.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -30,10 +31,10 @@ import { AuthModule } from "./auth/auth.module";
     DemandeModule,
     ContactModule,
     UserModule,
-    VisiteModule,
     DocumentModule,
     UserNotificationPreferenceModule,
     InvitationModule,
+    WebsiteDemandeModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
@@ -56,6 +57,7 @@ import { AuthModule } from "./auth/auth.module";
       inject: [ConfigService],
       imports: [ConfigModule],
     }),
+    RedisModule,
   ],
   providers: [],
 })

@@ -21,7 +21,6 @@ import {
 } from "class-validator";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { Type } from "class-transformer";
-import { VisiteWhereUniqueInput } from "../../visite/base/VisiteWhereUniqueInput";
 
 @InputType()
 class DemandeUpdateInput {
@@ -228,18 +227,6 @@ class DemandeUpdateInput {
     nullable: true,
   })
   status?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => VisiteWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => VisiteWhereUniqueInput)
-  @IsOptional()
-  @Field(() => VisiteWhereUniqueInput, {
-    nullable: true,
-  })
-  visites?: VisiteWhereUniqueInput | null;
 }
 
 export { DemandeUpdateInput as DemandeUpdateInput };

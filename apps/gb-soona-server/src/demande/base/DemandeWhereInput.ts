@@ -19,7 +19,6 @@ import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueIn
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
-import { VisiteWhereUniqueInput } from "../../visite/base/VisiteWhereUniqueInput";
 
 @InputType()
 class DemandeWhereInput {
@@ -243,18 +242,6 @@ class DemandeWhereInput {
     nullable: true,
   })
   updatedAt?: DateTimeFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => VisiteWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => VisiteWhereUniqueInput)
-  @IsOptional()
-  @Field(() => VisiteWhereUniqueInput, {
-    nullable: true,
-  })
-  visites?: VisiteWhereUniqueInput;
 }
 
 export { DemandeWhereInput as DemandeWhereInput };
