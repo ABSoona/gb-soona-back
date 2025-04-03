@@ -61,7 +61,8 @@ class UserNotificationPreference {
     | "DemandeEnVisite"
     | "DemandeEnCommission"
     | "ContactBan"
-    | "AideExpir";
+    | "AideExpir"
+    | "ErreursDemandes";
 
   @ApiProperty({
     required: true,
