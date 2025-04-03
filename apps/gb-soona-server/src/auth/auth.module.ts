@@ -14,6 +14,7 @@ import { jwtSecretFactory } from "./jwt/jwtSecretFactory";
 import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
 import { UserModule } from "../user/user.module";
+import { MailService } from "src/mail/mail.service";
 @Module({
   imports: [
     forwardRef(() => UserModule),
@@ -50,6 +51,7 @@ import { UserModule } from "../user/user.module";
     JwtStrategy,
     jwtSecretFactory,
     TokenService,
+    MailService
   ],
   controllers: [AuthController],
   exports: [AuthService, PasswordService],
