@@ -119,16 +119,17 @@ model Invitation {
 }
 
 model WebsiteDemande {
-  ageDemandeur       Int?
-  createdAt          DateTime                  @default(now())
-  emailDemandeur     String?
+  ageDemandeur       Int
+  createdAt          DateTime                 @default(now())
+  emailDemandeur     String
   erreur             String?
-  id                 String                    @id @default(cuid())
-  nomDemandeur       String?
-  prenomDemandeur    String?
-  status             EnumWebsiteDemandeStatus?
-  telephoneDemandeur String?
-  updatedAt          DateTime                  @updatedAt
+  id                 String                   @id @default(cuid())
+  nomDemandeur       String
+  payload            Json
+  prenomDemandeur    String
+  status             EnumWebsiteDemandeStatus
+  telephoneDemandeur String
+  updatedAt          DateTime                 @updatedAt
 }
 
 enum EnumAideCrediteur {
