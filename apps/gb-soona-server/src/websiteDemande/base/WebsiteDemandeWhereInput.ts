@@ -11,11 +11,11 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IntFilter } from "../../util/IntFilter";
+import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, IsEnum } from "class-validator";
-import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { StringFilter } from "../../util/StringFilter";
 import { JsonFilter } from "../../util/JsonFilter";
 import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
@@ -23,25 +23,25 @@ import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 class WebsiteDemandeWhereInput {
   @ApiProperty({
     required: false,
-    type: IntFilter,
+    type: IntNullableFilter,
   })
-  @Type(() => IntFilter)
+  @Type(() => IntNullableFilter)
   @IsOptional()
-  @Field(() => IntFilter, {
+  @Field(() => IntNullableFilter, {
     nullable: true,
   })
-  ageDemandeur?: IntFilter;
+  ageDemandeur?: IntNullableFilter;
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  emailDemandeur?: StringFilter;
+  emailDemandeur?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -67,14 +67,14 @@ class WebsiteDemandeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  nomDemandeur?: StringFilter;
+  nomDemandeur?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -89,14 +89,14 @@ class WebsiteDemandeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  prenomDemandeur?: StringFilter;
+  prenomDemandeur?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -111,14 +111,14 @@ class WebsiteDemandeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  telephoneDemandeur?: StringFilter;
+  telephoneDemandeur?: StringNullableFilter;
 }
 
 export { WebsiteDemandeWhereInput as WebsiteDemandeWhereInput };

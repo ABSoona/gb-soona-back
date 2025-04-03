@@ -36,7 +36,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  ageDemandeur?: number;
+  ageDemandeur?: number | null;
 
   @ApiProperty({
     required: false,
@@ -47,7 +47,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  emailDemandeur?: string;
+  emailDemandeur?: string | null;
 
   @ApiProperty({
     required: false,
@@ -71,7 +71,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  nomDemandeur?: string;
+  nomDemandeur?: string | null;
 
   @ApiProperty({
     required: false,
@@ -93,7 +93,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  prenomDemandeur?: string;
+  prenomDemandeur?: string | null;
 
   @ApiProperty({
     required: false,
@@ -116,7 +116,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  telephoneDemandeur?: string;
+  telephoneDemandeur?: string | null;
 }
 
 export { WebsiteDemandeUpdateInput as WebsiteDemandeUpdateInput };

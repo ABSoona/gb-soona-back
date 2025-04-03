@@ -14,9 +14,9 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsInt,
   Max,
+  IsOptional,
   IsString,
   MaxLength,
-  IsOptional,
   IsEnum,
 } from "class-validator";
 import { IsJSONValue } from "../../validators";
@@ -27,21 +27,27 @@ import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 @InputType()
 class WebsiteDemandeCreateInput {
   @ApiProperty({
-    required: true,
+    required: false,
     type: Number,
   })
   @IsInt()
   @Max(99999999999)
-  @Field(() => Number)
-  ageDemandeur!: number;
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  ageDemandeur?: number | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
-  @Field(() => String)
-  emailDemandeur!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  emailDemandeur?: string | null;
 
   @ApiProperty({
     required: false,
@@ -56,13 +62,16 @@ class WebsiteDemandeCreateInput {
   erreur?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @Field(() => String)
-  nomDemandeur!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  nomDemandeur?: string | null;
 
   @ApiProperty({
     required: true,
@@ -72,13 +81,16 @@ class WebsiteDemandeCreateInput {
   payload!: InputJsonValue;
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @Field(() => String)
-  prenomDemandeur!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  prenomDemandeur?: string | null;
 
   @ApiProperty({
     required: true,
@@ -89,13 +101,16 @@ class WebsiteDemandeCreateInput {
   status!: "EnCours" | "EnErreur" | "Trait" | "Recue";
 
   @ApiProperty({
-    required: true,
+    required: false,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @Field(() => String)
-  telephoneDemandeur!: string;
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  telephoneDemandeur?: string | null;
 }
 
 export { WebsiteDemandeCreateInput as WebsiteDemandeCreateInput };

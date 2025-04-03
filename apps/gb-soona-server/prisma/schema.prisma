@@ -119,16 +119,16 @@ model Invitation {
 }
 
 model WebsiteDemande {
-  ageDemandeur       Int
+  ageDemandeur       Int?
   createdAt          DateTime                 @default(now())
-  emailDemandeur     String
+  emailDemandeur     String?
   erreur             String?
   id                 String                   @id @default(cuid())
-  nomDemandeur       String
+  nomDemandeur       String?
   payload            Json
-  prenomDemandeur    String
+  prenomDemandeur    String?
   status             EnumWebsiteDemandeStatus
-  telephoneDemandeur String
+  telephoneDemandeur String?
   updatedAt          DateTime                 @updatedAt
 }
 
