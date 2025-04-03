@@ -1,0 +1,826 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Aide {
+  contact: Contact
+  createdAt: DateTime!
+  crediteur: EnumAideCrediteur
+  dateAide: DateTime
+  dateExpiration: DateTime
+  frequence: EnumAideFrequence
+  id: Float!
+  infosCrediteur: String
+  montant: Float
+  nombreVersements: Float
+  remarque: String
+  suspendue: Boolean
+  typeField: EnumAideTypeField
+  updatedAt: DateTime!
+}
+
+input AideCreateInput {
+  contact: ContactWhereUniqueInput!
+  crediteur: EnumAideCrediteur
+  dateAide: DateTime
+  dateExpiration: DateTime
+  frequence: EnumAideFrequence
+  infosCrediteur: String
+  montant: Float
+  nombreVersements: Float
+  remarque: String
+  suspendue: Boolean
+  typeField: EnumAideTypeField
+}
+
+input AideCreateNestedManyWithoutContactsInput {
+  connect: [AideWhereUniqueInput!]
+}
+
+input AideListRelationFilter {
+  every: AideWhereInput
+  none: AideWhereInput
+  some: AideWhereInput
+}
+
+input AideOrderByInput {
+  contactId: SortOrder
+  createdAt: SortOrder
+  crediteur: SortOrder
+  dateAide: SortOrder
+  dateExpiration: SortOrder
+  frequence: SortOrder
+  id: SortOrder
+  infosCrediteur: SortOrder
+  montant: SortOrder
+  nombreVersements: SortOrder
+  remarque: SortOrder
+  suspendue: SortOrder
+  typeField: SortOrder
+  updatedAt: SortOrder
+}
+
+input AideUpdateInput {
+  contact: ContactWhereUniqueInput
+  crediteur: EnumAideCrediteur
+  dateAide: DateTime
+  dateExpiration: DateTime
+  frequence: EnumAideFrequence
+  infosCrediteur: String
+  montant: Float
+  nombreVersements: Float
+  remarque: String
+  suspendue: Boolean
+  typeField: EnumAideTypeField
+}
+
+input AideUpdateManyWithoutContactsInput {
+  connect: [AideWhereUniqueInput!]
+  disconnect: [AideWhereUniqueInput!]
+  set: [AideWhereUniqueInput!]
+}
+
+input AideWhereInput {
+  contact: ContactWhereUniqueInput
+  createdAt: DateTimeFilter
+  crediteur: EnumAideCrediteur
+  dateAide: DateTimeNullableFilter
+  dateExpiration: DateTimeNullableFilter
+  frequence: EnumAideFrequence
+  id: IntFilter
+  infosCrediteur: StringNullableFilter
+  montant: IntNullableFilter
+  nombreVersements: IntNullableFilter
+  remarque: StringNullableFilter
+  suspendue: BooleanNullableFilter
+  typeField: EnumAideTypeField
+  updatedAt: DateTimeFilter
+}
+
+input AideWhereUniqueInput {
+  id: Float!
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type Contact {
+  adresse: String
+  age: Float
+  aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
+  codePostal: Float
+  createdAt: DateTime!
+  dateCreation: DateTime
+  demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  email: String
+  id: Float!
+  nom: String
+  numBeneficiaire: String
+  prenom: String
+  remarques: String
+  status: String
+  telephone: String
+  updatedAt: DateTime!
+  ville: String
+}
+
+input ContactCreateInput {
+  adresse: String
+  age: Float
+  aides: AideCreateNestedManyWithoutContactsInput
+  codePostal: Float
+  dateCreation: DateTime
+  demandes: DemandeCreateNestedManyWithoutContactsInput
+  documents: DocumentCreateNestedManyWithoutContactsInput
+  email: String
+  nom: String
+  numBeneficiaire: String
+  prenom: String
+  remarques: String
+  status: String
+  telephone: String
+  ville: String
+}
+
+input ContactOrderByInput {
+  adresse: SortOrder
+  age: SortOrder
+  codePostal: SortOrder
+  createdAt: SortOrder
+  dateCreation: SortOrder
+  email: SortOrder
+  id: SortOrder
+  nom: SortOrder
+  numBeneficiaire: SortOrder
+  prenom: SortOrder
+  remarques: SortOrder
+  status: SortOrder
+  telephone: SortOrder
+  updatedAt: SortOrder
+  ville: SortOrder
+}
+
+input ContactUpdateInput {
+  adresse: String
+  age: Float
+  aides: AideUpdateManyWithoutContactsInput
+  codePostal: Float
+  dateCreation: DateTime
+  demandes: DemandeUpdateManyWithoutContactsInput
+  documents: DocumentUpdateManyWithoutContactsInput
+  email: String
+  nom: String
+  numBeneficiaire: String
+  prenom: String
+  remarques: String
+  status: String
+  telephone: String
+  ville: String
+}
+
+input ContactWhereInput {
+  adresse: StringNullableFilter
+  age: IntNullableFilter
+  aides: AideListRelationFilter
+  codePostal: IntNullableFilter
+  createdAt: DateTimeFilter
+  dateCreation: DateTimeNullableFilter
+  demandes: DemandeListRelationFilter
+  documents: DocumentListRelationFilter
+  email: StringNullableFilter
+  id: IntFilter
+  nom: StringNullableFilter
+  numBeneficiaire: StringNullableFilter
+  prenom: StringNullableFilter
+  remarques: StringNullableFilter
+  status: StringNullableFilter
+  telephone: StringNullableFilter
+  ville: StringNullableFilter
+}
+
+input ContactWhereUniqueInput {
+  id: Float!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+type Demande {
+  agesEnfants: String
+  apl: Float
+  autresAides: String
+  autresCharges: Float
+  contact: Contact
+  createdAt: DateTime
+  dettes: Float
+  facturesEnergie: Float
+  id: Float!
+  loyer: Float
+  natureDettes: String
+  nombreEnfants: Float
+  remarques: String
+  revenus: Float
+  revenusConjoint: Float
+  situationFamiliale: String
+  situationProConjoint: String
+  situationProfessionnelle: String
+  status: String
+  updatedAt: DateTime!
+  visites: Visite
+}
+
+input DemandeCreateInput {
+  agesEnfants: String
+  apl: Float
+  autresAides: String
+  autresCharges: Float
+  contact: ContactWhereUniqueInput!
+  dettes: Float
+  facturesEnergie: Float
+  loyer: Float
+  natureDettes: String
+  nombreEnfants: Float
+  remarques: String
+  revenus: Float
+  revenusConjoint: Float
+  situationFamiliale: String
+  situationProConjoint: String
+  situationProfessionnelle: String
+  status: String
+  visites: VisiteWhereUniqueInput
+}
+
+input DemandeCreateNestedManyWithoutContactsInput {
+  connect: [DemandeWhereUniqueInput!]
+}
+
+input DemandeListRelationFilter {
+  every: DemandeWhereInput
+  none: DemandeWhereInput
+  some: DemandeWhereInput
+}
+
+input DemandeOrderByInput {
+  agesEnfants: SortOrder
+  apl: SortOrder
+  autresAides: SortOrder
+  autresCharges: SortOrder
+  contactId: SortOrder
+  createdAt: SortOrder
+  dettes: SortOrder
+  facturesEnergie: SortOrder
+  id: SortOrder
+  loyer: SortOrder
+  natureDettes: SortOrder
+  nombreEnfants: SortOrder
+  remarques: SortOrder
+  revenus: SortOrder
+  revenusConjoint: SortOrder
+  situationFamiliale: SortOrder
+  situationProConjoint: SortOrder
+  situationProfessionnelle: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+  visitesId: SortOrder
+}
+
+input DemandeUpdateInput {
+  agesEnfants: String
+  apl: Float
+  autresAides: String
+  autresCharges: Float
+  contact: ContactWhereUniqueInput
+  dettes: Float
+  facturesEnergie: Float
+  loyer: Float
+  natureDettes: String
+  nombreEnfants: Float
+  remarques: String
+  revenus: Float
+  revenusConjoint: Float
+  situationFamiliale: String
+  situationProConjoint: String
+  situationProfessionnelle: String
+  status: String
+  visites: VisiteWhereUniqueInput
+}
+
+input DemandeUpdateManyWithoutContactsInput {
+  connect: [DemandeWhereUniqueInput!]
+  disconnect: [DemandeWhereUniqueInput!]
+  set: [DemandeWhereUniqueInput!]
+}
+
+input DemandeWhereInput {
+  agesEnfants: StringNullableFilter
+  apl: IntNullableFilter
+  autresAides: StringNullableFilter
+  autresCharges: IntNullableFilter
+  contact: ContactWhereUniqueInput
+  createdAt: DateTimeNullableFilter
+  dettes: IntNullableFilter
+  facturesEnergie: IntNullableFilter
+  id: IntFilter
+  loyer: IntNullableFilter
+  natureDettes: StringNullableFilter
+  nombreEnfants: IntNullableFilter
+  remarques: StringNullableFilter
+  revenus: IntNullableFilter
+  revenusConjoint: IntNullableFilter
+  situationFamiliale: StringNullableFilter
+  situationProConjoint: StringNullableFilter
+  situationProfessionnelle: StringNullableFilter
+  status: StringNullableFilter
+  updatedAt: DateTimeFilter
+  visites: VisiteWhereUniqueInput
+}
+
+input DemandeWhereUniqueInput {
+  id: Float!
+}
+
+type Document {
+  contact: Contact
+  contenu: JSON
+  createdAt: DateTime!
+  id: String!
+  updatedAt: DateTime!
+}
+
+input DocumentCreateInput {
+  contact: ContactWhereUniqueInput
+  contenu: JSON
+}
+
+input DocumentCreateNestedManyWithoutContactsInput {
+  connect: [DocumentWhereUniqueInput!]
+}
+
+input DocumentListRelationFilter {
+  every: DocumentWhereInput
+  none: DocumentWhereInput
+  some: DocumentWhereInput
+}
+
+input DocumentOrderByInput {
+  contactId: SortOrder
+  contenu: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+}
+
+input DocumentUpdateInput {
+  contact: ContactWhereUniqueInput
+  contenu: JSON
+}
+
+input DocumentUpdateManyWithoutContactsInput {
+  connect: [DocumentWhereUniqueInput!]
+  disconnect: [DocumentWhereUniqueInput!]
+  set: [DocumentWhereUniqueInput!]
+}
+
+input DocumentWhereInput {
+  contact: ContactWhereUniqueInput
+  contenu: JsonFilter
+  id: StringFilter
+}
+
+input DocumentWhereUniqueInput {
+  id: String!
+}
+
+enum EnumAideCrediteur {
+  LeBNFiciaire
+  UnCrAncier
+}
+
+enum EnumAideFrequence {
+  BiMensuelle
+  Hebdomadaire
+  Mensuelle
+  Trimestrielle
+  UneFois
+}
+
+enum EnumAideTypeField {
+  Alimentaire
+  FinanciRe
+}
+
+enum EnumUserNotificationPreferenceTypeField {
+  AideExpir
+  ContactBan
+  DemandeEnCommission
+  DemandeEnVisite
+  NouvelleDemande
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+type Invitation {
+  createdAt: DateTime!
+  email: String!
+  id: String!
+  message: String
+  role: String!
+  token: String!
+  updatedAt: DateTime!
+  used: Boolean!
+}
+
+input InvitationCreateInput {
+  email: String!
+  message: String
+  role: String!
+  token: String!
+  used: Boolean!
+}
+
+input InvitationOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  id: SortOrder
+  message: SortOrder
+  role: SortOrder
+  token: SortOrder
+  updatedAt: SortOrder
+  used: SortOrder
+}
+
+input InvitationUpdateInput {
+  email: String
+  message: String
+  role: String
+  token: String
+  used: Boolean
+}
+
+input InvitationWhereInput {
+  email: StringFilter
+  id: StringFilter
+  message: StringNullableFilter
+  role: StringFilter
+  token: StringFilter
+  used: BooleanFilter
+}
+
+input InvitationWhereUniqueInput {
+  id: String!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+input JsonFilter {
+  equals: JSONObject
+  not: JSONObject
+}
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createAide(data: AideCreateInput!): Aide!
+  createContact(data: ContactCreateInput!): Contact!
+  createDemande(data: DemandeCreateInput!): Demande!
+  createDocument(data: DocumentCreateInput!): Document!
+  createInvitation(data: InvitationCreateInput!): Invitation!
+  createUser(data: UserCreateInput!): User!
+  createUserNotificationPreference(data: UserNotificationPreferenceCreateInput!): UserNotificationPreference!
+  createVisite(data: VisiteCreateInput!): Visite!
+  deleteAide(where: AideWhereUniqueInput!): Aide!
+  deleteContact(where: ContactWhereUniqueInput!): Contact!
+  deleteContenu(where: DocumentWhereUniqueInput!): Document!
+  deleteDemande(where: DemandeWhereUniqueInput!): Demande!
+  deleteDocument(where: DocumentWhereUniqueInput!): Document!
+  deleteInvitation(where: InvitationWhereUniqueInput!): Invitation!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  deleteUserNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
+  deleteVisite(where: VisiteWhereUniqueInput!): Visite!
+  login(credentials: Credentials!): UserInfo!
+  updateAide(data: AideUpdateInput!, where: AideWhereUniqueInput!): Aide!
+  updateContact(data: ContactUpdateInput!, where: ContactWhereUniqueInput!): Contact!
+  updateDemande(data: DemandeUpdateInput!, where: DemandeWhereUniqueInput!): Demande!
+  updateDocument(data: DocumentUpdateInput!, where: DocumentWhereUniqueInput!): Document!
+  updateInvitation(data: InvitationUpdateInput!, where: InvitationWhereUniqueInput!): Invitation!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  updateUserNotificationPreference(data: UserNotificationPreferenceUpdateInput!, where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
+  updateVisite(data: VisiteUpdateInput!, where: VisiteWhereUniqueInput!): Visite!
+  uploadContenu(file: Upload!, where: DocumentWhereUniqueInput!): Document!
+}
+
+type Query {
+  _aidesMeta(where: AideWhereInput): MetaQueryPayload!
+  _contactsMeta(where: ContactWhereInput): MetaQueryPayload!
+  _demandesMeta(where: DemandeWhereInput): MetaQueryPayload!
+  _documentsMeta(where: DocumentWhereInput): MetaQueryPayload!
+  _invitationsMeta(where: InvitationWhereInput): MetaQueryPayload!
+  _userNotificationPreferencesMeta(where: UserNotificationPreferenceWhereInput): MetaQueryPayload!
+  _usersMeta(where: UserWhereInput): MetaQueryPayload!
+  _visitesMeta(where: VisiteWhereInput): MetaQueryPayload!
+  aide(where: AideWhereUniqueInput!): Aide
+  aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
+  contact(where: ContactWhereUniqueInput!): Contact
+  contacts(orderBy: [ContactOrderByInput!], skip: Float, take: Float, where: ContactWhereInput): [Contact!]!
+  demande(where: DemandeWhereUniqueInput!): Demande
+  demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
+  document(where: DocumentWhereUniqueInput!): Document
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  invitation(where: InvitationWhereUniqueInput!): Invitation
+  invitations(orderBy: [InvitationOrderByInput!], skip: Float, take: Float, where: InvitationWhereInput): [Invitation!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  userNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference
+  userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  visite(where: VisiteWhereUniqueInput!): Visite
+  visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type User {
+  createdAt: DateTime!
+  email: String
+  firstName: String
+  id: String!
+  lastName: String
+  role: String
+  roles: JSON!
+  status: String
+  token: String
+  updatedAt: DateTime!
+  userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
+  username: String!
+}
+
+input UserCreateInput {
+  email: String
+  firstName: String
+  lastName: String
+  password: String!
+  role: String
+  roles: JSON!
+  status: String
+  token: String
+  userNotificationPreferences: UserNotificationPreferenceCreateNestedManyWithoutUsersInput
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  id: String!
+  roles: [String!]!
+  username: String!
+}
+
+type UserNotificationPreference {
+  active: Boolean!
+  createdAt: DateTime!
+  id: Float!
+  typeField: EnumUserNotificationPreferenceTypeField
+  updatedAt: DateTime!
+  user: User
+}
+
+input UserNotificationPreferenceCreateInput {
+  active: Boolean!
+  typeField: EnumUserNotificationPreferenceTypeField!
+  user: UserWhereUniqueInput!
+}
+
+input UserNotificationPreferenceCreateNestedManyWithoutUsersInput {
+  connect: [UserNotificationPreferenceWhereUniqueInput!]
+}
+
+input UserNotificationPreferenceListRelationFilter {
+  every: UserNotificationPreferenceWhereInput
+  none: UserNotificationPreferenceWhereInput
+  some: UserNotificationPreferenceWhereInput
+}
+
+input UserNotificationPreferenceOrderByInput {
+  active: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  typeField: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input UserNotificationPreferenceUpdateInput {
+  active: Boolean
+  typeField: EnumUserNotificationPreferenceTypeField
+  user: UserWhereUniqueInput
+}
+
+input UserNotificationPreferenceUpdateManyWithoutUsersInput {
+  connect: [UserNotificationPreferenceWhereUniqueInput!]
+  disconnect: [UserNotificationPreferenceWhereUniqueInput!]
+  set: [UserNotificationPreferenceWhereUniqueInput!]
+}
+
+input UserNotificationPreferenceWhereInput {
+  active: BooleanFilter
+  id: IntFilter
+  typeField: EnumUserNotificationPreferenceTypeField
+  user: UserWhereUniqueInput
+}
+
+input UserNotificationPreferenceWhereUniqueInput {
+  id: Float!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  role: SortOrder
+  roles: SortOrder
+  status: SortOrder
+  token: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  email: String
+  firstName: String
+  lastName: String
+  password: String
+  role: String
+  roles: JSON
+  status: String
+  token: String
+  userNotificationPreferences: UserNotificationPreferenceUpdateManyWithoutUsersInput
+  username: String
+}
+
+input UserWhereInput {
+  email: StringNullableFilter
+  firstName: StringNullableFilter
+  id: StringFilter
+  lastName: StringNullableFilter
+  role: StringNullableFilter
+  status: StringNullableFilter
+  token: StringNullableFilter
+  userNotificationPreferences: UserNotificationPreferenceListRelationFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
+
+type Visite {
+  createdAt: DateTime!
+  dateVisite: DateTime
+  demande: Demande
+  id: String!
+  rapportVisite: String
+  updatedAt: DateTime!
+}
+
+input VisiteCreateInput {
+  dateVisite: DateTime
+  demande: DemandeWhereUniqueInput
+  rapportVisite: String
+}
+
+input VisiteOrderByInput {
+  createdAt: SortOrder
+  dateVisite: SortOrder
+  demandeId: SortOrder
+  id: SortOrder
+  rapportVisite: SortOrder
+  updatedAt: SortOrder
+}
+
+input VisiteUpdateInput {
+  dateVisite: DateTime
+  demande: DemandeWhereUniqueInput
+  rapportVisite: String
+}
+
+input VisiteWhereInput {
+  createdAt: DateTimeFilter
+  dateVisite: DateTimeNullableFilter
+  demande: DemandeWhereUniqueInput
+  id: StringFilter
+  rapportVisite: StringNullableFilter
+}
+
+input VisiteWhereUniqueInput {
+  id: String!
+}

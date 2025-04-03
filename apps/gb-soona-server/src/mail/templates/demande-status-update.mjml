@@ -1,0 +1,26 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+    <mj-text font-size="20px" font-weight="bold" color="#333333">
+      📬 Demande {{status}}
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+      Bonjour, La demande {{numeroDemande}} est passé au status {{status}} 
+    </mj-text>
+
+    <mj-button
+      href="{{lien_demande}}"
+      background-color="#2563EB"
+      color="white"
+      padding="20px"
+      border-radius="6px"
+      font-size="16px"
+    >
+      Voir la demande
+    </mj-button>
+
+    <mj-text font-size="14px" color="#999999" padding-top="20px">
+      Vous pouvez à tout moment régler les notifications que vous voulez recevoir en vous rendant sur Réglages > Notifications 
+    </mj-text>
+  </mj-column>
+</mj-section>
