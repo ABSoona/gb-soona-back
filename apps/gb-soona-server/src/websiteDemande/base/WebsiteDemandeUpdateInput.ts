@@ -11,10 +11,22 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, MaxLength, IsOptional } from "class-validator";
+import { IsInt, Max, IsOptional, IsString, MaxLength } from "class-validator";
 
 @InputType()
 class WebsiteDemandeUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  ageDemandeur?: number | null;
+
   @ApiProperty({
     required: false,
     type: String,

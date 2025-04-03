@@ -51,6 +51,7 @@ export class WebsiteDemandeControllerBase {
     return await this.service.createWebsiteDemande({
       data: data,
       select: {
+        ageDemandeur: true,
         createdAt: true,
         id: true,
         nomDemandeur: true,
@@ -79,6 +80,7 @@ export class WebsiteDemandeControllerBase {
     return this.service.websiteDemandes({
       ...args,
       select: {
+        ageDemandeur: true,
         createdAt: true,
         id: true,
         nomDemandeur: true,
@@ -106,6 +108,7 @@ export class WebsiteDemandeControllerBase {
     const result = await this.service.websiteDemande({
       where: params,
       select: {
+        ageDemandeur: true,
         createdAt: true,
         id: true,
         nomDemandeur: true,
@@ -142,6 +145,7 @@ export class WebsiteDemandeControllerBase {
         where: params,
         data: data,
         select: {
+          ageDemandeur: true,
           createdAt: true,
           id: true,
           nomDemandeur: true,
@@ -177,6 +181,7 @@ export class WebsiteDemandeControllerBase {
       return await this.service.deleteWebsiteDemande({
         where: params,
         select: {
+          ageDemandeur: true,
           createdAt: true,
           id: true,
           nomDemandeur: true,

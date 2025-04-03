@@ -23,6 +23,7 @@ const CREATE_INPUT = {
   codePostal: 42,
   createdAt: new Date(),
   dateCreation: new Date(),
+  dateVisite: new Date(),
   email: "exampleEmail",
   id: 42,
   nom: "exampleNom",
@@ -40,6 +41,7 @@ const CREATE_RESULT = {
   codePostal: 42,
   createdAt: new Date(),
   dateCreation: new Date(),
+  dateVisite: new Date(),
   email: "exampleEmail",
   id: 42,
   nom: "exampleNom",
@@ -58,6 +60,7 @@ const FIND_MANY_RESULT = [
     codePostal: 42,
     createdAt: new Date(),
     dateCreation: new Date(),
+    dateVisite: new Date(),
     email: "exampleEmail",
     id: 42,
     nom: "exampleNom",
@@ -76,6 +79,7 @@ const FIND_ONE_RESULT = {
   codePostal: 42,
   createdAt: new Date(),
   dateCreation: new Date(),
+  dateVisite: new Date(),
   email: "exampleEmail",
   id: 42,
   nom: "exampleNom",
@@ -172,6 +176,7 @@ describe("Contact", () => {
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         dateCreation: CREATE_RESULT.dateCreation.toISOString(),
+        dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -185,6 +190,7 @@ describe("Contact", () => {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
           dateCreation: FIND_MANY_RESULT[0].dateCreation.toISOString(),
+          dateVisite: FIND_MANY_RESULT[0].dateVisite.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
       ]);
@@ -209,6 +215,7 @@ describe("Contact", () => {
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
         dateCreation: FIND_ONE_RESULT.dateCreation.toISOString(),
+        dateVisite: FIND_ONE_RESULT.dateVisite.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
   });
@@ -223,6 +230,7 @@ describe("Contact", () => {
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
         dateCreation: CREATE_RESULT.dateCreation.toISOString(),
+        dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })
       .then(function () {
