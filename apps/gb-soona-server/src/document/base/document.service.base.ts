@@ -60,9 +60,11 @@ export class DocumentServiceBase {
     args: Prisma.SelectSubset<T, Prisma.DocumentFindUniqueArgs>,
     file: FileUpload
   ): Promise<PrismaDocument> {
-    file.filename = `profilePicture-${args.where.id}.${file.filename
-      .split(".")
-      .pop()}`;
+    
+    const originalName = file.filename.split(".").slice(0, -1).join(".");
+    const extension = file.filename.split(".").pop();
+    
+    file.filename = `${originalName}-${args.where.id}.${extension}`;
     const containerPath = "/uploads";
     const contenu = await this.localStorageService.uploadFile(
       file,
