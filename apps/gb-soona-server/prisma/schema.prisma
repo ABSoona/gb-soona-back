@@ -161,4 +161,5 @@ enum EnumWebsiteDemandeStatus {
   EnCours
   EnErreur
   Trait
+  Recue
 }

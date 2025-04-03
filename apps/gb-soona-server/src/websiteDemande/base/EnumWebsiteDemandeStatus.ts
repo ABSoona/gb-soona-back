@@ -15,6 +15,7 @@ export enum EnumWebsiteDemandeStatus {
   EnCours = "EnCours",
   EnErreur = "EnErreur",
   Trait = "Trait",
+  ReUe = "Recue",
 }
 
 registerEnumType(EnumWebsiteDemandeStatus, {

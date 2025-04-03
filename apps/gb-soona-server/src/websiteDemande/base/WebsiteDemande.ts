@@ -109,7 +109,7 @@ class WebsiteDemande {
   @Field(() => EnumWebsiteDemandeStatus, {
     nullable: true,
   })
-  status?: "EnCours" | "EnErreur" | "Trait" | null;
+  status?: "EnCours" | "EnErreur" | "Trait" | "Recue" | null;
 
   @ApiProperty({
     required: false,
