@@ -14,28 +14,28 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsInt,
   Max,
-  IsOptional,
   IsDate,
   IsString,
   MaxLength,
+  IsOptional,
   IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { JsonValue } from "type-fest";
 import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
 @ObjectType()
 class WebsiteDemande {
   @ApiProperty({
-    required: false,
+    required: true,
     type: Number,
   })
   @IsInt()
   @Max(99999999999)
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  ageDemandeur!: number | null;
+  @Field(() => Number)
+  ageDemandeur!: number;
 
   @ApiProperty({
     required: true,
@@ -46,15 +46,12 @@ class WebsiteDemande {
   createdAt!: Date;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  emailDemandeur!: string | null;
+  @Field(() => String)
+  emailDemandeur!: string;
 
   @ApiProperty({
     required: false,
@@ -77,51 +74,48 @@ class WebsiteDemande {
   id!: string;
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  nomDemandeur!: string | null;
+  @Field(() => String)
+  nomDemandeur!: string;
 
   @ApiProperty({
-    required: false,
+    required: true,
+  })
+  @IsJSONValue()
+  @Field(() => GraphQLJSON)
+  payload!: JsonValue;
+
+  @ApiProperty({
+    required: true,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  prenomDemandeur!: string | null;
+  @Field(() => String)
+  prenomDemandeur!: string;
 
   @ApiProperty({
-    required: false,
+    required: true,
     enum: EnumWebsiteDemandeStatus,
   })
   @IsEnum(EnumWebsiteDemandeStatus)
-  @IsOptional()
   @Field(() => EnumWebsiteDemandeStatus, {
     nullable: true,
   })
-  status?: "EnCours" | "EnErreur" | "Trait" | "Recue" | null;
+  status?: "EnCours" | "EnErreur" | "Trait" | "Recue";
 
   @ApiProperty({
-    required: false,
+    required: true,
     type: String,
   })
   @IsString()
   @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  telephoneDemandeur!: string | null;
+  @Field(() => String)
+  telephoneDemandeur!: string;
 
   @ApiProperty({
     required: true,

@@ -19,6 +19,9 @@ import {
   MaxLength,
   IsEnum,
 } from "class-validator";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
 @InputType()
@@ -33,7 +36,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => Number, {
     nullable: true,
   })
-  ageDemandeur?: number | null;
+  ageDemandeur?: number;
 
   @ApiProperty({
     required: false,
@@ -44,7 +47,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  emailDemandeur?: string | null;
+  emailDemandeur?: string;
 
   @ApiProperty({
     required: false,
@@ -68,7 +71,17 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  nomDemandeur?: string | null;
+  nomDemandeur?: string;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  payload?: InputJsonValue;
 
   @ApiProperty({
     required: false,
@@ -80,7 +93,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  prenomDemandeur?: string | null;
+  prenomDemandeur?: string;
 
   @ApiProperty({
     required: false,
@@ -91,7 +104,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => EnumWebsiteDemandeStatus, {
     nullable: true,
   })
-  status?: "EnCours" | "EnErreur" | "Trait" | "Recue" | null;
+  status?: "EnCours" | "EnErreur" | "Trait" | "Recue";
 
   @ApiProperty({
     required: false,
@@ -103,7 +116,7 @@ class WebsiteDemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  telephoneDemandeur?: string | null;
+  telephoneDemandeur?: string;
 }
 
 export { WebsiteDemandeUpdateInput as WebsiteDemandeUpdateInput };
