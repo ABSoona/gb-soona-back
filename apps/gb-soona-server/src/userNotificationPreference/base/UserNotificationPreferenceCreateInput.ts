@@ -37,7 +37,8 @@ class UserNotificationPreferenceCreateInput {
     | "DemandeEnVisite"
     | "DemandeEnCommission"
     | "ContactBan"
-    | "AideExpir";
+    | "AideExpir"
+    | "ErreursDemandes";
 
   @ApiProperty({
     required: true,

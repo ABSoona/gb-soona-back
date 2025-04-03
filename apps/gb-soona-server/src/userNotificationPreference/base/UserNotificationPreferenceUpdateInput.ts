@@ -43,7 +43,8 @@ class UserNotificationPreferenceUpdateInput {
     | "DemandeEnVisite"
     | "DemandeEnCommission"
     | "ContactBan"
-    | "AideExpir";
+    | "AideExpir"
+    | "ErreursDemandes";
 
   @ApiProperty({
     required: false,

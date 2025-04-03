@@ -56,7 +56,8 @@ class UserNotificationPreferenceWhereInput {
     | "DemandeEnVisite"
     | "DemandeEnCommission"
     | "ContactBan"
-    | "AideExpir";
+    | "AideExpir"
+    | "ErreursDemandes";
 
   @ApiProperty({
     required: false,

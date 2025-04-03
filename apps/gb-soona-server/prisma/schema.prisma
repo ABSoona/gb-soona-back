@@ -173,6 +173,7 @@ enum EnumUserNotificationPreferenceTypeField {
   DemandeEnCommission
   ContactBan
   AideExpir
+  ErreursDemandes
 }
 
 enum EnumWebsiteDemandeStatus {
