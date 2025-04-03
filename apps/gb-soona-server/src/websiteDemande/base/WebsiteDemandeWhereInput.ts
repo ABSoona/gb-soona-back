@@ -95,7 +95,7 @@ class WebsiteDemandeWhereInput {
   @Field(() => EnumWebsiteDemandeStatus, {
     nullable: true,
   })
-  status?: "EnCours" | "EnErreur" | "Trait";
+  status?: "EnCours" | "EnErreur" | "Trait" | "Recue";
 
   @ApiProperty({
     required: false,
