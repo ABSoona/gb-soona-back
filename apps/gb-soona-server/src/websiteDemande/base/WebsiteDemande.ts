@@ -18,8 +18,10 @@ import {
   IsDate,
   IsString,
   MaxLength,
+  IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
 @ObjectType()
 class WebsiteDemande {
@@ -42,6 +44,29 @@ class WebsiteDemande {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  emailDemandeur!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  erreur!: string | null;
 
   @ApiProperty({
     required: true,
@@ -74,6 +99,29 @@ class WebsiteDemande {
     nullable: true,
   })
   prenomDemandeur!: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumWebsiteDemandeStatus,
+  })
+  @IsEnum(EnumWebsiteDemandeStatus)
+  @IsOptional()
+  @Field(() => EnumWebsiteDemandeStatus, {
+    nullable: true,
+  })
+  status?: "EnCours" | "EnErreur" | "Trait" | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  telephoneDemandeur!: string | null;
 
   @ApiProperty({
     required: true,

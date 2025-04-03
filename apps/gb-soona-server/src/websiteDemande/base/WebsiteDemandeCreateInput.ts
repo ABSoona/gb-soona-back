@@ -11,7 +11,15 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsInt, Max, IsOptional, IsString, MaxLength } from "class-validator";
+import {
+  IsInt,
+  Max,
+  IsOptional,
+  IsString,
+  MaxLength,
+  IsEnum,
+} from "class-validator";
+import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
 @InputType()
 class WebsiteDemandeCreateInput {
@@ -26,6 +34,29 @@ class WebsiteDemandeCreateInput {
     nullable: true,
   })
   ageDemandeur?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  emailDemandeur?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  erreur?: string | null;
 
   @ApiProperty({
     required: false,
@@ -50,6 +81,29 @@ class WebsiteDemandeCreateInput {
     nullable: true,
   })
   prenomDemandeur?: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumWebsiteDemandeStatus,
+  })
+  @IsEnum(EnumWebsiteDemandeStatus)
+  @IsOptional()
+  @Field(() => EnumWebsiteDemandeStatus, {
+    nullable: true,
+  })
+  status?: "EnCours" | "EnErreur" | "Trait" | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  telephoneDemandeur?: string | null;
 }
 
 export { WebsiteDemandeCreateInput as WebsiteDemandeCreateInput };
