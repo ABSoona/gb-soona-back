@@ -53,7 +53,7 @@ export class LocalStorageService extends StorageServiceBase {
       } as LocalStorageFile;
 
       if (createReadStream) {
-        await new Promise((resolve, reject) =>
+        await new Promise<void>((resolve, reject) =>
           createReadStream()
             .pipe(createWriteStream(path))
             .on("finish", resolve)
