@@ -55,12 +55,6 @@ export class DemandeControllerBase {
         contact: {
           connect: data.contact,
         },
-
-        visites: data.visites
-          ? {
-              connect: data.visites,
-            }
-          : undefined,
       },
       select: {
         agesEnfants: true,
@@ -89,12 +83,6 @@ export class DemandeControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
-
-        visites: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -142,12 +130,6 @@ export class DemandeControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
-
-        visites: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -196,12 +178,6 @@ export class DemandeControllerBase {
         situationProfessionnelle: true,
         status: true,
         updatedAt: true,
-
-        visites: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (result === null) {
@@ -237,12 +213,6 @@ export class DemandeControllerBase {
           contact: {
             connect: data.contact,
           },
-
-          visites: data.visites
-            ? {
-                connect: data.visites,
-              }
-            : undefined,
         },
         select: {
           agesEnfants: true,
@@ -271,12 +241,6 @@ export class DemandeControllerBase {
           situationProfessionnelle: true,
           status: true,
           updatedAt: true,
-
-          visites: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {
@@ -333,12 +297,6 @@ export class DemandeControllerBase {
           situationProfessionnelle: true,
           status: true,
           updatedAt: true,
-
-          visites: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {

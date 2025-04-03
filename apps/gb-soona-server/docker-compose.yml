@@ -13,7 +13,7 @@ services:
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
       JWT_EXPIRATION: ${JWT_EXPIRATION}
     depends_on:
-      - migrate
+      - redis_broker
     restart: on-failure
   migrate:
     build:
@@ -45,5 +45,14 @@ services:
       timeout: 45s
       interval: 10s
       retries: 10
+  redis_broker:
+    container_name: ${REDIS_BROKER_HOST}
+    image: redis:7
+    ports:
+      - ${REDIS_BROKER_PORT}:6379
+    volumes:
+      - redis_broker:/redis-broker-data
 volumes:
   postgres: ~
+  redis_broker:
+    driver: local

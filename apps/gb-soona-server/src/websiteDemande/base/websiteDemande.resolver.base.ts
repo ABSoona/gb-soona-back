@@ -19,31 +19,30 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { Demande } from "./Demande";
-import { DemandeCountArgs } from "./DemandeCountArgs";
-import { DemandeFindManyArgs } from "./DemandeFindManyArgs";
-import { DemandeFindUniqueArgs } from "./DemandeFindUniqueArgs";
-import { CreateDemandeArgs } from "./CreateDemandeArgs";
-import { UpdateDemandeArgs } from "./UpdateDemandeArgs";
-import { DeleteDemandeArgs } from "./DeleteDemandeArgs";
-import { Contact } from "../../contact/base/Contact";
-import { DemandeService } from "../demande.service";
+import { WebsiteDemande } from "./WebsiteDemande";
+import { WebsiteDemandeCountArgs } from "./WebsiteDemandeCountArgs";
+import { WebsiteDemandeFindManyArgs } from "./WebsiteDemandeFindManyArgs";
+import { WebsiteDemandeFindUniqueArgs } from "./WebsiteDemandeFindUniqueArgs";
+import { CreateWebsiteDemandeArgs } from "./CreateWebsiteDemandeArgs";
+import { UpdateWebsiteDemandeArgs } from "./UpdateWebsiteDemandeArgs";
+import { DeleteWebsiteDemandeArgs } from "./DeleteWebsiteDemandeArgs";
+import { WebsiteDemandeService } from "../websiteDemande.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
-@graphql.Resolver(() => Demande)
-export class DemandeResolverBase {
+@graphql.Resolver(() => WebsiteDemande)
+export class WebsiteDemandeResolverBase {
   constructor(
-    protected readonly service: DemandeService,
+    protected readonly service: WebsiteDemandeService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
   @graphql.Query(() => MetaQueryPayload)
   @nestAccessControl.UseRoles({
-    resource: "Demande",
+    resource: "WebsiteDemande",
     action: "read",
     possession: "any",
   })
-  async _demandesMeta(
-    @graphql.Args() args: DemandeCountArgs
+  async _websiteDemandesMeta(
+    @graphql.Args() args: WebsiteDemandeCountArgs
   ): Promise<MetaQueryPayload> {
     const result = await this.service.count(args);
     return {
@@ -52,29 +51,29 @@ export class DemandeResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => [Demande])
+  @graphql.Query(() => [WebsiteDemande])
   @nestAccessControl.UseRoles({
-    resource: "Demande",
+    resource: "WebsiteDemande",
     action: "read",
     possession: "any",
   })
-  async demandes(
-    @graphql.Args() args: DemandeFindManyArgs
-  ): Promise<Demande[]> {
-    return this.service.demandes(args);
+  async websiteDemandes(
+    @graphql.Args() args: WebsiteDemandeFindManyArgs
+  ): Promise<WebsiteDemande[]> {
+    return this.service.websiteDemandes(args);
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.Query(() => Demande, { nullable: true })
+  @graphql.Query(() => WebsiteDemande, { nullable: true })
   @nestAccessControl.UseRoles({
-    resource: "Demande",
+    resource: "WebsiteDemande",
     action: "read",
     possession: "own",
   })
-  async demande(
-    @graphql.Args() args: DemandeFindUniqueArgs
-  ): Promise<Demande | null> {
-    const result = await this.service.demande(args);
+  async websiteDemande(
+    @graphql.Args() args: WebsiteDemandeFindUniqueArgs
+  ): Promise<WebsiteDemande | null> {
+    const result = await this.service.websiteDemande(args);
     if (result === null) {
       return null;
     }
@@ -82,47 +81,35 @@ export class DemandeResolverBase {
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
-  @graphql.Mutation(() => Demande)
+  @graphql.Mutation(() => WebsiteDemande)
   @nestAccessControl.UseRoles({
-    resource: "Demande",
+    resource: "WebsiteDemande",
     action: "create",
     possession: "any",
   })
-  async createDemande(
-    @graphql.Args() args: CreateDemandeArgs
-  ): Promise<Demande> {
-    return await this.service.createDemande({
+  async createWebsiteDemande(
+    @graphql.Args() args: CreateWebsiteDemandeArgs
+  ): Promise<WebsiteDemande> {
+    return await this.service.createWebsiteDemande({
       ...args,
-      data: {
-        ...args.data,
-
-        contact: {
-          connect: args.data.contact,
-        },
-      },
+      data: args.data,
     });
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
-  @graphql.Mutation(() => Demande)
+  @graphql.Mutation(() => WebsiteDemande)
   @nestAccessControl.UseRoles({
-    resource: "Demande",
+    resource: "WebsiteDemande",
     action: "update",
     possession: "any",
   })
-  async updateDemande(
-    @graphql.Args() args: UpdateDemandeArgs
-  ): Promise<Demande | null> {
+  async updateWebsiteDemande(
+    @graphql.Args() args: UpdateWebsiteDemandeArgs
+  ): Promise<WebsiteDemande | null> {
     try {
-      return await this.service.updateDemande({
+      return await this.service.updateWebsiteDemande({
         ...args,
-        data: {
-          ...args.data,
-
-          contact: {
-            connect: args.data.contact,
-          },
-        },
+        data: args.data,
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -134,17 +121,17 @@ export class DemandeResolverBase {
     }
   }
 
-  @graphql.Mutation(() => Demande)
+  @graphql.Mutation(() => WebsiteDemande)
   @nestAccessControl.UseRoles({
-    resource: "Demande",
+    resource: "WebsiteDemande",
     action: "delete",
     possession: "any",
   })
-  async deleteDemande(
-    @graphql.Args() args: DeleteDemandeArgs
-  ): Promise<Demande | null> {
+  async deleteWebsiteDemande(
+    @graphql.Args() args: DeleteWebsiteDemandeArgs
+  ): Promise<WebsiteDemande | null> {
     try {
-      return await this.service.deleteDemande(args);
+      return await this.service.deleteWebsiteDemande(args);
     } catch (error) {
       if (isRecordNotFoundError(error)) {
         throw new GraphQLError(
@@ -153,24 +140,5 @@ export class DemandeResolverBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => Contact, {
-    nullable: true,
-    name: "contact",
-  })
-  @nestAccessControl.UseRoles({
-    resource: "Contact",
-    action: "read",
-    possession: "any",
-  })
-  async getContact(@graphql.Parent() parent: Demande): Promise<Contact | null> {
-    const result = await this.service.getContact(parent.id);
-
-    if (!result) {
-      return null;
-    }
-    return result;
   }
 }

@@ -47,7 +47,6 @@ model Demande {
   situationProfessionnelle String?
   status                   String?
   updatedAt                DateTime  @updatedAt
-  visites                  Visite?
 }
 
 model Contact {
@@ -87,16 +86,6 @@ model User {
   username                    String                       @unique
 }
 
-model Visite {
-  createdAt     DateTime  @default(now())
-  dateVisite    DateTime?
-  demande       Demande?  @relation(fields: [demandeId], references: [id])
-  demandeId     Int?      @unique
-  id            String    @id @default(cuid())
-  rapportVisite String?
-  updatedAt     DateTime  @updatedAt
-}
-
 model Document {
   contact   Contact? @relation(fields: [contactId], references: [id])
   contactId Int?
@@ -125,6 +114,14 @@ model Invitation {
   token     String
   updatedAt DateTime @updatedAt
   used      Boolean
+}
+
+model WebsiteDemande {
+  createdAt       DateTime @default(now())
+  id              String   @id @default(cuid())
+  nomDemandeur    String?
+  prenomDemandeur String?
+  updatedAt       DateTime @updatedAt
 }
 
 enum EnumAideCrediteur {
