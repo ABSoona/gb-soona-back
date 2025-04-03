@@ -20,35 +20,47 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   ageDemandeur: 42,
   createdAt: new Date(),
+  emailDemandeur: "exampleEmailDemandeur",
+  erreur: "exampleErreur",
   id: "exampleId",
   nomDemandeur: "exampleNomDemandeur",
   prenomDemandeur: "examplePrenomDemandeur",
+  telephoneDemandeur: "exampleTelephoneDemandeur",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
   ageDemandeur: 42,
   createdAt: new Date(),
+  emailDemandeur: "exampleEmailDemandeur",
+  erreur: "exampleErreur",
   id: "exampleId",
   nomDemandeur: "exampleNomDemandeur",
   prenomDemandeur: "examplePrenomDemandeur",
+  telephoneDemandeur: "exampleTelephoneDemandeur",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
     ageDemandeur: 42,
     createdAt: new Date(),
+    emailDemandeur: "exampleEmailDemandeur",
+    erreur: "exampleErreur",
     id: "exampleId",
     nomDemandeur: "exampleNomDemandeur",
     prenomDemandeur: "examplePrenomDemandeur",
+    telephoneDemandeur: "exampleTelephoneDemandeur",
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
   ageDemandeur: 42,
   createdAt: new Date(),
+  emailDemandeur: "exampleEmailDemandeur",
+  erreur: "exampleErreur",
   id: "exampleId",
   nomDemandeur: "exampleNomDemandeur",
   prenomDemandeur: "examplePrenomDemandeur",
+  telephoneDemandeur: "exampleTelephoneDemandeur",
   updatedAt: new Date(),
 };
 

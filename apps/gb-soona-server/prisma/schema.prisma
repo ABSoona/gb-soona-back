@@ -119,12 +119,16 @@ model Invitation {
 }
 
 model WebsiteDemande {
-  ageDemandeur    Int?
-  createdAt       DateTime @default(now())
-  id              String   @id @default(cuid())
-  nomDemandeur    String?
-  prenomDemandeur String?
-  updatedAt       DateTime @updatedAt
+  ageDemandeur       Int?
+  createdAt          DateTime                  @default(now())
+  emailDemandeur     String?
+  erreur             String?
+  id                 String                    @id @default(cuid())
+  nomDemandeur       String?
+  prenomDemandeur    String?
+  status             EnumWebsiteDemandeStatus?
+  telephoneDemandeur String?
+  updatedAt          DateTime                  @updatedAt
 }
 
 enum EnumAideCrediteur {
@@ -151,4 +155,10 @@ enum EnumUserNotificationPreferenceTypeField {
   DemandeEnCommission
   ContactBan
   AideExpir
+}
+
+enum EnumWebsiteDemandeStatus {
+  EnCours
+  EnErreur
+  Trait
 }

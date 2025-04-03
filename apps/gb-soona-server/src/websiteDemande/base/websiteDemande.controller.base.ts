@@ -53,9 +53,13 @@ export class WebsiteDemandeControllerBase {
       select: {
         ageDemandeur: true,
         createdAt: true,
+        emailDemandeur: true,
+        erreur: true,
         id: true,
         nomDemandeur: true,
         prenomDemandeur: true,
+        status: true,
+        telephoneDemandeur: true,
         updatedAt: true,
       },
     });
@@ -82,9 +86,13 @@ export class WebsiteDemandeControllerBase {
       select: {
         ageDemandeur: true,
         createdAt: true,
+        emailDemandeur: true,
+        erreur: true,
         id: true,
         nomDemandeur: true,
         prenomDemandeur: true,
+        status: true,
+        telephoneDemandeur: true,
         updatedAt: true,
       },
     });
@@ -110,9 +118,13 @@ export class WebsiteDemandeControllerBase {
       select: {
         ageDemandeur: true,
         createdAt: true,
+        emailDemandeur: true,
+        erreur: true,
         id: true,
         nomDemandeur: true,
         prenomDemandeur: true,
+        status: true,
+        telephoneDemandeur: true,
         updatedAt: true,
       },
     });
@@ -147,9 +159,13 @@ export class WebsiteDemandeControllerBase {
         select: {
           ageDemandeur: true,
           createdAt: true,
+          emailDemandeur: true,
+          erreur: true,
           id: true,
           nomDemandeur: true,
           prenomDemandeur: true,
+          status: true,
+          telephoneDemandeur: true,
           updatedAt: true,
         },
       });
@@ -183,9 +199,13 @@ export class WebsiteDemandeControllerBase {
         select: {
           ageDemandeur: true,
           createdAt: true,
+          emailDemandeur: true,
+          erreur: true,
           id: true,
           nomDemandeur: true,
           prenomDemandeur: true,
+          status: true,
+          telephoneDemandeur: true,
           updatedAt: true,
         },
       });

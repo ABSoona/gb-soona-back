@@ -13,9 +13,10 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
-import { StringFilter } from "../../util/StringFilter";
+import { IsOptional, IsEnum } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { StringFilter } from "../../util/StringFilter";
+import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
 @InputType()
 class WebsiteDemandeWhereInput {
@@ -29,6 +30,28 @@ class WebsiteDemandeWhereInput {
     nullable: true,
   })
   ageDemandeur?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  emailDemandeur?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  erreur?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -62,6 +85,28 @@ class WebsiteDemandeWhereInput {
     nullable: true,
   })
   prenomDemandeur?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumWebsiteDemandeStatus,
+  })
+  @IsEnum(EnumWebsiteDemandeStatus)
+  @IsOptional()
+  @Field(() => EnumWebsiteDemandeStatus, {
+    nullable: true,
+  })
+  status?: "EnCours" | "EnErreur" | "Trait";
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  telephoneDemandeur?: StringNullableFilter;
 }
 
 export { WebsiteDemandeWhereInput as WebsiteDemandeWhereInput };
