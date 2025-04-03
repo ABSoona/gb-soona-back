@@ -119,17 +119,34 @@ model Invitation {
 }
 
 model WebsiteDemande {
-  ageDemandeur       Int?
-  createdAt          DateTime                 @default(now())
-  emailDemandeur     String?
-  erreur             String?
-  id                 String                   @id @default(cuid())
-  nomDemandeur       String?
-  payload            Json
-  prenomDemandeur    String?
-  status             EnumWebsiteDemandeStatus
-  telephoneDemandeur String?
-  updatedAt          DateTime                 @updatedAt
+  adresseDemandeur         String?
+  ageDemandeur             Int?
+  agesEnfants              String?
+  apl                      Int?
+  autresAides              String?
+  autresCharges            Int?
+  codePostalDemandeur      Int?
+  createdAt                DateTime                 @default(now())
+  dettes                   Int?
+  emailDemandeur           String?
+  erreur                   String?
+  facturesEnergie          Int?
+  id                       String                   @id @default(cuid())
+  loyer                    Int?
+  natureDettes             String?
+  nomDemandeur             String?
+  nombreEnfants            Int?
+  prenomDemandeur          String?
+  remarques                String?
+  revenus                  Int?
+  revenusConjoint          Int?
+  situationFamiliale       String?
+  situationProConjoint     String?
+  situationProfessionnelle String?
+  status                   EnumWebsiteDemandeStatus
+  telephoneDemandeur       String?
+  updatedAt                DateTime                 @updatedAt
+  villeDemandeur           String?
 }
 
 enum EnumAideCrediteur {

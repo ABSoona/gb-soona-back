@@ -12,20 +12,29 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
-  IsInt,
-  Max,
-  IsOptional,
   IsString,
   MaxLength,
+  IsOptional,
+  IsInt,
+  Max,
   IsEnum,
 } from "class-validator";
-import { IsJSONValue } from "../../validators";
-import { GraphQLJSON } from "graphql-type-json";
-import { InputJsonValue } from "../../types";
 import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
 @InputType()
 class WebsiteDemandeCreateInput {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  adresseDemandeur?: string | null;
+
   @ApiProperty({
     required: false,
     type: Number,
@@ -37,6 +46,78 @@ class WebsiteDemandeCreateInput {
     nullable: true,
   })
   ageDemandeur?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  agesEnfants?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  apl?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(256)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  autresAides?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  autresCharges?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  codePostalDemandeur?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  dettes?: number | null;
 
   @ApiProperty({
     required: false,
@@ -63,6 +144,42 @@ class WebsiteDemandeCreateInput {
 
   @ApiProperty({
     required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  facturesEnergie?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  loyer?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(256)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  natureDettes?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -74,11 +191,16 @@ class WebsiteDemandeCreateInput {
   nomDemandeur?: string | null;
 
   @ApiProperty({
-    required: true,
+    required: false,
+    type: Number,
   })
-  @IsJSONValue()
-  @Field(() => GraphQLJSON)
-  payload!: InputJsonValue;
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  nombreEnfants?: number | null;
 
   @ApiProperty({
     required: false,
@@ -91,6 +213,78 @@ class WebsiteDemandeCreateInput {
     nullable: true,
   })
   prenomDemandeur?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(256)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  remarques?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  revenus?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  revenusConjoint?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  situationFamiliale?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  situationProConjoint?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  situationProfessionnelle?: string | null;
 
   @ApiProperty({
     required: true,
@@ -111,6 +305,18 @@ class WebsiteDemandeCreateInput {
     nullable: true,
   })
   telephoneDemandeur?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  villeDemandeur?: string | null;
 }
 
 export { WebsiteDemandeCreateInput as WebsiteDemandeCreateInput };
