@@ -10,8 +10,8 @@ import { Queues } from './queues';
     ConfigModule,
     BullModule.forRoot({
       connection: {
-        host: process.env.REDIS_HOST || 'localhost',
-        port: Number(process.env.REDIS_PORT) || 6379,
+        host: process.env.REDIS_BROKER_HOST || 'localhost',
+        port: Number(process.env.REDIS_BROKER_PORT) || 6379,
       },
     }),
 
