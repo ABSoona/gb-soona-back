@@ -1,0 +1,30 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+    <mj-text font-size="20px" font-weight="bold" color="#333333">
+      🚫 Demande bloquée
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+      Bonjour, Nous avons reçu une demande d'aide depuis le site internet, mais celle-ci n'a pas 
+      pu être créée dans GB soona pour la raison suivante: 
+    </mj-text>
+    <mj-text font-size="16px" color="#555555">
+    {{error_message}}
+    </mj-text>
+
+    <mj-button
+      href="{{lien_demande}}"
+      background-color="#2563EB"
+      color="white"
+      padding="20px"
+      border-radius="6px"
+      font-size="16px"
+    >
+      Voir le journal
+    </mj-button>
+
+    <mj-text font-size="14px" color="#999999" padding-top="20px">
+       Vous pouvez à tout moment régler les notifications que vous voulez recevoir en vous rendant sur Réglages > Notifications 
+    </mj-text>
+  </mj-column>
+</mj-section>

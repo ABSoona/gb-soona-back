@@ -1,15 +1,17 @@
+import { QueueDispatcherService } from './../bullmq/queue-dispatcher.service';
 // mail/mail.service.ts
 import { Injectable } from '@nestjs/common';
 const mjml2html = require('mjml');
 import * as fs from 'fs';
 import * as path from 'path';
 import * as nodemailer from 'nodemailer';
+import { Queues } from 'src/bullmq/queues';
 
 @Injectable()
 export class MailService {
   private transporter: nodemailer.Transporter;
 
-  constructor() {
+  constructor(protected readonly queueDispatcherService:QueueDispatcherService ) {
     this.transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT),
@@ -49,7 +51,18 @@ export class MailService {
       return html;
   }
 
+  sendMailAsync(template: string, to: string, variables: Record<string, string>, subject: string) {
+    console.log("Mise en queue de l'envoie de mail")
+     const retour = this.queueDispatcherService.dispatch(Queues.MAIL,  {
+      template,
+      to,
+      variables,
+      subject,
+    });
+    console.log("Envoyé dans la queue",retour)  }
+
   async sendUserMail(template: string ,to: string,  variables: Record<string, string>,subject:string) {
+    console.log("Envoie du mail")
     const html = this.renderTemplate(template, variables);
 
     await this.transporter.sendMail({
@@ -67,5 +80,6 @@ export class MailService {
     });
   }
 
+  
  
 }
