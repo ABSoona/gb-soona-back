@@ -13,6 +13,7 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
+import { BullMqModule } from "./bullmq/bullmq.module";
 
 @Module({
   controllers: [],
@@ -44,6 +45,7 @@ import { AuthModule } from "./auth/auth.module";
       imports: [ConfigModule],
     }),
     RedisModule,
+    BullMqModule
   ],
   providers: [],
 })

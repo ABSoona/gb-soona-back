@@ -1,15 +1,6 @@
 version: "3"
 services:
-  db:
-    image: postgres:12
-    ports:
-      - ${DB_PORT}:5432
-    environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - postgres:/var/lib/postgresql/data
-  redis_broker:
+   redis_broker:
     container_name: ${REDIS_BROKER_HOST}
     image: redis:7
     ports:
@@ -17,6 +8,5 @@ services:
     volumes:
       - redis_broker:/redis-broker-data
 volumes:
-  postgres: ~
   redis_broker:
     driver: local

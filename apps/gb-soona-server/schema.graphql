@@ -118,6 +118,7 @@ type Contact {
   codePostal: Float
   createdAt: DateTime!
   dateCreation: DateTime
+  dateVisite: DateTime
   demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   email: String
@@ -138,6 +139,7 @@ input ContactCreateInput {
   aides: AideCreateNestedManyWithoutContactsInput
   codePostal: Float
   dateCreation: DateTime
+  dateVisite: DateTime
   demandes: DemandeCreateNestedManyWithoutContactsInput
   documents: DocumentCreateNestedManyWithoutContactsInput
   email: String
@@ -156,6 +158,7 @@ input ContactOrderByInput {
   codePostal: SortOrder
   createdAt: SortOrder
   dateCreation: SortOrder
+  dateVisite: SortOrder
   email: SortOrder
   id: SortOrder
   nom: SortOrder
@@ -174,6 +177,7 @@ input ContactUpdateInput {
   aides: AideUpdateManyWithoutContactsInput
   codePostal: Float
   dateCreation: DateTime
+  dateVisite: DateTime
   demandes: DemandeUpdateManyWithoutContactsInput
   documents: DocumentUpdateManyWithoutContactsInput
   email: String
@@ -193,6 +197,7 @@ input ContactWhereInput {
   codePostal: IntNullableFilter
   createdAt: DateTimeFilter
   dateCreation: DateTimeNullableFilter
+  dateVisite: DateTimeNullableFilter
   demandes: DemandeListRelationFilter
   documents: DocumentListRelationFilter
   email: StringNullableFilter
@@ -249,6 +254,7 @@ type Demande {
   autresCharges: Float
   contact: Contact
   createdAt: DateTime
+  dateVisite: DateTime
   dettes: Float
   facturesEnergie: Float
   id: Float!
@@ -263,7 +269,6 @@ type Demande {
   situationProfessionnelle: String
   status: String
   updatedAt: DateTime!
-  visites: Visite
 }
 
 input DemandeCreateInput {
@@ -272,6 +277,7 @@ input DemandeCreateInput {
   autresAides: String
   autresCharges: Float
   contact: ContactWhereUniqueInput!
+  dateVisite: DateTime
   dettes: Float
   facturesEnergie: Float
   loyer: Float
@@ -284,7 +290,6 @@ input DemandeCreateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
-  visites: VisiteWhereUniqueInput
 }
 
 input DemandeCreateNestedManyWithoutContactsInput {
@@ -304,6 +309,7 @@ input DemandeOrderByInput {
   autresCharges: SortOrder
   contactId: SortOrder
   createdAt: SortOrder
+  dateVisite: SortOrder
   dettes: SortOrder
   facturesEnergie: SortOrder
   id: SortOrder
@@ -318,7 +324,6 @@ input DemandeOrderByInput {
   situationProfessionnelle: SortOrder
   status: SortOrder
   updatedAt: SortOrder
-  visitesId: SortOrder
 }
 
 input DemandeUpdateInput {
@@ -327,6 +332,7 @@ input DemandeUpdateInput {
   autresAides: String
   autresCharges: Float
   contact: ContactWhereUniqueInput
+  dateVisite: DateTime
   dettes: Float
   facturesEnergie: Float
   loyer: Float
@@ -339,7 +345,6 @@ input DemandeUpdateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
-  visites: VisiteWhereUniqueInput
 }
 
 input DemandeUpdateManyWithoutContactsInput {
@@ -355,6 +360,7 @@ input DemandeWhereInput {
   autresCharges: IntNullableFilter
   contact: ContactWhereUniqueInput
   createdAt: DateTimeNullableFilter
+  dateVisite: DateTimeNullableFilter
   dettes: IntNullableFilter
   facturesEnergie: IntNullableFilter
   id: IntFilter
@@ -369,7 +375,6 @@ input DemandeWhereInput {
   situationProfessionnelle: StringNullableFilter
   status: StringNullableFilter
   updatedAt: DateTimeFilter
-  visites: VisiteWhereUniqueInput
 }
 
 input DemandeWhereUniqueInput {
@@ -451,7 +456,15 @@ enum EnumUserNotificationPreferenceTypeField {
   ContactBan
   DemandeEnCommission
   DemandeEnVisite
+  ErreursDemandes
   NouvelleDemande
+}
+
+enum EnumWebsiteDemandeStatus {
+  EnCours
+  EnErreur
+  ReUe
+  Trait
 }
 
 input IntFilter {
@@ -554,7 +567,7 @@ type Mutation {
   createInvitation(data: InvitationCreateInput!): Invitation!
   createUser(data: UserCreateInput!): User!
   createUserNotificationPreference(data: UserNotificationPreferenceCreateInput!): UserNotificationPreference!
-  createVisite(data: VisiteCreateInput!): Visite!
+  createWebsiteDemande(data: WebsiteDemandeCreateInput!): WebsiteDemande!
   deleteAide(where: AideWhereUniqueInput!): Aide!
   deleteContact(where: ContactWhereUniqueInput!): Contact!
   deleteContenu(where: DocumentWhereUniqueInput!): Document!
@@ -563,7 +576,7 @@ type Mutation {
   deleteInvitation(where: InvitationWhereUniqueInput!): Invitation!
   deleteUser(where: UserWhereUniqueInput!): User!
   deleteUserNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
-  deleteVisite(where: VisiteWhereUniqueInput!): Visite!
+  deleteWebsiteDemande(where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande!
   login(credentials: Credentials!): UserInfo!
   updateAide(data: AideUpdateInput!, where: AideWhereUniqueInput!): Aide!
   updateContact(data: ContactUpdateInput!, where: ContactWhereUniqueInput!): Contact!
@@ -572,7 +585,7 @@ type Mutation {
   updateInvitation(data: InvitationUpdateInput!, where: InvitationWhereUniqueInput!): Invitation!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   updateUserNotificationPreference(data: UserNotificationPreferenceUpdateInput!, where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
-  updateVisite(data: VisiteUpdateInput!, where: VisiteWhereUniqueInput!): Visite!
+  updateWebsiteDemande(data: WebsiteDemandeUpdateInput!, where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande!
   uploadContenu(file: Upload!, where: DocumentWhereUniqueInput!): Document!
 }
 
@@ -584,7 +597,7 @@ type Query {
   _invitationsMeta(where: InvitationWhereInput): MetaQueryPayload!
   _userNotificationPreferencesMeta(where: UserNotificationPreferenceWhereInput): MetaQueryPayload!
   _usersMeta(where: UserWhereInput): MetaQueryPayload!
-  _visitesMeta(where: VisiteWhereInput): MetaQueryPayload!
+  _websiteDemandesMeta(where: WebsiteDemandeWhereInput): MetaQueryPayload!
   aide(where: AideWhereUniqueInput!): Aide
   aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
   contact(where: ContactWhereUniqueInput!): Contact
@@ -600,8 +613,8 @@ type Query {
   userNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference
   userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
   users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
-  visite(where: VisiteWhereUniqueInput!): Visite
-  visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
+  websiteDemande(where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande
+  websiteDemandes(orderBy: [WebsiteDemandeOrderByInput!], skip: Float, take: Float, where: WebsiteDemandeWhereInput): [WebsiteDemande!]!
 }
 
 enum QueryMode {
@@ -783,44 +796,153 @@ input UserWhereUniqueInput {
   id: String!
 }
 
-type Visite {
+type WebsiteDemande {
+  adresseDemandeur: String
+  ageDemandeur: Float
+  agesEnfants: String
+  apl: Float
+  autresAides: String
+  autresCharges: Float
+  codePostalDemandeur: Float
   createdAt: DateTime!
-  dateVisite: DateTime
-  demande: Demande
+  dettes: Float
+  emailDemandeur: String
+  erreur: String
+  facturesEnergie: Float
   id: String!
-  rapportVisite: String
+  loyer: Float
+  natureDettes: String
+  nomDemandeur: String
+  nombreEnfants: Float
+  prenomDemandeur: String
+  remarques: String
+  revenus: Float
+  revenusConjoint: Float
+  situationFamiliale: String
+  situationProConjoint: String
+  situationProfessionnelle: String
+  status: EnumWebsiteDemandeStatus
+  telephoneDemandeur: String
   updatedAt: DateTime!
+  villeDemandeur: String
 }
 
-input VisiteCreateInput {
-  dateVisite: DateTime
-  demande: DemandeWhereUniqueInput
-  rapportVisite: String
+input WebsiteDemandeCreateInput {
+  adresseDemandeur: String
+  ageDemandeur: Float
+  agesEnfants: String
+  apl: Float
+  autresAides: String
+  autresCharges: Float
+  codePostalDemandeur: Float
+  dettes: Float
+  emailDemandeur: String
+  erreur: String
+  facturesEnergie: Float
+  loyer: Float
+  natureDettes: String
+  nomDemandeur: String
+  nombreEnfants: Float
+  prenomDemandeur: String
+  remarques: String
+  revenus: Float
+  revenusConjoint: Float
+  situationFamiliale: String
+  situationProConjoint: String
+  situationProfessionnelle: String
+  status: EnumWebsiteDemandeStatus!
+  telephoneDemandeur: String
+  villeDemandeur: String
 }
 
-input VisiteOrderByInput {
+input WebsiteDemandeOrderByInput {
+  adresseDemandeur: SortOrder
+  ageDemandeur: SortOrder
+  agesEnfants: SortOrder
+  apl: SortOrder
+  autresAides: SortOrder
+  autresCharges: SortOrder
+  codePostalDemandeur: SortOrder
   createdAt: SortOrder
-  dateVisite: SortOrder
-  demandeId: SortOrder
+  dettes: SortOrder
+  emailDemandeur: SortOrder
+  erreur: SortOrder
+  facturesEnergie: SortOrder
   id: SortOrder
-  rapportVisite: SortOrder
+  loyer: SortOrder
+  natureDettes: SortOrder
+  nomDemandeur: SortOrder
+  nombreEnfants: SortOrder
+  prenomDemandeur: SortOrder
+  remarques: SortOrder
+  revenus: SortOrder
+  revenusConjoint: SortOrder
+  situationFamiliale: SortOrder
+  situationProConjoint: SortOrder
+  situationProfessionnelle: SortOrder
+  status: SortOrder
+  telephoneDemandeur: SortOrder
   updatedAt: SortOrder
+  villeDemandeur: SortOrder
 }
 
-input VisiteUpdateInput {
-  dateVisite: DateTime
-  demande: DemandeWhereUniqueInput
-  rapportVisite: String
+input WebsiteDemandeUpdateInput {
+  adresseDemandeur: String
+  ageDemandeur: Float
+  agesEnfants: String
+  apl: Float
+  autresAides: String
+  autresCharges: Float
+  codePostalDemandeur: Float
+  dettes: Float
+  emailDemandeur: String
+  erreur: String
+  facturesEnergie: Float
+  loyer: Float
+  natureDettes: String
+  nomDemandeur: String
+  nombreEnfants: Float
+  prenomDemandeur: String
+  remarques: String
+  revenus: Float
+  revenusConjoint: Float
+  situationFamiliale: String
+  situationProConjoint: String
+  situationProfessionnelle: String
+  status: EnumWebsiteDemandeStatus
+  telephoneDemandeur: String
+  villeDemandeur: String
 }
 
-input VisiteWhereInput {
-  createdAt: DateTimeFilter
-  dateVisite: DateTimeNullableFilter
-  demande: DemandeWhereUniqueInput
+input WebsiteDemandeWhereInput {
+  adresseDemandeur: StringNullableFilter
+  ageDemandeur: IntNullableFilter
+  agesEnfants: StringNullableFilter
+  apl: IntNullableFilter
+  autresAides: StringNullableFilter
+  autresCharges: IntNullableFilter
+  codePostalDemandeur: IntNullableFilter
+  dettes: IntNullableFilter
+  emailDemandeur: StringNullableFilter
+  erreur: StringNullableFilter
+  facturesEnergie: IntNullableFilter
   id: StringFilter
-  rapportVisite: StringNullableFilter
+  loyer: IntNullableFilter
+  natureDettes: StringNullableFilter
+  nomDemandeur: StringNullableFilter
+  nombreEnfants: IntNullableFilter
+  prenomDemandeur: StringNullableFilter
+  remarques: StringNullableFilter
+  revenus: IntNullableFilter
+  revenusConjoint: IntNullableFilter
+  situationFamiliale: StringNullableFilter
+  situationProConjoint: StringNullableFilter
+  situationProfessionnelle: StringNullableFilter
+  status: EnumWebsiteDemandeStatus
+  telephoneDemandeur: StringNullableFilter
+  villeDemandeur: StringNullableFilter
 }
 
-input VisiteWhereUniqueInput {
+input WebsiteDemandeWhereUniqueInput {
   id: String!
 }

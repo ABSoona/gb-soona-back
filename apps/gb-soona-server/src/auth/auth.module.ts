@@ -15,11 +15,13 @@ import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
 import { UserModule } from "../user/user.module";
 import { MailService } from "src/mail/mail.service";
+import { MailModule } from "src/mail/mail.module";
 @Module({
   imports: [
     forwardRef(() => UserModule),
     PassportModule,
     SecretsManagerModule,
+    MailModule,
     JwtModule.registerAsync({
       imports: [SecretsManagerModule],
       inject: [SecretsManagerService, ConfigService],
@@ -50,8 +52,7 @@ import { MailService } from "src/mail/mail.service";
     AuthResolver,
     JwtStrategy,
     jwtSecretFactory,
-    TokenService,
-    MailService
+    TokenService
   ],
   controllers: [AuthController],
   exports: [AuthService, PasswordService],
