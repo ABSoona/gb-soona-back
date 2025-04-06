@@ -19,5 +19,8 @@ export async function customSeed() {
     },
   });
 
+
+
+
   client.$disconnect();
 }

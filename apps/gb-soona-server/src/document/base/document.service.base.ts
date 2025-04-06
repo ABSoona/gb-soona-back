@@ -121,4 +121,11 @@ export class DocumentServiceBase {
       })
       .contact();
   }
+  async getTypeDocument(documentId: string) {
+    return this.prisma.document
+      .findUnique({
+        where: { id: documentId },
+      })
+      .typeDocument();
+  }
 }

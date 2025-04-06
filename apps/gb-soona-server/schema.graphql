@@ -386,15 +386,21 @@ type Document {
   contenu: JSON
   createdAt: DateTime!
   id: String!
+  typeDocument: TypeDocument
   updatedAt: DateTime!
 }
 
 input DocumentCreateInput {
   contact: ContactWhereUniqueInput
   contenu: JSON
+  typeDocument: TypeDocumentWhereUniqueInput
 }
 
 input DocumentCreateNestedManyWithoutContactsInput {
+  connect: [DocumentWhereUniqueInput!]
+}
+
+input DocumentCreateNestedManyWithoutTypeDocumentsInput {
   connect: [DocumentWhereUniqueInput!]
 }
 
@@ -418,6 +424,12 @@ input DocumentUpdateInput {
 }
 
 input DocumentUpdateManyWithoutContactsInput {
+  connect: [DocumentWhereUniqueInput!]
+  disconnect: [DocumentWhereUniqueInput!]
+  set: [DocumentWhereUniqueInput!]
+}
+
+input DocumentUpdateManyWithoutTypeDocumentsInput {
   connect: [DocumentWhereUniqueInput!]
   disconnect: [DocumentWhereUniqueInput!]
   set: [DocumentWhereUniqueInput!]
@@ -449,6 +461,11 @@ enum EnumAideFrequence {
 enum EnumAideTypeField {
   Alimentaire
   FinanciRe
+}
+
+enum EnumTypeDocumentRattachement {
+  Contact
+  Demande
 }
 
 enum EnumUserNotificationPreferenceTypeField {
@@ -565,6 +582,7 @@ type Mutation {
   createDemande(data: DemandeCreateInput!): Demande!
   createDocument(data: DocumentCreateInput!): Document!
   createInvitation(data: InvitationCreateInput!): Invitation!
+  createTypeDocument(data: TypeDocumentCreateInput!): TypeDocument!
   createUser(data: UserCreateInput!): User!
   createUserNotificationPreference(data: UserNotificationPreferenceCreateInput!): UserNotificationPreference!
   createWebsiteDemande(data: WebsiteDemandeCreateInput!): WebsiteDemande!
@@ -574,6 +592,7 @@ type Mutation {
   deleteDemande(where: DemandeWhereUniqueInput!): Demande!
   deleteDocument(where: DocumentWhereUniqueInput!): Document!
   deleteInvitation(where: InvitationWhereUniqueInput!): Invitation!
+  deleteTypeDocument(where: TypeDocumentWhereUniqueInput!): TypeDocument!
   deleteUser(where: UserWhereUniqueInput!): User!
   deleteUserNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
   deleteWebsiteDemande(where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande!
@@ -583,6 +602,7 @@ type Mutation {
   updateDemande(data: DemandeUpdateInput!, where: DemandeWhereUniqueInput!): Demande!
   updateDocument(data: DocumentUpdateInput!, where: DocumentWhereUniqueInput!): Document!
   updateInvitation(data: InvitationUpdateInput!, where: InvitationWhereUniqueInput!): Invitation!
+  updateTypeDocument(data: TypeDocumentUpdateInput!, where: TypeDocumentWhereUniqueInput!): TypeDocument!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   updateUserNotificationPreference(data: UserNotificationPreferenceUpdateInput!, where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
   updateWebsiteDemande(data: WebsiteDemandeUpdateInput!, where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande!
@@ -595,6 +615,7 @@ type Query {
   _demandesMeta(where: DemandeWhereInput): MetaQueryPayload!
   _documentsMeta(where: DocumentWhereInput): MetaQueryPayload!
   _invitationsMeta(where: InvitationWhereInput): MetaQueryPayload!
+  _typeDocumentsMeta(where: TypeDocumentWhereInput): MetaQueryPayload!
   _userNotificationPreferencesMeta(where: UserNotificationPreferenceWhereInput): MetaQueryPayload!
   _usersMeta(where: UserWhereInput): MetaQueryPayload!
   _websiteDemandesMeta(where: WebsiteDemandeWhereInput): MetaQueryPayload!
@@ -608,6 +629,8 @@ type Query {
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   invitation(where: InvitationWhereUniqueInput!): Invitation
   invitations(orderBy: [InvitationOrderByInput!], skip: Float, take: Float, where: InvitationWhereInput): [Invitation!]!
+  typeDocument(where: TypeDocumentWhereUniqueInput!): TypeDocument
+  typeDocuments(orderBy: [TypeDocumentOrderByInput!], skip: Float, take: Float, where: TypeDocumentWhereInput): [TypeDocument!]!
   user(where: UserWhereUniqueInput!): User
   userInfo: UserInfo!
   userNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference
@@ -655,6 +678,46 @@ input StringNullableFilter {
   not: String
   notIn: [String!]
   startsWith: String
+}
+
+type TypeDocument {
+  createdAt: DateTime!
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
+  id: Float!
+  label: String!
+  rattachement: EnumTypeDocumentRattachement
+  updatedAt: DateTime!
+}
+
+input TypeDocumentCreateInput {
+  documents: DocumentCreateNestedManyWithoutTypeDocumentsInput
+  label: String!
+  rattachement: EnumTypeDocumentRattachement!
+}
+
+input TypeDocumentOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  label: SortOrder
+  rattachement: SortOrder
+  updatedAt: SortOrder
+}
+
+input TypeDocumentUpdateInput {
+  documents: DocumentUpdateManyWithoutTypeDocumentsInput
+  label: String
+  rattachement: EnumTypeDocumentRattachement
+}
+
+input TypeDocumentWhereInput {
+  documents: DocumentListRelationFilter
+  id: IntFilter
+  label: StringFilter
+  rattachement: EnumTypeDocumentRattachement
+}
+
+input TypeDocumentWhereUniqueInput {
+  id: Float!
 }
 
 """The `Upload` scalar type represents a file upload."""
