@@ -126,6 +126,9 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
       }
     }
 
+   
+    
+
     // Aucun contact trouvé : on le crée
     return await this.prisma.contact.create({
       data: {
@@ -150,8 +153,8 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         contact: {
           connect: { id: contact.id },
         },
-        situationProfessionnelle: args.situationProfessionnelle,
-        situationFamiliale: args.situationFamiliale,
+        situationProfessionnelle: args.situationProfessionnelle && mapSituationProfessionnelle(args.situationProfessionnelle),
+        situationFamiliale: args.situationFamiliale && mapSituationFamiliale(args.situationFamiliale),
         revenus: args.revenus,
         revenusConjoint: args.revenusConjoint,
         nombreEnfants: args.nombreEnfants,
@@ -161,6 +164,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         autresCharges: args.autresCharges,
         apl: args.apl,
         dettes: args.dettes,
+        loyer:  args.loyer,
         natureDettes: args.natureDettes,
         facturesEnergie: args.facturesEnergie,
         remarques: args.remarques,
@@ -189,4 +193,25 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
     }
 
   }
+
+  
+}
+function mapSituationFamiliale(value: string): string {
+  const mappings: Record<string, string> = {
+    'Marié(e)': 'marié',
+    'Célibataire': 'célibataire',
+    'Divorcé(e)': 'divorcé',
+    'Veuf(ve)': 'veuf',
+  };
+  return mappings[value] ?? value.toLowerCase();
+}
+
+function mapSituationProfessionnelle(value: string): string {
+  const mappings: Record<string, string> = {
+    'Sans emploi': 'sans_emploi',
+    'Employé(e)': 'employé',
+    'Indépendant(e)': 'indépendant',
+    'Retraité(e)': 'retraité',
+  };
+  return mappings[value] ?? value.toLowerCase();
 }
