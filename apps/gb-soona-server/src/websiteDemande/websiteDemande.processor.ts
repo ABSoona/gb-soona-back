@@ -209,8 +209,8 @@ function mapSituationFamiliale(value: string): string {
 function mapSituationProfessionnelle(value: string): string {
   const mappings: Record<string, string> = {
     'Sans emploi': 'sans_emploi',
-    'Employé(e)': 'employé',
-    'Indépendant(e)': 'indépendant',
+    'Salarié(e)': 'employé',
+    'Travailleur indépendant': 'indépendant',
     'Retraité(e)': 'retraité',
   };
   return mappings[value] ?? value.toLowerCase();
