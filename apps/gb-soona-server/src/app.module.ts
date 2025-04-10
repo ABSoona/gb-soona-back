@@ -20,10 +20,12 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
+import { TypeDocumentModule } from "./typeDocument/typeDocument.module";
 
 @Module({
   controllers: [],
   imports: [
+    TypeDocumentModule,
     StorageModule,
     ACLModule,
     AuthModule,

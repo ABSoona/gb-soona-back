@@ -46,18 +46,20 @@ export class DocumentControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async createDocument(
+  async  createDocument(
     @common.Body() data: DocumentCreateInput
   ): Promise<Document> {
     return await this.service.createDocument({
       data: {
-        ...data,
-
+        contenu: data.contenu,
+  
         contact: data.contact
-          ? {
-              connect: data.contact,
-            }
+          ? { connect: data.contact }
           : undefined,
+  
+        typeDocument: data.typeDocument
+          ? { connect: data.typeDocument }
+          : undefined, // ✅ AJOUT DE CE CHAMP
       },
       select: {
         contact: {
@@ -65,7 +67,12 @@ export class DocumentControllerBase {
             id: true,
           },
         },
-
+        typeDocument: {
+          select: {
+            id: true,
+            label: true,
+          },
+        },
         contenu: true,
         createdAt: true,
         id: true,

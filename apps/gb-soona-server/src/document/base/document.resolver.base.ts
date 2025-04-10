@@ -30,6 +30,7 @@ import { UpdateDocumentArgs } from "./UpdateDocumentArgs";
 import { DeleteDocumentArgs } from "./DeleteDocumentArgs";
 import { Contact } from "../../contact/base/Contact";
 import { DocumentService } from "../document.service";
+import { TypeDocument } from "src/typeDocument/base/TypeDocument";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Document)
 export class DocumentResolverBase {
@@ -97,12 +98,12 @@ export class DocumentResolverBase {
       ...args,
       data: {
         ...args.data,
-
         contact: args.data.contact
-          ? {
-              connect: args.data.contact,
-            }
+          ? { connect: args.data.contact }
           : undefined,
+        typeDocument: args.data.typeDocument
+          ? { connect: args.data.typeDocument }
+          : undefined, 
       },
     });
   }
@@ -181,6 +182,29 @@ export class DocumentResolverBase {
   ): Promise<Document> {
     return await this.service.deleteContenu(args);
   }
+  
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+@graphql.ResolveField(() => TypeDocument, {
+  nullable: true,
+  name: "typeDocument",
+})
+
+@nestAccessControl.UseRoles({
+  resource: "TypeDocument",
+  action: "read",
+  possession: "any",
+})
+async getTypeDocument(
+  @graphql.Parent() parent: Document
+): Promise<TypeDocument | null> {
+  const result = await this.service.getTypeDocument(parent.id);
+
+  if (!result) {
+    return null;
+  }
+  return result;
+}
+
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Contact, {
@@ -202,4 +226,5 @@ export class DocumentResolverBase {
     }
     return result;
   }
+  
 }

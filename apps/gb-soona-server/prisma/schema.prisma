@@ -30,13 +30,14 @@ model Demande {
   apl                      Int?
   autresAides              String?
   autresCharges            Int?
-  contact                  Contact   @relation(fields: [contactId], references: [id])
+  contact                  Contact    @relation(fields: [contactId], references: [id])
   contactId                Int
-  createdAt                DateTime? @default(now())
+  createdAt                DateTime?  @default(now())
   dateVisite               DateTime?
   dettes                   Int?
+  documents                Document[]
   facturesEnergie          Int?
-  id                       Int       @id @default(autoincrement())
+  id                       Int        @id @default(autoincrement())
   loyer                    Int?
   natureDettes             String?
   nombreEnfants            Int?
@@ -47,7 +48,7 @@ model Demande {
   situationProConjoint     String?
   situationProfessionnelle String?
   status                   String?
-  updatedAt                DateTime  @updatedAt
+  updatedAt                DateTime   @updatedAt
 }
 
 model Contact {
@@ -88,13 +89,31 @@ model User {
   username                    String                       @unique
 }
 
+model TypeDocument {
+  createdAt    DateTime                     @default(now())
+  documents    Document[]
+  id           Int                          @id @default(autoincrement())
+  label        String
+  rattachement EnumTypeDocumentRattachement
+  updatedAt    DateTime                     @updatedAt
+}
+enum EnumTypeDocumentRattachement {
+  Contact
+  Demande
+}
+
+
 model Document {
-  contact   Contact? @relation(fields: [contactId], references: [id])
-  contactId Int?
-  contenu   Json?
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
+  contact        Contact?      @relation(fields: [contactId], references: [id])
+  contactId      Int?
+  contenu        Json?
+  createdAt      DateTime      @default(now())
+  demande        Demande?      @relation(fields: [demandeId], references: [id])
+  demandeId      Int?
+  id             String        @id @default(cuid())
+  typeDocument   TypeDocument? @relation(fields: [typeDocumentId], references: [id])
+  typeDocumentId String?
+  updatedAt      DateTime      @updatedAt
 }
 
 model UserNotificationPreference {

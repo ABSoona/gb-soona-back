@@ -17,7 +17,8 @@
     "package:container": "docker build .",
     "compose:up": "docker-compose up -d",
     "compose:down": "docker-compose down --volumes",
-    "start:vercel": "node dist/main.js"
+    "start:vercel": "node dist/main.js",
+    "generate:schema": "ts-node -r tsconfig-paths/register src/main.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",

@@ -6,31 +6,7 @@
     "attributes": "*"
   },
   {
-    "role": "external",
-    "resource": "Aide",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Aide",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "admin",
-    "resource": "Aide",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Aide",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
     "resource": "Aide",
     "action": "create:any",
     "attributes": "*"
@@ -42,31 +18,7 @@
     "attributes": "*"
   },
   {
-    "role": "external",
-    "resource": "Aide",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Aide",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "admin",
-    "resource": "Aide",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Aide",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
     "resource": "Aide",
     "action": "delete:any",
     "attributes": "*"
@@ -78,39 +30,549 @@
     "attributes": "*"
   },
   {
-    "role": "external",
+    "role": "admin",
+    "resource": "Demande",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Aide",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Aide",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Aide",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Aide",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
     "resource": "Aide",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "user",
+    "resource": "Demande",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Demande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Demande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Demande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Demande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Contact",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Contact",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Contact",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Contact",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Contact",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Document",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Document",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Document",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Document",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Document",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserNotificationPreference",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserNotificationPreference",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserNotificationPreference",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserNotificationPreference",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "UserNotificationPreference",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invitation",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invitation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invitation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invitation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Invitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "WebsiteDemande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "TypeDocument",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "TypeDocument",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "TypeDocument",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "TypeDocument",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "TypeDocument",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "Aide",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "Aide",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "Aide",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "Aide",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
     "resource": "Aide",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "admin",
-    "resource": "Demande",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Demande",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Demande",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Demande",
-    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -120,33 +582,9 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Demande",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Demande",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Demande",
     "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Demande",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Demande",
-    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -156,51 +594,15 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Demande",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Demande",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Demande",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Demande",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Contact",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Contact",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Contact",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Contact",
-    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -210,33 +612,9 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Contact",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Contact",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Contact",
     "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Contact",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Contact",
-    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -246,51 +624,15 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Contact",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Contact",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Contact",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Contact",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "User",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -300,33 +642,9 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "User",
     "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "User",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -336,51 +654,15 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "User",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "User",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Document",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Document",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Document",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Document",
-    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -390,33 +672,9 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Document",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Document",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Document",
     "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Document",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Document",
-    "action": "delete:any",
     "attributes": "*"
   },
   {
@@ -426,33 +684,9 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Document",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Document",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Document",
     "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Document",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "UserNotificationPreference",
-    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -462,33 +696,9 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "UserNotificationPreference",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "UserNotificationPreference",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "UserNotificationPreference",
     "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserNotificationPreference",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "UserNotificationPreference",
-    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -498,13 +708,7 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "UserNotificationPreference",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
+    "role": "external",
     "resource": "UserNotificationPreference",
     "action": "delete:any",
     "attributes": "*"
@@ -512,37 +716,7 @@
   {
     "role": "external",
     "resource": "UserNotificationPreference",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserNotificationPreference",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "UserNotificationPreference",
     "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "UserNotificationPreference",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "UserNotificationPreference",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Invitation",
-    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -552,33 +726,9 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Invitation",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Invitation",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
     "role": "external",
     "resource": "Invitation",
     "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Invitation",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Invitation",
-    "action": "update:any",
     "attributes": "*"
   },
   {
@@ -588,13 +738,7 @@
     "attributes": "*"
   },
   {
-    "role": "user",
-    "resource": "Invitation",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
+    "role": "external",
     "resource": "Invitation",
     "action": "delete:any",
     "attributes": "*"
@@ -602,37 +746,7 @@
   {
     "role": "external",
     "resource": "Invitation",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Invitation",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Invitation",
     "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "Invitation",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Invitation",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "WebsiteDemande",
-    "action": "read:own",
     "attributes": "*"
   },
   {
@@ -642,80 +756,56 @@
     "attributes": "*"
   },
   {
-    "role": "user",
+    "role": "external",
     "resource": "WebsiteDemande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "WebsiteDemande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "external",
+    "resource": "TypeDocument",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "admin",
-    "resource": "WebsiteDemande",
+    "role": "external",
+    "resource": "TypeDocument",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "external",
-    "resource": "WebsiteDemande",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "WebsiteDemande",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "WebsiteDemande",
+    "resource": "TypeDocument",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "external",
-    "resource": "WebsiteDemande",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "WebsiteDemande",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "WebsiteDemande",
+    "resource": "TypeDocument",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "external",
-    "resource": "WebsiteDemande",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "WebsiteDemande",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "WebsiteDemande",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "external",
-    "resource": "WebsiteDemande",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "WebsiteDemande",
+    "resource": "TypeDocument",
     "action": "read:any",
     "attributes": "*"
   }
