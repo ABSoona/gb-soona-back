@@ -252,10 +252,12 @@ type Demande {
   apl: Float
   autresAides: String
   autresCharges: Float
+  categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: Contact
   createdAt: DateTime
   dateVisite: DateTime
   dettes: Float
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   facturesEnergie: Float
   id: Float!
   loyer: Float
@@ -276,9 +278,11 @@ input DemandeCreateInput {
   apl: Float
   autresAides: String
   autresCharges: Float
+  categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: ContactWhereUniqueInput!
   dateVisite: DateTime
   dettes: Float
+  documents: DocumentCreateNestedManyWithoutDemandesInput
   facturesEnergie: Float
   loyer: Float
   natureDettes: String
@@ -307,6 +311,7 @@ input DemandeOrderByInput {
   apl: SortOrder
   autresAides: SortOrder
   autresCharges: SortOrder
+  categorieDemandeur: SortOrder
   contactId: SortOrder
   createdAt: SortOrder
   dateVisite: SortOrder
@@ -331,9 +336,11 @@ input DemandeUpdateInput {
   apl: Float
   autresAides: String
   autresCharges: Float
+  categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: ContactWhereUniqueInput
   dateVisite: DateTime
   dettes: Float
+  documents: DocumentUpdateManyWithoutDemandesInput
   facturesEnergie: Float
   loyer: Float
   natureDettes: String
@@ -358,10 +365,12 @@ input DemandeWhereInput {
   apl: IntNullableFilter
   autresAides: StringNullableFilter
   autresCharges: IntNullableFilter
+  categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: ContactWhereUniqueInput
   createdAt: DateTimeNullableFilter
   dateVisite: DateTimeNullableFilter
   dettes: IntNullableFilter
+  documents: DocumentListRelationFilter
   facturesEnergie: IntNullableFilter
   id: IntFilter
   loyer: IntNullableFilter
@@ -385,6 +394,7 @@ type Document {
   contact: Contact
   contenu: JSON
   createdAt: DateTime!
+  demande: Demande
   id: String!
   typeDocument: TypeDocument
   updatedAt: DateTime!
@@ -393,10 +403,15 @@ type Document {
 input DocumentCreateInput {
   contact: ContactWhereUniqueInput
   contenu: JSON
+  demande: DemandeWhereUniqueInput
   typeDocument: TypeDocumentWhereUniqueInput
 }
 
 input DocumentCreateNestedManyWithoutContactsInput {
+  connect: [DocumentWhereUniqueInput!]
+}
+
+input DocumentCreateNestedManyWithoutDemandesInput {
   connect: [DocumentWhereUniqueInput!]
 }
 
@@ -414,16 +429,26 @@ input DocumentOrderByInput {
   contactId: SortOrder
   contenu: SortOrder
   createdAt: SortOrder
+  demandeId: SortOrder
   id: SortOrder
+  typeDocumentId: SortOrder
   updatedAt: SortOrder
 }
 
 input DocumentUpdateInput {
   contact: ContactWhereUniqueInput
   contenu: JSON
+  demande: DemandeWhereUniqueInput
+  typeDocument: TypeDocumentWhereUniqueInput
 }
 
 input DocumentUpdateManyWithoutContactsInput {
+  connect: [DocumentWhereUniqueInput!]
+  disconnect: [DocumentWhereUniqueInput!]
+  set: [DocumentWhereUniqueInput!]
+}
+
+input DocumentUpdateManyWithoutDemandesInput {
   connect: [DocumentWhereUniqueInput!]
   disconnect: [DocumentWhereUniqueInput!]
   set: [DocumentWhereUniqueInput!]
@@ -438,7 +463,9 @@ input DocumentUpdateManyWithoutTypeDocumentsInput {
 input DocumentWhereInput {
   contact: ContactWhereUniqueInput
   contenu: JsonFilter
+  demande: DemandeWhereUniqueInput
   id: StringFilter
+  typeDocument: TypeDocumentWhereUniqueInput
 }
 
 input DocumentWhereUniqueInput {
@@ -461,6 +488,12 @@ enum EnumAideFrequence {
 enum EnumAideTypeField {
   Alimentaire
   FinanciRe
+}
+
+enum EnumDemandeCategorieDemandeur {
+  LourdementEndett
+  NCessiteux
+  Pauvre
 }
 
 enum EnumTypeDocumentRattachement {

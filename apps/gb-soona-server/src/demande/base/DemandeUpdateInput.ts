@@ -11,17 +11,22 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+
 import {
   IsString,
   MaxLength,
   IsOptional,
   IsInt,
   Max,
+  IsEnum,
   ValidateNested,
   IsDate,
 } from "class-validator";
+
+import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { Type } from "class-transformer";
+import { DocumentUpdateManyWithoutDemandesInput } from "./DocumentUpdateManyWithoutDemandesInput";
 
 @InputType()
 class DemandeUpdateInput {
@@ -75,6 +80,17 @@ class DemandeUpdateInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumDemandeCategorieDemandeur,
+  })
+  @IsEnum(EnumDemandeCategorieDemandeur)
+  @IsOptional()
+  @Field(() => EnumDemandeCategorieDemandeur, {
+    nullable: true,
+  })
+  categorieDemandeur?: "LourdementEndett" | "NCessiteux" | "Pauvre" | null;
+
+  @ApiProperty({
+    required: false,
     type: () => ContactWhereUniqueInput,
   })
   @ValidateNested()
@@ -107,6 +123,18 @@ class DemandeUpdateInput {
     nullable: true,
   })
   dettes?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DocumentUpdateManyWithoutDemandesInput,
+  })
+  @ValidateNested()
+  @Type(() => DocumentUpdateManyWithoutDemandesInput)
+  @IsOptional()
+  @Field(() => DocumentUpdateManyWithoutDemandesInput, {
+    nullable: true,
+  })
+  documents?: DocumentUpdateManyWithoutDemandesInput;
 
   @ApiProperty({
     required: false,

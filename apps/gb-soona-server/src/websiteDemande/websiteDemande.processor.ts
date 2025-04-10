@@ -111,6 +111,12 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
 
       if (contacts.length === 1) {
         if (contacts[0].status === 'blacklisté') {
+          
+          if(contacts[0]?.email){
+            const contact_name = contacts[0].prenom?contacts[0].prenom:'Assalamou Alaykoum'
+            this.mailService.sendMailAsync('contact-blacklist',contacts[0]?.email,{contact_name},'Suite à votre demande sur soona.fr')
+          }
+          
           throw new Error(`Contact Blacklisté, aucune demande ne sera créée`);
         }
         else {

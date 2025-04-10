@@ -11,17 +11,22 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+
 import {
   IsString,
   MaxLength,
   IsOptional,
   IsInt,
   Max,
+  IsEnum,
   ValidateNested,
   IsDate,
 } from "class-validator";
+
+import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { Type } from "class-transformer";
+import { DocumentCreateNestedManyWithoutDemandesInput } from "./DocumentCreateNestedManyWithoutDemandesInput";
 
 @InputType()
 class DemandeCreateInput {
@@ -74,6 +79,17 @@ class DemandeCreateInput {
   autresCharges?: number | null;
 
   @ApiProperty({
+    required: false,
+    enum: EnumDemandeCategorieDemandeur,
+  })
+  @IsEnum(EnumDemandeCategorieDemandeur)
+  @IsOptional()
+  @Field(() => EnumDemandeCategorieDemandeur, {
+    nullable: true,
+  })
+  categorieDemandeur?: "LourdementEndett" | "NCessiteux" | "Pauvre" | null;
+
+  @ApiProperty({
     required: true,
     type: () => ContactWhereUniqueInput,
   })
@@ -104,6 +120,18 @@ class DemandeCreateInput {
     nullable: true,
   })
   dettes?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DocumentCreateNestedManyWithoutDemandesInput,
+  })
+  @ValidateNested()
+  @Type(() => DocumentCreateNestedManyWithoutDemandesInput)
+  @IsOptional()
+  @Field(() => DocumentCreateNestedManyWithoutDemandesInput, {
+    nullable: true,
+  })
+  documents?: DocumentCreateNestedManyWithoutDemandesInput;
 
   @ApiProperty({
     required: false,

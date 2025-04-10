@@ -11,17 +11,22 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+
 import {
   IsString,
   MaxLength,
   IsOptional,
   IsInt,
   Max,
+  IsEnum,
   ValidateNested,
   IsDate,
 } from "class-validator";
+
+import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { Contact } from "../../contact/base/Contact";
 import { Type } from "class-transformer";
+import { Document } from "../../document/base/Document";
 
 @ObjectType()
 class Demande {
@@ -74,6 +79,17 @@ class Demande {
   autresCharges!: number | null;
 
   @ApiProperty({
+    required: false,
+    enum: EnumDemandeCategorieDemandeur,
+  })
+  @IsEnum(EnumDemandeCategorieDemandeur)
+  @IsOptional()
+  @Field(() => EnumDemandeCategorieDemandeur, {
+    nullable: true,
+  })
+  categorieDemandeur?: "LourdementEndett" | "NCessiteux" | "Pauvre" | null;
+
+  @ApiProperty({
     required: true,
     type: () => Contact,
   })
@@ -114,6 +130,15 @@ class Demande {
     nullable: true,
   })
   dettes!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Document],
+  })
+  @ValidateNested()
+  @Type(() => Document)
+  @IsOptional()
+  documents?: Array<Document>;
 
   @ApiProperty({
     required: false,

@@ -15,7 +15,9 @@ import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueIn
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { JsonFilter } from "../../util/JsonFilter";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { TypeDocumentWhereUniqueInput } from "../../typeDocument/base/TypeDocumentWhereUniqueInput";
 
 @InputType()
 class DocumentWhereInput {
@@ -44,6 +46,18 @@ class DocumentWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => DemandeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DemandeWhereUniqueInput, {
+    nullable: true,
+  })
+  demande?: DemandeWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
     type: StringFilter,
   })
   @Type(() => StringFilter)
@@ -52,6 +66,18 @@ class DocumentWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => TypeDocumentWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => TypeDocumentWhereUniqueInput)
+  @IsOptional()
+  @Field(() => TypeDocumentWhereUniqueInput, {
+    nullable: true,
+  })
+  typeDocument?: TypeDocumentWhereUniqueInput;
 }
 
 export { DocumentWhereInput as DocumentWhereInput };
