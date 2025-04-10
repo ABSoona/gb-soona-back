@@ -27,6 +27,9 @@ RUN npm run build
 # copier manuellement les templates MJML dans dist après le build
 RUN mkdir -p dist/mail/templates && cp -r src/mail/templates/* dist/mail/templates/
 
+# copier aussi les assets email (images, etc.)
+RUN mkdir -p dist/mail/assets && cp -r src/mail/assets/* dist/mail/assets/
+
 # multi-stage: production (runtime)
 FROM node:18.13.0-slim AS production
 
