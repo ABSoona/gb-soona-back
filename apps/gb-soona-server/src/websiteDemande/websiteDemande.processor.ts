@@ -159,7 +159,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         revenusConjoint: args.revenusConjoint,
         nombreEnfants: args.nombreEnfants,
         agesEnfants: args.agesEnfants,
-        situationProConjoint: args.situationProConjoint,
+        situationProConjoint: args.situationProConjoint && mapSituationProfessionnelle(args.situationProConjoint),
         autresAides: args.autresAides,
         autresCharges: args.autresCharges,
         apl: args.apl,
