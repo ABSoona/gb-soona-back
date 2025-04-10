@@ -32,7 +32,8 @@ export class DemandeService extends DemandeServiceBase {
           });
       const lien_demande = `${process.env.FRONTEND_URL}/demandes/${demande.id}`
           if (user?.email) {
-            await this.mailService.sendUserMail('nouvelle-demande',user.email,{lien_demande},'Nouvelle de demande enregistrée');
+           
+             this.mailService.sendMailAsync('nouvelle-demande',user.email,{lien_demande},'Nouvelle de demande enregistrée');
           }
         }
  
@@ -63,7 +64,7 @@ export class DemandeService extends DemandeServiceBase {
             typeField: mapping.notification,
           },
         });
-        console.log("envoie")
+       
         for (const notif of notifs) {
           const user = await this.prisma.user.findUnique({
             where: { id: notif.userId },
@@ -75,7 +76,7 @@ export class DemandeService extends DemandeServiceBase {
             const status = mapping.label;
             
   
-            await this.mailService.sendUserMail(
+            this.mailService.sendMailAsync(
               'demande-status-update',
               user.email,
               { lien_demande, numeroDemande, status },
