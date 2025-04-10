@@ -1,0 +1,19 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+    <mj-text font-size="20px" font-weight="bold" color="#333333">
+      ❌ Demande non traitée
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+      {{contact_name}},<br /><br />
+      Nous faisons suite à votre demande sur <strong>soona.fr</strong>. Nous vous informons que nous ne sommes malheureusement pas en mesure de la traiter.
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+      Si vous souhaitez obtenir davantage d’informations, vous pouvez contacter l’un de nos bénévoles. Ils pourront répondre à vos questions et vous orienter si besoin.
+    </mj-text>
+     <mj-text font-size="16px" color="#555555" padding-top="20px">
+      nous espérons sincèrement que votre situation s’améliorera et vous souhaitons force et courage dans vos démarches.
+    </mj-text>       
+  </mj-column>
+</mj-section>

@@ -17,7 +17,8 @@ import { Type } from "class-transformer";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
-import { TypeDocumentWhereUniqueInput } from "src/typeDocument/base/TypeDocumentWhereUniqueInput";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
+import { TypeDocumentWhereUniqueInput } from "../../typeDocument/base/TypeDocumentWhereUniqueInput";
 
 @InputType()
 class DocumentCreateInput {
@@ -43,10 +44,29 @@ class DocumentCreateInput {
   })
   contenu?: InputJsonValue;
 
-  @Field(() => TypeDocumentWhereUniqueInput, { nullable: true })
+  @ApiProperty({
+    required: false,
+    type: () => DemandeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DemandeWhereUniqueInput, {
+    nullable: true,
+  })
+  demande?: DemandeWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => TypeDocumentWhereUniqueInput,
+  })
   @ValidateNested()
   @Type(() => TypeDocumentWhereUniqueInput)
-  typeDocument?: TypeDocumentWhereUniqueInput;
+  @IsOptional()
+  @Field(() => TypeDocumentWhereUniqueInput, {
+    nullable: true,
+  })
+  typeDocument?: TypeDocumentWhereUniqueInput | null;
 }
 
 export { DocumentCreateInput as DocumentCreateInput };

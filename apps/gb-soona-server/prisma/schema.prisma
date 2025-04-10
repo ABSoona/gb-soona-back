@@ -30,14 +30,15 @@ model Demande {
   apl                      Int?
   autresAides              String?
   autresCharges            Int?
-  contact                  Contact    @relation(fields: [contactId], references: [id])
+  categorieDemandeur       EnumDemandeCategorieDemandeur?
+  contact                  Contact                        @relation(fields: [contactId], references: [id])
   contactId                Int
-  createdAt                DateTime?  @default(now())
+  createdAt                DateTime?                      @default(now())
   dateVisite               DateTime?
   dettes                   Int?
   documents                Document[]
   facturesEnergie          Int?
-  id                       Int        @id @default(autoincrement())
+  id                       Int                            @id @default(autoincrement())
   loyer                    Int?
   natureDettes             String?
   nombreEnfants            Int?
@@ -48,8 +49,9 @@ model Demande {
   situationProConjoint     String?
   situationProfessionnelle String?
   status                   String?
-  updatedAt                DateTime   @updatedAt
+  updatedAt                DateTime                       @updatedAt
 }
+
 
 model Contact {
   adresse         String?
@@ -112,7 +114,7 @@ model Document {
   demandeId      Int?
   id             String        @id @default(cuid())
   typeDocument   TypeDocument? @relation(fields: [typeDocumentId], references: [id])
-  typeDocumentId String?
+  typeDocumentId Int?
   updatedAt      DateTime      @updatedAt
 }
 
@@ -200,4 +202,9 @@ enum EnumWebsiteDemandeStatus {
   EnErreur
   Trait
   Recue
+}
+enum EnumDemandeCategorieDemandeur {
+  LourdementEndett
+  NCessiteux
+  Pauvre
 }

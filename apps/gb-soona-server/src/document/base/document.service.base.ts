@@ -10,11 +10,15 @@ https://docs.amplication.com/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "../../prisma/prisma.service";
+
 import {
   Prisma,
   Document as PrismaDocument,
   Contact as PrismaContact,
+  Demande as PrismaDemande,
+  TypeDocument as PrismaTypeDocument,
 } from "@prisma/client";
+
 import { LocalStorageService } from "src/storage/providers/local/local.storage.service";
 import { InputJsonValue } from "src/types";
 import { FileDownload, FileUpload } from "src/storage/base/storage.types";
@@ -60,11 +64,9 @@ export class DocumentServiceBase {
     args: Prisma.SelectSubset<T, Prisma.DocumentFindUniqueArgs>,
     file: FileUpload
   ): Promise<PrismaDocument> {
-    
-    const originalName = file.filename.split(".").slice(0, -1).join(".");
-    const extension = file.filename.split(".").pop();
-    
-    file.filename = `${originalName}-${args.where.id}.${extension}`;
+    file.filename = `profilePicture-${args.where.id}.${file.filename
+      .split(".")
+      .pop()}`;
     const containerPath = "/uploads";
     const contenu = await this.localStorageService.uploadFile(
       file,
@@ -121,10 +123,19 @@ export class DocumentServiceBase {
       })
       .contact();
   }
-  async getTypeDocument(documentId: string) {
+
+  async getDemande(parentId: string): Promise<PrismaDemande | null> {
     return this.prisma.document
       .findUnique({
-        where: { id: documentId },
+        where: { id: parentId },
+      })
+      .demande();
+  }
+
+  async getTypeDocument(parentId: string): Promise<PrismaTypeDocument | null> {
+    return this.prisma.document
+      .findUnique({
+        where: { id: parentId },
       })
       .typeDocument();
   }

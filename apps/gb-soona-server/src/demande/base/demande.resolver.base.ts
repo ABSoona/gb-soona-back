@@ -26,6 +26,8 @@ import { DemandeFindUniqueArgs } from "./DemandeFindUniqueArgs";
 import { CreateDemandeArgs } from "./CreateDemandeArgs";
 import { UpdateDemandeArgs } from "./UpdateDemandeArgs";
 import { DeleteDemandeArgs } from "./DeleteDemandeArgs";
+import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
+import { Document } from "../../document/base/Document";
 import { Contact } from "../../contact/base/Contact";
 import { DemandeService } from "../demande.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -153,6 +155,26 @@ export class DemandeResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Document], { name: "documents" })
+  @nestAccessControl.UseRoles({
+    resource: "Document",
+    action: "read",
+    possession: "any",
+  })
+  async findDocuments(
+    @graphql.Parent() parent: Demande,
+    @graphql.Args() args: DocumentFindManyArgs
+  ): Promise<Document[]> {
+    const results = await this.service.findDocuments(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

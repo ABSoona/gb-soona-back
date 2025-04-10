@@ -26,6 +26,9 @@ import { Demande } from "./Demande";
 import { DemandeFindManyArgs } from "./DemandeFindManyArgs";
 import { DemandeWhereUniqueInput } from "./DemandeWhereUniqueInput";
 import { DemandeUpdateInput } from "./DemandeUpdateInput";
+import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
+import { Document } from "../../document/base/Document";
+import { DocumentWhereUniqueInput } from "../../document/base/DocumentWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -61,6 +64,7 @@ export class DemandeControllerBase {
         apl: true,
         autresAides: true,
         autresCharges: true,
+        categorieDemandeur: true,
 
         contact: {
           select: {
@@ -109,6 +113,7 @@ export class DemandeControllerBase {
         apl: true,
         autresAides: true,
         autresCharges: true,
+        categorieDemandeur: true,
 
         contact: {
           select: {
@@ -158,6 +163,7 @@ export class DemandeControllerBase {
         apl: true,
         autresAides: true,
         autresCharges: true,
+        categorieDemandeur: true,
 
         contact: {
           select: {
@@ -222,6 +228,7 @@ export class DemandeControllerBase {
           apl: true,
           autresAides: true,
           autresCharges: true,
+          categorieDemandeur: true,
 
           contact: {
             select: {
@@ -279,6 +286,7 @@ export class DemandeControllerBase {
           apl: true,
           autresAides: true,
           autresCharges: true,
+          categorieDemandeur: true,
 
           contact: {
             select: {
@@ -312,5 +320,121 @@ export class DemandeControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/documents")
+  @ApiNestedQuery(DocumentFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Document",
+    action: "read",
+    possession: "any",
+  })
+  async findDocuments(
+    @common.Req() request: Request,
+    @common.Param() params: DemandeWhereUniqueInput
+  ): Promise<Document[]> {
+    const query = plainToClass(DocumentFindManyArgs, request.query);
+    const results = await this.service.findDocuments(params.id, {
+      ...query,
+      select: {
+        contact: {
+          select: {
+            id: true,
+          },
+        },
+
+        contenu: true,
+        createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        typeDocument: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/documents")
+  @nestAccessControl.UseRoles({
+    resource: "Demande",
+    action: "update",
+    possession: "any",
+  })
+  async connectDocuments(
+    @common.Param() params: DemandeWhereUniqueInput,
+    @common.Body() body: DocumentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      documents: {
+        connect: body,
+      },
+    };
+    await this.service.updateDemande({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/documents")
+  @nestAccessControl.UseRoles({
+    resource: "Demande",
+    action: "update",
+    possession: "any",
+  })
+  async updateDocuments(
+    @common.Param() params: DemandeWhereUniqueInput,
+    @common.Body() body: DocumentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      documents: {
+        set: body,
+      },
+    };
+    await this.service.updateDemande({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/documents")
+  @nestAccessControl.UseRoles({
+    resource: "Demande",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectDocuments(
+    @common.Param() params: DemandeWhereUniqueInput,
+    @common.Body() body: DocumentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      documents: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateDemande({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

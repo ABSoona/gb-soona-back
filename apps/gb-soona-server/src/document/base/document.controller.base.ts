@@ -46,20 +46,30 @@ export class DocumentControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async  createDocument(
+  async createDocument(
     @common.Body() data: DocumentCreateInput
   ): Promise<Document> {
     return await this.service.createDocument({
       data: {
-        contenu: data.contenu,
-  
+        ...data,
+
         contact: data.contact
-          ? { connect: data.contact }
+          ? {
+              connect: data.contact,
+            }
           : undefined,
-  
+
+        demande: data.demande
+          ? {
+              connect: data.demande,
+            }
+          : undefined,
+
         typeDocument: data.typeDocument
-          ? { connect: data.typeDocument }
-          : undefined, // ✅ AJOUT DE CE CHAMP
+          ? {
+              connect: data.typeDocument,
+            }
+          : undefined,
       },
       select: {
         contact: {
@@ -67,15 +77,24 @@ export class DocumentControllerBase {
             id: true,
           },
         },
+
+        contenu: true,
+        createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
         typeDocument: {
           select: {
             id: true,
-            label: true,
           },
         },
-        contenu: true,
-        createdAt: true,
-        id: true,
+
         updatedAt: true,
       },
     });
@@ -106,7 +125,21 @@ export class DocumentControllerBase {
 
         contenu: true,
         createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+
+        typeDocument: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -138,7 +171,21 @@ export class DocumentControllerBase {
 
         contenu: true,
         createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
+
+        typeDocument: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -177,6 +224,18 @@ export class DocumentControllerBase {
                 connect: data.contact,
               }
             : undefined,
+
+          demande: data.demande
+            ? {
+                connect: data.demande,
+              }
+            : undefined,
+
+          typeDocument: data.typeDocument
+            ? {
+                connect: data.typeDocument,
+              }
+            : undefined,
         },
         select: {
           contact: {
@@ -187,7 +246,21 @@ export class DocumentControllerBase {
 
           contenu: true,
           createdAt: true,
+
+          demande: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+
+          typeDocument: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -227,7 +300,21 @@ export class DocumentControllerBase {
 
           contenu: true,
           createdAt: true,
+
+          demande: {
+            select: {
+              id: true,
+            },
+          },
+
           id: true,
+
+          typeDocument: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });

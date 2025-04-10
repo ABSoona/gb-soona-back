@@ -13,10 +13,12 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional, IsEnum, ValidateNested } from "class-validator";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { DocumentListRelationFilter } from "../../document/base/DocumentListRelationFilter";
 import { IntFilter } from "../../util/IntFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 
@@ -68,6 +70,17 @@ class DemandeWhereInput {
 
   @ApiProperty({
     required: false,
+    enum: EnumDemandeCategorieDemandeur,
+  })
+  @IsEnum(EnumDemandeCategorieDemandeur)
+  @IsOptional()
+  @Field(() => EnumDemandeCategorieDemandeur, {
+    nullable: true,
+  })
+  categorieDemandeur?: "LourdementEndett" | "NCessiteux" | "Pauvre";
+
+  @ApiProperty({
+    required: false,
     type: () => ContactWhereUniqueInput,
   })
   @ValidateNested()
@@ -110,6 +123,18 @@ class DemandeWhereInput {
     nullable: true,
   })
   dettes?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => DocumentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => DocumentListRelationFilter)
+  @IsOptional()
+  @Field(() => DocumentListRelationFilter, {
+    nullable: true,
+  })
+  documents?: DocumentListRelationFilter;
 
   @ApiProperty({
     required: false,

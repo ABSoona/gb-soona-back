@@ -39,7 +39,7 @@ export class AuthService {
       credentials.password
     );
     if (!user) {
-      throw new UnauthorizedException("The passed credentials are incorrect");
+      throw new UnauthorizedException("Email ou mot de passe incorrects");
     }
     const accessToken = await this.tokenService.createToken({
       id: user.id,
