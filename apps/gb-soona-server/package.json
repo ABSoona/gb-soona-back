@@ -6,6 +6,7 @@
     "start:watch": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "build": "nest build",
+    "postbuild": "cp -r src/mail/templates dist/mail/templates",
     "test": "jest",
     "seed": "ts-node scripts/seed.ts",
     "db:migrate-save": "prisma migrate dev",
@@ -19,6 +20,7 @@
     "compose:down": "docker-compose down --volumes",
     "start:vercel": "node dist/main.js",
     "generate:schema": "ts-node -r tsconfig-paths/register src/main.ts"
+    
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",

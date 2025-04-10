@@ -14,6 +14,9 @@ RUN npm install
 # copy over the prisma schema
 COPY prisma/schema.prisma ./prisma/
 
+# copier manuellement les templates MJML dans dist après le build
+RUN mkdir -p dist/mail/templates && cp -r src/mail/templates/* dist/mail/templates/
+
 # generate the prisma client based on the schema
 RUN npm run prisma:generate
 
