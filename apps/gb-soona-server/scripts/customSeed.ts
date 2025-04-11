@@ -15,7 +15,7 @@ export async function customSeed() {
   await client.user.update({
     where: { username: username },
     data: {
-      username,firstName,lastName,status,email,roles,role
+      firstName,lastName,status,email,roles,role
     },
   });
 

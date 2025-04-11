@@ -46,8 +46,8 @@ if (!wpApiPass) {
 }
 
   const apiUser = {
-    username: "wordpress",
-    email: "gb@soona.fr",
+    username: "wordpress@soona.fr",
+    email: "wordpress@soona.fr",
     firstName : "wordpress",
     lastName : "api",
     status : "active",
