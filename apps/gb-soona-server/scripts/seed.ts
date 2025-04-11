@@ -61,7 +61,7 @@ if (!wpApiPass) {
       username: apiUser.username,
     },
 
-    update:  apiUser,
+    update:  {},
     create: apiUser,
   });
 
