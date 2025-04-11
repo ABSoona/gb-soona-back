@@ -40,6 +40,31 @@ async function seed(bcryptSalt: Salt) {
     create: data,
   });
 
+  const wpApiPass = process.env.WP_API_PASS;
+if (!wpApiPass) {
+  throw new Error("WP_API_PASS environment variable must be defined");
+}
+
+  const apiUser = {
+    username: "wordpress",
+    email: "gb@soona.fr",
+    firstName : "wordpress",
+    lastName : "api",
+    status : "active",
+    password: await hash(wpApiPass, bcryptSalt),
+    roles: ["user"],
+    role: "admin",
+  };
+
+  await client.user.upsert({
+    where: {
+      username: apiUser.username,
+    },
+
+    update:  apiUser,
+    create: apiUser,
+  });
+
   void client.$disconnect();
 
   console.info("Seeding database with custom seed...");
