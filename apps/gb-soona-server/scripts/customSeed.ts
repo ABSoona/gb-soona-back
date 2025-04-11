@@ -2,8 +2,8 @@ import { PrismaClient } from "@prisma/client";
 
 export async function customSeed() {
   const client = new PrismaClient();
-  const username = "admin";
-  const email = "admin@soona.fr";
+  const username = "gb@soona.fr";
+  const email = "gb@soona.fr";
   const firstName = "admin";
   const lastName = "admin";
   const status = "active"
