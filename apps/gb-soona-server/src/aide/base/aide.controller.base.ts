@@ -26,6 +26,9 @@ import { Aide } from "./Aide";
 import { AideFindManyArgs } from "./AideFindManyArgs";
 import { AideWhereUniqueInput } from "./AideWhereUniqueInput";
 import { AideUpdateInput } from "./AideUpdateInput";
+import { DemandeActivityFindManyArgs } from "../../demandeActivity/base/DemandeActivityFindManyArgs";
+import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
+import { DemandeActivityWhereUniqueInput } from "../../demandeActivity/base/DemandeActivityWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -53,6 +56,12 @@ export class AideControllerBase {
         contact: {
           connect: data.contact,
         },
+
+        demande: data.demande
+          ? {
+              connect: data.demande,
+            }
+          : undefined,
       },
       select: {
         contact: {
@@ -65,12 +74,21 @@ export class AideControllerBase {
         crediteur: true,
         dateAide: true,
         dateExpiration: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
         frequence: true,
         id: true,
         infosCrediteur: true,
         montant: true,
         nombreVersements: true,
+        reetudier: true,
         remarque: true,
+        status: true,
         suspendue: true,
         typeField: true,
         updatedAt: true,
@@ -105,12 +123,21 @@ export class AideControllerBase {
         crediteur: true,
         dateAide: true,
         dateExpiration: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
         frequence: true,
         id: true,
         infosCrediteur: true,
         montant: true,
         nombreVersements: true,
+        reetudier: true,
         remarque: true,
+        status: true,
         suspendue: true,
         typeField: true,
         updatedAt: true,
@@ -146,12 +173,21 @@ export class AideControllerBase {
         crediteur: true,
         dateAide: true,
         dateExpiration: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
         frequence: true,
         id: true,
         infosCrediteur: true,
         montant: true,
         nombreVersements: true,
+        reetudier: true,
         remarque: true,
+        status: true,
         suspendue: true,
         typeField: true,
         updatedAt: true,
@@ -190,6 +226,12 @@ export class AideControllerBase {
           contact: {
             connect: data.contact,
           },
+
+          demande: data.demande
+            ? {
+                connect: data.demande,
+              }
+            : undefined,
         },
         select: {
           contact: {
@@ -202,12 +244,21 @@ export class AideControllerBase {
           crediteur: true,
           dateAide: true,
           dateExpiration: true,
+
+          demande: {
+            select: {
+              id: true,
+            },
+          },
+
           frequence: true,
           id: true,
           infosCrediteur: true,
           montant: true,
           nombreVersements: true,
+          reetudier: true,
           remarque: true,
+          status: true,
           suspendue: true,
           typeField: true,
           updatedAt: true,
@@ -251,12 +302,21 @@ export class AideControllerBase {
           crediteur: true,
           dateAide: true,
           dateExpiration: true,
+
+          demande: {
+            select: {
+              id: true,
+            },
+          },
+
           frequence: true,
           id: true,
           infosCrediteur: true,
           montant: true,
           nombreVersements: true,
+          reetudier: true,
           remarque: true,
+          status: true,
           suspendue: true,
           typeField: true,
           updatedAt: true,
@@ -270,5 +330,122 @@ export class AideControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/demandeActivities")
+  @ApiNestedQuery(DemandeActivityFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "DemandeActivity",
+    action: "read",
+    possession: "any",
+  })
+  async findDemandeActivities(
+    @common.Req() request: Request,
+    @common.Param() params: AideWhereUniqueInput
+  ): Promise<DemandeActivity[]> {
+    const query = plainToClass(DemandeActivityFindManyArgs, request.query);
+    const results = await this.service.findDemandeActivities(params.id, {
+      ...query,
+      select: {
+        aide: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+        message: true,
+        titre: true,
+        typeField: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/demandeActivities")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async connectDemandeActivities(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: DemandeActivityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandeActivities: {
+        connect: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/demandeActivities")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async updateDemandeActivities(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: DemandeActivityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandeActivities: {
+        set: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/demandeActivities")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectDemandeActivities(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: DemandeActivityWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandeActivities: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

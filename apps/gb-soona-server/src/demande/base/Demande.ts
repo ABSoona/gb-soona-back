@@ -16,16 +16,19 @@ import {
   IsString,
   MaxLength,
   IsOptional,
+  ValidateNested,
   IsInt,
   Max,
   IsEnum,
-  ValidateNested,
   IsDate,
 } from "class-validator";
 
+import { Aide } from "../../aide/base/Aide";
+import { Type } from "class-transformer";
 import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { Contact } from "../../contact/base/Contact";
-import { Type } from "class-transformer";
+import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
+import { DemandeStatusHistory } from "../../demandeStatusHistory/base/DemandeStatusHistory";
 import { Document } from "../../document/base/Document";
 
 @ObjectType()
@@ -41,6 +44,15 @@ class Demande {
     nullable: true,
   })
   agesEnfants!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Aide],
+  })
+  @ValidateNested()
+  @Type(() => Aide)
+  @IsOptional()
+  aides?: Array<Aide>;
 
   @ApiProperty({
     required: false,
@@ -118,6 +130,24 @@ class Demande {
     nullable: true,
   })
   dateVisite!: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [DemandeActivity],
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivity)
+  @IsOptional()
+  demandeActivities?: Array<DemandeActivity>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [DemandeStatusHistory],
+  })
+  @ValidateNested()
+  @Type(() => DemandeStatusHistory)
+  @IsOptional()
+  demandeStatusHistories?: Array<DemandeStatusHistory>;
 
   @ApiProperty({
     required: false,

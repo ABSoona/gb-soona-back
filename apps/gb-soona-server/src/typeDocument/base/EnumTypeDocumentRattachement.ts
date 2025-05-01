@@ -9,11 +9,14 @@ https://docs.amplication.com/how-to/custom-code
 
 ------------------------------------------------------------------------------
   */
+import { Contact } from "../../contact/base/Contact";
+import { Demande } from "../../demande/base/Demande";
 import { registerEnumType } from "@nestjs/graphql";
 
 export enum EnumTypeDocumentRattachement {
   Contact = "Contact",
   Demande = "Demande",
+  Suivi = "Suivi",
 }
 
 registerEnumType(EnumTypeDocumentRattachement, {

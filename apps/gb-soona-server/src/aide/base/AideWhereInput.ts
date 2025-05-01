@@ -17,10 +17,14 @@ import { Type } from "class-transformer";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { EnumAideCrediteur } from "./EnumAideCrediteur";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
+import { DemandeActivityListRelationFilter } from "../../demandeActivity/base/DemandeActivityListRelationFilter";
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { IntFilter } from "../../util/IntFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { BooleanFilter } from "../../util/BooleanFilter";
+import { EnumAideStatus } from "./EnumAideStatus";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { EnumAideTypeField } from "./EnumAideTypeField";
 
@@ -84,6 +88,30 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => DemandeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DemandeWhereUniqueInput, {
+    nullable: true,
+  })
+  demande?: DemandeWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeActivityListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivityListRelationFilter)
+  @IsOptional()
+  @Field(() => DemandeActivityListRelationFilter, {
+    nullable: true,
+  })
+  demandeActivities?: DemandeActivityListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     enum: EnumAideFrequence,
   })
   @IsEnum(EnumAideFrequence)
@@ -144,6 +172,17 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
+    type: BooleanFilter,
+  })
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  reetudier?: BooleanFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -152,6 +191,17 @@ class AideWhereInput {
     nullable: true,
   })
   remarque?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumAideStatus,
+  })
+  @IsEnum(EnumAideStatus)
+  @IsOptional()
+  @Field(() => EnumAideStatus, {
+    nullable: true,
+  })
+  status?: "EnCours" | "Expir";
 
   @ApiProperty({
     required: false,
@@ -173,7 +223,7 @@ class AideWhereInput {
   @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: "Alimentaire" | "FinanciRe";
+  typeField?: "AssistanceAdministrative" | "FinanciRe";
 
   @ApiProperty({
     required: false,

@@ -4,9 +4,10 @@ import { AideModuleBase } from "./base/aide.module.base";
 import { AideService } from "./aide.service";
 import { AideController } from "./aide.controller";
 import { AideResolver } from "./aide.resolver";
+import { DemandeModule } from "src/demande/demande.module";
 
 @Module({
-  imports: [AideModuleBase, forwardRef(() => AuthModule)],
+  imports: [AideModuleBase, forwardRef(() => AuthModule),DemandeModule],
   controllers: [AideController],
   providers: [AideService, AideResolver],
   exports: [AideService],

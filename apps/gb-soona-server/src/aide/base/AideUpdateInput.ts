@@ -27,7 +27,10 @@ import {
 
 import { Type } from "class-transformer";
 import { EnumAideCrediteur } from "./EnumAideCrediteur";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
+import { DemandeActivityUpdateManyWithoutAidesInput } from "./DemandeActivityUpdateManyWithoutAidesInput";
 import { EnumAideFrequence } from "./EnumAideFrequence";
+import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
 
 @InputType()
@@ -76,6 +79,30 @@ class AideUpdateInput {
     nullable: true,
   })
   dateExpiration?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DemandeWhereUniqueInput, {
+    nullable: true,
+  })
+  demande?: DemandeWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeActivityUpdateManyWithoutAidesInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivityUpdateManyWithoutAidesInput)
+  @IsOptional()
+  @Field(() => DemandeActivityUpdateManyWithoutAidesInput, {
+    nullable: true,
+  })
+  demandeActivities?: DemandeActivityUpdateManyWithoutAidesInput;
 
   @ApiProperty({
     required: false,
@@ -132,6 +159,17 @@ class AideUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  reetudier?: boolean;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -141,6 +179,17 @@ class AideUpdateInput {
     nullable: true,
   })
   remarque?: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumAideStatus,
+  })
+  @IsEnum(EnumAideStatus)
+  @IsOptional()
+  @Field(() => EnumAideStatus, {
+    nullable: true,
+  })
+  status?: "EnCours" | "Expir";
 
   @ApiProperty({
     required: false,
@@ -162,7 +211,7 @@ class AideUpdateInput {
   @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: "Alimentaire" | "FinanciRe" | null;
+  typeField?: "AssistanceAdministrative" | "FinanciRe" | null;
 }
 
 export { AideUpdateInput as AideUpdateInput };

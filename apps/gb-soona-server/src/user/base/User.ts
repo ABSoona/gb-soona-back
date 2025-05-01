@@ -13,16 +13,16 @@ import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
   IsDate,
-  IsString,
-  IsOptional,
-  MaxLength,
   ValidateNested,
+  IsOptional,
+  IsString,
+  MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
-import { UserNotificationPreference } from "../../userNotificationPreference/base/UserNotificationPreference";
 
 @ObjectType()
 class User {
@@ -33,6 +33,15 @@ class User {
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [DemandeActivity],
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivity)
+  @IsOptional()
+  demandeActivities?: Array<DemandeActivity>;
 
   @ApiProperty({
     required: false,
@@ -127,15 +136,6 @@ class User {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
-
-  @ApiProperty({
-    required: false,
-    type: () => [UserNotificationPreference],
-  })
-  @ValidateNested()
-  @Type(() => UserNotificationPreference)
-  @IsOptional()
-  userNotificationPreferences?: Array<UserNotificationPreference>;
 
   @ApiProperty({
     required: true,

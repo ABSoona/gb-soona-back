@@ -56,6 +56,8 @@ export class TypeDocumentControllerBase {
       select: {
         createdAt: true,
         id: true,
+        internalCode: true,
+        isInternal: true,
         label: true,
         rattachement: true,
         updatedAt: true,
@@ -82,6 +84,8 @@ export class TypeDocumentControllerBase {
       select: {
         createdAt: true,
         id: true,
+        internalCode: true,
+        isInternal: true,
         label: true,
         rattachement: true,
         updatedAt: true,
@@ -109,6 +113,8 @@ export class TypeDocumentControllerBase {
       select: {
         createdAt: true,
         id: true,
+        internalCode: true,
+        isInternal: true,
         label: true,
         rattachement: true,
         updatedAt: true,
@@ -145,6 +151,8 @@ export class TypeDocumentControllerBase {
         select: {
           createdAt: true,
           id: true,
+          internalCode: true,
+          isInternal: true,
           label: true,
           rattachement: true,
           updatedAt: true,
@@ -180,6 +188,8 @@ export class TypeDocumentControllerBase {
         select: {
           createdAt: true,
           id: true,
+          internalCode: true,
+          isInternal: true,
           label: true,
           rattachement: true,
           updatedAt: true,
@@ -211,7 +221,21 @@ export class TypeDocumentControllerBase {
     const results = await this.service.findDocuments(params.id, {
       ...query,
       select: {
+        contact: {
+          select: {
+            id: true,
+          },
+        },
+
+        contenu: true,
         createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
         id: true,
 
         typeDocument: {

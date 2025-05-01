@@ -11,14 +11,26 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { DemandeActivityListRelationFilter } from "../../demandeActivity/base/DemandeActivityListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { UserNotificationPreferenceListRelationFilter } from "../../userNotificationPreference/base/UserNotificationPreferenceListRelationFilter";
 
 @InputType()
 class UserWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => DemandeActivityListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivityListRelationFilter)
+  @IsOptional()
+  @Field(() => DemandeActivityListRelationFilter, {
+    nullable: true,
+  })
+  demandeActivities?: DemandeActivityListRelationFilter;
+
   @ApiProperty({
     required: false,
     type: StringNullableFilter,
@@ -95,18 +107,6 @@ class UserWhereInput {
     nullable: true,
   })
   token?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => UserNotificationPreferenceListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => UserNotificationPreferenceListRelationFilter)
-  @IsOptional()
-  @Field(() => UserNotificationPreferenceListRelationFilter, {
-    nullable: true,
-  })
-  userNotificationPreferences?: UserNotificationPreferenceListRelationFilter;
 
   @ApiProperty({
     required: false,

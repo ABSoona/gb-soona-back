@@ -16,16 +16,19 @@ import {
   IsString,
   MaxLength,
   IsOptional,
+  ValidateNested,
   IsInt,
   Max,
   IsEnum,
-  ValidateNested,
   IsDate,
 } from "class-validator";
 
+import { AideCreateNestedManyWithoutDemandesInput } from "./AideCreateNestedManyWithoutDemandesInput";
+import { Type } from "class-transformer";
 import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
-import { Type } from "class-transformer";
+import { DemandeActivityCreateNestedManyWithoutDemandesInput } from "./DemandeActivityCreateNestedManyWithoutDemandesInput";
+import { DemandeStatusHistoryCreateNestedManyWithoutDemandesInput } from "./DemandeStatusHistoryCreateNestedManyWithoutDemandesInput";
 import { DocumentCreateNestedManyWithoutDemandesInput } from "./DocumentCreateNestedManyWithoutDemandesInput";
 
 @InputType()
@@ -41,6 +44,18 @@ class DemandeCreateInput {
     nullable: true,
   })
   agesEnfants?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => AideCreateNestedManyWithoutDemandesInput,
+  })
+  @ValidateNested()
+  @Type(() => AideCreateNestedManyWithoutDemandesInput)
+  @IsOptional()
+  @Field(() => AideCreateNestedManyWithoutDemandesInput, {
+    nullable: true,
+  })
+  aides?: AideCreateNestedManyWithoutDemandesInput;
 
   @ApiProperty({
     required: false,
@@ -108,6 +123,30 @@ class DemandeCreateInput {
     nullable: true,
   })
   dateVisite?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeActivityCreateNestedManyWithoutDemandesInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivityCreateNestedManyWithoutDemandesInput)
+  @IsOptional()
+  @Field(() => DemandeActivityCreateNestedManyWithoutDemandesInput, {
+    nullable: true,
+  })
+  demandeActivities?: DemandeActivityCreateNestedManyWithoutDemandesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeStatusHistoryCreateNestedManyWithoutDemandesInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeStatusHistoryCreateNestedManyWithoutDemandesInput)
+  @IsOptional()
+  @Field(() => DemandeStatusHistoryCreateNestedManyWithoutDemandesInput, {
+    nullable: true,
+  })
+  demandeStatusHistories?: DemandeStatusHistoryCreateNestedManyWithoutDemandesInput;
 
   @ApiProperty({
     required: false,

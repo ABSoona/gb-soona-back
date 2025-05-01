@@ -26,10 +26,17 @@ async function seed(bcryptSalt: Salt) {
   const client = new PrismaClient();
 
   const data = {
-    username: "gb@soona.fr",
+    username : "gb@soona.fr",
+    email : "gb@soona.fr",
+    firstName : "admin",
+    lastName : "admin",
+    status : "active",
+    roles : ["admin"],
+    role : "admin",
     password: await hash("admin", bcryptSalt),
-    roles: ["user"],
+
   };
+
 
   await client.user.upsert({
     where: {
@@ -65,6 +72,25 @@ if (!wpApiPass) {
     create: apiUser,
   });
 
+
+  const internalTypes = [
+    { label: "Rapport de visite", internalCode: "rapport_visite",isInternal: true },
+    { label: "Autre document de suivi", internalCode: "autre_suivi",isInternal: false },
+    
+  ];
+
+  for (const doc of internalTypes) {
+    await client.typeDocument.upsert({
+      where: { internalCode: doc.internalCode },
+      update: {},
+      create: {
+        label: doc.label,
+        internalCode: doc.internalCode,
+        isInternal: doc.isInternal,
+        rattachement: "Suivi",
+      },
+    });
+  }
   void client.$disconnect();
 
   console.info("Seeding database with custom seed...");
