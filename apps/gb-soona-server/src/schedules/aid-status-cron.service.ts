@@ -9,7 +9,7 @@ export class AidStatusCronService {
 
   constructor(private prisma: PrismaService, private demandeService: DemandeService) {}
 
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async handleAidExpiration() {
     this.logger.log("Mise a jour des status de taches");
     const now = new Date();
@@ -18,7 +18,7 @@ export class AidStatusCronService {
 const aides = await this.prisma.aide.findMany({
    where: {
     status: 'EnCours',
-    reetudier: true,
+    //reetudier: true,
     dateExpiration: { lt: now },
    /*  frequence: {
       not: 'Unefois', // ✅ nouvelle condition
@@ -31,6 +31,7 @@ const aides = await this.prisma.aide.findMany({
 
 for (const aide of aides) {
   // 2. Mise à jour de l'aide
+  
   await this.prisma.aide.update({
     where: { id: aide.id },
     data: { status: 'Expir' },
@@ -48,9 +49,11 @@ for (const aide of aides) {
         createdAt: now,
       },
     });
+    
+    const newDemandeStatus = aide.reetudier? 'en_commision':'clôturée'
     await this.demandeService.updateDemande({
       where: { id: aide.demandeId },
-      data: { status: 'en_commision' },
+      data: { status: newDemandeStatus },
     });
 
     // 4. Ajout d'une activité dans demandeActivity
