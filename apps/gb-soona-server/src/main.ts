@@ -10,6 +10,8 @@ import {
   swaggerSetupOptions,
 } from "./swagger";
 import { graphqlUploadExpress } from "graphql-upload";
+import crypto from 'crypto';
+global.crypto = crypto as any;
 
 const { PORT = 3000 } = process.env;
 

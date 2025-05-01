@@ -12,7 +12,7 @@ export class AbandonDemandeCronService {
     private demandeService: DemandeService,
   ) {}
 
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async abandonnerDemandesInactives() {
     const oneMonthAgo = new Date();
    // oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
