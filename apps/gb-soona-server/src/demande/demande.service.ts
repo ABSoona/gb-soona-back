@@ -40,7 +40,7 @@ export class DemandeService extends DemandeServiceBase {
       }
     }
 
-    const titre = `La demande Reçue`;
+    const titre = `Demande Reçue`;
     const message = `Message du demandeur : ${demande.remarques}`;
     const demandeActivity = await this.prisma.demandeActivity.create({
       data: {
