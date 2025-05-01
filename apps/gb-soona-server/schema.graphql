@@ -8,12 +8,16 @@ type Aide {
   crediteur: EnumAideCrediteur
   dateAide: DateTime
   dateExpiration: DateTime
+  demande: Demande
+  demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
   frequence: EnumAideFrequence
   id: Float!
   infosCrediteur: String
   montant: Float
   nombreVersements: Float
+  reetudier: Boolean!
   remarque: String
+  status: EnumAideStatus
   suspendue: Boolean
   typeField: EnumAideTypeField
   updatedAt: DateTime!
@@ -24,16 +28,24 @@ input AideCreateInput {
   crediteur: EnumAideCrediteur
   dateAide: DateTime
   dateExpiration: DateTime
+  demande: DemandeWhereUniqueInput
+  demandeActivities: DemandeActivityCreateNestedManyWithoutAidesInput
   frequence: EnumAideFrequence
   infosCrediteur: String
   montant: Float
   nombreVersements: Float
+  reetudier: Boolean!
   remarque: String
+  status: EnumAideStatus!
   suspendue: Boolean
   typeField: EnumAideTypeField
 }
 
 input AideCreateNestedManyWithoutContactsInput {
+  connect: [AideWhereUniqueInput!]
+}
+
+input AideCreateNestedManyWithoutDemandesInput {
   connect: [AideWhereUniqueInput!]
 }
 
@@ -49,12 +61,15 @@ input AideOrderByInput {
   crediteur: SortOrder
   dateAide: SortOrder
   dateExpiration: SortOrder
+  demandeId: SortOrder
   frequence: SortOrder
   id: SortOrder
   infosCrediteur: SortOrder
   montant: SortOrder
   nombreVersements: SortOrder
+  reetudier: SortOrder
   remarque: SortOrder
+  status: SortOrder
   suspendue: SortOrder
   typeField: SortOrder
   updatedAt: SortOrder
@@ -65,16 +80,26 @@ input AideUpdateInput {
   crediteur: EnumAideCrediteur
   dateAide: DateTime
   dateExpiration: DateTime
+  demande: DemandeWhereUniqueInput
+  demandeActivities: DemandeActivityUpdateManyWithoutAidesInput
   frequence: EnumAideFrequence
   infosCrediteur: String
   montant: Float
   nombreVersements: Float
+  reetudier: Boolean
   remarque: String
+  status: EnumAideStatus
   suspendue: Boolean
   typeField: EnumAideTypeField
 }
 
 input AideUpdateManyWithoutContactsInput {
+  connect: [AideWhereUniqueInput!]
+  disconnect: [AideWhereUniqueInput!]
+  set: [AideWhereUniqueInput!]
+}
+
+input AideUpdateManyWithoutDemandesInput {
   connect: [AideWhereUniqueInput!]
   disconnect: [AideWhereUniqueInput!]
   set: [AideWhereUniqueInput!]
@@ -86,12 +111,16 @@ input AideWhereInput {
   crediteur: EnumAideCrediteur
   dateAide: DateTimeNullableFilter
   dateExpiration: DateTimeNullableFilter
+  demande: DemandeWhereUniqueInput
+  demandeActivities: DemandeActivityListRelationFilter
   frequence: EnumAideFrequence
   id: IntFilter
   infosCrediteur: StringNullableFilter
   montant: IntNullableFilter
   nombreVersements: IntNullableFilter
+  reetudier: BooleanFilter
   remarque: StringNullableFilter
+  status: EnumAideStatus
   suspendue: BooleanNullableFilter
   typeField: EnumAideTypeField
   updatedAt: DateTimeFilter
@@ -249,6 +278,7 @@ input DateTimeNullableFilter {
 
 type Demande {
   agesEnfants: String
+  aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
   apl: Float
   autresAides: String
   autresCharges: Float
@@ -256,6 +286,8 @@ type Demande {
   contact: Contact
   createdAt: DateTime
   dateVisite: DateTime
+  demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
+  demandeStatusHistories(orderBy: [DemandeStatusHistoryOrderByInput!], skip: Float, take: Float, where: DemandeStatusHistoryWhereInput): [DemandeStatusHistory!]!
   dettes: Float
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   facturesEnergie: Float
@@ -273,14 +305,109 @@ type Demande {
   updatedAt: DateTime!
 }
 
+type DemandeActivity {
+  aide: Aide
+  createdAt: DateTime!
+  demande: Demande
+  id: Float!
+  message: String
+  titre: String!
+  typeField: String!
+  updatedAt: DateTime!
+  user: User
+}
+
+input DemandeActivityCreateInput {
+  aide: AideWhereUniqueInput
+  demande: DemandeWhereUniqueInput!
+  message: String
+  titre: String!
+  typeField: String!
+  user: UserWhereUniqueInput
+}
+
+input DemandeActivityCreateNestedManyWithoutAidesInput {
+  connect: [DemandeActivityWhereUniqueInput!]
+}
+
+input DemandeActivityCreateNestedManyWithoutDemandesInput {
+  connect: [DemandeActivityWhereUniqueInput!]
+}
+
+input DemandeActivityCreateNestedManyWithoutUsersInput {
+  connect: [DemandeActivityWhereUniqueInput!]
+}
+
+input DemandeActivityListRelationFilter {
+  every: DemandeActivityWhereInput
+  none: DemandeActivityWhereInput
+  some: DemandeActivityWhereInput
+}
+
+input DemandeActivityOrderByInput {
+  aideId: SortOrder
+  createdAt: SortOrder
+  demandeId: SortOrder
+  id: SortOrder
+  message: SortOrder
+  titre: SortOrder
+  typeField: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input DemandeActivityUpdateInput {
+  aide: AideWhereUniqueInput
+  demande: DemandeWhereUniqueInput
+  message: String
+  titre: String
+  typeField: String
+  user: UserWhereUniqueInput
+}
+
+input DemandeActivityUpdateManyWithoutAidesInput {
+  connect: [DemandeActivityWhereUniqueInput!]
+  disconnect: [DemandeActivityWhereUniqueInput!]
+  set: [DemandeActivityWhereUniqueInput!]
+}
+
+input DemandeActivityUpdateManyWithoutDemandesInput {
+  connect: [DemandeActivityWhereUniqueInput!]
+  disconnect: [DemandeActivityWhereUniqueInput!]
+  set: [DemandeActivityWhereUniqueInput!]
+}
+
+input DemandeActivityUpdateManyWithoutUsersInput {
+  connect: [DemandeActivityWhereUniqueInput!]
+  disconnect: [DemandeActivityWhereUniqueInput!]
+  set: [DemandeActivityWhereUniqueInput!]
+}
+
+input DemandeActivityWhereInput {
+  aide: AideWhereUniqueInput
+  demande: DemandeWhereUniqueInput
+  id: IntFilter
+  message: StringNullableFilter
+  titre: StringFilter
+  typeField: StringFilter
+  user: UserWhereUniqueInput
+}
+
+input DemandeActivityWhereUniqueInput {
+  id: Float!
+}
+
 input DemandeCreateInput {
   agesEnfants: String
+  aides: AideCreateNestedManyWithoutDemandesInput
   apl: Float
   autresAides: String
   autresCharges: Float
   categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: ContactWhereUniqueInput!
   dateVisite: DateTime
+  demandeActivities: DemandeActivityCreateNestedManyWithoutDemandesInput
+  demandeStatusHistories: DemandeStatusHistoryCreateNestedManyWithoutDemandesInput
   dettes: Float
   documents: DocumentCreateNestedManyWithoutDemandesInput
   facturesEnergie: Float
@@ -331,14 +458,58 @@ input DemandeOrderByInput {
   updatedAt: SortOrder
 }
 
+type DemandeStatusHistory {
+  createdAt: DateTime!
+  id: Float!
+  status: String!
+  updatedAt: DateTime!
+}
+
+input DemandeStatusHistoryCreateNestedManyWithoutDemandesInput {
+  connect: [DemandeStatusHistoryWhereUniqueInput!]
+}
+
+input DemandeStatusHistoryListRelationFilter {
+  every: DemandeStatusHistoryWhereInput
+  none: DemandeStatusHistoryWhereInput
+  some: DemandeStatusHistoryWhereInput
+}
+
+input DemandeStatusHistoryOrderByInput {
+  createdAt: SortOrder
+  demandeId: SortOrder
+  id: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+}
+
+input DemandeStatusHistoryUpdateManyWithoutDemandesInput {
+  connect: [DemandeStatusHistoryWhereUniqueInput!]
+  disconnect: [DemandeStatusHistoryWhereUniqueInput!]
+  set: [DemandeStatusHistoryWhereUniqueInput!]
+}
+
+input DemandeStatusHistoryWhereInput {
+  demande: DemandeWhereUniqueInput
+  id: IntFilter
+  status: StringFilter
+}
+
+input DemandeStatusHistoryWhereUniqueInput {
+  id: Float!
+}
+
 input DemandeUpdateInput {
   agesEnfants: String
+  aides: AideUpdateManyWithoutDemandesInput
   apl: Float
   autresAides: String
   autresCharges: Float
   categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: ContactWhereUniqueInput
   dateVisite: DateTime
+  demandeActivities: DemandeActivityUpdateManyWithoutDemandesInput
+  demandeStatusHistories: DemandeStatusHistoryUpdateManyWithoutDemandesInput
   dettes: Float
   documents: DocumentUpdateManyWithoutDemandesInput
   facturesEnergie: Float
@@ -362,6 +533,7 @@ input DemandeUpdateManyWithoutContactsInput {
 
 input DemandeWhereInput {
   agesEnfants: StringNullableFilter
+  aides: AideListRelationFilter
   apl: IntNullableFilter
   autresAides: StringNullableFilter
   autresCharges: IntNullableFilter
@@ -369,6 +541,8 @@ input DemandeWhereInput {
   contact: ContactWhereUniqueInput
   createdAt: DateTimeNullableFilter
   dateVisite: DateTimeNullableFilter
+  demandeActivities: DemandeActivityListRelationFilter
+  demandeStatusHistories: DemandeStatusHistoryListRelationFilter
   dettes: IntNullableFilter
   documents: DocumentListRelationFilter
   facturesEnergie: IntNullableFilter
@@ -485,8 +659,13 @@ enum EnumAideFrequence {
   UneFois
 }
 
+enum EnumAideStatus {
+  EnCours
+  Expir
+}
+
 enum EnumAideTypeField {
-  Alimentaire
+  AssistanceAdministrative
   FinanciRe
 }
 
@@ -499,6 +678,7 @@ enum EnumDemandeCategorieDemandeur {
 enum EnumTypeDocumentRattachement {
   Contact
   Demande
+  Suivi
 }
 
 enum EnumUserNotificationPreferenceTypeField {
@@ -613,6 +793,7 @@ type Mutation {
   createAide(data: AideCreateInput!): Aide!
   createContact(data: ContactCreateInput!): Contact!
   createDemande(data: DemandeCreateInput!): Demande!
+  createDemandeActivity(data: DemandeActivityCreateInput!): DemandeActivity!
   createDocument(data: DocumentCreateInput!): Document!
   createInvitation(data: InvitationCreateInput!): Invitation!
   createTypeDocument(data: TypeDocumentCreateInput!): TypeDocument!
@@ -623,6 +804,7 @@ type Mutation {
   deleteContact(where: ContactWhereUniqueInput!): Contact!
   deleteContenu(where: DocumentWhereUniqueInput!): Document!
   deleteDemande(where: DemandeWhereUniqueInput!): Demande!
+  deleteDemandeActivity(where: DemandeActivityWhereUniqueInput!): DemandeActivity!
   deleteDocument(where: DocumentWhereUniqueInput!): Document!
   deleteInvitation(where: InvitationWhereUniqueInput!): Invitation!
   deleteTypeDocument(where: TypeDocumentWhereUniqueInput!): TypeDocument!
@@ -633,6 +815,7 @@ type Mutation {
   updateAide(data: AideUpdateInput!, where: AideWhereUniqueInput!): Aide!
   updateContact(data: ContactUpdateInput!, where: ContactWhereUniqueInput!): Contact!
   updateDemande(data: DemandeUpdateInput!, where: DemandeWhereUniqueInput!): Demande!
+  updateDemandeActivity(data: DemandeActivityUpdateInput!, where: DemandeActivityWhereUniqueInput!): DemandeActivity!
   updateDocument(data: DocumentUpdateInput!, where: DocumentWhereUniqueInput!): Document!
   updateInvitation(data: InvitationUpdateInput!, where: InvitationWhereUniqueInput!): Invitation!
   updateTypeDocument(data: TypeDocumentUpdateInput!, where: TypeDocumentWhereUniqueInput!): TypeDocument!
@@ -645,6 +828,7 @@ type Mutation {
 type Query {
   _aidesMeta(where: AideWhereInput): MetaQueryPayload!
   _contactsMeta(where: ContactWhereInput): MetaQueryPayload!
+  _demandeActivitiesMeta(where: DemandeActivityWhereInput): MetaQueryPayload!
   _demandesMeta(where: DemandeWhereInput): MetaQueryPayload!
   _documentsMeta(where: DocumentWhereInput): MetaQueryPayload!
   _invitationsMeta(where: InvitationWhereInput): MetaQueryPayload!
@@ -657,6 +841,8 @@ type Query {
   contact(where: ContactWhereUniqueInput!): Contact
   contacts(orderBy: [ContactOrderByInput!], skip: Float, take: Float, where: ContactWhereInput): [Contact!]!
   demande(where: DemandeWhereUniqueInput!): Demande
+  demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
+  demandeActivity(where: DemandeActivityWhereUniqueInput!): DemandeActivity
   demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
   document(where: DocumentWhereUniqueInput!): Document
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
@@ -717,6 +903,8 @@ type TypeDocument {
   createdAt: DateTime!
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   id: Float!
+  internalCode: String
+  isInternal: Boolean!
   label: String!
   rattachement: EnumTypeDocumentRattachement
   updatedAt: DateTime!
@@ -724,6 +912,8 @@ type TypeDocument {
 
 input TypeDocumentCreateInput {
   documents: DocumentCreateNestedManyWithoutTypeDocumentsInput
+  internalCode: String
+  isInternal: Boolean!
   label: String!
   rattachement: EnumTypeDocumentRattachement!
 }
@@ -731,6 +921,8 @@ input TypeDocumentCreateInput {
 input TypeDocumentOrderByInput {
   createdAt: SortOrder
   id: SortOrder
+  internalCode: SortOrder
+  isInternal: SortOrder
   label: SortOrder
   rattachement: SortOrder
   updatedAt: SortOrder
@@ -738,6 +930,8 @@ input TypeDocumentOrderByInput {
 
 input TypeDocumentUpdateInput {
   documents: DocumentUpdateManyWithoutTypeDocumentsInput
+  internalCode: String
+  isInternal: Boolean
   label: String
   rattachement: EnumTypeDocumentRattachement
 }
@@ -745,6 +939,8 @@ input TypeDocumentUpdateInput {
 input TypeDocumentWhereInput {
   documents: DocumentListRelationFilter
   id: IntFilter
+  internalCode: StringNullableFilter
+  isInternal: BooleanFilter
   label: StringFilter
   rattachement: EnumTypeDocumentRattachement
 }
@@ -758,6 +954,7 @@ scalar Upload
 
 type User {
   createdAt: DateTime!
+  demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
   email: String
   firstName: String
   id: String!
@@ -767,11 +964,11 @@ type User {
   status: String
   token: String
   updatedAt: DateTime!
-  userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
   username: String!
 }
 
 input UserCreateInput {
+  demandeActivities: DemandeActivityCreateNestedManyWithoutUsersInput
   email: String
   firstName: String
   lastName: String
@@ -780,7 +977,6 @@ input UserCreateInput {
   roles: JSON!
   status: String
   token: String
-  userNotificationPreferences: UserNotificationPreferenceCreateNestedManyWithoutUsersInput
   username: String!
 }
 
@@ -806,16 +1002,6 @@ input UserNotificationPreferenceCreateInput {
   user: UserWhereUniqueInput!
 }
 
-input UserNotificationPreferenceCreateNestedManyWithoutUsersInput {
-  connect: [UserNotificationPreferenceWhereUniqueInput!]
-}
-
-input UserNotificationPreferenceListRelationFilter {
-  every: UserNotificationPreferenceWhereInput
-  none: UserNotificationPreferenceWhereInput
-  some: UserNotificationPreferenceWhereInput
-}
-
 input UserNotificationPreferenceOrderByInput {
   active: SortOrder
   createdAt: SortOrder
@@ -829,12 +1015,6 @@ input UserNotificationPreferenceUpdateInput {
   active: Boolean
   typeField: EnumUserNotificationPreferenceTypeField
   user: UserWhereUniqueInput
-}
-
-input UserNotificationPreferenceUpdateManyWithoutUsersInput {
-  connect: [UserNotificationPreferenceWhereUniqueInput!]
-  disconnect: [UserNotificationPreferenceWhereUniqueInput!]
-  set: [UserNotificationPreferenceWhereUniqueInput!]
 }
 
 input UserNotificationPreferenceWhereInput {
@@ -864,6 +1044,7 @@ input UserOrderByInput {
 }
 
 input UserUpdateInput {
+  demandeActivities: DemandeActivityUpdateManyWithoutUsersInput
   email: String
   firstName: String
   lastName: String
@@ -872,11 +1053,11 @@ input UserUpdateInput {
   roles: JSON
   status: String
   token: String
-  userNotificationPreferences: UserNotificationPreferenceUpdateManyWithoutUsersInput
   username: String
 }
 
 input UserWhereInput {
+  demandeActivities: DemandeActivityListRelationFilter
   email: StringNullableFilter
   firstName: StringNullableFilter
   id: StringFilter
@@ -884,7 +1065,6 @@ input UserWhereInput {
   role: StringNullableFilter
   status: StringNullableFilter
   token: StringNullableFilter
-  userNotificationPreferences: UserNotificationPreferenceListRelationFilter
   username: StringFilter
 }
 

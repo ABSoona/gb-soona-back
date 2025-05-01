@@ -17,15 +17,22 @@ import { ServeStaticOptionsService } from "./serveStaticOptions.service";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { GraphQLModule } from "@nestjs/graphql";
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
-
+import { TasksModule } from "./schedules/tasks.module";
+import { ScheduleModule } from '@nestjs/schedule'; 
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { TypeDocumentModule } from "./typeDocument/typeDocument.module";
 
+import { DemandeStatusHistoryModuleBase } from "./demandeStatusHistory/base/demandeStatusHistory.module.base";
+import { DemandeActivityModule } from "./demandeActivity/demandeActivity.module";
+
 @Module({
   controllers: [],
   imports: [
+     ScheduleModule.forRoot(),
+    TasksModule, 
     TypeDocumentModule,
+    DemandeStatusHistoryModuleBase,
     StorageModule,
     ACLModule,
     AuthModule,
@@ -37,6 +44,7 @@ import { TypeDocumentModule } from "./typeDocument/typeDocument.module";
     UserNotificationPreferenceModule,
     InvitationModule,
     WebsiteDemandeModule,
+    DemandeActivityModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

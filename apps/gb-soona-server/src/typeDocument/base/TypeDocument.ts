@@ -11,6 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+
 import {
   IsDate,
   ValidateNested,
@@ -18,8 +19,10 @@ import {
   IsInt,
   IsString,
   MaxLength,
+  IsBoolean,
   IsEnum,
 } from "class-validator";
+
 import { Type } from "class-transformer";
 import { Document } from "../../document/base/Document";
 import { EnumTypeDocumentRattachement } from "./EnumTypeDocumentRattachement";
@@ -52,6 +55,26 @@ class TypeDocument {
   id!: number;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  internalCode!: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  isInternal!: boolean;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
@@ -68,7 +91,7 @@ class TypeDocument {
   @Field(() => EnumTypeDocumentRattachement, {
     nullable: true,
   })
-  rattachement?: "Contact" | "Demande";
+  rattachement?: "Contact" | "Demande" | "Suivi";
 
   @ApiProperty({
     required: true,

@@ -26,8 +26,8 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
-import { UserNotificationPreferenceFindManyArgs } from "../../userNotificationPreference/base/UserNotificationPreferenceFindManyArgs";
-import { UserNotificationPreference } from "../../userNotificationPreference/base/UserNotificationPreference";
+import { DemandeActivityFindManyArgs } from "../../demandeActivity/base/DemandeActivityFindManyArgs";
+import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
 import { UserService } from "../user.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => User)
@@ -135,22 +135,17 @@ export class UserResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [UserNotificationPreference], {
-    name: "userNotificationPreferences",
-  })
+  @graphql.ResolveField(() => [DemandeActivity], { name: "demandeActivities" })
   @nestAccessControl.UseRoles({
-    resource: "UserNotificationPreference",
+    resource: "DemandeActivity",
     action: "read",
     possession: "any",
   })
-  async findUserNotificationPreferences(
+  async findDemandeActivities(
     @graphql.Parent() parent: User,
-    @graphql.Args() args: UserNotificationPreferenceFindManyArgs
-  ): Promise<UserNotificationPreference[]> {
-    const results = await this.service.findUserNotificationPreferences(
-      parent.id,
-      args
-    );
+    @graphql.Args() args: DemandeActivityFindManyArgs
+  ): Promise<DemandeActivity[]> {
+    const results = await this.service.findDemandeActivities(parent.id, args);
 
     if (!results) {
       return [];

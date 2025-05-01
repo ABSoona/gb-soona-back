@@ -27,7 +27,10 @@ import {
 
 import { Type } from "class-transformer";
 import { EnumAideCrediteur } from "./EnumAideCrediteur";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
+import { DemandeActivityCreateNestedManyWithoutAidesInput } from "./DemandeActivityCreateNestedManyWithoutAidesInput";
 import { EnumAideFrequence } from "./EnumAideFrequence";
+import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
 
 @InputType()
@@ -73,6 +76,30 @@ class AideCreateInput {
     nullable: true,
   })
   dateExpiration?: Date | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DemandeWhereUniqueInput, {
+    nullable: true,
+  })
+  demande?: DemandeWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => DemandeActivityCreateNestedManyWithoutAidesInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivityCreateNestedManyWithoutAidesInput)
+  @IsOptional()
+  @Field(() => DemandeActivityCreateNestedManyWithoutAidesInput, {
+    nullable: true,
+  })
+  demandeActivities?: DemandeActivityCreateNestedManyWithoutAidesInput;
 
   @ApiProperty({
     required: false,
@@ -128,6 +155,14 @@ class AideCreateInput {
   nombreVersements?: number | null;
 
   @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  reetudier!: boolean;
+
+  @ApiProperty({
     required: false,
     type: String,
   })
@@ -138,6 +173,14 @@ class AideCreateInput {
     nullable: true,
   })
   remarque?: string | null;
+
+  @ApiProperty({
+    required: true,
+    enum: EnumAideStatus,
+  })
+  @IsEnum(EnumAideStatus)
+  @Field(() => EnumAideStatus)
+  status!: "EnCours" | "Expir";
 
   @ApiProperty({
     required: false,
@@ -159,7 +202,7 @@ class AideCreateInput {
   @Field(() => EnumAideTypeField, {
     nullable: true,
   })
-  typeField?: "Alimentaire" | "FinanciRe" | null;
+  typeField?: "AssistanceAdministrative" | "FinanciRe" | null;
 }
 
 export { AideCreateInput as AideCreateInput };

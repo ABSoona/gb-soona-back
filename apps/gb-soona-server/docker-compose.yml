@@ -43,6 +43,7 @@ services:
       interval: 10s
       retries: 10
   redis_broker:
+    restart: always
     container_name: ${REDIS_BROKER_HOST}
     image: redis:7
     ports:

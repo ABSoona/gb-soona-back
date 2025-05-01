@@ -17,6 +17,7 @@ import {
   IsOptional,
   IsString,
   MaxLength,
+  IsBoolean,
   IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -46,6 +47,29 @@ class TypeDocumentUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  internalCode?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  isInternal?: boolean;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   label?: string;
 
   @ApiProperty({
@@ -57,7 +81,7 @@ class TypeDocumentUpdateInput {
   @Field(() => EnumTypeDocumentRattachement, {
     nullable: true,
   })
-  rattachement?: "Contact" | "Demande";
+  rattachement?: "Contact" | "Demande" | "Suivi";
 }
 
 export { TypeDocumentUpdateInput as TypeDocumentUpdateInput };

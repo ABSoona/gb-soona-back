@@ -11,20 +11,32 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { DemandeActivityCreateNestedManyWithoutUsersInput } from "./DemandeActivityCreateNestedManyWithoutUsersInput";
 import {
-  IsString,
-  IsOptional,
-  MaxLength,
   ValidateNested,
+  IsOptional,
+  IsString,
+  MaxLength,
 } from "class-validator";
+import { Type } from "class-transformer";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
-import { UserNotificationPreferenceCreateNestedManyWithoutUsersInput } from "./UserNotificationPreferenceCreateNestedManyWithoutUsersInput";
-import { Type } from "class-transformer";
 
 @InputType()
 class UserCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => DemandeActivityCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => DemandeActivityCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => DemandeActivityCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  demandeActivities?: DemandeActivityCreateNestedManyWithoutUsersInput;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -110,18 +122,6 @@ class UserCreateInput {
     nullable: true,
   })
   token?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => UserNotificationPreferenceCreateNestedManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => UserNotificationPreferenceCreateNestedManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => UserNotificationPreferenceCreateNestedManyWithoutUsersInput, {
-    nullable: true,
-  })
-  userNotificationPreferences?: UserNotificationPreferenceCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

@@ -15,6 +15,8 @@ import { DocumentListRelationFilter } from "../../document/base/DocumentListRela
 import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { IntFilter } from "../../util/IntFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { BooleanFilter } from "../../util/BooleanFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { EnumTypeDocumentRattachement } from "./EnumTypeDocumentRattachement";
 
@@ -45,6 +47,28 @@ class TypeDocumentWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  internalCode?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanFilter,
+  })
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  isInternal?: BooleanFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringFilter,
   })
   @Type(() => StringFilter)
@@ -63,7 +87,7 @@ class TypeDocumentWhereInput {
   @Field(() => EnumTypeDocumentRattachement, {
     nullable: true,
   })
-  rattachement?: "Contact" | "Demande";
+  rattachement?: "Contact" | "Demande" | "Suivi";
 }
 
 export { TypeDocumentWhereInput as TypeDocumentWhereInput };

@@ -26,9 +26,9 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
-import { UserNotificationPreferenceFindManyArgs } from "../../userNotificationPreference/base/UserNotificationPreferenceFindManyArgs";
-import { UserNotificationPreference } from "../../userNotificationPreference/base/UserNotificationPreference";
-import { UserNotificationPreferenceWhereUniqueInput } from "../../userNotificationPreference/base/UserNotificationPreferenceWhereUniqueInput";
+import { DemandeActivityFindManyArgs } from "../../demandeActivity/base/DemandeActivityFindManyArgs";
+import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
+import { DemandeActivityWhereUniqueInput } from "../../demandeActivity/base/DemandeActivityWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -224,40 +224,48 @@ export class UserControllerBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @common.Get("/:id/userNotificationPreferences")
-  @ApiNestedQuery(UserNotificationPreferenceFindManyArgs)
+  @common.Get("/:id/demandeActivities")
+  @ApiNestedQuery(DemandeActivityFindManyArgs)
   @nestAccessControl.UseRoles({
-    resource: "UserNotificationPreference",
+    resource: "DemandeActivity",
     action: "read",
     possession: "any",
   })
-  async findUserNotificationPreferences(
+  async findDemandeActivities(
     @common.Req() request: Request,
     @common.Param() params: UserWhereUniqueInput
-  ): Promise<UserNotificationPreference[]> {
-    const query = plainToClass(
-      UserNotificationPreferenceFindManyArgs,
-      request.query
-    );
-    const results = await this.service.findUserNotificationPreferences(
-      params.id,
-      {
-        ...query,
-        select: {
-          active: true,
-          createdAt: true,
-          id: true,
-          typeField: true,
-          updatedAt: true,
-
-          user: {
-            select: {
-              id: true,
-            },
+  ): Promise<DemandeActivity[]> {
+    const query = plainToClass(DemandeActivityFindManyArgs, request.query);
+    const results = await this.service.findDemandeActivities(params.id, {
+      ...query,
+      select: {
+        aide: {
+          select: {
+            id: true,
           },
         },
-      }
-    );
+
+        createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+        message: true,
+        titre: true,
+        typeField: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
     if (results === null) {
       throw new errors.NotFoundException(
         `No resource was found for ${JSON.stringify(params)}`
@@ -266,18 +274,18 @@ export class UserControllerBase {
     return results;
   }
 
-  @common.Post("/:id/userNotificationPreferences")
+  @common.Post("/:id/demandeActivities")
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
     possession: "any",
   })
-  async connectUserNotificationPreferences(
+  async connectDemandeActivities(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+    @common.Body() body: DemandeActivityWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      userNotificationPreferences: {
+      demandeActivities: {
         connect: body,
       },
     };
@@ -288,18 +296,18 @@ export class UserControllerBase {
     });
   }
 
-  @common.Patch("/:id/userNotificationPreferences")
+  @common.Patch("/:id/demandeActivities")
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
     possession: "any",
   })
-  async updateUserNotificationPreferences(
+  async updateDemandeActivities(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+    @common.Body() body: DemandeActivityWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      userNotificationPreferences: {
+      demandeActivities: {
         set: body,
       },
     };
@@ -310,18 +318,18 @@ export class UserControllerBase {
     });
   }
 
-  @common.Delete("/:id/userNotificationPreferences")
+  @common.Delete("/:id/demandeActivities")
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
     possession: "any",
   })
-  async disconnectUserNotificationPreferences(
+  async disconnectDemandeActivities(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+    @common.Body() body: DemandeActivityWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      userNotificationPreferences: {
+      demandeActivities: {
         disconnect: body,
       },
     };

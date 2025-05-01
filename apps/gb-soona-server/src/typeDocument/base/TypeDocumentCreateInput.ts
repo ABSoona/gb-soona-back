@@ -17,6 +17,7 @@ import {
   IsOptional,
   IsString,
   MaxLength,
+  IsBoolean,
   IsEnum,
 } from "class-validator";
 import { Type } from "class-transformer";
@@ -37,6 +38,26 @@ class TypeDocumentCreateInput {
   documents?: DocumentCreateNestedManyWithoutTypeDocumentsInput;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  internalCode?: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  isInternal!: boolean;
+
+  @ApiProperty({
     required: true,
     type: String,
   })
@@ -51,7 +72,7 @@ class TypeDocumentCreateInput {
   })
   @IsEnum(EnumTypeDocumentRattachement)
   @Field(() => EnumTypeDocumentRattachement)
-  rattachement!: "Contact" | "Demande";
+  rattachement!: "Contact" | "Demande" | "Suivi";
 }
 
 export { TypeDocumentCreateInput as TypeDocumentCreateInput };

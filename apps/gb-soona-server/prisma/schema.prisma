@@ -8,25 +8,31 @@ generator client {
 }
 
 model Aide {
-  contact          Contact            @relation(fields: [contactId], references: [id])
-  contactId        Int
-  createdAt        DateTime           @default(now())
-  crediteur        EnumAideCrediteur?
-  dateAide         DateTime?
-  dateExpiration   DateTime?
-  frequence        EnumAideFrequence?
-  id               Int                @id @default(autoincrement())
-  infosCrediteur   String?
-  montant          Int?
-  nombreVersements Int?
-  remarque         String?
-  suspendue        Boolean?
-  typeField        EnumAideTypeField?
-  updatedAt        DateTime           @updatedAt
+  contact           Contact            @relation(fields: [contactId], references: [id])
+  contactId         Int
+  createdAt         DateTime           @default(now())
+  crediteur         EnumAideCrediteur?
+  dateAide          DateTime?
+  dateExpiration    DateTime?
+  demande           Demande?           @relation(fields: [demandeId], references: [id])
+  demandeId         Int?
+  demandeActivities DemandeActivity[]
+  frequence         EnumAideFrequence?
+  id                Int                @id @default(autoincrement())
+  infosCrediteur    String?
+  montant           Int?
+  nombreVersements  Int?
+  reetudier         Boolean            @default(false)
+  remarque          String?
+  status            EnumAideStatus     @default(EnCours)
+  suspendue         Boolean?
+  typeField         EnumAideTypeField?
+  updatedAt         DateTime           @updatedAt
 }
 
 model Demande {
   agesEnfants              String?
+  aides                    Aide[]
   apl                      Int?
   autresAides              String?
   autresCharges            Int?
@@ -35,6 +41,8 @@ model Demande {
   contactId                Int
   createdAt                DateTime?                      @default(now())
   dateVisite               DateTime?
+  demandeStatusHistories   DemandeStatusHistory[]
+  demandeActivities        DemandeActivity[]
   dettes                   Int?
   documents                Document[]
   facturesEnergie          Int?
@@ -51,6 +59,7 @@ model Demande {
   status                   String?
   updatedAt                DateTime                       @updatedAt
 }
+
 
 
 model Contact {
@@ -77,6 +86,7 @@ model Contact {
 
 model User {
   createdAt                   DateTime                     @default(now())
+  demandeActivities DemandeActivity[]
   email                       String?                      @unique
   firstName                   String?
   id                          String                       @id @default(cuid())
@@ -95,6 +105,8 @@ model TypeDocument {
   createdAt    DateTime                     @default(now())
   documents    Document[]
   id           Int                          @id @default(autoincrement())
+  internalCode String?                      @unique
+  isInternal   Boolean                      @default(false)
   label        String
   rattachement EnumTypeDocumentRattachement
   updatedAt    DateTime                     @updatedAt
@@ -102,6 +114,7 @@ model TypeDocument {
 enum EnumTypeDocumentRattachement {
   Contact
   Demande
+  Suivi
 }
 
 
@@ -170,6 +183,30 @@ model WebsiteDemande {
   villeDemandeur           String?
 }
 
+model DemandeStatusHistory {
+  createdAt DateTime @default(now())
+  demande   Demande  @relation(fields: [demandeId], references: [id])
+  demandeId Int
+  id        Int      @id @default(autoincrement())
+  status    String
+  updatedAt DateTime @updatedAt
+}
+
+model DemandeActivity {
+  aide      Aide?    @relation(fields: [aideId], references: [id])
+  aideId    Int?
+  createdAt DateTime @default(now())
+  demande   Demande  @relation(fields: [demandeId], references: [id])
+  demandeId Int
+  id        Int      @id @default(autoincrement())
+  message   String?
+  typeField String
+  titre     String
+  updatedAt DateTime @updatedAt
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}
+
 enum EnumAideCrediteur {
   LeBNFiciaire
   UnCrAncier
@@ -184,10 +221,9 @@ enum EnumAideFrequence {
 }
 
 enum EnumAideTypeField {
-  Alimentaire
+  AssistanceAdministrative
   FinanciRe
 }
-
 enum EnumUserNotificationPreferenceTypeField {
   NouvelleDemande
   DemandeEnVisite
@@ -207,4 +243,8 @@ enum EnumDemandeCategorieDemandeur {
   LourdementEndett
   NCessiteux
   Pauvre
+}
+enum EnumAideStatus {
+  EnCours
+  Expir
 }
