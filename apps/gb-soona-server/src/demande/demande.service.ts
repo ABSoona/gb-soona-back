@@ -85,6 +85,7 @@ export class DemandeService extends DemandeServiceBase {
     const notificationStatusMapping = [
       { notification: 'DemandeEnCommission', label: 'En commission', value: 'en_commision', subject: 'Demande en commission' },
       { notification: 'DemandeEnVisite', label: 'En visite', value: 'en_visite', subject: 'Demande en visite' },
+      
     ] as const;
 
     for (const mapping of notificationStatusMapping) {
@@ -138,6 +139,7 @@ export const demandeStatusLabels = [
   { value: 'EnCours', label: 'en cours' },
   { value: 'EnAttente', label: 'en attente' },
   { value: 'Abandonnée', label: 'Abandonnée' },
+  { value: 'EnAttenteDocs', label: 'en attente de justificatifs' },
 
 
   
