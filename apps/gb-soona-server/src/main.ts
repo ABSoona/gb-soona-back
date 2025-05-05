@@ -11,8 +11,12 @@ import {
 } from "./swagger";
 import { graphqlUploadExpress } from "graphql-upload";
 import crypto from 'crypto';
-global.crypto = crypto as any;
+import { webcrypto } from 'node:crypto';
+type Crypto = typeof import('node:crypto').webcrypto;
 
+if (!globalThis.crypto) {
+  globalThis.crypto = webcrypto as Crypto;
+}
 const { PORT = 3000 } = process.env;
 
 async function main() {

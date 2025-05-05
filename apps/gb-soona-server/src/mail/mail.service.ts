@@ -76,7 +76,16 @@ export class MailService {
       ],
     });
   }
-
+ 
+  async sendHtmlMail(html: string , subject:string, to:string) {
+   
+    await this.transporter.sendMail({
+      from: `"GBSoona" <${process.env.SMTP_USER}>`,
+      to,
+      subject,
+      html
+    });
+  }
   
  
 }
