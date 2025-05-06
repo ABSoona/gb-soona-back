@@ -11,20 +11,21 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 import {
+  ValidateNested,
+  IsOptional,
   IsString,
   MaxLength,
-  IsOptional,
-  ValidateNested,
   IsInt,
   Max,
   IsEnum,
   IsDate,
 } from "class-validator";
 
-import { AideCreateNestedManyWithoutDemandesInput } from "./AideCreateNestedManyWithoutDemandesInput";
 import { Type } from "class-transformer";
+import { AideCreateNestedManyWithoutDemandesInput } from "./AideCreateNestedManyWithoutDemandesInput";
 import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { DemandeActivityCreateNestedManyWithoutDemandesInput } from "./DemandeActivityCreateNestedManyWithoutDemandesInput";
@@ -33,6 +34,18 @@ import { DocumentCreateNestedManyWithoutDemandesInput } from "./DocumentCreateNe
 
 @InputType()
 class DemandeCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  acteur?: UserWhereUniqueInput | null;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -150,6 +163,28 @@ class DemandeCreateInput {
 
   @ApiProperty({
     required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dernierContact?: Date | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  derniereRelance?: Date | null;
+
+  @ApiProperty({
+    required: false,
     type: Number,
   })
   @IsInt()
@@ -219,6 +254,42 @@ class DemandeCreateInput {
     nullable: true,
   })
   nombreEnfants?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(100)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  nombreRelances?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  proprietaire?: UserWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  recommandation?: string | null;
 
   @ApiProperty({
     required: false,

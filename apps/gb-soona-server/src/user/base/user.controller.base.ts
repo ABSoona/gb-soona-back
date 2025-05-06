@@ -29,6 +29,12 @@ import { UserUpdateInput } from "./UserUpdateInput";
 import { DemandeActivityFindManyArgs } from "../../demandeActivity/base/DemandeActivityFindManyArgs";
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
 import { DemandeActivityWhereUniqueInput } from "../../demandeActivity/base/DemandeActivityWhereUniqueInput";
+import { DemandeFindManyArgs } from "../../demande/base/DemandeFindManyArgs";
+import { Demande } from "../../demande/base/Demande";
+import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
+import { UserNotificationPreferenceFindManyArgs } from "../../userNotificationPreference/base/UserNotificationPreferenceFindManyArgs";
+import { UserNotificationPreference } from "../../userNotificationPreference/base/UserNotificationPreference";
+import { UserNotificationPreferenceWhereUniqueInput } from "../../userNotificationPreference/base/UserNotificationPreferenceWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -50,8 +56,19 @@ export class UserControllerBase {
   })
   async createUser(@common.Body() data: UserCreateInput): Promise<User> {
     return await this.service.createUser({
-      data: data,
+      data: {
+        ...data,
+
+        superieur: data.superieur
+          ? {
+              connect: data.superieur,
+            }
+          : undefined,
+      },
       select: {
+        adresseCodePostal: true,
+        adresseRue: true,
+        adresseVille: true,
         createdAt: true,
         email: true,
         firstName: true,
@@ -60,6 +77,13 @@ export class UserControllerBase {
         role: true,
         roles: true,
         status: true,
+
+        superieur: {
+          select: {
+            id: true,
+          },
+        },
+
         token: true,
         updatedAt: true,
         username: true,
@@ -84,6 +108,9 @@ export class UserControllerBase {
     return this.service.users({
       ...args,
       select: {
+        adresseCodePostal: true,
+        adresseRue: true,
+        adresseVille: true,
         createdAt: true,
         email: true,
         firstName: true,
@@ -92,6 +119,13 @@ export class UserControllerBase {
         role: true,
         roles: true,
         status: true,
+
+        superieur: {
+          select: {
+            id: true,
+          },
+        },
+
         token: true,
         updatedAt: true,
         username: true,
@@ -117,6 +151,9 @@ export class UserControllerBase {
     const result = await this.service.user({
       where: params,
       select: {
+        adresseCodePostal: true,
+        adresseRue: true,
+        adresseVille: true,
         createdAt: true,
         email: true,
         firstName: true,
@@ -125,6 +162,13 @@ export class UserControllerBase {
         role: true,
         roles: true,
         status: true,
+
+        superieur: {
+          select: {
+            id: true,
+          },
+        },
+
         token: true,
         updatedAt: true,
         username: true,
@@ -157,8 +201,19 @@ export class UserControllerBase {
     try {
       return await this.service.updateUser({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          superieur: data.superieur
+            ? {
+                connect: data.superieur,
+              }
+            : undefined,
+        },
         select: {
+          adresseCodePostal: true,
+          adresseRue: true,
+          adresseVille: true,
           createdAt: true,
           email: true,
           firstName: true,
@@ -167,6 +222,13 @@ export class UserControllerBase {
           role: true,
           roles: true,
           status: true,
+
+          superieur: {
+            select: {
+              id: true,
+            },
+          },
+
           token: true,
           updatedAt: true,
           username: true,
@@ -200,6 +262,9 @@ export class UserControllerBase {
       return await this.service.deleteUser({
         where: params,
         select: {
+          adresseCodePostal: true,
+          adresseRue: true,
+          adresseVille: true,
           createdAt: true,
           email: true,
           firstName: true,
@@ -208,6 +273,13 @@ export class UserControllerBase {
           role: true,
           roles: true,
           status: true,
+
+          superieur: {
+            select: {
+              id: true,
+            },
+          },
+
           token: true,
           updatedAt: true,
           username: true,
@@ -330,6 +402,492 @@ export class UserControllerBase {
   ): Promise<void> {
     const data = {
       demandeActivities: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/demandesActeurs")
+  @ApiNestedQuery(DemandeFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Demande",
+    action: "read",
+    possession: "any",
+  })
+  async findDemandesActeurs(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Demande[]> {
+    const query = plainToClass(DemandeFindManyArgs, request.query);
+    const results = await this.service.findDemandesActeurs(params.id, {
+      ...query,
+      select: {
+        acteur: {
+          select: {
+            id: true,
+          },
+        },
+
+        agesEnfants: true,
+        apl: true,
+        autresAides: true,
+        autresCharges: true,
+        categorieDemandeur: true,
+
+        contact: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        dateVisite: true,
+        dettes: true,
+        facturesEnergie: true,
+        id: true,
+        loyer: true,
+        natureDettes: true,
+        nombreEnfants: true,
+
+        proprietaire: {
+          select: {
+            id: true,
+          },
+        },
+
+        remarques: true,
+        revenus: true,
+        revenusConjoint: true,
+        situationFamiliale: true,
+        situationProConjoint: true,
+        situationProfessionnelle: true,
+        status: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/demandesActeurs")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectDemandesActeurs(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: DemandeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandesActeurs: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/demandesActeurs")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateDemandesActeurs(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: DemandeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandesActeurs: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/demandesActeurs")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectDemandesActeurs(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: DemandeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandesActeurs: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/demandesEnPropriete")
+  @ApiNestedQuery(DemandeFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Demande",
+    action: "read",
+    possession: "any",
+  })
+  async findDemandesEnPropriete(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Demande[]> {
+    const query = plainToClass(DemandeFindManyArgs, request.query);
+    const results = await this.service.findDemandesEnPropriete(params.id, {
+      ...query,
+      select: {
+        acteur: {
+          select: {
+            id: true,
+          },
+        },
+
+        agesEnfants: true,
+        apl: true,
+        autresAides: true,
+        autresCharges: true,
+        categorieDemandeur: true,
+
+        contact: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        dateVisite: true,
+        dettes: true,
+        facturesEnergie: true,
+        id: true,
+        loyer: true,
+        natureDettes: true,
+        nombreEnfants: true,
+
+        proprietaire: {
+          select: {
+            id: true,
+          },
+        },
+
+        remarques: true,
+        revenus: true,
+        revenusConjoint: true,
+        situationFamiliale: true,
+        situationProConjoint: true,
+        situationProfessionnelle: true,
+        status: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/demandesEnPropriete")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectDemandesEnPropriete(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: DemandeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandesEnPropriete: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/demandesEnPropriete")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateDemandesEnPropriete(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: DemandeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandesEnPropriete: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/demandesEnPropriete")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectDemandesEnPropriete(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: DemandeWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      demandesEnPropriete: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/subordonnes")
+  @ApiNestedQuery(UserFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async findSubordonnes(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<User[]> {
+    const query = plainToClass(UserFindManyArgs, request.query);
+    const results = await this.service.findSubordonnes(params.id, {
+      ...query,
+      select: {
+        adresseCodePostal: true,
+        adresseRue: true,
+        adresseVille: true,
+        createdAt: true,
+        email: true,
+        firstName: true,
+        id: true,
+        lastName: true,
+        role: true,
+        roles: true,
+        status: true,
+
+        superieur: {
+          select: {
+            id: true,
+          },
+        },
+
+        token: true,
+        updatedAt: true,
+        username: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/subordonnes")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectSubordonnes(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      subordonnes: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/subordonnes")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateSubordonnes(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      subordonnes: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/subordonnes")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectSubordonnes(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      subordonnes: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/userNotificationPreferences")
+  @ApiNestedQuery(UserNotificationPreferenceFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "UserNotificationPreference",
+    action: "read",
+    possession: "any",
+  })
+  async findUserNotificationPreferences(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<UserNotificationPreference[]> {
+    const query = plainToClass(
+      UserNotificationPreferenceFindManyArgs,
+      request.query
+    );
+    const results = await this.service.findUserNotificationPreferences(
+      params.id,
+      {
+        ...query,
+        select: {
+          createdAt: true,
+          id: true,
+          updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
+        },
+      }
+    );
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/userNotificationPreferences")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async connectUserNotificationPreferences(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userNotificationPreferences: {
+        connect: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/userNotificationPreferences")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async updateUserNotificationPreferences(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userNotificationPreferences: {
+        set: body,
+      },
+    };
+    await this.service.updateUser({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/userNotificationPreferences")
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectUserNotificationPreferences(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: UserNotificationPreferenceWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      userNotificationPreferences: {
         disconnect: body,
       },
     };

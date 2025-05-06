@@ -7,18 +7,30 @@ export class DemandeActivityService extends DemandeActivityServiceBase {
   constructor(protected readonly prisma: PrismaService) {
     super(prisma);
   }
- /* tmaintenant traite en front  
+
  async createDemandeActivity(args: Prisma.DemandeActivityCreateArgs): Promise<PrismaDemandeActivity> {
 
     const demandeActivity = await super.createDemandeActivity(args);
-    demandeActivity.typeField === "abandon" && await this.prisma.demande.update({where:{id:demandeActivity.demandeId},data:{status:"Abandonnée"}})
-    if(demandeActivity.typeField === "priseContactEchec"){      
-      await this.prisma.demande.update({where:{id:demandeActivity.demandeId},data:{status:"EnAttente"}})
-    } 
-    if(demandeActivity.typeField === "visite"){      
-      await this.prisma.demande.update({where:{id:demandeActivity.demandeId},data:{status:"en_visite"}})
-    } 
+    demandeActivity.typeField === "priseContactReussie" && await this.prisma.demande.update({where:{id:demandeActivity.demandeId},data:{dernierContact: new Date(Date.now()),nombreRelances:0}})
+    if (demandeActivity.typeField === "priseContactEchec") {
+      const demande = await this.prisma.demande.findUnique({
+        where: { id: demandeActivity.demandeId },
+        select: { nombreRelances: true },
+      });
+    
+      const currentRelances = demande?.nombreRelances ?? 0;
+     console.log("Mise a jour nombre de relance:",currentRelances)
+      
+      await this.prisma.demande.update({
+        where: { id: demandeActivity.demandeId },
+        data: {
+          derniereRelance: new Date(),
+          nombreRelances: currentRelances + 1,
+        },
+      });
+    }
+
     return demandeActivity;
-  } */
+  } 
 
 }

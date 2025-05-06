@@ -11,9 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested, IsEnum } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { AideListRelationFilter } from "../../aide/base/AideListRelationFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
@@ -27,6 +28,18 @@ import { DateTimeFilter } from "../../util/DateTimeFilter";
 
 @InputType()
 class DemandeWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  acteur?: UserWhereUniqueInput;
+
   @ApiProperty({
     required: false,
     type: StringNullableFilter,
@@ -154,6 +167,28 @@ class DemandeWhereInput {
 
   @ApiProperty({
     required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  dernierContact?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  derniereRelance?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: IntNullableFilter,
   })
   @Type(() => IntNullableFilter)
@@ -229,6 +264,28 @@ class DemandeWhereInput {
     nullable: true,
   })
   nombreEnfants?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: IntNullableFilter,
+  })
+  @Type(() => IntNullableFilter)
+  @IsOptional()
+  @Field(() => IntNullableFilter, {
+    nullable: true,
+  })
+  nombreRelances?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  recommandation?: StringNullableFilter;
 
   @ApiProperty({
     required: false,

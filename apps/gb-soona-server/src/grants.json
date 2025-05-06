@@ -1,4 +1,64 @@
-[
+[{
+  "role": "coordinateur",
+  "resource": "Demande",
+  "action": "read:any",
+  "attributes": "*"
+},
+{
+  "role": "coordinateur",
+  "resource": "Demande",
+  "action": "update:any",
+  "attributes": "*"
+},
+{
+  "role": "coordinateur",
+  "resource": "User",
+  "action": "read:any",
+  "attributes": "*"
+},
+{
+  "role": "coordinateur",
+  "resource": "User",
+  "action": "update:any",
+  "attributes": "*"
+},
+{
+  "role": "coordinateur",
+  "resource": "DemandeActivity",
+  "action": "create:any",
+  "attributes": "*"
+},
+{
+  "role": "coordinateur",
+  "resource": "DemandeActivity",
+  "action": "read:any",
+  "attributes": "*"
+},
+{
+  "role": "visiteur",
+  "resource": "Demande",
+  "action": "read:any",
+  "attributes": "*"
+},
+{
+  "role": "visiteur",
+  "resource": "DemandeActivity",
+  "action": "read:any",
+  "attributes": "*"
+},
+{
+  "role": "visiteur",
+  "resource": "Document",
+  "action": "create:any",
+  "attributes": "*"
+},
+{
+  "role": "visiteur",
+  "resource": "Document",
+  "action": "read:any",
+  "attributes": "*"
+},
+
   {
     "role": "admin",
     "resource": "Aide",
@@ -987,6 +1047,54 @@
     "role": "external",
     "resource": "DemandeActivity",
     "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Demande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Demande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Contact",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Contact",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Document",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Document",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "DemandeActivity",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "DemandeActivity",
+    "action": "create:any",
     "attributes": "*"
   }
 ]

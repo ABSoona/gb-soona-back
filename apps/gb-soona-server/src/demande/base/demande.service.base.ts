@@ -18,6 +18,7 @@ import {
   DemandeActivity as PrismaDemandeActivity,
   DemandeStatusHistory as PrismaDemandeStatusHistory,
   Document as PrismaDocument,
+  User as PrismaUser,
   Contact as PrismaContact,
 } from "@prisma/client";
 
@@ -90,11 +91,27 @@ export class DemandeServiceBase {
       .documents(args);
   }
 
+  async getActeur(parentId: number): Promise<PrismaUser | null> {
+    return this.prisma.demande
+      .findUnique({
+        where: { id: parentId },
+      })
+      .acteur();
+  }
+
   async getContact(parentId: number): Promise<PrismaContact | null> {
     return this.prisma.demande
       .findUnique({
         where: { id: parentId },
       })
       .contact();
+  }
+
+  async getProprietaire(parentId: number): Promise<PrismaUser | null> {
+    return this.prisma.demande
+      .findUnique({
+        where: { id: parentId },
+      })
+      .proprietaire();
   }
 }

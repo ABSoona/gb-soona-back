@@ -34,6 +34,7 @@ import { DemandeStatusHistoryFindManyArgs } from "../../demandeStatusHistory/bas
 import { DemandeStatusHistory } from "../../demandeStatusHistory/base/DemandeStatusHistory";
 import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
 import { Document } from "../../document/base/Document";
+import { User } from "../../user/base/User";
 import { Contact } from "../../contact/base/Contact";
 import { DemandeService } from "../demande.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -104,9 +105,21 @@ export class DemandeResolverBase {
       data: {
         ...args.data,
 
+        acteur: args.data.acteur
+          ? {
+              connect: args.data.acteur,
+            }
+          : undefined,
+
         contact: {
           connect: args.data.contact,
         },
+
+        proprietaire: args.data.proprietaire
+          ? {
+              connect: args.data.proprietaire,
+            }
+          : undefined,
       },
     });
   }
@@ -127,9 +140,21 @@ export class DemandeResolverBase {
         data: {
           ...args.data,
 
+          acteur: args.data.acteur
+            ? {
+                connect: args.data.acteur,
+              }
+            : undefined,
+
           contact: {
             connect: args.data.contact,
           },
+
+          proprietaire: args.data.proprietaire
+            ? {
+                connect: args.data.proprietaire,
+              }
+            : undefined,
         },
       });
     } catch (error) {
@@ -249,6 +274,25 @@ export class DemandeResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, {
+    nullable: true,
+    name: "acteur",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async getActeur(@graphql.Parent() parent: Demande): Promise<User | null> {
+    const result = await this.service.getActeur(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => Contact, {
     nullable: true,
     name: "contact",
@@ -260,6 +304,27 @@ export class DemandeResolverBase {
   })
   async getContact(@graphql.Parent() parent: Demande): Promise<Contact | null> {
     const result = await this.service.getContact(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, {
+    nullable: true,
+    name: "proprietaire",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async getProprietaire(
+    @graphql.Parent() parent: Demande
+  ): Promise<User | null> {
+    const result = await this.service.getProprietaire(parent.id);
 
     if (!result) {
       return null;

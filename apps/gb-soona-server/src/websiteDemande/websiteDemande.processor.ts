@@ -147,7 +147,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
 
   }
   private async createDemande(args: PrismaWebsiteDemande, contact: PrismaContact) {
-
+    const defaultActeur = await this.prisma.user.findFirst({where:{role:"assitant_social"}})
     const demande = await this.demandeService.createDemande({
       data: {
         contact: {
@@ -168,7 +168,9 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         natureDettes: args.natureDettes,
         facturesEnergie: args.facturesEnergie,
         remarques: args.remarques,
-        status: 'recue'
+        status: 'recue',
+        acteur: {connect:{id:defaultActeur?.id}},
+        proprietaire : {connect:{id:defaultActeur?.id}}
       },
     });
   }

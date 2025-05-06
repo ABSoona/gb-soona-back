@@ -31,6 +31,8 @@ model Aide {
 }
 
 model Demande {
+  acteur                   User?                          @relation(name: "acteur", fields: [acteurId], references: [id])
+  acteurId                 String?
   agesEnfants              String?
   aides                    Aide[]
   apl                      Int?
@@ -43,13 +45,19 @@ model Demande {
   dateVisite               DateTime?
   demandeStatusHistories   DemandeStatusHistory[]
   demandeActivities        DemandeActivity[]
+  dernierContact           DateTime?
+  derniereRelance          DateTime?
   dettes                   Int?
   documents                Document[]
   facturesEnergie          Int?
   id                       Int                            @id @default(autoincrement())
   loyer                    Int?
   natureDettes             String?
-  nombreEnfants            Int?
+  nombreEnfants            Int?                           @default(0)
+  nombreRelances           Int?
+  proprietaire             User?                          @relation(name: "demandesEnPropriete", fields: [proprietaireId], references: [id])
+  proprietaireId           String?
+  recommandation           String?
   remarques                String?
   revenus                  Int?
   revenusConjoint          Int?
@@ -85,8 +93,13 @@ model Contact {
 }
 
 model User {
+  adresseCodePostal   String?
+  adresseRue          String?
+  adresseVille        String?
   createdAt                   DateTime                     @default(now())
   demandeActivities DemandeActivity[]
+  demandesActeurs     Demande[]                            @relation(name: "acteur")
+  demandesEnPropriete Demande[]                            @relation(name: "demandesEnPropriete")
   email                       String?                      @unique
   firstName                   String?
   id                          String                       @id @default(cuid())
@@ -95,6 +108,9 @@ model User {
   role                        String?
   roles                       Json
   status                      String?
+  subordonnes         User[]                              @relation(name: "subordonnes")
+  superieur           User?                               @relation(name: "subordonnes", fields: [superieurId], references: [id])
+  superieurId         String?
   token                       String?
   updatedAt                   DateTime                     @updatedAt
   userNotificationPreferences UserNotificationPreference[]

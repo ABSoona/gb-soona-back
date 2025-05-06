@@ -18,6 +18,9 @@ import { UserService } from "../user.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  adresseCodePostal: "exampleAdresseCodePostal",
+  adresseRue: "exampleAdresseRue",
+  adresseVille: "exampleAdresseVille",
   createdAt: new Date(),
   email: "exampleEmail",
   firstName: "exampleFirstName",
@@ -31,6 +34,9 @@ const CREATE_INPUT = {
   username: "exampleUsername",
 };
 const CREATE_RESULT = {
+  adresseCodePostal: "exampleAdresseCodePostal",
+  adresseRue: "exampleAdresseRue",
+  adresseVille: "exampleAdresseVille",
   createdAt: new Date(),
   email: "exampleEmail",
   firstName: "exampleFirstName",
@@ -45,6 +51,9 @@ const CREATE_RESULT = {
 };
 const FIND_MANY_RESULT = [
   {
+    adresseCodePostal: "exampleAdresseCodePostal",
+    adresseRue: "exampleAdresseRue",
+    adresseVille: "exampleAdresseVille",
     createdAt: new Date(),
     email: "exampleEmail",
     firstName: "exampleFirstName",
@@ -59,6 +68,9 @@ const FIND_MANY_RESULT = [
   },
 ];
 const FIND_ONE_RESULT = {
+  adresseCodePostal: "exampleAdresseCodePostal",
+  adresseRue: "exampleAdresseRue",
+  adresseVille: "exampleAdresseVille",
   createdAt: new Date(),
   email: "exampleEmail",
   firstName: "exampleFirstName",

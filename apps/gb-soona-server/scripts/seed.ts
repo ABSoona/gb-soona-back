@@ -47,6 +47,8 @@ async function seed(bcryptSalt: Salt) {
     create: data,
   });
 
+  
+
   const wpApiPass = process.env.WP_API_PASS;
 if (!wpApiPass) {
   throw new Error("WP_API_PASS environment variable must be defined");

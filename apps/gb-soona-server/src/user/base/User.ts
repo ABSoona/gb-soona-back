@@ -12,20 +12,58 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
-  IsDate,
-  ValidateNested,
-  IsOptional,
   IsString,
   MaxLength,
+  IsOptional,
+  IsDate,
+  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
+import { Demande } from "../../demande/base/Demande";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
+import { UserNotificationPreference } from "../../userNotificationPreference/base/UserNotificationPreference";
 
 @ObjectType()
 class User {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  adresseCodePostal!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  adresseRue!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  adresseVille!: string | null;
+
   @ApiProperty({
     required: true,
   })
@@ -42,6 +80,24 @@ class User {
   @Type(() => DemandeActivity)
   @IsOptional()
   demandeActivities?: Array<DemandeActivity>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Demande],
+  })
+  @ValidateNested()
+  @Type(() => Demande)
+  @IsOptional()
+  demandesActeurs?: Array<Demande>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Demande],
+  })
+  @ValidateNested()
+  @Type(() => Demande)
+  @IsOptional()
+  demandesEnPropriete?: Array<Demande>;
 
   @ApiProperty({
     required: false,
@@ -119,6 +175,24 @@ class User {
 
   @ApiProperty({
     required: false,
+    type: () => [User],
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  subordonnes?: Array<User>;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  superieur?: User | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -136,6 +210,15 @@ class User {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => [UserNotificationPreference],
+  })
+  @ValidateNested()
+  @Type(() => UserNotificationPreference)
+  @IsOptional()
+  userNotificationPreferences?: Array<UserNotificationPreference>;
 
   @ApiProperty({
     required: true,
