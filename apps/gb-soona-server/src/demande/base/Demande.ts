@@ -11,20 +11,21 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { User } from "../../user/base/User";
 
 import {
+  ValidateNested,
+  IsOptional,
   IsString,
   MaxLength,
-  IsOptional,
-  ValidateNested,
   IsInt,
   Max,
   IsEnum,
   IsDate,
 } from "class-validator";
 
-import { Aide } from "../../aide/base/Aide";
 import { Type } from "class-transformer";
+import { Aide } from "../../aide/base/Aide";
 import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
 import { Contact } from "../../contact/base/Contact";
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
@@ -33,6 +34,15 @@ import { Document } from "../../document/base/Document";
 
 @ObjectType()
 class Demande {
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  acteur?: User | null;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -151,6 +161,28 @@ class Demande {
 
   @ApiProperty({
     required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  dernierContact!: Date | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  derniereRelance!: Date | null;
+
+  @ApiProperty({
+    required: false,
     type: Number,
   })
   @IsInt()
@@ -225,6 +257,39 @@ class Demande {
     nullable: true,
   })
   nombreEnfants!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(100)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  nombreRelances!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  proprietaire?: User | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  recommandation!: string | null;
 
   @ApiProperty({
     required: false,

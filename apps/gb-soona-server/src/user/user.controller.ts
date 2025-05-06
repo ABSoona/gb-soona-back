@@ -25,7 +25,15 @@ export class UserController extends UserControllerBase {
   async createUserWithUnvitation(@Body() data: UserCreateInput): Promise<User> {
     
     return await this.service.createUserWithUnvitation(
-     {data: data,  select: {
+     {data: {
+      ...data,
+
+      superieur: data.superieur
+        ? {
+            connect: data.superieur,
+          }
+        : undefined,
+    },  select: {
       createdAt: true,
       email: true,
       firstName: true,
@@ -37,6 +45,10 @@ export class UserController extends UserControllerBase {
       token: true,
       updatedAt: true,
       username: true,
+      adresseRue: true,
+      adresseCodePostal: true,
+      adresseVille:true,
+
     }, } 
     );
   }
