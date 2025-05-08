@@ -16,6 +16,7 @@ import {
   MaxLength,
   IsOptional,
   ValidateNested,
+  IsBoolean,
 } from "class-validator";
 import { DemandeActivityUpdateManyWithoutUsersInput } from "./DemandeActivityUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
@@ -123,6 +124,17 @@ class UserUpdateInput {
     nullable: true,
   })
   firstName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  hasAccess?: boolean;
 
   @ApiProperty({
     required: false,

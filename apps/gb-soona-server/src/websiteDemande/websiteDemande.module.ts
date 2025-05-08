@@ -6,14 +6,14 @@ import { WebsiteDemandeController } from "./websiteDemande.controller";
 import { WebsiteDemandeResolver } from "./websiteDemande.resolver";
 import { QueueDispatcherModule } from "src/bullmq/queue-dispatcher.module";
 import { WebSiteDemandeProcessor } from "./websiteDemande.processor";
-import { ContactModule } from "src/contact/contact.module";
 import { DemandeModule } from "src/demande/demande.module";
 import { MailModule } from "src/mail/mail.module";
+import { WebsiteDemandeNotificationService } from "src/websiteDemande/website-demande-notification.service";
 
 @Module({
   imports: [WebsiteDemandeModuleBase, forwardRef(() => AuthModule),QueueDispatcherModule,MailModule,DemandeModule],
   controllers: [WebsiteDemandeController],
-  providers: [WebsiteDemandeService, WebsiteDemandeResolver,WebSiteDemandeProcessor],
-  exports: [WebsiteDemandeService],
+  providers: [WebsiteDemandeService, WebsiteDemandeResolver,WebSiteDemandeProcessor,WebsiteDemandeNotificationService],
+  exports: [WebsiteDemandeService,WebsiteDemandeNotificationService],
 })
 export class WebsiteDemandeModule {}

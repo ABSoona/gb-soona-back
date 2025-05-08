@@ -16,6 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { DemandeActivityListRelationFilter } from "../../demandeActivity/base/DemandeActivityListRelationFilter";
 import { DemandeListRelationFilter } from "../../demande/base/DemandeListRelationFilter";
+import { BooleanFilter } from "../../util/BooleanFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { UserListRelationFilter } from "./UserListRelationFilter";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
@@ -113,6 +114,17 @@ class UserWhereInput {
     nullable: true,
   })
   firstName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanFilter,
+  })
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  hasAccess?: BooleanFilter;
 
   @ApiProperty({
     required: false,

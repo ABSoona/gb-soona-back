@@ -37,15 +37,18 @@ export class UserService extends UserServiceBase {
     const user = await super.createUser(args);
 
     // 2. Créer les préférences de notifications
-    const notificationTypes = Object.values(EnumUserNotificationPreferenceTypeField);
+    if(user.hasAccess){
+      const notificationTypes = Object.values(EnumUserNotificationPreferenceTypeField);
 
     await this.prisma.userNotificationPreference.createMany({
       data: notificationTypes.map((type) => ({
         userId: user.id,
         typeField: type,
-        active: true, 
+        active: type == EnumUserNotificationPreferenceTypeField.ErreursDemandes ?true: false, 
       })),
     });
+    }
+    
 
     // 3. Retourner l’utilisateur comme d’habitude
     return user;

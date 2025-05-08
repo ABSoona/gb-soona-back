@@ -61,20 +61,20 @@ export class MailService {
   async sendUserMail(template: string ,to: string,  variables: Record<string, string>,subject:string) {
     console.log("Envoie du mail")
     const html = this.renderTemplate(template, variables);
-
-    await this.transporter.sendMail({
-      from: `"GBSoona" <${process.env.SMTP_USER}>`,
-      to,
-      subject:subject,
-      html,
-      attachments: [
-        {
-          filename: 'log.png',
-          path: path.resolve(__dirname, 'assets', 'logo.png'),
-          cid: 'logo', // 👈 correspond à `cid:logo` dans le MJML
-        },
-      ],
-    });
+    if(to.split('@')[1]!=='example.com')
+      await this.transporter.sendMail({
+        from: `"GBSoona" <${process.env.SMTP_USER}>`,
+        to,
+        subject:subject,
+        html,
+        attachments: [
+          {
+            filename: 'log.png',
+            path: path.resolve(__dirname, 'assets', 'logo.png'),
+            cid: 'logo', // 👈 correspond à `cid:logo` dans le MJML
+          },
+        ],
+      });
   }
  
   async sendHtmlMail(html: string , subject:string, to:string) {

@@ -6,12 +6,13 @@ import { DemandeController } from "./demande.controller";
 import { DemandeResolver } from "./demande.resolver";
 import { MailService } from "src/mail/mail.service";
 import { MailModule } from "src/mail/mail.module";
+import { DemandeNotificationService } from "./demande-notification.service";
 
 
 @Module({
   imports: [DemandeModuleBase, forwardRef(() => AuthModule),MailModule],
   controllers: [DemandeController],
-  providers: [DemandeService, DemandeResolver],
-  exports: [DemandeService],
+  providers: [DemandeService, DemandeResolver,DemandeNotificationService],
+  exports: [DemandeService,DemandeNotificationService],
 })
 export class DemandeModule {}
