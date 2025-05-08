@@ -11,7 +11,7 @@ export class DemandeActivityService extends DemandeActivityServiceBase {
  async createDemandeActivity(args: Prisma.DemandeActivityCreateArgs): Promise<PrismaDemandeActivity> {
 
     const demandeActivity = await super.createDemandeActivity(args);
-    demandeActivity.typeField === "priseContactReussie" && await this.prisma.demande.update({where:{id:demandeActivity.demandeId},data:{dernierContact: new Date(Date.now()),nombreRelances:0}})
+    demandeActivity.typeField === "priseContactReussie" && await this.prisma.demande.update({where:{id:demandeActivity.demandeId},data:{dernierContact: new Date(Date.now()),nombreRelances:0,derniereRelance:null}})
     if (demandeActivity.typeField === "priseContactEchec") {
       const demande = await this.prisma.demande.findUnique({
         where: { id: demandeActivity.demandeId },

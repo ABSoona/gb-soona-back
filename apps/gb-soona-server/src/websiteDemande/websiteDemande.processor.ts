@@ -11,12 +11,15 @@ import {
   Contact as PrismaContact,
 
 } from "@prisma/client";
+import { WebsiteDemandeNotificationService } from './website-demande-notification.service';
 
 @Injectable()
 export class WebSiteDemandeProcessor implements OnModuleInit {
   constructor(private readonly prisma: PrismaService,
     protected readonly demandeService: DemandeService,
-    protected readonly mailService: MailService) { }
+    protected readonly mailService: MailService,
+    protected readonly websiteDemandeNotificationService:WebsiteDemandeNotificationService
+  ) { }
 
   onModuleInit() {
     new Worker(
@@ -55,7 +58,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
           const errorMessage =
             error instanceof Error ? error.message : 'Erreur inconnue lors du traitement de la demande site internet';
           console.error('Erreur lors du traitement de la demande site internet :', errorMessage);
-          this.sendMailerror(errorMessage);
+          await this.websiteDemandeNotificationService.notifyError(errorMessage);
           // Met à jour la demande avec l’erreur
           await this.prisma.websiteDemande.update({
             where: { id: args.id },
@@ -114,7 +117,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
           
           if(contacts[0]?.email){
             const contact_name = contacts[0].prenom?contacts[0].prenom:'Assalamou Alaykoum'
-            this.mailService.sendMailAsync('contact-blacklist',contacts[0]?.email,{contact_name},'Suite à votre demande sur soona.fr')
+            await this.websiteDemandeNotificationService.notifyBlacklistContact(contacts[0].email, contacts[0]?.prenom);
           }
           
           throw new Error(`Contact Blacklisté, aucune demande ne sera créée`);
@@ -127,7 +130,6 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
     }
 
    
-    
 
     // Aucun contact trouvé : on le crée
     return await this.prisma.contact.create({
@@ -147,7 +149,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
 
   }
   private async createDemande(args: PrismaWebsiteDemande, contact: PrismaContact) {
-    const defaultActeur = await this.prisma.user.findFirst({where:{role:"assitant_social"}})
+    const defaultActeur = await this.prisma.user.findFirst({where:{role:"assistant_social"}})
     const demande = await this.demandeService.createDemande({
       data: {
         contact: {
@@ -175,26 +177,6 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
     });
   }
 
-  private async sendMailerror(errorMessage: string) {
-    const notifs = await this.prisma.userNotificationPreference.findMany({
-      where: {
-        active: { equals: true },
-        typeField: { equals: 'ErreursDemandes' }
-      }
-    });
-    for (const notif of notifs) {
-      const user = await this.prisma.user.findFirst({
-        where: { id: notif.userId },
-      });
-      const lien_demande = `${process.env.FRONTEND_URL}/website-demandes`
-      const error_message = errorMessage
-      if (user?.email) {
-
-        this.mailService.sendMailAsync('website-demande-error', user.email, { lien_demande, error_message }, 'Une demande depuis le site internet et bloquée');
-      }
-    }
-
-  }
 
   
 }

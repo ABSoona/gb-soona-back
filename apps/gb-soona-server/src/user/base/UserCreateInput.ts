@@ -16,6 +16,7 @@ import {
   MaxLength,
   IsOptional,
   ValidateNested,
+  IsBoolean,
 } from "class-validator";
 import { DemandeActivityCreateNestedManyWithoutUsersInput } from "./DemandeActivityCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
@@ -123,6 +124,14 @@ class UserCreateInput {
     nullable: true,
   })
   firstName?: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  hasAccess!: boolean;
 
   @ApiProperty({
     required: false,

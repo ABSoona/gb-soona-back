@@ -17,6 +17,7 @@ import {
   IsOptional,
   IsDate,
   ValidateNested,
+  IsBoolean,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
@@ -121,6 +122,14 @@ class User {
     nullable: true,
   })
   firstName!: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  hasAccess!: boolean;
 
   @ApiProperty({
     required: true,

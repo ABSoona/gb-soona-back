@@ -1001,6 +1001,7 @@ type User {
   demandesEnPropriete(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
   email: String
   firstName: String
+  hasAccess: Boolean!
   id: String!
   lastName: String
   role: String
@@ -1023,6 +1024,7 @@ input UserCreateInput {
   demandesEnPropriete: DemandeCreateNestedManyWithoutUsersInput
   email: String
   firstName: String
+  hasAccess: Boolean!
   lastName: String
   password: String!
   role: String
@@ -1116,6 +1118,7 @@ input UserOrderByInput {
   createdAt: SortOrder
   email: SortOrder
   firstName: SortOrder
+  hasAccess: SortOrder
   id: SortOrder
   lastName: SortOrder
   password: SortOrder
@@ -1137,6 +1140,7 @@ input UserUpdateInput {
   demandesEnPropriete: DemandeUpdateManyWithoutUsersInput
   email: String
   firstName: String
+  hasAccess: Boolean
   lastName: String
   password: String
   role: String
@@ -1164,6 +1168,7 @@ input UserWhereInput {
   demandesEnPropriete: DemandeListRelationFilter
   email: StringNullableFilter
   firstName: StringNullableFilter
+  hasAccess: BooleanFilter
   id: StringFilter
   lastName: StringNullableFilter
   role: StringNullableFilter

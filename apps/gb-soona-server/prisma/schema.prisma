@@ -102,6 +102,7 @@ model User {
   demandesEnPropriete Demande[]                            @relation(name: "demandesEnPropriete")
   email                       String?                      @unique
   firstName                   String?
+  hasAccess                   Boolean                      @default(true)
   id                          String                       @id @default(cuid())
   lastName                    String?
   password                    String

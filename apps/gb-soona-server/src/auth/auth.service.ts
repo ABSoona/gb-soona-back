@@ -25,7 +25,7 @@ export class AuthService {
     const user = await this.userService.user({
       where: { username },
     });
-    if (user && (await this.passwordService.compare(password, user.password))) {
+    if (user && user.hasAccess && (await this.passwordService.compare(password, user.password))) {
       const { id, roles } = user;
       const roleList = roles as string[];
       return { id, username, roles: roleList };
@@ -38,6 +38,7 @@ export class AuthService {
       credentials.username,
       credentials.password
     );
+    
     if (!user) {
       throw new UnauthorizedException("Email ou mot de passe incorrects");
     }
