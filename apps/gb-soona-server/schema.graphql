@@ -10,6 +10,7 @@ type Aide {
   dateExpiration: DateTime
   demande: Demande
   demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
+  documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   frequence: EnumAideFrequence
   id: Float!
   infosCrediteur: String
@@ -30,6 +31,7 @@ input AideCreateInput {
   dateExpiration: DateTime
   demande: DemandeWhereUniqueInput
   demandeActivities: DemandeActivityCreateNestedManyWithoutAidesInput
+  documents: DocumentCreateNestedManyWithoutAidesInput
   frequence: EnumAideFrequence
   infosCrediteur: String
   montant: Float
@@ -82,6 +84,7 @@ input AideUpdateInput {
   dateExpiration: DateTime
   demande: DemandeWhereUniqueInput
   demandeActivities: DemandeActivityUpdateManyWithoutAidesInput
+  documents: DocumentUpdateManyWithoutAidesInput
   frequence: EnumAideFrequence
   infosCrediteur: String
   montant: Float
@@ -113,6 +116,7 @@ input AideWhereInput {
   dateExpiration: DateTimeNullableFilter
   demande: DemandeWhereUniqueInput
   demandeActivities: DemandeActivityListRelationFilter
+  documents: DocumentListRelationFilter
   frequence: EnumAideFrequence
   id: IntFilter
   infosCrediteur: StringNullableFilter
@@ -604,6 +608,7 @@ input DemandeWhereUniqueInput {
 }
 
 type Document {
+  aide: Aide
   contact: Contact
   contenu: JSON
   createdAt: DateTime!
@@ -614,10 +619,15 @@ type Document {
 }
 
 input DocumentCreateInput {
+  aide: AideWhereUniqueInput
   contact: ContactWhereUniqueInput
   contenu: JSON
   demande: DemandeWhereUniqueInput
   typeDocument: TypeDocumentWhereUniqueInput
+}
+
+input DocumentCreateNestedManyWithoutAidesInput {
+  connect: [DocumentWhereUniqueInput!]
 }
 
 input DocumentCreateNestedManyWithoutContactsInput {
@@ -639,6 +649,7 @@ input DocumentListRelationFilter {
 }
 
 input DocumentOrderByInput {
+  aideId: SortOrder
   contactId: SortOrder
   contenu: SortOrder
   createdAt: SortOrder
@@ -649,10 +660,17 @@ input DocumentOrderByInput {
 }
 
 input DocumentUpdateInput {
+  aide: AideWhereUniqueInput
   contact: ContactWhereUniqueInput
   contenu: JSON
   demande: DemandeWhereUniqueInput
   typeDocument: TypeDocumentWhereUniqueInput
+}
+
+input DocumentUpdateManyWithoutAidesInput {
+  connect: [DocumentWhereUniqueInput!]
+  disconnect: [DocumentWhereUniqueInput!]
+  set: [DocumentWhereUniqueInput!]
 }
 
 input DocumentUpdateManyWithoutContactsInput {
@@ -674,6 +692,7 @@ input DocumentUpdateManyWithoutTypeDocumentsInput {
 }
 
 input DocumentWhereInput {
+  aide: AideWhereUniqueInput
   contact: ContactWhereUniqueInput
   contenu: JsonFilter
   demande: DemandeWhereUniqueInput
@@ -715,6 +734,7 @@ enum EnumDemandeCategorieDemandeur {
 }
 
 enum EnumTypeDocumentRattachement {
+  Aide
   Contact
   Demande
   Suivi
@@ -723,6 +743,7 @@ enum EnumTypeDocumentRattachement {
 enum EnumUserNotificationPreferenceTypeField {
   AideExpir
   ContactBan
+  DemandeAffecte
   DemandeEnCommission
   DemandeEnVisite
   ErreursDemandes

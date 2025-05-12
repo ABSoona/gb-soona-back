@@ -16,9 +16,10 @@ import { TokenService } from "./token.service";
 import { UserModule } from "../user/user.module";
 import { MailService } from "src/mail/mail.service";
 import { MailModule } from "src/mail/mail.module";
+import { DemandeModule } from "src/demande/demande.module";
 @Module({
   imports: [
-    forwardRef(() => UserModule),
+    forwardRef(() => UserModule),forwardRef(() => DemandeModule),
     PassportModule,
     SecretsManagerModule,
     MailModule,
@@ -55,6 +56,6 @@ import { MailModule } from "src/mail/mail.module";
     TokenService
   ],
   controllers: [AuthController],
-  exports: [AuthService, PasswordService],
+  exports: [AuthService, PasswordService,TokenService],
 })
 export class AuthModule {}

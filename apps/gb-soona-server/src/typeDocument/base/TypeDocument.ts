@@ -91,7 +91,7 @@ class TypeDocument {
   @Field(() => EnumTypeDocumentRattachement, {
     nullable: true,
   })
-  rattachement?: "Contact" | "Demande" | "Suivi";
+  rattachement?: "Contact" | "Demande" | "Suivi" | "Aide";
 
   @ApiProperty({
     required: true,

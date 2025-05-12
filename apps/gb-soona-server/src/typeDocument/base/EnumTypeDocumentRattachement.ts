@@ -17,6 +17,7 @@ export enum EnumTypeDocumentRattachement {
   Contact = "Contact",
   Demande = "Demande",
   Suivi = "Suivi",
+  Aide = "Aide",
 }
 
 registerEnumType(EnumTypeDocumentRattachement, {

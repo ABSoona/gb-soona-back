@@ -1,5 +1,6 @@
+import { Aide } from './../node_modules/.prisma/client/index.d';
 import * as dotenv from "dotenv";
-import { PrismaClient } from "@prisma/client";
+import { EnumTypeDocumentRattachement, PrismaClient } from "@prisma/client";
 import { customSeed } from "./customSeed";
 import { Salt, parseSalt } from "../src/auth/password.service";
 import { hash } from "bcrypt";
@@ -76,8 +77,9 @@ if (!wpApiPass) {
 
 
   const internalTypes = [
-    { label: "Rapport de visite", internalCode: "rapport_visite",isInternal: true },
-    { label: "Autre document de suivi", internalCode: "autre_suivi",isInternal: false },
+    { label: "Rapport de visite", internalCode: "rapport_visite",isInternal: true,rattachement: EnumTypeDocumentRattachement.Suivi},
+    { label: "Autre document de suivi", internalCode: "autre_suivi",isInternal: false,rattachement:EnumTypeDocumentRattachement.Suivi },
+    { label: "Preuve de virement", internalCode: "preuve_virement",isInternal: true,rattachement:EnumTypeDocumentRattachement.Aide },
     
   ];
 
@@ -89,7 +91,7 @@ if (!wpApiPass) {
         label: doc.label,
         internalCode: doc.internalCode,
         isInternal: doc.isInternal,
-        rattachement: "Suivi",
+        rattachement: doc.rattachement,
       },
     });
   }

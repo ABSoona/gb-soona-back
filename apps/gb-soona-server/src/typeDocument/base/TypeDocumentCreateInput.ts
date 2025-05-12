@@ -72,7 +72,7 @@ class TypeDocumentCreateInput {
   })
   @IsEnum(EnumTypeDocumentRattachement)
   @Field(() => EnumTypeDocumentRattachement)
-  rattachement!: "Contact" | "Demande" | "Suivi";
+  rattachement!: "Contact" | "Demande" | "Suivi"  | "Aide";
 }
 
 export { TypeDocumentCreateInput as TypeDocumentCreateInput };

@@ -29,6 +29,7 @@ import { Type } from "class-transformer";
 import { EnumAideCrediteur } from "./EnumAideCrediteur";
 import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 import { DemandeActivityCreateNestedManyWithoutAidesInput } from "./DemandeActivityCreateNestedManyWithoutAidesInput";
+import { DocumentCreateNestedManyWithoutAidesInput } from "./DocumentCreateNestedManyWithoutAidesInput";
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
@@ -100,6 +101,18 @@ class AideCreateInput {
     nullable: true,
   })
   demandeActivities?: DemandeActivityCreateNestedManyWithoutAidesInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => DocumentCreateNestedManyWithoutAidesInput,
+  })
+  @ValidateNested()
+  @Type(() => DocumentCreateNestedManyWithoutAidesInput)
+  @IsOptional()
+  @Field(() => DocumentCreateNestedManyWithoutAidesInput, {
+    nullable: true,
+  })
+  documents?: DocumentCreateNestedManyWithoutAidesInput;
 
   @ApiProperty({
     required: false,

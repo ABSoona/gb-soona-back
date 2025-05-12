@@ -29,6 +29,7 @@ import { Type } from "class-transformer";
 import { EnumAideCrediteur } from "./EnumAideCrediteur";
 import { Demande } from "../../demande/base/Demande";
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
+import { Document } from "../../document/base/Document";
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
@@ -101,6 +102,15 @@ class Aide {
   @Type(() => DemandeActivity)
   @IsOptional()
   demandeActivities?: Array<DemandeActivity>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Document],
+  })
+  @ValidateNested()
+  @Type(() => Document)
+  @IsOptional()
+  documents?: Array<Document>;
 
   @ApiProperty({
     required: false,

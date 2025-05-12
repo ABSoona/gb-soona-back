@@ -60,4 +60,28 @@ export class DemandeNotificationService {
       }
     }
   }
+
+  async notifyAssignment(demandeId: number, userId: string) {
+      const notif = await this.prisma.userNotificationPreference.findFirst({
+      where: { active: true, typeField: "DemandeAffecte",userId:userId},
+    });
+      if(notif){
+        const user = await this.prisma.user.findUnique({ where: { id: notif.userId } });
+        if (user?.email && user.hasAccess) {
+          const lien_demande = `${process.env.FRONTEND_URL}/demandes/${demandeId}`;
+          await this.mailService.sendMailAsync(
+            'affectation-demande',
+            user.email,
+            {
+              lien_demande,
+              numeroDemande: demandeId.toString(),
+             
+            },
+            "Une demande vous a été affectée",
+          );
+      }
+      
+      } 
+    
+  }
 }

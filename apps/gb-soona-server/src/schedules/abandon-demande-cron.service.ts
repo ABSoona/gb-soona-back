@@ -15,10 +15,7 @@ export class AbandonDemandeCronService {
   @Cron(CronExpression.EVERY_5_MINUTES)
   async abandonnerDemandesInactives() {
     const oneMonthAgo = new Date();
-   // oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-
     this.logger.log(`Vérification des demandes inactives depuis le ${oneMonthAgo.toISOString()}`);
-
     const demandes = await this.prisma.demande.findMany({
       where: {
         status: 'EnAttente',

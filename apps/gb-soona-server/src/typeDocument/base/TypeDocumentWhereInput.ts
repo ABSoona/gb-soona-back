@@ -87,7 +87,7 @@ class TypeDocumentWhereInput {
   @Field(() => EnumTypeDocumentRattachement, {
     nullable: true,
   })
-  rattachement?: "Contact" | "Demande" | "Suivi";
+  rattachement?: "Contact" | "Demande" | "Suivi"  | "Aide";
 }
 
 export { TypeDocumentWhereInput as TypeDocumentWhereInput };
