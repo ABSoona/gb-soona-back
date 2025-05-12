@@ -28,7 +28,7 @@ export class MailService {
     const header = fs.readFileSync(path.join(basePath, 'partials', 'header.mjml'), 'utf8');
     const footer = fs.readFileSync(path.join(basePath, 'partials', 'footer.mjml'), 'utf8');
     const body = fs.readFileSync(path.join(basePath, `${templateName}.mjml`), 'utf8');
-  
+    
     let fullTemplate = `
       <mjml>
         <mj-body>
@@ -39,7 +39,11 @@ export class MailService {
       </mjml>
     `;
   
-
+    const result = mjml2html(fullTemplate, { validationLevel: 'strict' });
+    if (result.errors.length > 0) {
+      console.error('Erreur MJML :', result.errors);
+    }
+    
     // Remplacement simple des variables {{variable}}
     for (const [key, value] of Object.entries(variables)) {
         fullTemplate = fullTemplate.replace(new RegExp(`{{${key}}}`, 'g'), value);

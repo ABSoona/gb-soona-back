@@ -81,7 +81,7 @@ class TypeDocumentUpdateInput {
   @Field(() => EnumTypeDocumentRattachement, {
     nullable: true,
   })
-  rattachement?: "Contact" | "Demande" | "Suivi";
+  rattachement?: "Contact" | "Demande" | "Suivi"  | "Aide";
 }
 
 export { TypeDocumentUpdateInput as TypeDocumentUpdateInput };

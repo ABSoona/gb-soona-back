@@ -1,0 +1,34 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+    <mj-text font-size="20px" font-weight="bold" color="#333333">
+      🤝 Désignation d’un bénévole pour une visite
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+      Bonjour {{nomUser}},
+    </mj-text>
+      
+    <mj-text font-size="16px" color="#555555">
+      Un bénévole dont vous êtes le contact principal, <strong>{{nomBenevole}}</strong>, a été proposé pour réaliser une visite dans à <strong>{{departement}}</strong>.
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+      Nous vous invitons à prendre contact avec lui afin de vérifier sa disponibilité. S’il est disponible, vous pouvez télécharger la fiche de visite et lui transmettre.
+    </mj-text>
+
+    <mj-button
+      href="{{lien_pdf}}"
+      background-color="#2563EB"
+      color="white"
+      padding="20px"
+      border-radius="6px"
+      font-size="16px"
+    >
+      Télécharger la fiche de visite
+    </mj-button>
+
+    <mj-text font-size="16px" color="#555555">
+      Si {{nomBenevole}} n’est pas disponible, merci de revenir vers l’assistante sociale afin qu’un autre bénévole puisse être désigné.
+    </mj-text>
+  </mj-column>
+</mj-section>

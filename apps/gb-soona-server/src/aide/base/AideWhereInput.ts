@@ -19,6 +19,7 @@ import { EnumAideCrediteur } from "./EnumAideCrediteur";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 import { DemandeActivityListRelationFilter } from "../../demandeActivity/base/DemandeActivityListRelationFilter";
+import { DocumentListRelationFilter } from "../../document/base/DocumentListRelationFilter";
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { IntFilter } from "../../util/IntFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
@@ -109,6 +110,18 @@ class AideWhereInput {
     nullable: true,
   })
   demandeActivities?: DemandeActivityListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => DocumentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => DocumentListRelationFilter)
+  @IsOptional()
+  @Field(() => DocumentListRelationFilter, {
+    nullable: true,
+  })
+  documents?: DocumentListRelationFilter;
 
   @ApiProperty({
     required: false,

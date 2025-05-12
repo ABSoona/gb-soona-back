@@ -11,9 +11,10 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
+import { AideWhereUniqueInput } from "../../aide/base/AideWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
+import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
@@ -22,6 +23,18 @@ import { TypeDocumentWhereUniqueInput } from "../../typeDocument/base/TypeDocume
 
 @InputType()
 class DocumentUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: () => AideWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => AideWhereUniqueInput)
+  @IsOptional()
+  @Field(() => AideWhereUniqueInput, {
+    nullable: true,
+  })
+  aide?: AideWhereUniqueInput | null;
+
   @ApiProperty({
     required: false,
     type: () => ContactWhereUniqueInput,

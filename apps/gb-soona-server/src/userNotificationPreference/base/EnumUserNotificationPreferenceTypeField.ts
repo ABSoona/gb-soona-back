@@ -18,6 +18,7 @@ export enum EnumUserNotificationPreferenceTypeField {
   ContactBan = "ContactBan",
   AideExpir = "AideExpir",
   ErreursDemandes = "ErreursDemandes",
+  DemandeAffecte ="DemandeAffecte",
 }
 
 registerEnumType(EnumUserNotificationPreferenceTypeField, {

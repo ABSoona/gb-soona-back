@@ -8,12 +8,14 @@ import { Body, Controller, Post } from "@nestjs/common";
 import { Invitation } from "src/invitation/base/Invitation";
 import { User } from "./base/User";
 import { UserCreateInput } from "./base/UserCreateInput";
+import { MailService } from "src/mail/mail.service";
 
 @swagger.ApiTags("users")
 @common.Controller("users")
 export class UserController extends UserControllerBase {
   constructor(
     protected readonly service: UserService,
+    protected readonly mailService: MailService,
     @nestAccessControl.InjectRolesBuilder()
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {
@@ -51,6 +53,24 @@ export class UserController extends UserControllerBase {
 
     }, } 
     );
+  }
+  @Post("/notify")
+  async notify(
+    @Body()
+    data: {
+      template: string;
+      to: string;
+      subject: string;
+      variables: Record<string, string>;
+    }
+  ): Promise<void> {
+    const { template, to, subject, variables } = data;
+    console.log("donnée du mail",data);
+    if (!template || !to || !subject) {
+      throw new common.BadRequestException("template, to et subject sont requis");
+    }
+  
+    await this.mailService.sendMailAsync(template, to, variables, subject);
   }
   
 }

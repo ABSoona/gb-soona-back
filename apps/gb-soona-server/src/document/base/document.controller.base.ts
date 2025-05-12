@@ -53,6 +53,12 @@ export class DocumentControllerBase {
       data: {
         ...data,
 
+        aide: data.aide
+          ? {
+              connect: data.aide,
+            }
+          : undefined,
+
         contact: data.contact
           ? {
               connect: data.contact,
@@ -72,6 +78,12 @@ export class DocumentControllerBase {
           : undefined,
       },
       select: {
+        aide: {
+          select: {
+            id: true,
+          },
+        },
+
         contact: {
           select: {
             id: true,
@@ -117,6 +129,12 @@ export class DocumentControllerBase {
     return this.service.documents({
       ...args,
       select: {
+        aide: {
+          select: {
+            id: true,
+          },
+        },
+
         contact: {
           select: {
             id: true,
@@ -163,6 +181,12 @@ export class DocumentControllerBase {
     const result = await this.service.document({
       where: params,
       select: {
+        aide: {
+          select: {
+            id: true,
+          },
+        },
+
         contact: {
           select: {
             id: true,
@@ -219,6 +243,12 @@ export class DocumentControllerBase {
         data: {
           ...data,
 
+          aide: data.aide
+            ? {
+                connect: data.aide,
+              }
+            : undefined,
+
           contact: data.contact
             ? {
                 connect: data.contact,
@@ -238,6 +268,12 @@ export class DocumentControllerBase {
             : undefined,
         },
         select: {
+          aide: {
+            select: {
+              id: true,
+            },
+          },
+
           contact: {
             select: {
               id: true,
@@ -292,6 +328,12 @@ export class DocumentControllerBase {
       return await this.service.deleteDocument({
         where: params,
         select: {
+          aide: {
+            select: {
+              id: true,
+            },
+          },
+
           contact: {
             select: {
               id: true,

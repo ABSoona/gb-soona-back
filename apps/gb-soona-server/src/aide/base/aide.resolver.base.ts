@@ -28,6 +28,8 @@ import { UpdateAideArgs } from "./UpdateAideArgs";
 import { DeleteAideArgs } from "./DeleteAideArgs";
 import { DemandeActivityFindManyArgs } from "../../demandeActivity/base/DemandeActivityFindManyArgs";
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
+import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
+import { Document } from "../../document/base/Document";
 import { Contact } from "../../contact/base/Contact";
 import { Demande } from "../../demande/base/Demande";
 import { AideService } from "../aide.service";
@@ -172,6 +174,26 @@ export class AideResolverBase {
     @graphql.Args() args: DemandeActivityFindManyArgs
   ): Promise<DemandeActivity[]> {
     const results = await this.service.findDemandeActivities(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Document], { name: "documents" })
+  @nestAccessControl.UseRoles({
+    resource: "Document",
+    action: "read",
+    possession: "any",
+  })
+  async findDocuments(
+    @graphql.Parent() parent: Aide,
+    @graphql.Args() args: DocumentFindManyArgs
+  ): Promise<Document[]> {
+    const results = await this.service.findDocuments(parent.id, args);
 
     if (!results) {
       return [];

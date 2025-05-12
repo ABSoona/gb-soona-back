@@ -15,6 +15,7 @@ import {
   Prisma,
   Aide as PrismaAide,
   DemandeActivity as PrismaDemandeActivity,
+  Document as PrismaDocument,
   Contact as PrismaContact,
   Demande as PrismaDemande,
 } from "@prisma/client";
@@ -51,6 +52,17 @@ export class AideServiceBase {
         where: { id: parentId },
       })
       .demandeActivities(args);
+  }
+
+  async findDocuments(
+    parentId: number,
+    args: Prisma.DocumentFindManyArgs
+  ): Promise<PrismaDocument[]> {
+    return this.prisma.aide
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .documents(args);
   }
 
   async getContact(parentId: number): Promise<PrismaContact | null> {

@@ -28,6 +28,7 @@ import { DocumentFindUniqueArgs } from "./DocumentFindUniqueArgs";
 import { CreateDocumentArgs } from "./CreateDocumentArgs";
 import { UpdateDocumentArgs } from "./UpdateDocumentArgs";
 import { DeleteDocumentArgs } from "./DeleteDocumentArgs";
+import { Aide } from "../../aide/base/Aide";
 import { Contact } from "../../contact/base/Contact";
 import { Demande } from "../../demande/base/Demande";
 import { TypeDocument } from "../../typeDocument/base/TypeDocument";
@@ -100,6 +101,12 @@ export class DocumentResolverBase {
       data: {
         ...args.data,
 
+        aide: args.data.aide
+          ? {
+              connect: args.data.aide,
+            }
+          : undefined,
+
         contact: args.data.contact
           ? {
               connect: args.data.contact,
@@ -136,6 +143,12 @@ export class DocumentResolverBase {
         ...args,
         data: {
           ...args.data,
+
+          aide: args.data.aide
+            ? {
+                connect: args.data.aide,
+              }
+            : undefined,
 
           contact: args.data.contact
             ? {
@@ -206,6 +219,25 @@ export class DocumentResolverBase {
     args: DocumentFindUniqueArgs
   ): Promise<Document> {
     return await this.service.deleteContenu(args);
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Aide, {
+    nullable: true,
+    name: "aide",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "read",
+    possession: "any",
+  })
+  async getAide(@graphql.Parent() parent: Document): Promise<Aide | null> {
+    const result = await this.service.getAide(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)

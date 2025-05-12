@@ -14,6 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Document as PrismaDocument,
+  Aide as PrismaAide,
   Contact as PrismaContact,
   Demande as PrismaDemande,
   TypeDocument as PrismaTypeDocument,
@@ -114,6 +115,14 @@ export class DocumentServiceBase {
         contenu: Prisma.DbNull,
       },
     });
+  }
+
+  async getAide(parentId: string): Promise<PrismaAide | null> {
+    return this.prisma.document
+      .findUnique({
+        where: { id: parentId },
+      })
+      .aide();
   }
 
   async getContact(parentId: string): Promise<PrismaContact | null> {

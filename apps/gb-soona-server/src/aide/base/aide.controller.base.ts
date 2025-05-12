@@ -29,6 +29,9 @@ import { AideUpdateInput } from "./AideUpdateInput";
 import { DemandeActivityFindManyArgs } from "../../demandeActivity/base/DemandeActivityFindManyArgs";
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
 import { DemandeActivityWhereUniqueInput } from "../../demandeActivity/base/DemandeActivityWhereUniqueInput";
+import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
+import { Document } from "../../document/base/Document";
+import { DocumentWhereUniqueInput } from "../../document/base/DocumentWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -439,6 +442,128 @@ export class AideControllerBase {
   ): Promise<void> {
     const data = {
       demandeActivities: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/documents")
+  @ApiNestedQuery(DocumentFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Document",
+    action: "read",
+    possession: "any",
+  })
+  async findDocuments(
+    @common.Req() request: Request,
+    @common.Param() params: AideWhereUniqueInput
+  ): Promise<Document[]> {
+    const query = plainToClass(DocumentFindManyArgs, request.query);
+    const results = await this.service.findDocuments(params.id, {
+      ...query,
+      select: {
+        aide: {
+          select: {
+            id: true,
+          },
+        },
+
+        contact: {
+          select: {
+            id: true,
+          },
+        },
+
+        contenu: true,
+        createdAt: true,
+
+        demande: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+
+        typeDocument: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/documents")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async connectDocuments(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: DocumentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      documents: {
+        connect: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/documents")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async updateDocuments(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: DocumentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      documents: {
+        set: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/documents")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectDocuments(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: DocumentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      documents: {
         disconnect: body,
       },
     };
