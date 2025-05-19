@@ -22,6 +22,7 @@ type Aide {
   suspendue: Boolean
   typeField: EnumAideTypeField
   updatedAt: DateTime!
+  versements(orderBy: [VersementOrderByInput!], skip: Float, take: Float, where: VersementWhereInput): [Versement!]!
 }
 
 input AideCreateInput {
@@ -41,6 +42,7 @@ input AideCreateInput {
   status: EnumAideStatus!
   suspendue: Boolean
   typeField: EnumAideTypeField
+  versements: VersementCreateNestedManyWithoutAidesInput
 }
 
 input AideCreateNestedManyWithoutContactsInput {
@@ -94,6 +96,7 @@ input AideUpdateInput {
   status: EnumAideStatus
   suspendue: Boolean
   typeField: EnumAideTypeField
+  versements: VersementUpdateManyWithoutAidesInput
 }
 
 input AideUpdateManyWithoutContactsInput {
@@ -128,6 +131,7 @@ input AideWhereInput {
   suspendue: BooleanNullableFilter
   typeField: EnumAideTypeField
   updatedAt: DateTimeFilter
+  versements: VersementListRelationFilter
 }
 
 input AideWhereUniqueInput {
@@ -313,6 +317,7 @@ type Demande {
   situationProfessionnelle: String
   status: String
   updatedAt: DateTime!
+  visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
 }
 
 type DemandeActivity {
@@ -437,6 +442,7 @@ input DemandeCreateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  visites: VisiteCreateNestedManyWithoutDemandesInput
 }
 
 input DemandeCreateNestedManyWithoutContactsInput {
@@ -555,6 +561,7 @@ input DemandeUpdateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  visites: VisiteUpdateManyWithoutDemandesInput
 }
 
 input DemandeUpdateManyWithoutContactsInput {
@@ -601,6 +608,7 @@ input DemandeWhereInput {
   situationProfessionnelle: StringNullableFilter
   status: StringNullableFilter
   updatedAt: DateTimeFilter
+  visites: VisiteListRelationFilter
 }
 
 input DemandeWhereUniqueInput {
@@ -614,8 +622,11 @@ type Document {
   createdAt: DateTime!
   demande: Demande
   id: String!
+  name: String
   typeDocument: TypeDocument
   updatedAt: DateTime!
+  versements: Versement
+  visites: Visite
 }
 
 input DocumentCreateInput {
@@ -623,7 +634,10 @@ input DocumentCreateInput {
   contact: ContactWhereUniqueInput
   contenu: JSON
   demande: DemandeWhereUniqueInput
+  name: String
   typeDocument: TypeDocumentWhereUniqueInput
+  versements: VersementWhereUniqueInput
+  visites: VisiteWhereUniqueInput
 }
 
 input DocumentCreateNestedManyWithoutAidesInput {
@@ -655,8 +669,10 @@ input DocumentOrderByInput {
   createdAt: SortOrder
   demandeId: SortOrder
   id: SortOrder
+  name: SortOrder
   typeDocumentId: SortOrder
   updatedAt: SortOrder
+  versementsId: SortOrder
 }
 
 input DocumentUpdateInput {
@@ -664,7 +680,10 @@ input DocumentUpdateInput {
   contact: ContactWhereUniqueInput
   contenu: JSON
   demande: DemandeWhereUniqueInput
+  name: String
   typeDocument: TypeDocumentWhereUniqueInput
+  versements: VersementWhereUniqueInput
+  visites: VisiteWhereUniqueInput
 }
 
 input DocumentUpdateManyWithoutAidesInput {
@@ -697,7 +716,10 @@ input DocumentWhereInput {
   contenu: JsonFilter
   demande: DemandeWhereUniqueInput
   id: StringFilter
+  name: StringNullableFilter
   typeDocument: TypeDocumentWhereUniqueInput
+  versements: VersementWhereUniqueInput
+  visites: VisiteWhereUniqueInput
 }
 
 input DocumentWhereUniqueInput {
@@ -748,6 +770,17 @@ enum EnumUserNotificationPreferenceTypeField {
   DemandeEnVisite
   ErreursDemandes
   NouvelleDemande
+}
+
+enum EnumVersementStatus {
+  AVerser
+  Verse
+}
+
+enum EnumVisiteStatus {
+  Annulee
+  Programee
+  Realisee
 }
 
 enum EnumWebsiteDemandeStatus {
@@ -859,6 +892,8 @@ type Mutation {
   createTypeDocument(data: TypeDocumentCreateInput!): TypeDocument!
   createUser(data: UserCreateInput!): User!
   createUserNotificationPreference(data: UserNotificationPreferenceCreateInput!): UserNotificationPreference!
+  createVersement(data: VersementCreateInput!): Versement!
+  createVisite(data: VisiteCreateInput!): Visite!
   createWebsiteDemande(data: WebsiteDemandeCreateInput!): WebsiteDemande!
   deleteAide(where: AideWhereUniqueInput!): Aide!
   deleteContact(where: ContactWhereUniqueInput!): Contact!
@@ -870,6 +905,8 @@ type Mutation {
   deleteTypeDocument(where: TypeDocumentWhereUniqueInput!): TypeDocument!
   deleteUser(where: UserWhereUniqueInput!): User!
   deleteUserNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
+  deleteVersement(where: VersementWhereUniqueInput!): Versement!
+  deleteVisite(where: VisiteWhereUniqueInput!): Visite!
   deleteWebsiteDemande(where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande!
   login(credentials: Credentials!): UserInfo!
   updateAide(data: AideUpdateInput!, where: AideWhereUniqueInput!): Aide!
@@ -881,6 +918,8 @@ type Mutation {
   updateTypeDocument(data: TypeDocumentUpdateInput!, where: TypeDocumentWhereUniqueInput!): TypeDocument!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   updateUserNotificationPreference(data: UserNotificationPreferenceUpdateInput!, where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference!
+  updateVersement(data: VersementUpdateInput!, where: VersementWhereUniqueInput!): Versement!
+  updateVisite(data: VisiteUpdateInput!, where: VisiteWhereUniqueInput!): Visite!
   updateWebsiteDemande(data: WebsiteDemandeUpdateInput!, where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande!
   uploadContenu(file: Upload!, where: DocumentWhereUniqueInput!): Document!
 }
@@ -895,6 +934,8 @@ type Query {
   _typeDocumentsMeta(where: TypeDocumentWhereInput): MetaQueryPayload!
   _userNotificationPreferencesMeta(where: UserNotificationPreferenceWhereInput): MetaQueryPayload!
   _usersMeta(where: UserWhereInput): MetaQueryPayload!
+  _versementsMeta(where: VersementWhereInput): MetaQueryPayload!
+  _visitesMeta(where: VisiteWhereInput): MetaQueryPayload!
   _websiteDemandesMeta(where: WebsiteDemandeWhereInput): MetaQueryPayload!
   aide(where: AideWhereUniqueInput!): Aide
   aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
@@ -915,6 +956,10 @@ type Query {
   userNotificationPreference(where: UserNotificationPreferenceWhereUniqueInput!): UserNotificationPreference
   userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
   users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+  versement(where: VersementWhereUniqueInput!): Versement
+  versements(orderBy: [VersementOrderByInput!], skip: Float, take: Float, where: VersementWhereInput): [Versement!]!
+  visite(where: VisiteWhereUniqueInput!): Visite
+  visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
   websiteDemande(where: WebsiteDemandeWhereUniqueInput!): WebsiteDemande
   websiteDemandes(orderBy: [WebsiteDemandeOrderByInput!], skip: Float, take: Float, where: WebsiteDemandeWhereInput): [WebsiteDemande!]!
 }
@@ -1034,6 +1079,7 @@ type User {
   updatedAt: DateTime!
   userNotificationPreferences(orderBy: [UserNotificationPreferenceOrderByInput!], skip: Float, take: Float, where: UserNotificationPreferenceWhereInput): [UserNotificationPreference!]!
   username: String!
+  visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
 }
 
 input UserCreateInput {
@@ -1056,6 +1102,7 @@ input UserCreateInput {
   token: String
   userNotificationPreferences: UserNotificationPreferenceCreateNestedManyWithoutUsersInput
   username: String!
+  visites: VisiteCreateNestedManyWithoutUsersInput
 }
 
 input UserCreateNestedManyWithoutUsersInput {
@@ -1172,6 +1219,7 @@ input UserUpdateInput {
   token: String
   userNotificationPreferences: UserNotificationPreferenceUpdateManyWithoutUsersInput
   username: String
+  visites: VisiteUpdateManyWithoutUsersInput
 }
 
 input UserUpdateManyWithoutUsersInput {
@@ -1199,10 +1247,160 @@ input UserWhereInput {
   token: StringNullableFilter
   userNotificationPreferences: UserNotificationPreferenceListRelationFilter
   username: StringFilter
+  visites: VisiteListRelationFilter
 }
 
 input UserWhereUniqueInput {
   id: String!
+}
+
+type Versement {
+  aide: Aide
+  createdAt: DateTime!
+  dataVersement: DateTime!
+  document: Document
+  id: Float!
+  montant: Float!
+  status: EnumVersementStatus
+  updatedAt: DateTime!
+}
+
+input VersementCreateInput {
+  aide: AideWhereUniqueInput!
+  dataVersement: DateTime!
+  document: DocumentWhereUniqueInput
+  montant: Float!
+  status: EnumVersementStatus!
+}
+
+input VersementCreateNestedManyWithoutAidesInput {
+  connect: [VersementWhereUniqueInput!]
+}
+
+input VersementListRelationFilter {
+  every: VersementWhereInput
+  none: VersementWhereInput
+  some: VersementWhereInput
+}
+
+input VersementOrderByInput {
+  aideId: SortOrder
+  createdAt: SortOrder
+  dataVersement: SortOrder
+  documentId: SortOrder
+  id: SortOrder
+  montant: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+}
+
+input VersementUpdateInput {
+  aide: AideWhereUniqueInput
+  dataVersement: DateTime
+  document: DocumentWhereUniqueInput
+  montant: Float
+  status: EnumVersementStatus
+}
+
+input VersementUpdateManyWithoutAidesInput {
+  connect: [VersementWhereUniqueInput!]
+  disconnect: [VersementWhereUniqueInput!]
+  set: [VersementWhereUniqueInput!]
+}
+
+input VersementWhereInput {
+  aide: AideWhereUniqueInput
+  dataVersement: DateTimeFilter
+  document: DocumentWhereUniqueInput
+  id: IntFilter
+  montant: IntFilter
+  status: EnumVersementStatus
+}
+
+input VersementWhereUniqueInput {
+  id: Float!
+}
+
+type Visite {
+  acteur: User
+  createdAt: DateTime!
+  dateVisite: DateTime
+  demande: Demande
+  document: Document
+  id: Float!
+  note: String
+  status: EnumVisiteStatus
+  updatedAt: DateTime!
+}
+
+input VisiteCreateInput {
+  acteur: UserWhereUniqueInput!
+  dateVisite: DateTime
+  demande: DemandeWhereUniqueInput!
+  document: DocumentWhereUniqueInput
+  note: String
+  status: EnumVisiteStatus
+}
+
+input VisiteCreateNestedManyWithoutDemandesInput {
+  connect: [VisiteWhereUniqueInput!]
+}
+
+input VisiteCreateNestedManyWithoutUsersInput {
+  connect: [VisiteWhereUniqueInput!]
+}
+
+input VisiteListRelationFilter {
+  every: VisiteWhereInput
+  none: VisiteWhereInput
+  some: VisiteWhereInput
+}
+
+input VisiteOrderByInput {
+  acteurId: SortOrder
+  createdAt: SortOrder
+  dateVisite: SortOrder
+  demandeId: SortOrder
+  documentId: SortOrder
+  id: SortOrder
+  note: SortOrder
+  status: SortOrder
+  updatedAt: SortOrder
+}
+
+input VisiteUpdateInput {
+  acteur: UserWhereUniqueInput
+  dateVisite: DateTime
+  demande: DemandeWhereUniqueInput
+  document: DocumentWhereUniqueInput
+  note: String
+  status: EnumVisiteStatus
+}
+
+input VisiteUpdateManyWithoutDemandesInput {
+  connect: [VisiteWhereUniqueInput!]
+  disconnect: [VisiteWhereUniqueInput!]
+  set: [VisiteWhereUniqueInput!]
+}
+
+input VisiteUpdateManyWithoutUsersInput {
+  connect: [VisiteWhereUniqueInput!]
+  disconnect: [VisiteWhereUniqueInput!]
+  set: [VisiteWhereUniqueInput!]
+}
+
+input VisiteWhereInput {
+  acteur: UserWhereUniqueInput
+  dateVisite: DateTimeNullableFilter
+  demande: DemandeWhereUniqueInput
+  document: DocumentWhereUniqueInput
+  id: IntFilter
+  note: StringNullableFilter
+  status: EnumVisiteStatus
+}
+
+input VisiteWhereUniqueInput {
+  id: Float!
 }
 
 type WebsiteDemande {

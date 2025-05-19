@@ -18,7 +18,10 @@ import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueIn
 import { JsonFilter } from "../../util/JsonFilter";
 import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { TypeDocumentWhereUniqueInput } from "../../typeDocument/base/TypeDocumentWhereUniqueInput";
+import { VersementWhereUniqueInput } from "../../versement/base/VersementWhereUniqueInput";
+import { VisiteWhereUniqueInput } from "../../visite/base/VisiteWhereUniqueInput";
 
 @InputType()
 class DocumentWhereInput {
@@ -82,6 +85,17 @@ class DocumentWhereInput {
 
   @ApiProperty({
     required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  name?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: () => TypeDocumentWhereUniqueInput,
   })
   @ValidateNested()
@@ -91,6 +105,30 @@ class DocumentWhereInput {
     nullable: true,
   })
   typeDocument?: TypeDocumentWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => VersementWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => VersementWhereUniqueInput)
+  @IsOptional()
+  @Field(() => VersementWhereUniqueInput, {
+    nullable: true,
+  })
+  versements?: VersementWhereUniqueInput;
+  @ApiProperty({
+    required: false,
+    type: () => VisiteWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => VisiteWhereUniqueInput)
+  @IsOptional()
+  @Field(() => VisiteWhereUniqueInput, {
+    nullable: true,
+  })
+  visites?: VisiteWhereUniqueInput;
+  
 }
 
 export { DocumentWhereInput as DocumentWhereInput };

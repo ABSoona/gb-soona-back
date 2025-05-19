@@ -4,7 +4,8 @@ import { lookup } from 'mime-types'
 import { minimatch } from 'minimatch'
 
 export abstract class StorageServiceBase {
-  protected async verifyFile(file: FileUpload, mimetypes: string[], maxSize?: number): Promise<void> {
+  protected async verifyFile(file: FileUpload, mimetypes: string[], maxSize: number = 10 * 1024 * 1024,): Promise<void> {
+    maxSize=10 * 1024 * 1024;
     if (!file) {
       throw new Error('No file provided');
     }
@@ -24,6 +25,7 @@ export abstract class StorageServiceBase {
   }
 
   protected async checkFileSize(file: FileUpload, maxSize: number): Promise<number> {
+    maxSize=10 * 1024 * 1024;
     if (file.size && file.size > maxSize) {
       throw new BadRequestException('File size too large');
     } else if (file.size) {

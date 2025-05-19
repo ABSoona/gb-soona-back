@@ -1,0 +1,34 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+    <mj-text font-size="20px" font-weight="bold" color="#333333">
+      Partage du PDF dee la demande {{NumeroDemande}}
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+      Bonjour {{nomUser}},
+    </mj-text>
+      
+    <mj-text font-size="16px" color="#555555">
+     Le récapitatif (pdf) de la demande {{NumeroDemande}} vous a été partagé
+    </mj-text>
+
+    <mj-text font-size="16px" color="#555555">
+    Vous pouvez télécharger la demande ci-dessous. 
+    </mj-text>
+
+    <mj-button
+      href="{{lien_pdf}}"
+      background-color="#2563EB"
+      color="white"
+      padding="20px"
+      border-radius="6px"
+      font-size="16px"
+    >
+      Télécharger la demande
+    </mj-button>
+
+    <mj-text font-size="16px" color="#555555">
+      Si vous n'est pas en mesure de faire cette visite, merci de revenir vers l’assistante sociale afin qu’un autre membre ou bénévole puisse être désigné.
+    </mj-text>
+  </mj-column>
+</mj-section>

@@ -27,6 +27,7 @@ import { InputJsonValue } from "../../types";
 import { UserCreateNestedManyWithoutUsersInput } from "./UserCreateNestedManyWithoutUsersInput";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserNotificationPreferenceCreateNestedManyWithoutUsersInput } from "./UserNotificationPreferenceCreateNestedManyWithoutUsersInput";
+import { VisiteCreateNestedManyWithoutUsersInput } from "./VisiteCreateNestedManyWithoutUsersInput";
 
 @InputType()
 class UserCreateInput {
@@ -239,6 +240,18 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   username!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => VisiteCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => VisiteCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => VisiteCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  visites?: VisiteCreateNestedManyWithoutUsersInput;
 }
 
 export { UserCreateInput as UserCreateInput };

@@ -12,31 +12,27 @@ export class AbandonDemandeCronService {
     private demandeService: DemandeService,
   ) {}
 
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  @Cron(CronExpression.EVERY_MINUTE)
   async abandonnerDemandesInactives() {
     const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
     this.logger.log(`Vérification des demandes inactives depuis le ${oneMonthAgo.toISOString()}`);
     const demandes = await this.prisma.demande.findMany({
       where: {
         status: 'EnAttente',
-        createdAt: { lt: oneMonthAgo },
-        demandeActivities: {
-          some: { typeField: 'priseContactEchec' },
-          none: { typeField: 'priseContactReussie' },
-        },
+        updatedAt: { lt: oneMonthAgo }, 
+        /*demandeActivities: {
+          some: { createdAt: { lt: oneMonthAgo } },
+           none: { typeField: 'priseContactReussie' }, 
+        },*/
       },
       include: {
         demandeActivities: true,
       },
     });
 
-    const candidates = demandes.filter((demande) => {
-      const echecCount = demande.demandeActivities.filter(
-        (a) => a.typeField === 'priseContactEchec'
-      ).length;
-      return echecCount > 3;
-    });
-
+    const candidates = demandes
+    
     for (const demande of candidates) {
       await this.demandeService.updateDemande({
         where: { id: demande.id },

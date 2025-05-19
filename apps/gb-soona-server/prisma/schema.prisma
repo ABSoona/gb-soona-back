@@ -29,6 +29,7 @@ model Aide {
   suspendue         Boolean?
   typeField         EnumAideTypeField?
   updatedAt         DateTime           @updatedAt
+  versements        Versement[]
 }
 
 model Demande {
@@ -67,6 +68,7 @@ model Demande {
   situationProfessionnelle String?
   status                   String?
   updatedAt                DateTime                       @updatedAt
+  visites                  Visite[]
 }
 
 
@@ -117,6 +119,7 @@ model User {
   updatedAt                   DateTime                     @updatedAt
   userNotificationPreferences UserNotificationPreference[]
   username                    String                       @unique
+  visites             Visite[]
 }
 
 model TypeDocument {
@@ -147,10 +150,35 @@ model Document {
   demande        Demande?      @relation(fields: [demandeId], references: [id])
   demandeId      Int?
   id             String        @id @default(cuid())
+  name           String?
   typeDocument   TypeDocument? @relation(fields: [typeDocumentId], references: [id])
   typeDocumentId Int?
   updatedAt      DateTime      @updatedAt
+  versements     Versement?    @relation(fields: [versementsId], references: [id])
+  versementsId   Int?          @unique
+  visites        Visite?       @relation(fields: [visitesId], references: [id])
+  visitesId      Int?          @unique
 }
+model Visite {
+  acteur     User              @relation(fields: [acteurId], references: [id])
+  acteurId   String
+  createdAt  DateTime          @default(now())
+  dateVisite DateTime?
+  demande    Demande          @relation(fields: [demandeId], references: [id], onDelete: Cascade)
+  demandeId  Int
+  document   Document?
+  id         Int               @id @default(autoincrement())
+  note       String?
+  status     EnumVisiteStatus?
+  updatedAt  DateTime          @updatedAt
+}
+
+enum EnumVisiteStatus {
+  Programee
+  Realisee
+  Annulee
+}
+
 
 model UserNotificationPreference {
   active    Boolean
@@ -206,7 +234,7 @@ model WebsiteDemande {
 
 model DemandeStatusHistory {
   createdAt DateTime @default(now())
-  demande   Demande  @relation(fields: [demandeId], references: [id])
+  demande   Demande  @relation(fields: [demandeId], references: [id] , onDelete: Cascade)
   demandeId Int
   id        Int      @id @default(autoincrement())
   status    String
@@ -217,7 +245,7 @@ model DemandeActivity {
   aide      Aide?    @relation(fields: [aideId], references: [id])
   aideId    Int?
   createdAt DateTime @default(now())
-  demande   Demande  @relation(fields: [demandeId], references: [id])
+  demande   Demande  @relation(fields: [demandeId], references: [id] , onDelete: Cascade)
   demandeId Int
   id        Int      @id @default(autoincrement())
   message   String?
@@ -227,6 +255,20 @@ model DemandeActivity {
   user      User?    @relation(fields: [userId], references: [id])
   userId    String?
 }
+
+model Versement {
+  aide          Aide                @relation(fields: [aideId], references: [id])
+  aideId        Int
+  createdAt     DateTime            @default(now())
+  dataVersement DateTime
+  document      Document?
+  id            Int                 @id @default(autoincrement())
+  montant       Int
+  status        EnumVersementStatus
+  updatedAt     DateTime            @updatedAt
+  
+}
+
 
 enum EnumAideCrediteur {
   LeBNFiciaire
@@ -269,4 +311,8 @@ enum EnumDemandeCategorieDemandeur {
 enum EnumAideStatus {
   EnCours
   Expir
+}
+enum EnumVersementStatus {
+  AVerser
+  Verse
 }

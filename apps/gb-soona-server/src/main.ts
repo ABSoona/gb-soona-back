@@ -24,7 +24,7 @@ async function main() {
 
   app.use(
     "/graphql",
-    graphqlUploadExpress({ maxFileSize: 50000000, maxFiles: 10 })
+    graphqlUploadExpress({ maxFileSize: 10 * 1024 * 1024, maxFiles: 10 })
   );
 
   app.setGlobalPrefix("api");

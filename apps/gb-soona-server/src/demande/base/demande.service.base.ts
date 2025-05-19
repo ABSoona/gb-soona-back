@@ -18,6 +18,7 @@ import {
   DemandeActivity as PrismaDemandeActivity,
   DemandeStatusHistory as PrismaDemandeStatusHistory,
   Document as PrismaDocument,
+  Visite as PrismaVisite,
   User as PrismaUser,
   Contact as PrismaContact,
 } from "@prisma/client";
@@ -44,7 +45,15 @@ export class DemandeServiceBase {
     return this.prisma.demande.update(args);
   }
   async deleteDemande(args: Prisma.DemandeDeleteArgs): Promise<PrismaDemande> {
-    return this.prisma.demande.delete(args);
+  
+
+    try {
+
+      return this.prisma.demande.delete(args);
+    } catch (e) {
+      console.error("❌ Erreur dans deleteDemande:", e);
+      throw e;
+    }
   }
 
   async findAides(
@@ -80,6 +89,16 @@ export class DemandeServiceBase {
       .demandeStatusHistories(args);
   }
 
+  async findVisites(
+    parentId: number,
+    args: Prisma.VisiteFindManyArgs
+  ): Promise<PrismaVisite[]> {
+    return this.prisma.demande
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .visites(args);
+  }
   async findDocuments(
     parentId: number,
     args: Prisma.DocumentFindManyArgs

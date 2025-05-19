@@ -28,6 +28,7 @@ import { BooleanFilter } from "../../util/BooleanFilter";
 import { EnumAideStatus } from "./EnumAideStatus";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { EnumAideTypeField } from "./EnumAideTypeField";
+import { VersementListRelationFilter } from "../../versement/base/VersementListRelationFilter";
 
 @InputType()
 class AideWhereInput {
@@ -248,6 +249,18 @@ class AideWhereInput {
     nullable: true,
   })
   updatedAt?: DateTimeFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => VersementListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => VersementListRelationFilter)
+  @IsOptional()
+  @Field(() => VersementListRelationFilter, {
+    nullable: true,
+  })
+  versements?: VersementListRelationFilter;
 }
 
 export { AideWhereInput as AideWhereInput };

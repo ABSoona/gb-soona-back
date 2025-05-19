@@ -12,7 +12,12 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { AideWhereUniqueInput } from "../../aide/base/AideWhereUniqueInput";
-import { ValidateNested, IsOptional } from "class-validator";
+import {
+  ValidateNested,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { IsJSONValue } from "../../validators";
@@ -20,6 +25,8 @@ import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 import { TypeDocumentWhereUniqueInput } from "../../typeDocument/base/TypeDocumentWhereUniqueInput";
+import { VersementWhereUniqueInput } from "../../versement/base/VersementWhereUniqueInput";
+import { VisiteWhereUniqueInput } from "../../visite/base/VisiteWhereUniqueInput";
 
 @InputType()
 class DocumentCreateInput {
@@ -71,6 +78,18 @@ class DocumentCreateInput {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  name?: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => TypeDocumentWhereUniqueInput,
   })
   @ValidateNested()
@@ -80,6 +99,30 @@ class DocumentCreateInput {
     nullable: true,
   })
   typeDocument?: TypeDocumentWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => VersementWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => VersementWhereUniqueInput)
+  @IsOptional()
+  @Field(() => VersementWhereUniqueInput, {
+    nullable: true,
+  })
+  versements?: VersementWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => VisiteWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => VisiteWhereUniqueInput)
+  @IsOptional()
+  @Field(() => VisiteWhereUniqueInput, {
+    nullable: true,
+  })
+  visites?: VisiteWhereUniqueInput | null;
 }
 
 export { DocumentCreateInput as DocumentCreateInput };

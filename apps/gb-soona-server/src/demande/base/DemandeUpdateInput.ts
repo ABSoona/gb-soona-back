@@ -31,6 +31,7 @@ import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueIn
 import { DemandeActivityUpdateManyWithoutDemandesInput } from "./DemandeActivityUpdateManyWithoutDemandesInput";
 import { DemandeStatusHistoryUpdateManyWithoutDemandesInput } from "./DemandeStatusHistoryUpdateManyWithoutDemandesInput";
 import { DocumentUpdateManyWithoutDemandesInput } from "./DocumentUpdateManyWithoutDemandesInput";
+import { VisiteUpdateManyWithoutDemandesInput } from "./VisiteUpdateManyWithoutDemandesInput";
 
 @InputType()
 class DemandeUpdateInput {
@@ -377,6 +378,18 @@ class DemandeUpdateInput {
     nullable: true,
   })
   status?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => VisiteUpdateManyWithoutDemandesInput,
+  })
+  @ValidateNested()
+  @Type(() => VisiteUpdateManyWithoutDemandesInput)
+  @IsOptional()
+  @Field(() => VisiteUpdateManyWithoutDemandesInput, {
+    nullable: true,
+  })
+  visites?: VisiteUpdateManyWithoutDemandesInput;
 }
 
 export { DemandeUpdateInput as DemandeUpdateInput };

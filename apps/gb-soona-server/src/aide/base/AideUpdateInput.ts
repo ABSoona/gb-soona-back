@@ -33,6 +33,7 @@ import { DocumentUpdateManyWithoutAidesInput } from "./DocumentUpdateManyWithout
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
+import { VersementUpdateManyWithoutAidesInput } from "./VersementUpdateManyWithoutAidesInput";
 
 @InputType()
 class AideUpdateInput {
@@ -225,6 +226,18 @@ class AideUpdateInput {
     nullable: true,
   })
   typeField?: "AssistanceAdministrative" | "FinanciRe" | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => VersementUpdateManyWithoutAidesInput,
+  })
+  @ValidateNested()
+  @Type(() => VersementUpdateManyWithoutAidesInput)
+  @IsOptional()
+  @Field(() => VersementUpdateManyWithoutAidesInput, {
+    nullable: true,
+  })
+  versements?: VersementUpdateManyWithoutAidesInput;
 }
 
 export { AideUpdateInput as AideUpdateInput };

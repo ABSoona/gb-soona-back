@@ -28,7 +28,7 @@ export class LocalStorageService extends StorageServiceBase {
   async uploadFile<LocalStorageFile>(
     file: FileUpload,
     extensions: string[],
-    maxSize?: number,
+    maxSize: number = 10 * 1024 * 1024, // ✅ 10 Mo par défaut
     containerPath?: string,
   ): Promise<LocalStorageFile> {
     try {

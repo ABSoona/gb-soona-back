@@ -32,6 +32,9 @@ import { DemandeActivityWhereUniqueInput } from "../../demandeActivity/base/Dema
 import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
 import { Document } from "../../document/base/Document";
 import { DocumentWhereUniqueInput } from "../../document/base/DocumentWhereUniqueInput";
+import { VersementFindManyArgs } from "../../versement/base/VersementFindManyArgs";
+import { Versement } from "../../versement/base/Versement";
+import { VersementWhereUniqueInput } from "../../versement/base/VersementWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -498,6 +501,12 @@ export class AideControllerBase {
         },
 
         updatedAt: true,
+
+        versements: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (results === null) {
@@ -564,6 +573,116 @@ export class AideControllerBase {
   ): Promise<void> {
     const data = {
       documents: {
+        disconnect: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @common.Get("/:id/versements")
+  @ApiNestedQuery(VersementFindManyArgs)
+  @nestAccessControl.UseRoles({
+    resource: "Versement",
+    action: "read",
+    possession: "any",
+  })
+  async findVersements(
+    @common.Req() request: Request,
+    @common.Param() params: AideWhereUniqueInput
+  ): Promise<Versement[]> {
+    const query = plainToClass(VersementFindManyArgs, request.query);
+    const results = await this.service.findVersements(params.id, {
+      ...query,
+      select: {
+        aide: {
+          select: {
+            id: true,
+          },
+        },
+
+        createdAt: true,
+        dataVersement: true,
+
+        document: {
+          select: {
+            id: true,
+          },
+        },
+
+        id: true,
+        status: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @common.Post("/:id/versements")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async connectVersements(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: VersementWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      versements: {
+        connect: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Patch("/:id/versements")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async updateVersements(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: VersementWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      versements: {
+        set: body,
+      },
+    };
+    await this.service.updateAide({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.Delete("/:id/versements")
+  @nestAccessControl.UseRoles({
+    resource: "Aide",
+    action: "update",
+    possession: "any",
+  })
+  async disconnectVersements(
+    @common.Param() params: AideWhereUniqueInput,
+    @common.Body() body: VersementWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      versements: {
         disconnect: body,
       },
     };

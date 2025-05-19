@@ -25,6 +25,8 @@ import { TypeDocumentModule } from "./typeDocument/typeDocument.module";
 
 import { DemandeStatusHistoryModuleBase } from "./demandeStatusHistory/base/demandeStatusHistory.module.base";
 import { DemandeActivityModule } from "./demandeActivity/demandeActivity.module";
+import { VersementModule } from "./versement/versement.module";
+import { VisiteModule } from "./visite/visite.module";
 
 @Module({
   controllers: [],
@@ -43,11 +45,13 @@ import { DemandeActivityModule } from "./demandeActivity/demandeActivity.module"
     DocumentModule,
     UserNotificationPreferenceModule,
     InvitationModule,
+    VisiteModule,
     WebsiteDemandeModule,
     DemandeActivityModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
+    VersementModule,
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRootAsync({
       useClass: ServeStaticOptionsService,
@@ -59,6 +63,7 @@ import { DemandeActivityModule } from "./demandeActivity/demandeActivity.module"
         const introspection = configService.get("GRAPHQL_INTROSPECTION");
         return {
           autoSchemaFile: "schema.graphql",
+          uploads: false,
           sortSchema: true,
           playground,
           introspection: playground || introspection,

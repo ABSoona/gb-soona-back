@@ -80,6 +80,11 @@ if (!wpApiPass) {
     { label: "Rapport de visite", internalCode: "rapport_visite",isInternal: true,rattachement: EnumTypeDocumentRattachement.Suivi},
     { label: "Autre document de suivi", internalCode: "autre_suivi",isInternal: false,rattachement:EnumTypeDocumentRattachement.Suivi },
     { label: "Preuve de virement", internalCode: "preuve_virement",isInternal: true,rattachement:EnumTypeDocumentRattachement.Aide },
+    { label: "Rib", internalCode: "rib",isInternal: true,rattachement:EnumTypeDocumentRattachement.Contact },
+    { label: "Type inconnu", internalCode: "unknown_suivi",isInternal: true,rattachement:EnumTypeDocumentRattachement.Suivi },
+    { label: "Type inconnu", internalCode: "unknown_contact",isInternal: true,rattachement:EnumTypeDocumentRattachement.Contact },
+    { label: "Type inconnu", internalCode: "unknown_aide",isInternal: true,rattachement:EnumTypeDocumentRattachement.Aide },
+    { label: "Type inconnu", internalCode: "unknown_demande",isInternal: true,rattachement:EnumTypeDocumentRattachement.Demande },
     
   ];
 

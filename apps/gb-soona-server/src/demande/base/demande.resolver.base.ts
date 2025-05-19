@@ -37,6 +37,8 @@ import { Document } from "../../document/base/Document";
 import { User } from "../../user/base/User";
 import { Contact } from "../../contact/base/Contact";
 import { DemandeService } from "../demande.service";
+import { VisiteFindManyArgs } from "../../visite/base/VisiteFindManyArgs";
+import { Visite } from "../../visite/base/Visite";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Demande)
 export class DemandeResolverBase {
@@ -179,6 +181,7 @@ export class DemandeResolverBase {
     try {
       return await this.service.deleteDemande(args);
     } catch (error) {
+      console.log(error)
       if (isRecordNotFoundError(error)) {
         throw new GraphQLError(
           `No resource was found for ${JSON.stringify(args.where)}`
@@ -265,6 +268,26 @@ export class DemandeResolverBase {
     @graphql.Args() args: DocumentFindManyArgs
   ): Promise<Document[]> {
     const results = await this.service.findDocuments(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Visite], { name: "visites" })
+  @nestAccessControl.UseRoles({
+    resource: "Visite",
+    action: "read",
+    possession: "any",
+  })
+  async findVisites(
+    @graphql.Parent() parent: Demande,
+    @graphql.Args() args: VisiteFindManyArgs
+  ): Promise<Visite[]> {
+    const results = await this.service.findVisites(parent.id, args);
 
     if (!results) {
       return [];

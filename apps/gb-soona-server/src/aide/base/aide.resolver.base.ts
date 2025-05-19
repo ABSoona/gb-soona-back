@@ -30,6 +30,8 @@ import { DemandeActivityFindManyArgs } from "../../demandeActivity/base/DemandeA
 import { DemandeActivity } from "../../demandeActivity/base/DemandeActivity";
 import { DocumentFindManyArgs } from "../../document/base/DocumentFindManyArgs";
 import { Document } from "../../document/base/Document";
+import { VersementFindManyArgs } from "../../versement/base/VersementFindManyArgs";
+import { Versement } from "../../versement/base/Versement";
 import { Contact } from "../../contact/base/Contact";
 import { Demande } from "../../demande/base/Demande";
 import { AideService } from "../aide.service";
@@ -194,6 +196,26 @@ export class AideResolverBase {
     @graphql.Args() args: DocumentFindManyArgs
   ): Promise<Document[]> {
     const results = await this.service.findDocuments(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Versement], { name: "versements" })
+  @nestAccessControl.UseRoles({
+    resource: "Versement",
+    action: "read",
+    possession: "any",
+  })
+  async findVersements(
+    @graphql.Parent() parent: Aide,
+    @graphql.Args() args: VersementFindManyArgs
+  ): Promise<Versement[]> {
+    const results = await this.service.findVersements(parent.id, args);
 
     if (!results) {
       return [];
