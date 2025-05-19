@@ -27,6 +27,7 @@ import { InputJsonValue } from "../../types";
 import { UserUpdateManyWithoutUsersInput } from "./UserUpdateManyWithoutUsersInput";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserNotificationPreferenceUpdateManyWithoutUsersInput } from "./UserNotificationPreferenceUpdateManyWithoutUsersInput";
+import { VisiteUpdateManyWithoutUsersInput } from "./VisiteUpdateManyWithoutUsersInput";
 
 @InputType()
 class UserUpdateInput {
@@ -251,6 +252,18 @@ class UserUpdateInput {
     nullable: true,
   })
   username?: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => VisiteUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => VisiteUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => VisiteUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  visites?: VisiteUpdateManyWithoutUsersInput;
 }
 
 export { UserUpdateInput as UserUpdateInput };

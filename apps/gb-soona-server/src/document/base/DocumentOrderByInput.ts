@@ -94,6 +94,17 @@ class DocumentOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  name?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   typeDocumentId?: SortOrder;
 
   @ApiProperty({
@@ -106,6 +117,19 @@ class DocumentOrderByInput {
     nullable: true,
   })
   updatedAt?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  versementsId?: SortOrder;
+
+  visitesId?: SortOrder;
 }
 
 export { DocumentOrderByInput as DocumentOrderByInput };

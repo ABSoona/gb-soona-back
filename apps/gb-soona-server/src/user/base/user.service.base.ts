@@ -17,6 +17,7 @@ import {
   DemandeActivity as PrismaDemandeActivity,
   Demande as PrismaDemande,
   UserNotificationPreference as PrismaUserNotificationPreference,
+  Visite as PrismaVisite,
 } from "@prisma/client";
 
 import { PasswordService } from "../../auth/password.service";
@@ -129,5 +130,16 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .superieur();
+  }
+  
+  async findVisites(
+    parentId: string,
+    args: Prisma.VisiteFindManyArgs
+  ): Promise<PrismaVisite[]> {
+    return this.prisma.user
+      .findUniqueOrThrow({
+        where: { id: parentId },
+      })
+      .visites(args);
   }
 }

@@ -33,6 +33,7 @@ import { DocumentCreateNestedManyWithoutAidesInput } from "./DocumentCreateNeste
 import { EnumAideFrequence } from "./EnumAideFrequence";
 import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
+import { VersementCreateNestedManyWithoutAidesInput } from "./VersementCreateNestedManyWithoutAidesInput";
 
 @InputType()
 class AideCreateInput {
@@ -216,6 +217,18 @@ class AideCreateInput {
     nullable: true,
   })
   typeField?: "AssistanceAdministrative" | "FinanciRe" | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => VersementCreateNestedManyWithoutAidesInput,
+  })
+  @ValidateNested()
+  @Type(() => VersementCreateNestedManyWithoutAidesInput)
+  @IsOptional()
+  @Field(() => VersementCreateNestedManyWithoutAidesInput, {
+    nullable: true,
+  })
+  versements?: VersementCreateNestedManyWithoutAidesInput;
 }
 
 export { AideCreateInput as AideCreateInput };

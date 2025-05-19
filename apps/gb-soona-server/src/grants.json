@@ -264,6 +264,30 @@
     "attributes": "*"
   },
   {
+    "role": "coordinateur",
+    "resource": "Versement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "coordinateur",
+    "resource": "Versement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "coordinateur",
+    "resource": "Versement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "coordinateur",
+    "resource": "Versement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "assistant_social",
     "resource": "Aide",
     "action": "read:any",
@@ -528,6 +552,30 @@
     "attributes": "*"
   },
   {
+    "role": "assistant_social",
+    "resource": "Versement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Versement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Versement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Versement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
     "role": "tresorier",
     "resource": "Aide",
     "action": "read:any",
@@ -788,6 +836,414 @@
   {
     "role": "tresorier",
     "resource": "DemandeActivity",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Versement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Versement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Versement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Versement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Aide",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Aide",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Aide",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Aide",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Demande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Contact",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "User",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Document",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "UserNotificationPreference",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Invitation",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "WebsiteDemande",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "TypeDocument",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeStatusHistory",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeStatusHistory",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeStatusHistory",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeStatusHistory",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeActivity",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeActivity",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeActivity",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "DemandeActivity",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Versement",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Versement",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Versement",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Versement",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Visite",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Visite",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Visite",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "admin",
+    "resource": "Visite",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Visite",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Visite",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Visite",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "assistant_social",
+    "resource": "Visite",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "coordinateur",
+    "resource": "Visite",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "coordinateur",
+    "resource": "Visite",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "coordinateur",
+    "resource": "Visite",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "coordinateur",
+    "resource": "Visite",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Visite",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Visite",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Visite",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "tresorier",
+    "resource": "Visite",
     "action": "delete:any",
     "attributes": "*"
   }

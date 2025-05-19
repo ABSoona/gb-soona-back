@@ -23,6 +23,7 @@ import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterRespon
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Document } from "./Document";
 import { DocumentCountArgs } from "./DocumentCountArgs";
+import { Visite } from "../../visite/base/Visite";
 import { DocumentFindManyArgs } from "./DocumentFindManyArgs";
 import { DocumentFindUniqueArgs } from "./DocumentFindUniqueArgs";
 import { CreateDocumentArgs } from "./CreateDocumentArgs";
@@ -32,6 +33,7 @@ import { Aide } from "../../aide/base/Aide";
 import { Contact } from "../../contact/base/Contact";
 import { Demande } from "../../demande/base/Demande";
 import { TypeDocument } from "../../typeDocument/base/TypeDocument";
+import { Versement } from "../../versement/base/Versement";
 import { DocumentService } from "../document.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Document)
@@ -124,6 +126,18 @@ export class DocumentResolverBase {
               connect: args.data.typeDocument,
             }
           : undefined,
+        
+        visites: args.data.visites
+          ? {
+              connect: args.data.visites,
+            }
+          : undefined,
+
+        versements: args.data.versements
+          ? {
+              connect: args.data.versements,
+            }
+          : undefined,
       },
     });
   }
@@ -165,6 +179,18 @@ export class DocumentResolverBase {
           typeDocument: args.data.typeDocument
             ? {
                 connect: args.data.typeDocument,
+              }
+            : undefined,
+          
+            visites: args.data.visites
+            ? {
+                connect: args.data.visites,
+              }
+            : undefined,
+
+          versements: args.data.versements
+            ? {
+                connect: args.data.versements,
               }
             : undefined,
         },
@@ -296,6 +322,46 @@ export class DocumentResolverBase {
     @graphql.Parent() parent: Document
   ): Promise<TypeDocument | null> {
     const result = await this.service.getTypeDocument(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Versement, {
+    nullable: true,
+    name: "versements",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Versement",
+    action: "read",
+    possession: "any",
+  })
+  async getVersements(
+    @graphql.Parent() parent: Document
+  ): Promise<Versement | null> {
+    const result = await this.service.getVersements(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => Visite, {
+    nullable: true,
+    name: "visites",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "Visite",
+    action: "read",
+    possession: "any",
+  })
+  async getVisites(@graphql.Parent() parent: Document): Promise<Visite | null> {
+    const result = await this.service.getVisites(parent.id);
 
     if (!result) {
       return null;

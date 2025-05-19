@@ -12,7 +12,13 @@ https://docs.amplication.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { Aide } from "../../aide/base/Aide";
-import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
+import {
+  ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  MaxLength,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { Contact } from "../../contact/base/Contact";
 import { IsJSONValue } from "../../validators";
@@ -20,6 +26,8 @@ import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { Demande } from "../../demande/base/Demande";
 import { TypeDocument } from "../../typeDocument/base/TypeDocument";
+import { Versement } from "../../versement/base/Versement";
+import { Visite } from "../../visite/base/Visite";
 
 @ObjectType()
 class Document {
@@ -78,6 +86,18 @@ class Document {
 
   @ApiProperty({
     required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  name!: string | null;
+
+  @ApiProperty({
+    required: false,
     type: () => TypeDocument,
   })
   @ValidateNested()
@@ -92,6 +112,25 @@ class Document {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => Versement,
+  })
+  @ValidateNested()
+  @Type(() => Versement)
+  @IsOptional()
+  versements?: Versement | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Visite,
+  })
+  @ValidateNested()
+  @Type(() => Visite)
+  @IsOptional()
+  visites?: Visite | null;
 }
+
 
 export { Document as Document };

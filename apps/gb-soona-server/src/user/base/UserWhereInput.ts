@@ -21,6 +21,7 @@ import { StringFilter } from "../../util/StringFilter";
 import { UserListRelationFilter } from "./UserListRelationFilter";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserNotificationPreferenceListRelationFilter } from "../../userNotificationPreference/base/UserNotificationPreferenceListRelationFilter";
+import { VisiteListRelationFilter } from "../../visite/base/VisiteListRelationFilter";
 
 @InputType()
 class UserWhereInput {
@@ -227,6 +228,18 @@ class UserWhereInput {
     nullable: true,
   })
   username?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => VisiteListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => VisiteListRelationFilter)
+  @IsOptional()
+  @Field(() => VisiteListRelationFilter, {
+    nullable: true,
+  })
+  visites?: VisiteListRelationFilter;
 }
 
 export { UserWhereInput as UserWhereInput };

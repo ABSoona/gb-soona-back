@@ -13,7 +13,7 @@
     </mj-text>
 
     <mj-text font-size="16px" color="#555555">
-    Vous pouvez télécharger la fiche de visite ci-dessous.
+    Vous pouvez télécharger la demande ci-dessous.
     </mj-text>
 
     <mj-button
@@ -24,7 +24,7 @@
       border-radius="6px"
       font-size="16px"
     >
-      Télécharger la fiche de visite
+      Télécharger la demande
     </mj-button>
 
     <mj-text font-size="16px" color="#555555">

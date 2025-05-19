@@ -33,6 +33,8 @@ import { Demande } from "../../demande/base/Demande";
 import { UserNotificationPreferenceFindManyArgs } from "../../userNotificationPreference/base/UserNotificationPreferenceFindManyArgs";
 import { UserNotificationPreference } from "../../userNotificationPreference/base/UserNotificationPreference";
 import { UserService } from "../user.service";
+import { VisiteFindManyArgs } from "../../visite/base/VisiteFindManyArgs";
+import { Visite } from "../../visite/base/Visite";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => User)
 export class UserResolverBase {
@@ -234,6 +236,25 @@ export class UserResolverBase {
     return results;
   }
 
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Visite], { name: "visites" })
+  @nestAccessControl.UseRoles({
+    resource: "Visite",
+    action: "read",
+    possession: "any",
+  })
+  async findVisites(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: VisiteFindManyArgs
+  ): Promise<Visite[]> {
+    const results = await this.service.findVisites(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => [UserNotificationPreference], {
     name: "userNotificationPreferences",

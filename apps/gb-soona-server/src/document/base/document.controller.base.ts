@@ -76,6 +76,18 @@ export class DocumentControllerBase {
               connect: data.typeDocument,
             }
           : undefined,
+
+          visites: data.visites
+          ? {
+              connect: data.visites,
+            }
+          : undefined,
+
+        versements: data.versements
+          ? {
+              connect: data.versements,
+            }
+          : undefined,
       },
       select: {
         aide: {
@@ -100,6 +112,7 @@ export class DocumentControllerBase {
         },
 
         id: true,
+        name: true,
 
         typeDocument: {
           select: {
@@ -108,6 +121,18 @@ export class DocumentControllerBase {
         },
 
         updatedAt: true,
+
+        visites: {
+          select: {
+            id: true,
+          },
+        },
+
+        versements: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -151,6 +176,7 @@ export class DocumentControllerBase {
         },
 
         id: true,
+        name: true,
 
         typeDocument: {
           select: {
@@ -159,6 +185,17 @@ export class DocumentControllerBase {
         },
 
         updatedAt: true,
+        visites: {
+          select: {
+            id: true,
+          },
+        },
+
+        versements: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -203,6 +240,7 @@ export class DocumentControllerBase {
         },
 
         id: true,
+        name: true,
 
         typeDocument: {
           select: {
@@ -211,6 +249,17 @@ export class DocumentControllerBase {
         },
 
         updatedAt: true,
+        visites: {
+          select: {
+            id: true,
+          },
+        },
+
+        versements: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -266,6 +315,18 @@ export class DocumentControllerBase {
                 connect: data.typeDocument,
               }
             : undefined,
+
+          visites: data.visites
+            ? {
+                connect: data.visites,
+              }
+            : undefined,
+
+          versements: data.versements
+            ? {
+                connect: data.versements,
+              }
+            : undefined,
         },
         select: {
           aide: {
@@ -290,6 +351,7 @@ export class DocumentControllerBase {
           },
 
           id: true,
+          name: true,
 
           typeDocument: {
             select: {
@@ -298,6 +360,18 @@ export class DocumentControllerBase {
           },
 
           updatedAt: true,
+
+          visites: {
+            select: {
+              id: true,
+            },
+          },
+
+          versements: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -350,6 +424,7 @@ export class DocumentControllerBase {
           },
 
           id: true,
+          name: true,
 
           typeDocument: {
             select: {
@@ -358,6 +433,17 @@ export class DocumentControllerBase {
           },
 
           updatedAt: true,
+          visites: {
+            select: {
+              id: true,
+            },
+          },
+
+          versements: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
