@@ -82,7 +82,7 @@ export class MailService {
   }
  
   async sendHtmlMail(html: string , subject:string, to:string) {
-   
+    if(to.split('@')[1]!=='example.com')
     await this.transporter.sendMail({
       from: `"GBSoona" <${process.env.SMTP_USER}>`,
       to,
