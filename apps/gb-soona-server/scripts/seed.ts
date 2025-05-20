@@ -62,7 +62,7 @@ if (!wpApiPass) {
     lastName : "api",
     status : "active",
     password: await hash(wpApiPass, bcryptSalt),
-    roles: ["user"],
+    roles: ["admin"],
     role: "admin",
   };
 
