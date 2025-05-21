@@ -26,7 +26,14 @@ export class DemandeController extends DemandeControllerBase {
     @Query('token') token: string,
     @Res() res: Response,
   )  {
-    return this.service.donwloadFicheVisite(id,token,res)
+    return this.service.donwloadDemande(id,token,res)
+  }
+  @Get(':id/authenticated-pdf')
+  async  getAuthenticatedPdf(
+    @Param('id') id: number,   
+    @Res() res: Response,
+  )  {
+    return this.service.donwloadAuthDemande(id,res)
   }
 
   @Put(':id/share')
