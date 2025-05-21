@@ -45,15 +45,8 @@ export class DemandeServiceBase {
     return this.prisma.demande.update(args);
   }
   async deleteDemande(args: Prisma.DemandeDeleteArgs): Promise<PrismaDemande> {
-  
-
-    try {
-
-      return this.prisma.demande.delete(args);
-    } catch (e) {
-      console.error("❌ Erreur dans deleteDemande:", e);
-      throw e;
-    }
+    console.log("supression de la demande")
+    return this.prisma.demande.delete(args);
   }
 
   async findAides(

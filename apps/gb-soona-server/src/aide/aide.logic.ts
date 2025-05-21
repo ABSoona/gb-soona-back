@@ -38,7 +38,7 @@ export function generateAideActivityMessage(aide: Aide): string {
     const aidTypeLabel = aide.typeField === EnumAideTypeField.AssistanceAdministrative ? "d'assitance administrative" : "";
     const frequence = aide.typeField === EnumAideTypeField.FinanciRe && aideFrequenceLabels.find(e => e.value === aide.frequence)?.label;
     const montant = aide.typeField === EnumAideTypeField.FinanciRe && `d'un montant de ${aide.montant?.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}`;
-    return `Une aide ${frequence} ${aidTypeLabel} ${montant} a été accordée au demandeur jusqu'au ${aide?.dateExpiration?.toLocaleString()}`;
+    return `Une aide ${frequence} ${aidTypeLabel} ${montant} a été accordée au demandeur jusqu'au ${aide?.dateExpiration?.toLocaleDateString()}`;
   }
 
    const aideTypeLabels = [
