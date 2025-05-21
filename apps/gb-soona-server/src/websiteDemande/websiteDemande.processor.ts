@@ -12,6 +12,7 @@ import {
 
 } from "@prisma/client";
 import { WebsiteDemandeNotificationService } from './website-demande-notification.service';
+import { QueryMode } from 'src/util/QueryMode';
 
 @Injectable()
 export class WebSiteDemandeProcessor implements OnModuleInit {
@@ -84,8 +85,8 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
       {
         label: 'nom, prénom et âge',
         where: {
-          nom: { equals: args.nomDemandeur },
-          prenom: { equals: args.prenomDemandeur },
+          nom: { equals: args.nomDemandeur, mode : QueryMode.Insensitive },
+          prenom: { equals: args.prenomDemandeur, mode : QueryMode.Insensitive  },
           age: { equals: args.ageDemandeur },
         },
       },
@@ -98,7 +99,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
       {
         label: 'email',
         where: args.emailDemandeur
-          ? { email: { equals: args.emailDemandeur } }
+          ? { email: { equals: args.emailDemandeur,mode : QueryMode.Insensitive  } }
           : null,
       },
     ];

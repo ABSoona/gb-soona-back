@@ -84,11 +84,13 @@ function renderSectionTitle(doc: PDFKit.PDFDocument, title: string) {
     renderSectionTitle(doc, '4. Charges');
 
 
+      
+    
+    renderLigneAvecObservation(doc, 'Loyer', demande.loyer?.toString() ?? '—', false,"montant");
+    renderLigneAvecObservation(doc, 'Factures énergie', demande.facturesEnergie?.toString() ?? '—', false,"montant");
     renderLigneAvecObservation(doc, 'Autres charges', demande.autresCharges?.toString() ?? '—',false, "montant");
     renderLigneAvecObservation(doc, 'Dettes', demande.dettes?.toString() ?? '—', false,"montant");
     renderLigneAvecObservation(doc, 'Nature des dettes', demande.natureDettes ?? '—',false);
-    renderLigneAvecObservation(doc, 'Loyer', demande.loyer?.toString() ?? '—', false,"montant");
-    renderLigneAvecObservation(doc, 'Factures énergie', demande.facturesEnergie?.toString() ?? '—', false,"montant");
 
     renderSectionTitle(doc, '5. Revenus');
     renderLigneAvecObservation(doc, 'APL', demande.apl?.toString() ?? '—', false,"montant");
