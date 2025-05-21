@@ -81,7 +81,7 @@ export class DemandeService extends DemandeServiceBase {
     }, "Une demande vous a été partagé");
   }
   
-  async donwloadFicheVisite(demandeId: number, token: string, res: Response): Promise<void> {
+  async donwloadDemande(demandeId: number, token: string, res: Response): Promise<void> {
     const demande = await this.prisma.demande.findUnique({ where: { id: Number(demandeId) } });
     const contact = await this.prisma.contact.findUnique({ where: { id: Number(demande?.contactId) } });
 
@@ -100,6 +100,20 @@ export class DemandeService extends DemandeServiceBase {
     } else {
       throw new common.BadRequestException(`invalid token`);
     }
+  }
+
+  async donwloadAuthDemande(demandeId: number, res: Response): Promise<void> {
+    const demande = await this.prisma.demande.findUnique({ where: { id: Number(demandeId) } });
+    const contact = await this.prisma.contact.findUnique({ where: { id: Number(demande?.contactId) } });
+
+    if (!demande) {
+      throw new common.NotFoundException(`Demande ${demandeId} introuvable`);
+    }
+    if (!contact) {
+      throw new common.InternalServerErrorException(`Contact  introuvable`);
+    }
+    return generateDemandePdf(demande, contact, res);
+   
   }
 
    async updateDemandeWhenExpir(aideId:number){
