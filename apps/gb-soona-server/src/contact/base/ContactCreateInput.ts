@@ -174,7 +174,7 @@ class ContactCreateInput {
     type: String,
   })
   @IsString()
-  @MaxLength(256)
+  @MaxLength(2000)
   @IsOptional()
   @Field(() => String, {
     nullable: true,

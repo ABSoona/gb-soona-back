@@ -77,9 +77,9 @@ export class AideService extends AideServiceBase {
     console.log("supression de l'aide...")
     
     console.log("verfication des versement...")
-    const paidVersement  = await this.prisma.versement.count({where:{status:'Verse'}})
+    const paidVersement  = await this.prisma.versement.count({where:{status:'Verse',aideId:args.where.id}})
     if(paidVersement>0)
-      throw new common.InternalServerErrorException("il n'est pas possible de supprimer une aide avec des versmenet déja versés")
+      throw new common.InternalServerErrorException("il n'est pas possible de supprimer une aide déja versées ou en cours de versement")
     
      const versement = await this.prisma.versement.deleteMany({where:{aideId :{equals:args.where.id}}})
      console.log("versement supprimé",versement)
