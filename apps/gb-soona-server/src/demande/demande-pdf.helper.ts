@@ -64,7 +64,7 @@ function renderSectionTitle(doc: PDFKit.PDFDocument, title: string) {
     renderLigneAvecObservation(doc, 'Numéro bénéficiaire', contact.id?.toString() ?? '—',false);
     renderLigneAvecObservation(doc, 'Nom', capitalizeFirstLetter(contact.nom),false);
     renderLigneAvecObservation(doc, 'Prénom', capitalizeFirstLetter(contact.prenom),false);
-    renderLigneAvecObservation(doc, 'Âge', contact.age?.toString() ?? '—',false);
+    renderLigneAvecObservation(doc, 'Âge', contact?.age ?(new Date().getFullYear() - contact?.age)?.toString(): '—',false);
     renderLigneAvecObservation(doc, 'Adresse', `${contact.adresse ?? ''} `,false);
     renderLigneAvecObservation(doc, undefined, `${contact.codePostal ?? ''} ${contact.ville ?? ''}`,false);
     renderLigneAvecObservation(doc, 'Téléphone', contact.telephone ?? '—',false);
