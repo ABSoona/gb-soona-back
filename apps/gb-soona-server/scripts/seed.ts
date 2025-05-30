@@ -105,5 +105,5 @@ if (!wpApiPass) {
   console.info("Seeding database with custom seed...");
   customSeed();
 
-  console.info("Seeded database successfully");
+  console.info("database Seeded successfully");
 }
