@@ -174,7 +174,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         remarques: args.remarques,
         status: 'recue',
         acteur:defaultActeur? {connect:{id:defaultActeur?.id}}:{connect:{id:adminUser?.id}},
-        proprietaire : {connect:{id:defaultActeur?.id}}
+        proprietaire :defaultActeur? {connect:{id:defaultActeur?.id}}:{connect:{id:adminUser?.id}},
       },
     });
   }
