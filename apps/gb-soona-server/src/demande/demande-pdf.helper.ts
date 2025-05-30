@@ -100,11 +100,11 @@ function renderSectionTitle(doc: PDFKit.PDFDocument, title: string) {
 
 
 
-    const range = doc.bufferedPageRange();
+    /* const range = doc.bufferedPageRange();
     for (let i = 0; i < range.count; i++) {
       doc.switchToPage(i);
       doc.fontSize(10).fillColor('#999').text(`Page ${i + 1} / ${range.count}`, 500, 770);
     }
-
+ */
     doc.end();
   }
