@@ -12,6 +12,6 @@ export class ContactService extends ContactServiceBase {
   async sendMessage(body: string , objet:string, contactId: number) {
    
     const contact = await this.prisma.contact.findUnique({where:{id:contactId}})
-    contact?.email && await this.mailService.sendHtmlMail(body,objet,contact?.email);
+    contact?.email && await this.mailService.sendHtmlMail(body,objet,contact?.email,false);
   }
 }

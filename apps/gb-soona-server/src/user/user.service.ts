@@ -12,6 +12,7 @@ import {
 
 import { InvitationService } from "src/invitation/invitation.service";
 import { UserNotificationPreferenceService } from 'src/userNotificationPreference/userNotificationPreference.service';
+import { Public } from 'src/decorators/public.decorator';
 @Injectable()
 export class UserService extends UserServiceBase {
   constructor(
@@ -69,7 +70,7 @@ export class UserService extends UserServiceBase {
     // 3. Retourner l’utilisateur comme d’habitude
     return user;
   }
-
+  
   async createUserWithUnvitation(args: Prisma.UserCreateArgs): Promise<PrismaUser> {
     // 1. Appel à la méthode générée pour créer l’utilisateur (avec hash du mot de passe)
     if(!args.data?.token )

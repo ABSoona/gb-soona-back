@@ -1,6 +1,6 @@
 import { Invitation } from './../../node_modules/.prisma/client/index.d';
 import { MailService } from 'src/mail/mail.service';
-import { BadRequestException, ConflictException, Inject, Injectable, forwardRef } from "@nestjs/common";
+import { BadRequestException,NotFoundException, ConflictException, Inject, Injectable, forwardRef } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { InvitationServiceBase } from "./base/invitation.service.base";
 import { Prisma, Invitation as PrismaInvitation } from "@prisma/client";
@@ -57,5 +57,34 @@ export class InvitationService extends InvitationServiceBase {
 
      // 3. Retourne la invitation comme d’habitude
    return invitation;
+  }
+  async invitationWithToken(
+    token: string
+  ): Promise<PrismaInvitation| null> {
+    if(!token)
+      throw new BadRequestException();
+
+    const invitation = await this.prisma.invitation.findFirst({where:{token:token}});
+    if(!invitation)
+        throw new NotFoundException();
+    
+    const result = await super.invitation({
+         where: {id:invitation.id},
+         select: {
+           createdAt: true,
+           email: true,
+           id: true,
+           message: true,
+           role: true,
+           token: true,
+           updatedAt: true,
+           used: true,
+         },
+       });
+       if (result === null) {
+        throw new NotFoundException();
+       }
+       return result;
+
   }
 }

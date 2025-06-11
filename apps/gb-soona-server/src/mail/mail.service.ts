@@ -9,18 +9,29 @@ import { Queues } from 'src/bullmq/queues';
 
 @Injectable()
 export class MailService {
-  private transporter: nodemailer.Transporter;
+  private teamTransporter: nodemailer.Transporter;
+  private userTransporter: nodemailer.Transporter;
 
-  constructor(protected readonly queueDispatcherService:QueueDispatcherService ) {
-    this.transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT),
-        secure: true, // TLS (STARTTLS)
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },       
-      });
+  constructor(protected readonly queueDispatcherService: QueueDispatcherService) {
+    this.teamTransporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
+    this.userTransporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER_EXTERNAL,
+        pass: process.env.SMTP_PASS_EXTERNAL,
+      },
+    });
   }
 
   private renderTemplate(templateName: string, variables: Record<string, string>): string {
@@ -28,68 +39,71 @@ export class MailService {
     const header = fs.readFileSync(path.join(basePath, 'partials', 'header.mjml'), 'utf8');
     const footer = fs.readFileSync(path.join(basePath, 'partials', 'footer.mjml'), 'utf8');
     const body = fs.readFileSync(path.join(basePath, `${templateName}.mjml`), 'utf8');
-    
-    let fullTemplate = `
-      <mjml>
-        <mj-body>
-          ${header}
-          ${body}
-          ${footer}
-        </mj-body>
-      </mjml>
-    `;
-  
-    const result = mjml2html(fullTemplate, { validationLevel: 'strict' });
-    if (result.errors.length > 0) {
-      console.error('Erreur MJML :', result.errors);
-    }
-    
-    // Remplacement simple des variables {{variable}}
+
+    let fullTemplate = `<mjml><mj-body>${header}${body}${footer}</mj-body></mjml>`;
+
     for (const [key, value] of Object.entries(variables)) {
-        fullTemplate = fullTemplate.replace(new RegExp(`{{${key}}}`, 'g'), value);
-      }
-      const { html } = mjml2html(fullTemplate);
-      return html;
+      fullTemplate = fullTemplate.replace(new RegExp(`{{${key}}}`, 'g'), value);
+    }
+
+    const { html } = mjml2html(fullTemplate, { validationLevel: 'strict' });
+    return html;
   }
 
   sendMailAsync(template: string, to: string, variables: Record<string, string>, subject: string) {
-    console.log("Mise en queue de l'envoie de mail")
-     const retour = this.queueDispatcherService.dispatch(Queues.MAIL,  {
+    return this.queueDispatcherService.dispatch(Queues.MAIL, {
       template,
       to,
       variables,
       subject,
     });
-    console.log("Envoyé dans la queue",retour)  }
-
-  async sendUserMail(template: string ,to: string,  variables: Record<string, string>,subject:string) {
-    console.log("Envoie du mail")
-    const html = this.renderTemplate(template, variables);
-    if(to.split('@')[1]!=='example.com')
-      await this.transporter.sendMail({
-        from: `"GBSoona" <${process.env.SMTP_USER}>`,
-        to,
-        subject:subject,
-        html,
-        attachments: [
-          {
-            filename: 'log.png',
-            path: path.resolve(__dirname, 'assets', 'logo.png'),
-            cid: 'logo', // 👈 correspond à `cid:logo` dans le MJML
-          },
-        ],
-      });
   }
- 
-  async sendHtmlMail(html: string , subject:string, to:string) {
-    if(to.split('@')[1]!=='example.com')
-    await this.transporter.sendMail({
-      from: `"GBSoona" <${process.env.SMTP_USER}>`,
+
+  async sendUserMail(
+    template: string,
+    to: string,
+    variables: Record<string, string>,
+    subject: string,
+    isTeam: boolean = true // ✅ Par défaut à true
+  ) {
+    const html = this.renderTemplate(template, variables);
+    const transporter = isTeam ? this.teamTransporter : this.userTransporter;
+    const from = isTeam
+      ? `"GBSoona Team" <${process.env.SMTP_USER}>`
+      : `"Social Soona" <${process.env.SMTP_USER_EXTERNAL}>`;
+  
+    await transporter.sendMail({
+      from,
       to,
       subject,
-      html
+      html,
+      attachments: [
+        {
+          filename: 'logo.png',
+          path: path.resolve(__dirname, 'assets', 'logo.png'),
+          cid: 'logo',
+        },
+      ],
     });
   }
   
- 
+  async sendHtmlMail(
+    html: string,
+    subject: string,
+    to: string,
+    isTeam: boolean = true // ✅ Par défaut à true
+  ) {
+    const transporter = isTeam ? this.teamTransporter : this.userTransporter;
+    const from = isTeam
+      ? `"GBSoona Team" <${process.env.SMTP_USER}>`
+      : `"GBSoona" <${process.env.SMTP_USER}>`;
+  
+    await transporter.sendMail({
+      from,
+      to,
+      subject,
+      html,
+    });
+  }
 }
+

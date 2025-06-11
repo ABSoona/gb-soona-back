@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client';
 import * as common from "@nestjs/common";
 import * as swagger from "@nestjs/swagger";
 import * as nestAccessControl from "nest-access-control";
@@ -9,6 +10,7 @@ import { Invitation } from "src/invitation/base/Invitation";
 import { User } from "./base/User";
 import { UserCreateInput } from "./base/UserCreateInput";
 import { MailService } from "src/mail/mail.service";
+import { Public } from "src/decorators/public.decorator";
 
 @swagger.ApiTags("users")
 @common.Controller("users")
@@ -22,7 +24,7 @@ export class UserController extends UserControllerBase {
     super(service, rolesBuilder);
    
   }
-
+  @Public()
   @Post("/register")  
   async createUserWithUnvitation(@Body() data: UserCreateInput): Promise<User> {
     
