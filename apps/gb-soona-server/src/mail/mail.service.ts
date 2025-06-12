@@ -10,7 +10,7 @@ import { Queues } from 'src/bullmq/queues';
 @Injectable()
 export class MailService {
   private teamTransporter: nodemailer.Transporter;
-  private userTransporter: nodemailer.Transporter;
+ // private userTransporter: nodemailer.Transporter;
 
   constructor(protected readonly queueDispatcherService: QueueDispatcherService) {
     this.teamTransporter = nodemailer.createTransport({
@@ -23,7 +23,7 @@ export class MailService {
       },
     });
 
-    this.userTransporter = nodemailer.createTransport({
+  /*   this.userTransporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
       secure: true,
@@ -31,7 +31,7 @@ export class MailService {
         user: process.env.SMTP_USER_EXTERNAL,
         pass: process.env.SMTP_PASS_EXTERNAL,
       },
-    });
+    }); */
   }
 
   private renderTemplate(templateName: string, variables: Record<string, string>): string {
@@ -64,14 +64,16 @@ export class MailService {
     to: string,
     variables: Record<string, string>,
     subject: string,
-    isTeam: boolean = true // ✅ Par défaut à true
+    from_name: string |undefined = process.env.SMTP_FROM_NAME_INTERNAL
+   // isTeam: boolean = true // ✅ Par défaut à true
   ) {
     const html = this.renderTemplate(template, variables);
-    const transporter = isTeam ? this.teamTransporter : this.userTransporter;
+   /*  const transporter = isTeam ? this.teamTransporter : this.userTransporter;
     const from = isTeam
       ? `"GBSoona Team" <${process.env.SMTP_USER}>`
-      : `"Social Soona" <${process.env.SMTP_USER_EXTERNAL}>`;
-  
+      : `"Social Soona" <${process.env.SMTP_USER_EXTERNAL}>`; */
+      const from = `${from_name} <${process.env.SMTP_USER}>`
+      const transporter = this.teamTransporter ;
     await transporter.sendMail({
       from,
       to,
@@ -84,6 +86,7 @@ export class MailService {
           cid: 'logo',
         },
       ],
+      replyTo: process.env.SMTP_REPLY_TO,
     });
   }
   
@@ -91,18 +94,22 @@ export class MailService {
     html: string,
     subject: string,
     to: string,
-    isTeam: boolean = true // ✅ Par défaut à true
+    from_name : string |undefined =process.env.SMTP_FROM_NAME_INTERNAL
+   // isTeam: boolean = true // ✅ Par défaut à true
   ) {
-    const transporter = isTeam ? this.teamTransporter : this.userTransporter;
+    /* const transporter = isTeam ? this.teamTransporter : this.userTransporter;
     const from = isTeam
       ? `"GBSoona Team" <${process.env.SMTP_USER}>`
-      : `"GBSoona" <${process.env.SMTP_USER}>`;
+      : `"GBSoona" <${process.env.SMTP_USER}>`; */
   
+      const from = `${from_name} <${process.env.SMTP_USER}>`
+      const transporter = this.teamTransporter ;
     await transporter.sendMail({
       from,
       to,
       subject,
       html,
+      replyTo: process.env.SMTP_REPLY_TO,
     });
   }
 }
