@@ -11,7 +11,7 @@ import { Versement } from 'src/versement/base/Versement';
 import { VersementCreateInput } from 'src/versement/base/VersementCreateInput';
 import { EnumVersementStatus } from 'src/versement/base/EnumVersementStatus';
 import { addMonths } from 'date-fns';
-import { generateAideActivityMessage, generateVersements } from './aide.logic';
+import { generateAideActivityMessage, generateAideSuspendActivityMessage as generateAideSuspendActivityMessage, generateVersements } from './aide.logic';
 
 
 
@@ -40,7 +40,9 @@ export class AideService extends AideServiceBase {
     if(newStatus == 'EnCours' && aide.status=='Expir'){
       await this.demandeService.updateDemandeWhenExpir(aide.id)
     }
-
+    if(newStatus == 'EnCours' && aide.suspendue){
+    await this.addSuspendActivity(aide)
+    }
     return aide;
   }
   
@@ -71,6 +73,23 @@ export class AideService extends AideServiceBase {
         data: { status: "EnCours" },
         where: { id: aide.demandeId },
       });
+    }
+  }
+  async addSuspendActivity(aide: Aide) {
+    if (aide.demandeId) {
+      const titre = "Aide Suspendue";
+      const message = generateAideSuspendActivityMessage(aide);
+  
+      await this.prisma.demandeActivity.create({
+        data: {
+          demandeId: aide.demandeId,
+          aideId: aide.id,
+          titre,
+          typeField: "aideCancel",
+          message,
+        },
+      });
+  
     }
   }
   async deleteAide(args: Prisma.AideDeleteArgs): Promise<PrismaAide> {

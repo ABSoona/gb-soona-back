@@ -101,7 +101,7 @@ class VisiteWhereInput {
   @Field(() => EnumVisiteStatus, {
     nullable: true,
   })
-  status?: "Programee" | "Realisee" | "Annulee";
+  status?: "Programee" | "Realisee" | "Annulee" | "Planifiee";
 }
 
 export { VisiteWhereInput as VisiteWhereInput };

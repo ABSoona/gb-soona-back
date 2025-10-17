@@ -177,6 +177,7 @@ enum EnumVisiteStatus {
   Programee
   Realisee
   Annulee
+  Planifiee
 }
 
 

@@ -15,6 +15,7 @@ export enum EnumVisiteStatus {
   Programee = "Programee",
   Realisee = "Realisee",
   Annulee = "Annulee",
+  Planifiee = "Planifiee",
 }
 
 registerEnumType(EnumVisiteStatus, {

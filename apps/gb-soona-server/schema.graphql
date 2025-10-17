@@ -779,6 +779,7 @@ enum EnumVersementStatus {
 
 enum EnumVisiteStatus {
   Annulee
+  Planifiee
   Programee
   Realisee
 }

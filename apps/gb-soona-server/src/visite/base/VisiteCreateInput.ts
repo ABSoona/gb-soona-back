@@ -89,7 +89,7 @@ class VisiteCreateInput {
   @Field(() => EnumVisiteStatus, {
     nullable: true,
   })
-  status?: "Programee" | "Realisee" | "Annulee" | null;
+  status?: "Programee" | "Realisee" | "Annulee" | "Planifiee" | null;
 }
 
 export { VisiteCreateInput as VisiteCreateInput };
