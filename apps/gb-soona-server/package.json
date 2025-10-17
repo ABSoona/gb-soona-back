@@ -6,7 +6,7 @@
     "start:watch": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "build": "nest build",
-    "postbuild": "cp -r src/mail/templates dist/mail/templates",
+    "postbuild": "mkdir -p dist/mail && cp -r src/mail/templates dist/mail/templates || true",
     "test": "jest",
     "seed": "ts-node scripts/seed.ts",
     "db:migrate-save": "prisma migrate dev",
