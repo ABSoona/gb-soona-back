@@ -12,6 +12,8 @@ services:
     depends_on:
       - redis_broker
     restart: on-failure
+    volumes:
+      - ./data:/app/server/data
   migrate:
     build:
       context: .
