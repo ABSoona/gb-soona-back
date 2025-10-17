@@ -19,7 +19,9 @@
     "compose:up": "docker-compose up -d",
     "compose:down": "docker-compose down --volumes",
     "start:vercel": "node dist/main.js",
-    "generate:schema": "ts-node -r tsconfig-paths/register src/main.ts"
+    "generate:schema": "ts-node -r tsconfig-paths/register src/main.ts",
+    "import:beneficiaires": "ts-node scripts/import-beneficiaires.ts",
+    "import:demandes": "ts-node scripts/import-demandes.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",
@@ -44,6 +46,7 @@
     "bullmq": "^5.46.1",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.0",
+    "csv-parser": "^3.2.0",
     "date-fns": "^4.1.0",
     "dotenv": "16.3.1",
     "graphql": "^16.8.1",

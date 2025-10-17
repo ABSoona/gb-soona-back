@@ -5,7 +5,7 @@
 
 */
 -- CreateEnum
-CREATE TYPE "EnumVisiteStatus" AS ENUM ('Programee', 'Realisee', 'Annulee');
+CREATE TYPE "EnumVisiteStatus" AS ENUM ('Programee', 'Realisee', 'Annulee','Planifiee');
 
 -- AlterTable
 ALTER TABLE "Document" ADD COLUMN     "visitesId" INTEGER;

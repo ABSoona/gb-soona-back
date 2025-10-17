@@ -40,6 +40,12 @@ export function generateAideActivityMessage(aide: Aide): string {
     const montant = aide.typeField === EnumAideTypeField.FinanciRe && `d'un montant de ${aide.montant?.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}`;
     return `Une aide ${frequence} ${aidTypeLabel} ${montant} a été accordée au demandeur jusqu'au ${aide?.dateExpiration?.toLocaleDateString()}`;
   }
+  export function generateAideSuspendActivityMessage(aide: Aide): string {
+    const aidTypeLabel = aide.typeField === EnumAideTypeField.AssistanceAdministrative ? "d'assitance administrative" : "";
+    const frequence = aide.typeField === EnumAideTypeField.FinanciRe && aideFrequenceLabels.find(e => e.value === aide.frequence)?.label;
+    const montant = aide.typeField === EnumAideTypeField.FinanciRe && `d'un montant de ${aide.montant?.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}`;
+    return `L'aide ${frequence} ${aidTypeLabel} de ${montant} a été suspendue`;
+  }
 
    const aideTypeLabels = [
     { value: EnumAideTypeField.FinanciRe, label: 'Financière' },
