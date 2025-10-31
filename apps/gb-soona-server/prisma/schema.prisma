@@ -79,7 +79,7 @@ model Contact {
   aides           Aide[]
   codePostal      Int?
   createdAt       DateTime   @default(now())
-  dateCreation    DateTime?
+  dateNaissance    DateTime?
   dateVisite      DateTime?
   demandes        Demande[]
   documents       Document[]
