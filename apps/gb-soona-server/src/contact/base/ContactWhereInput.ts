@@ -89,7 +89,7 @@ class ContactWhereInput {
   @Field(() => DateTimeNullableFilter, {
     nullable: true,
   })
-  dateCreation?: DateTimeNullableFilter;
+  dateNaissance?: DateTimeNullableFilter;
 
   @ApiProperty({
     required: false,

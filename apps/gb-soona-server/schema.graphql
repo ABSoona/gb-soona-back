@@ -154,7 +154,7 @@ type Contact {
   aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
   codePostal: Float
   createdAt: DateTime!
-  dateCreation: DateTime
+  dateNaissance: DateTime
   dateVisite: DateTime
   demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
@@ -175,7 +175,7 @@ input ContactCreateInput {
   age: Float
   aides: AideCreateNestedManyWithoutContactsInput
   codePostal: Float
-  dateCreation: DateTime
+  dateNaissance: DateTime
   dateVisite: DateTime
   demandes: DemandeCreateNestedManyWithoutContactsInput
   documents: DocumentCreateNestedManyWithoutContactsInput
@@ -194,7 +194,7 @@ input ContactOrderByInput {
   age: SortOrder
   codePostal: SortOrder
   createdAt: SortOrder
-  dateCreation: SortOrder
+  dateNaissance: SortOrder
   dateVisite: SortOrder
   email: SortOrder
   id: SortOrder
@@ -213,7 +213,7 @@ input ContactUpdateInput {
   age: Float
   aides: AideUpdateManyWithoutContactsInput
   codePostal: Float
-  dateCreation: DateTime
+  dateNaissance: DateTime
   dateVisite: DateTime
   demandes: DemandeUpdateManyWithoutContactsInput
   documents: DocumentUpdateManyWithoutContactsInput
@@ -233,7 +233,7 @@ input ContactWhereInput {
   aides: AideListRelationFilter
   codePostal: IntNullableFilter
   createdAt: DateTimeFilter
-  dateCreation: DateTimeNullableFilter
+  dateNaissance: DateTimeNullableFilter
   dateVisite: DateTimeNullableFilter
   demandes: DemandeListRelationFilter
   documents: DocumentListRelationFilter

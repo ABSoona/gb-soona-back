@@ -80,16 +80,31 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
 
   private async findOrCreateContact(args: PrismaWebsiteDemande) {
     const prisma = this.prisma;
-
+    
+   
+  // convertir l’entier en string pour extraire les parties
+  let dateNaissance = null ;
+  console.log("date recu:",args.adresseDemandeur);
+  if( args.ageDemandeur != null){
+    const dateStr = args.ageDemandeur.toString();
+    const year = parseInt(dateStr.slice(0, 4));
+    const month = parseInt(dateStr.slice(4, 6)) - 1; // ⚠️ mois = 0–11 en JS
+    const day = parseInt(dateStr.slice(6, 8));
+     dateNaissance = new Date(year, month, day);
+     console.log("date calculé:",dateNaissance);
+  }
+ 
     const strategies = [
+      dateNaissance?
       {
         label: 'nom, prénom et âge',
         where: {
-          nom: { equals: args.nomDemandeur, mode : QueryMode.Insensitive },
-          prenom: { equals: args.prenomDemandeur, mode : QueryMode.Insensitive  },
-          age: { equals: args.ageDemandeur },
+          nom: { equals: args.nomDemandeur, mode: QueryMode.Insensitive },
+          prenom: { equals: args.prenomDemandeur, mode: QueryMode.Insensitive },
+          dateNaissance: { equals: dateNaissance },
         },
-      },
+      }
+      : null,
       {
         label: 'téléphone',
         where: args.telephoneDemandeur
@@ -102,11 +117,11 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
           ? { email: { equals: args.emailDemandeur,mode : QueryMode.Insensitive  } }
           : null,
       },
-    ];
+    ].filter(Boolean);
 
     for (const strategy of strategies) {
-      if (!strategy.where) continue;
-
+      if (!strategy?.where) continue;
+      
       const contacts = await prisma.contact.findMany({ where: strategy.where });
 
       if (contacts.length > 1) {
@@ -138,6 +153,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         nom: args.nomDemandeur,
         prenom: args.prenomDemandeur,
         age: args.ageDemandeur,
+        dateNaissance : dateNaissance,
         telephone: args.telephoneDemandeur,
         email: args.emailDemandeur,
         adresse: args.adresseDemandeur,

@@ -6,3 +6,6 @@
 /uploads
 .env
 docker-compose.vps.yml
+deploy.sh
+docker-compose.yml
+docker-compose.dev.yml

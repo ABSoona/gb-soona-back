@@ -40,7 +40,7 @@ async function resyncSequence(table: string) {
 }
 
 async function importContacts() {
-  const filePath = 'data/contacts.csv';
+  const filePath = '/app/scripts/data/contacts.csv';
 
   console.log('📥 Lecture du fichier contacts.csv...');
 

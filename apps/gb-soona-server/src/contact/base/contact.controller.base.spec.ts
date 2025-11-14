@@ -22,7 +22,7 @@ const CREATE_INPUT = {
   age: 42,
   codePostal: 42,
   createdAt: new Date(),
-  dateCreation: new Date(),
+  dateNaissance: new Date(),
   dateVisite: new Date(),
   email: "exampleEmail",
   id: 42,
@@ -40,7 +40,7 @@ const CREATE_RESULT = {
   age: 42,
   codePostal: 42,
   createdAt: new Date(),
-  dateCreation: new Date(),
+  dateNaissance: new Date(),
   dateVisite: new Date(),
   email: "exampleEmail",
   id: 42,
@@ -59,7 +59,7 @@ const FIND_MANY_RESULT = [
     age: 42,
     codePostal: 42,
     createdAt: new Date(),
-    dateCreation: new Date(),
+    dateNaissance: new Date(),
     dateVisite: new Date(),
     email: "exampleEmail",
     id: 42,
@@ -78,7 +78,7 @@ const FIND_ONE_RESULT = {
   age: 42,
   codePostal: 42,
   createdAt: new Date(),
-  dateCreation: new Date(),
+  dateNaissance: new Date(),
   dateVisite: new Date(),
   email: "exampleEmail",
   id: 42,
@@ -175,7 +175,7 @@ describe("Contact", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
-        dateCreation: CREATE_RESULT.dateCreation.toISOString(),
+        dateNaissance: CREATE_RESULT.dateNaissance.toISOString(),
         dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       });
@@ -189,7 +189,7 @@ describe("Contact", () => {
         {
           ...FIND_MANY_RESULT[0],
           createdAt: FIND_MANY_RESULT[0].createdAt.toISOString(),
-          dateCreation: FIND_MANY_RESULT[0].dateCreation.toISOString(),
+          dateNaissance: FIND_MANY_RESULT[0].dateNaissance.toISOString(),
           dateVisite: FIND_MANY_RESULT[0].dateVisite.toISOString(),
           updatedAt: FIND_MANY_RESULT[0].updatedAt.toISOString(),
         },
@@ -214,7 +214,7 @@ describe("Contact", () => {
       .expect({
         ...FIND_ONE_RESULT,
         createdAt: FIND_ONE_RESULT.createdAt.toISOString(),
-        dateCreation: FIND_ONE_RESULT.dateCreation.toISOString(),
+        dateNaissance: FIND_ONE_RESULT.dateNaissance.toISOString(),
         dateVisite: FIND_ONE_RESULT.dateVisite.toISOString(),
         updatedAt: FIND_ONE_RESULT.updatedAt.toISOString(),
       });
@@ -229,7 +229,7 @@ describe("Contact", () => {
       .expect({
         ...CREATE_RESULT,
         createdAt: CREATE_RESULT.createdAt.toISOString(),
-        dateCreation: CREATE_RESULT.dateCreation.toISOString(),
+        dateNaissance: CREATE_RESULT.dateNaissance.toISOString(),
         dateVisite: CREATE_RESULT.dateVisite.toISOString(),
         updatedAt: CREATE_RESULT.updatedAt.toISOString(),
       })

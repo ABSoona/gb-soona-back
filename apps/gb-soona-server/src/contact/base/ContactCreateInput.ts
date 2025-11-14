@@ -84,7 +84,7 @@ class ContactCreateInput {
   @Field(() => Date, {
     nullable: true,
   })
-  dateCreation?: Date | null;
+  dateNaissance?: Date | null;
 
   @ApiProperty({
     required: false,

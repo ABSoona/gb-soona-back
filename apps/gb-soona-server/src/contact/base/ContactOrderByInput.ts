@@ -72,7 +72,7 @@ class ContactOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  dateCreation?: SortOrder;
+  dateNaissance?: SortOrder;
 
   @ApiProperty({
     required: false,
