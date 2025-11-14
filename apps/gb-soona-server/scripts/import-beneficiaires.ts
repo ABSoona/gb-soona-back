@@ -50,10 +50,13 @@ async function importContacts() {
   }
 
   const answer = await askQuestion(
-    '⚠️  Voulez-vous supprimer tous les contacts existants avant import ? (o/n) : ',
+    '⚠️  Voulez-vous supprimer tous les contacts leur aides et demandes existants avant import ? (o/n) : ',
   );
 
   if (answer.toLowerCase().startsWith('o')) {
+    await prisma.aide.deleteMany({});
+    await prisma.demande.deleteMany({});
+    await prisma.visite?.deleteMany({});
     const deleted = await prisma.contact.deleteMany();
     console.log(`🗑️  ${deleted.count} contacts supprimés.`);
   } else {
