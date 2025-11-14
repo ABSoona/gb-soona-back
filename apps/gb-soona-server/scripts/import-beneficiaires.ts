@@ -54,6 +54,7 @@ async function importContacts() {
   );
 
   if (answer.toLowerCase().startsWith('o')) {
+    await prisma.versement.deleteMany({});
     await prisma.aide.deleteMany({});
     await prisma.demande.deleteMany({});
     await prisma.visite?.deleteMany({});
