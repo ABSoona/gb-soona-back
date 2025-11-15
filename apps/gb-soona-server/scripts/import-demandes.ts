@@ -132,7 +132,7 @@ async function main() {
     // 📅 Date de la demande (et createdAt)
     const rawDate = row['Date de la demande']; // nom exact de ta colonne
     let dateDemande = parseFrDateToUTC(rawDate);
-    
+
 
     // 🧱 Demande avec valeurs par défaut
     const demande = await prisma.demande.create({
