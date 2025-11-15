@@ -9,7 +9,9 @@
     </mj-text>
       
     <mj-text font-size="16px" color="#555555">
-     Vous avez été désigé pour réaliser une visite d'un bénéficiaire à <strong>{{departement}}</strong>.
+     Vous avez été désigé pour réaliser une visite d'un bénéficiaire au <strong>{{departement}}. Veuillez répondre à ce mail 
+     pour accepter ou décliner la visite.
+      </strong>.
     </mj-text>
 
     <mj-text font-size="16px" color="#555555">

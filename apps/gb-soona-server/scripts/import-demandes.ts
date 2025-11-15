@@ -94,7 +94,7 @@ async function maybeReset(): Promise<void> {
 }
 
 async function main() {
-  const inputFile = '/app/scripts/data/demandes-aides.csv';
+  const inputFile = 'scripts/data/demandes-aides.csv';
   const rows: CsvRow[] = [];
 
   await maybeReset();
@@ -132,7 +132,7 @@ async function main() {
     // 📅 Date de la demande (et createdAt)
     const rawDate = row['Date de la demande']; // nom exact de ta colonne
     let dateDemande = parseFrDateToUTC(rawDate);
-    
+
 
     // 🧱 Demande avec valeurs par défaut
     const demande = await prisma.demande.create({

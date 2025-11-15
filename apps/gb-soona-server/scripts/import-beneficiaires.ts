@@ -17,6 +17,7 @@ interface BeneficiaireRow {
   Adresse: string;
   Ville: string;
   ['Black listé']: string;
+  ['Date de naissance']:string
 }
 
 function askQuestion(query: string): Promise<string> {
@@ -40,7 +41,7 @@ async function resyncSequence(table: string) {
 }
 
 async function importContacts() {
-  const filePath = '/app/scripts/data/contacts.csv';
+  const filePath = 'scripts/data/contacts.csv';
 
   console.log('📥 Lecture du fichier contacts.csv...');
 
@@ -84,20 +85,21 @@ async function importContacts() {
           const adresse = row.Adresse?.trim() || null;
           const ville = row.Ville?.trim() || null;
           const age = row.Age ? Number(row.Age) : null;
+          const dateNaissance = parseDate(row['Date de naissance']);
 
           const blackListe = row['Black listé']?.trim().toUpperCase() === 'OUI';
           const status = blackListe ? 'blacklisté' : 'active';
-
           await prisma.contact.create({
             data: {
-              id,
-              nom,
+              id,              
+              nom,              
               prenom,
-              email,
-              telephone,
-              adresse,
-              ville,
+              email,              
+              telephone,              
+              adresse,              
+              ville,              
               age,
+              dateNaissance,          
               status,
             },
           });
@@ -115,6 +117,19 @@ async function importContacts() {
 
       await prisma.$disconnect();
     });
+}
+
+function parseDate(value: string | null): Date | null {
+  if (!value) return null;
+
+  // format européen dd/mm/yyyy
+  if (value.includes('/')) {
+    const [day, month, year] = value.split('/');
+    return new Date(Number(year), Number(month) - 1, Number(day));
+  }
+
+  // format ISO ou autre → laisser JS gérer
+  return new Date(value);
 }
 
 importContacts();
