@@ -94,7 +94,7 @@ async function maybeReset(): Promise<void> {
 }
 
 async function main() {
-  const inputFile = '/data/scripts/data/demandes-aides.csv';
+  const inputFile = '/app/scripts/data/demandes-aides.csv';
   const rows: CsvRow[] = [];
 
   await maybeReset();
