@@ -1,0 +1,700 @@
+N°;Nom;Prénom;Date de naissance;Age;Email;Tel;Adresse;Ville;Date de la demande;Black listé;Aide 2013;Aide 2014;Aide 2015;Aide 2016;Aide 2017;Aide 2018;Aide 2019;Aide 2020;Aide 2021;Aide 2022;Aide 2023;Aide 2024;Aide 2025;
+1;ABDERAHMAN;Amina;;;;;;;03/09/2017;; -    € ; -    € ; 50,00  € ; -    € ; 1 050,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+2;BIO YIRO;Marie Claudia;;;;;;;29/04/2017;; -    € ; -    € ; -    € ; -    € ; 1 600,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+3;NIAKATE;Hawa;;;;;;;11/07/2017;; -    € ; -    € ; -    € ; -    € ; 514,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+4;BOUMEDANE;Latifa;;;;;;;29/03/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+4;BOUMEDANE;Latifa;;;;;;;15/09/2017;; -    € ; -    € ; -    € ; -    € ; 2 700,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+5;DIALLO;Alpha Oumar;;;;;;;15/10/2017;; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+5;DIALLO;Alpha Oumar;;;;;;;07/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 265,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+5;DIALLO;Alpha Oumar;;;;;;;17/06/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 200,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+6;LEMLOUMA;Amelle;;;;;;;17/09/2017;; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+7;HARIDI;Souaad;;;;;;;07/09/2017;; -    € ; -    € ; -    € ; -    € ; 600,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+8;SOUMARE;Bakari;;;;;;;27/08/2017;; -    € ; -    € ; -    € ; -    € ; 2 770,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+9;BOUCHICAR;Mustapha;;;;;;;15/06/2017;; -    € ; -    € ; -    € ; -    € ; 8 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+10;FAHRI;Kamel;;;;;;;31/10/2017;; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+12;MEDAHI;Salima;;;;;;;13/01/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+13;MANE;Awa-Adama;;;;;56 Boulevard de Pesaro;NANTERRE;04/02/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 900,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+13;MANE;Awa-Adama;;;;;56 Boulevard de Pesaro;NANTERRE;10/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+14;NITOI;Maria Antonela;;;;;;;16/01/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+15;RABIA;Sophie;;;;;;;06/03/2018;; -    € ; -    € ; -    € ; -    € ; 975,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+16;MOUCHE;Nadia;;;;;;;09/03/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+17;JAOURAGH;Kadidja;;;;;;;25/03/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 221,61  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+18;CHENIKI;Monia;;;;;62 boulevard de pesaro;NANTERRE;20/03/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 2 850,72  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+18;CHENIKI;Monia;;;;;62 boulevard de pesaro;NANTERRE;29/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 174,00  € ; -    € ; -    € ;OUI
+18;CHENIKI;Monia;;;;;62 boulevard de pesaro;NANTERRE;18/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+19;SRIFFEG;Myriam;;;;;584 RUE LOYSON DE CHASTELUS;VILLEFRANCHE SUR SAONE;21/03/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 600,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+19;SRIFFEG;Myriam;;;;;584 RUE LOYSON DE CHASTELUS;VILLEFRANCHE SUR SAONE;14/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+19;SRIFFEG;Myriam;;;;;584 RUE LOYSON DE CHASTELUS;VILLEFRANCHE SUR SAONE;08/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+19;SRIFFEG;Myriam;;;;;584 RUE LOYSON DE CHASTELUS;VILLEFRANCHE SUR SAONE;15/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+20;DAYAGUE;Henna;;;;;;;25/03/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 650,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+21;CANAS;Maria;;;;;29 Allee de l Arlequin ;NANTERRE;26/03/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 957,63  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+21;CANAS;Maria;;;;;29 Allee de l Arlequin ;NANTERRE;10/02/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+21;CANAS;Maria;;;;;29 Allee de l Arlequin ;NANTERRE;11/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+22;BENACHOUR;Atika;;;;;;;28/03/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+23;KENOUDI;Sabrina;;;;;;;01/04/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+24;AOUSTIN;Sirine;;;;;;;21/03/2017;; -    € ; -    € ; -    € ; -    € ; 4 863,63  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+25;KENNOUCHE;Karima;;;;;5 av de maurepas ;COIGNIERES;18/01/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+25;KENNOUCHE;Karima;;;;;5 av de maurepas ;COIGNIERES;09/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+25;KENNOUCHE;Karima;;;;;5 av de maurepas ;COIGNIERES;24/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+25;KENNOUCHE;Karima;;;;;5 av de maurepas ;COIGNIERES;28/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 800,00  € ; -    € ; -    € ;
+26;ETTOUIL;Amina;;;;;;;18/05/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+27;TIZI;Hakim;;;;;;;26/05/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+28;MEGHDIR;Lamia;;;;;;;29/04/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+28;MEGHDIR;Lamia;;;;;;;14/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 800,00  € ; 1 400,00  € ; -    € ;
+29;LEMKAK;Mourad;;;;;;;28/05/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+29;LEMKAK;Mourad;;;;;;;25/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+29;LEMKAK;Mourad;;;;;;;20/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+30;AZARFAN;Soumia;;;;;;;30/05/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 045,59  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+31;HAMOUDI;Faima;;;;;;;23/05/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 49,03  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+32;MESSAOUD;Lynda;;;;;;;21/05/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+33;FARAH;Kaouthar;;;;;;;11/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+34;MHAMLI;Yamna;;;;;;;06/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+35;AZIZ;Abdelkhader;;;;;10 rue de la Seine;MAUREPAS;11/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 638,48  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+35;AZIZ;Abdelkhader;;;;;10 rue de la Seine;MAUREPAS;29/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+36;TRAORE;Ibrahima;;;;;;;12/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 2 774,21  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+37;DIOP;Mounirou;;;;;;;12/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+38;LAZREG;Lahouaria;;;;;;;12/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+38;LAZREG;Lahouaria;;;;;;;28/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+39;GHETTAS;Malika;;;;;;;12/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 200,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+40;MANSOUR;Fatna;;;;;;;12/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+41;FALL;Yacine;;;;;;;13/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+42;MOHAMMADI;Mina;;;;;;;13/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+43;EL ABDI;Zakia;;;;;;;01/07/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+44;BELHACEN;Khira;;;;;;;14/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 578,71  € ; 1 563,42  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+45;BOUGHENAYA ;Zohra;;;;;;;17/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 750,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+46;MENGOUCHI ;Halima;;;;;;;19/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 415,31  € ; -    € ; -    € ; 922,00  € ; -    € ; -    € ; -    € ; -    € ;
+47;KHAMOURI;Zied;;;;;;;23/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+48;LAKHAL;Driss;;;;;;;07/07/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 700,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+48;LAKHAL;Driss;;;;;;;02/12/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+49;SERGHOUD;Celia;;;;;;;18/07/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+50;PEPIN;Kheira;;;;;22 place georges Pompidou ;NOISY LE GRAND;23/07/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 618,73  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+50;PEPIN;Kheira;;;;;22 place georges Pompidou ;NOISY LE GRAND;25/11/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+51;BOUZID;Leila;;;;;;;14/06/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 1 812,90  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+52;FAUSSIER;Christian;;;;;;;13/10/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; 2 443,45  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+53;BEZZAOU;Mohammed;;;;;;;17/12/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+54;DIALLO;Alpha Oumar;;;;;;;17/12/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+55;BELBEY;Nacera;;;;;;;02/01/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+56;M'CHIRI;Chahrazad;;;;;13 Square Léo Lagrange;TRAPPES;22/12/2018;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 069,72  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+56;M'CHIRI;Chahrazad;;;;;13 Square Léo Lagrange;TRAPPES;19/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+57;HAI;Yamila;;;;;;;09/01/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+58;KANOUNE;Fadma;;;;;;;16/01/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 682,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+59;AJILI;Zouhoure;;;;;;;22/01/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+60;MELHENAS;Jessica;;;;;;;22/01/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+61;BOULOUIZ;Jamila;;;;;;;05/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 687,30  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+62;RAMDANI;Fatima;;;;;;;01/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+63;BOULAI;Assmae;;;;;;;20/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+64;HARTI;Najet;;;;;;;24/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 506,80  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+65;EL BOUAMRI;Hayatte;;;;;;;27/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+66;LAZREG CHALABI;Lahouaria;;;;;;;28/02/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+68;AICHOUCH;Amir;;;;;;;11/04/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 800,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+69;FIDAH;Souiga;;;;;15 bis rue des lilas;ARGENTEUIL;13/04/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 100,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+70;BENTAHRI;Amal;;;;;;;14/04/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+71;HAI;Safia;;;;;13 Square Léo Lagrange;TRAPPES;18/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+71;HAI;Safia;;;;;13 Square Léo Lagrange;TRAPPES;15/04/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 770,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+72;ACHEIR;Mustafa;;;;;;;26/04/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 200,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+73;ZNASSI;Nassira;;;;;2 place du général Bertrand ;MONTEREAU-FAULT-YONNE ;21/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 840,10  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+73;ZNASSI;Nassira;;;;;2 place du général Bertrand ;MONTEREAU-FAULT-YONNE ;27/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+74;CHOUIKHA;Monia;;;;;Hotel de la Gare 1 place du 11 novembre 1918;LES MUREAUX;26/12/2016;; -    € ; -    € ; -    € ; -    € ; 3 300,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+74;CHOUIKHA;Monia;;;;;Hotel de la Gare 1 place du 11 novembre 1918;LES MUREAUX;24/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 492,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+74;CHOUIKHA;Monia;;;;;Hotel de la Gare 1 place du 11 novembre 1918;LES MUREAUX;06/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+75;GAUTHIER;Astrid;;;;;;;24/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+76;BAHTITI;Fatima;;;;;;;25/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+77;ZOUBIRI;Chahinez;;;;;122 avenue rouget de l isle;VITRY SUR SEINE;25/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 800,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+77;ZOUBIRI;Chahinez;;;;;122 avenue rouget de l isle;VITRY SUR SEINE;27/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+78;EL MAZAOUI;Nadjet;;;;;125 Route Saint Leu;EPINAY SUR SEINE;26/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 247,46  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+78;EL MAZAOUI;Nadjet;;;;;125 Route Saint Leu;EPINAY SUR SEINE;22/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+78;EL MAZAOUI;Nadjet;;;;;125 Route Saint Leu;EPINAY SUR SEINE;23/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+79;CHAABI ;Safia;;;;;;;27/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+80;CHBOUKI LABBANE;Ilham;;;;;;;28/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 350,00  € ; 800,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+81;SAOUIR;BENATIA;;;;;;;29/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+82;MOUZAÏ;Tiufik;;;;;68 rue gabriel peri;SAINT CYR L'ECOLE;29/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 301,79  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+82;MOUZAÏ;Tiufik;;;;;68 rue gabriel peri;SAINT CYR L'ECOLE;08/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 750,00  € ; -    € ; -    € ; -    € ; -    € ;
+83;TAMIR;Samira;;;;;21 SQUARE DES MOULINEAUX;BOULOGNE BILLANCOURT;31/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+83;TAMIR;Samira;;;;;21 SQUARE DES MOULINEAUX;BOULOGNE BILLANCOURT;17/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 293,43  € ; -    € ; -    € ; -    € ;
+84;VALY;Annaelle;;;;;;;02/08/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+85;KHADRANE;Fatima;;;;;2 Square henri Sellier;CHATENAY MALABRY;27/07/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+85;KHADRANE;Fatima;;;;;2 Square henri Sellier;CHATENAY MALABRY;17/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 443,50  € ; 2 400,00  € ; 300,00  € ; 1 808,00  € ; -    € ; -    € ;OUI
+85;KHADRANE;Fatima;;;;;2 Square henri Sellier;CHATENAY MALABRY;30/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 400,00  € ; -    € ;
+86;NEGRITE;Michael;;;;;;;04/08/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+87;SREIRE;Nawal;;;;;31Rue de la fraternitÃ© romainville (hébergé);ROMAINVILLE;09/08/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 900,00  € ; 400,00  € ; -    € ; 600,00  € ; -    € ; -    € ; -    € ;
+88;JANNOUN;Mohamad;;;;;;;09/08/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+89;GHETTAS;Souria;;;;;;;20/08/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 600,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+90;MOURADI;El batoul;;;;;;;22/08/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+91;TOURE;Fatou;;;;;;;27/08/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+92;MOHAMED MROIMANA;Saïd;;;;;;;05/09/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+93;ABOU;Rahma;;;;;;;11/09/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+94;BAZIN;Karine;;;;;;;26/09/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 300,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+95;LARABI;Nourredine;;;;;2 Rue Pierre Guignois;IVRY SUR SEINE;29/09/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 700,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+95;LARABI;Nourredine;;;;;2 Rue Pierre Guignois;IVRY SUR SEINE;05/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+95;LARABI;Nourredine;;;;;2 Rue Pierre Guignois;IVRY SUR SEINE;20/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+95;LARABI;Nourredine;;;;;2 Rue Pierre Guignois;IVRY SUR SEINE;29/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+96;MADANI;Youssef;;;;;8 rue Roger l'huilery;DREUX;01/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 650,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+96;MADANI;Youssef;;;;;8 rue Roger l'huilery;DREUX;21/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+97;MARTIN ;Lilia;;;;;;;07/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+98;AHADRI;Anissa;;;;;15 Rue Henri Barbusse ;NOISY LE SEC;09/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 414,32  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+98;AHADRI;Anissa;;;;;15 Rue Henri Barbusse ;NOISY LE SEC;18/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+99;TALBI;Djamila;;;;;;;10/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+100;BOUKHORTT;Nora;;;;;14 allée de la source ;VILLENEUVE SAINT GEORGE;23/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+100;BOUKHORTT;Nora;;;;;14 allée de la source ;VILLENEUVE SAINT GEORGE;10/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+100;BOUKHORTT;Nora;;;;;14 allée de la source ;VILLENEUVE SAINT GEORGE;18/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+101;NDIAYE;Fatima;;;;;20 rue de Paris ;EPINAY SUR SEINE;29/10/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 708,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+102;FIDAH;Marie;;;;;15 bis rue des lilas;ARGENTEUIL;02/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+103;BOUDJEMA;Kathia;;;;;1 rue des Pyrénées;ARGENTEUIL;11/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+103;BOUDJEMA;Kathia;;;;;1 rue des Pyrénées;ARGENTEUIL;18/10/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+104;BOUAZZA;Samira;;;;;165 chemin lintier résidence les arcades ;VALLAURIS;12/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 300,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+105;ERCULISSE;Christelle;;;;;23 Rue victor dejardin;MONS;13/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+106;POPKOFF;Natacha;;;;;12 rue Ampère;DECINES CHARPIEU;14/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+107;DIALLO;Fatimata;;;;;4 rue armentières;EPINAY SUR SEINE;21/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 654,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+108;BELHAMMOU;Souhila;;;;;6 Avenue Ampère;COIGNIERES;25/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 059,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+109;HAMIDI;Ahmed;;;;;3 Rue Berthe Morisot;MONTFERMEIL;25/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 050,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+110;GUETIB;Mohamed;;;;;89 Avenue de Rosny;NOISY LE SEC;26/11/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 600,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+111;AYADAT;Nawelle;;;;;;;06/12/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+112;GUIRO;Zaynab;;;;;;;18/12/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 450,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+113;DJERBA;Saada;;;;;;;31/12/2019;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+114;SEKAI;Mehdi;;;;;;;02/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+115;JARBOUAI;Hanane;;;;;;;02/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 600,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+116;EL KADDOURI;Asmae;;;;;;;03/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+117;ZERROUKI;Abir;;;;;;;08/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+118;ABDELJALIL;Meriem;;;;;;;10/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+119;DOUCOURE;Goumbou;;;;;30 Rue beaufils;LA COURNEUVE;14/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+119;DOUCOURE;Goumbou;;;;;30 Rue beaufils;LA COURNEUVE;17/06/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+119;DOUCOURE;Goumbou;;;;;30 Rue beaufils;LA COURNEUVE;09/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+120;AZZAOUI;Houria;;;;;;;18/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 351,28  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+120;AZZAOUI;Houria;;;;;;;21/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+121;BOUCHENTOUF;Hoda;;;;;12 Rue de Paris;EPINAY SUR SEINE;21/01/2020;OUI; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+121;BOUCHENTOUF;Hoda;;;;;12 Rue de Paris;EPINAY SUR SEINE;23/09/2020;OUI; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 332,63  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+121;BOUCHENTOUF;Hoda;;;;;12 Rue de Paris;EPINAY SUR SEINE;07/03/2022;OUI; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+121;BOUCHENTOUF;Hoda;;;;;12 Rue de Paris;EPINAY SUR SEINE;14/06/2024;OUI; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 871,00  € ; -    € ;
+122;BELHOUARI;Nisrine;;;;;;;31/01/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 461,98  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+123;SAKHO;Sana;;;;;23 avenue le foll;VILLENEUVE LE ROI;22/02/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+123;SAKHO;Sana;;;;;23 avenue le foll;VILLENEUVE LE ROI;01/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+124;MAHLLI;Mohamed el Amin;;;;;;;19/02/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+125;IBOUCHOUKENE;Dahbia;;;;;;;21/02/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+126;KESSAI;Lydia;;;;;;COLOMBES;22/02/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 300,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+127;BENZIANE;Adda;;;;;9 résidence les nouveaux horizons ;ELANCOURT;03/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+127;BENZIANE;Adda;;;;;9 résidence les nouveaux horizons ;ELANCOURT;26/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 000,00  € ; -    € ; -    € ; -    € ; -    € ;OUI
+127;BENZIANE;Adda;;;;;9 résidence les nouveaux horizons ;ELANCOURT;06/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 750,00  € ; -    € ; -    € ; -    € ;OUI
+127;BENZIANE;Adda;;;;;9 résidence les nouveaux horizons ;ELANCOURT;03/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 350,00  € ; -    € ; -    € ;
+128;MLAYEH;Zohra;;;;;20 rue aristide Briand;LES MUREAUX;15/06/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+129;DJEMELBAREK;Samia;;;;;11 rue Henri Matisse ;GUYANCOURT;17/06/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+129;DJEMELBAREK;Samia;;;;;11 rue Henri Matisse ;GUYANCOURT;14/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 100,00  € ; -    € ; -    € ; -    € ; -    € ;
+130;KADDOUR;Yamina;;;;;;;17/06/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+131;GOROUN RIHAYI;Aya MOHAMED;;;;;49 boulevard de Fontainebleau;CORBEIL ESSONNES;23/06/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+131;GOROUN RIHAYI;Aya MOHAMED;;;;;49 boulevard de Fontainebleau;CORBEIL ESSONNES;31/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 100,00  € ; -    € ; -    € ; -    € ; -    € ;OUI
+131;GOROUN RIHAYI;Aya MOHAMED;;;;;49 boulevard de Fontainebleau;CORBEIL ESSONNES;15/06/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 400,00  € ; -    € ; -    € ; -    € ;OUI
+131;GOROUN RIHAYI;Aya MOHAMED;;;;;49 boulevard de Fontainebleau;CORBEIL ESSONNES;13/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+132;CHOUCHAN;Ali;;;;;;;13/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+133;MEZZAR;Zahia;;;;;160 Avenue Gallieni;BONDY;14/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 250,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+133;MEZZAR;Zahia;;;;;160 Avenue Gallieni;BONDY;21/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+134;RACHID;Mohammed;;;;;25 RUE DES MESSIERS ;ARGENTEUIL;09/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+134;RACHID;Mohammed;;;;;25 RUE DES MESSIERS ;ARGENTEUIL;14/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+134;RACHID;Mohammed;;;;;25 RUE DES MESSIERS ;ARGENTEUIL;26/12/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 000,00  € ; 2 250,00  € ; -    € ; -    € ;
+135;TCHEKIKEN;Terkia;;;;;17 rue du général Leclerc ;ROSNY SOUS BOIS;15/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 396,18  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+135;TCHEKIKEN;Terkia;;;;;17 rue du général Leclerc ;ROSNY SOUS BOIS;13/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 720,00  € ; -    € ; -    € ; -    € ; -    € ;
+136;LAGGOUN;Ibtissem;;;;;50  rue Clément Ader;rosny sous bois;15/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 234,25  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+136;LAGGOUN;Ibtissem;;;;;50  rue Clément Ader;rosny sous bois;04/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+137;MESSAAD;Fatiha;;;;;;;16/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 350,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+138;HALAWLA;Laila;;;;;;;17/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+139;OUADAHI;Ghenima;;;;;09 bis quai conti;LOUVECIENNES;17/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 756,90  € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+139;OUADAHI;Ghenima;;;;;09 bis quai conti;LOUVECIENNES;07/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 937,80  € ; -    € ; -    € ; -    € ; -    € ;OUI
+139;OUADAHI;Ghenima;;;;;09 bis quai conti;LOUVECIENNES;19/09/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 350,00  € ; -    € ; -    € ; -    € ;
+140;SAKHO;Ibrahima;;;;;4 rue du docteur calmette ;LIMEIL BREVANNES;09/08/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+140;SAKHO;Ibrahima;;;;;4 rue du docteur calmette ;LIMEIL BREVANNES;19/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 8 600,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+141;AZZOUG;Tassadit;;;;;;;24/07/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 800,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+142;LAKHDARI;Sara;;;;;;;19/08/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 126,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+143;BENAOUDA;Mehdi;;;;;219 avenue Descartes;LE BLANC MESNIL;21/06/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 600,00  € ; -    € ; -    € ; -    € ; -    € ;OUI
+143;BENAOUDA;Mehdi;;;;;219 avenue Descartes;LE BLANC MESNIL;18/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 180,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+144;TOURE;Amadou;;;;;11bis rue des Récollets;PARIS;20/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 7 400,00  € ; 1 500,00  € ; -    € ; -    € ; -    € ; -    € ;OUI
+144;TOURE;Amadou;;;;;11bis rue des Récollets;PARIS;11/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+145;DJENNANE;Nawel;;;;;6 rue des grilles;PANTIN;24/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+146;MOHAMED;Nour el Houda;;;;;31 rue Maurice la chatre;LA COURNEUVE;12/10/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+147;MEKKAOUI;Nabil;;;;;6 rue des grilles;PANTIN;25/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 612,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+148;IMAD;Amira;;;;;25 rue Hermet;SAINT OUEN;25/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+149;BOU MJAHED;Mayada;;;;;22b rue du lieutenant andrÃ© ohresser;CHAMPIGNY SUR MARNE;26/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+150;BOUGAYOU;Jamela;;;;;11 rue François Couperin ;GRETZ-ARMAINVILLIERS ;28/09/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 810,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+151;EMAD;Diana;;;;;8 Allée Saint Exupery;STAINS;04/10/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+152;DOUCOURE;Sirra;;;;;8 Allée Marianne;TRAPPES;15/10/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 000,00  € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+153;OUAKED;Fatma zohra ;;;;;5/13 avenue Henri barbusse;BOBIGNY;12/10/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+154;YOUSFI;Samira;;;;;18 boulevard de l'hôtel de ville ;TREMBLAY EN FRANCE;13/10/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+155;GUETIB;Smain;;;;;15 Rue Henri Barbusse;NOISY LE SEC;15/10/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+156;LAMECHE;Ryad;;;;;16 boulevard d'Aulnay;VILLEMOMBLE;16/10/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; 500,00  € ; -    € ; -    € ; -    € ;
+157;DIOP;Ndeye Maty;;;;;3 Avenue Simon Vouet;LE PORT MARLY;24/11/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 200,00  € ; 300,00  € ; -    € ; -    € ; -    € ;
+158;MBAYE;Amadou;;;;;48 boulevard fayol ;SAINT ETIENNE;25/11/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+159;RACHIDI;Nadia;;;;;13 rue docteur lecadre;LE HAVRE;03/12/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+160;BENYESSAAD;Messaouda;;;;;10 esplanade l'Europe val Argenteuil ;ARGENTEUIL;09/12/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; 1 074,00  € ; -    € ; -    € ; -    € ;
+161;NEHLIL;Zahia;;;;;48 chemin du haut Saint Denis ;AUBERVILLIERS;10/12/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; -    € ; -    € ; -    € ; -    € ;
+162;MOUMNI;Mohamed;;;;;33 rue henri dunant ;DREUX;16/12/2020;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+163;BOUZMITA;Anissa;;;;;3 rue vagniez fiquet;AMIENS;07/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+164;BRAIK;Nasraddine;;;;;3 rue des Blés d'or;MONTIGNY LE BRETONNEUX;11/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 800,00  € ; -    € ; -    € ; -    € ; -    € ;OUI
+164;BRAIK;Nasraddine;;;;;3 rue des Blés d'or;MONTIGNY LE BRETONNEUX;03/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 625,00  € ; 14 280,00  € ;
+165;BA;Khadidiatou;;;;;126 rue Yves le coz;VERSAILLES;17/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 300,00  € ; 1 350,00  € ; -    € ; -    € ; -    € ;
+166;DAGHARI;Hanane;;;;;7 rue effeil ;SAINT DENIS;20/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+167;BENZINA;Soumia;;;;;6 rue des grilles;PANTIN;05/04/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+167;BENZINA;Soumia;;;;;6 rue des grilles;PANTIN;22/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+168;ZNASSI;Yassine;;;;;1 allée du capitaine Dupont Fresnes ;FRESNE;22/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+169;BENLAHCEN;Laeticia;;;;;27 avenue Paul raoult ;LES MUREAUX;27/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 900,00  € ; -    € ; -    € ; -    € ; -    € ;
+170;GRINBERG;Chireel;;;;;14 avenue Maurice Berteaux;POISSY;27/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+171;JABER;Hamza;;;;;17 rue nettie stevens;EVRY;31/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ; -    € ; -    € ; -    € ;
+172;MARTINEZ;Angélique;;;;;10 RUE RENE CASSIN;VILLIERS SUR MARNE ;31/01/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 747,09  € ; -    € ; -    € ; -    € ; -    € ;OUI
+172;MARTINEZ;Angélique;;;;;10 RUE RENE CASSIN;VILLIERS SUR MARNE ;23/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+173;MADANI;Amina;;;;;31 rue des ombraies;NANTERRE;11/02/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 700,00  € ; 450,00  € ; -    € ; -    € ; -    € ;
+174;GUETTOUCHE;Adel;;;;;6 avenue de la République;ROSNY SOUS BOIS;14/02/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 640,12  € ; -    € ; -    € ; -    € ; -    € ;
+175;EL OUMRI;Houria;;;;;5 rue Marc seguin;CRETEIL;25/02/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ; -    € ; -    € ;
+176;DIELY;Kante;;;;;Foyer;ELANCOURT;05/03/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ; -    € ; -    € ; -    € ;
+177;HAMMOUTI;Sarra;;;;;86 bis rue raoul dautry ;ERMONT;13/03/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 423,20  € ; -    € ; -    € ; -    € ; -    € ;
+178;BENKHALED;Malika;;;;;2 place du caquet;SAINT DENIS;15/03/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+179;DJABALI;Marhouba;;;;;38/40 avenue selvador allende;EPINAY SUR SEINE;30/03/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+179;DJABALI;Marhouba;;;;;38/40 avenue selvador allende;EPINAY SUR SEINE;26/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 900,00  € ; 200,00  € ; -    € ; -    € ;
+180;KHERRADJ BOUDIAF;Mohamed;;;;;4 Square Saint Just;GUYANCOURT;02/04/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 916,38  € ; -    € ; -    € ; -    € ; -    € ;
+181;GOUHIER;Isabelle;;;;;4 Allée de Normandie;LE PECQ;17/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+182;SALL;Dieynaba;;;;;3 Square Henri Wallon;TRAPPES;18/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 800,00  € ; 2 100,00  € ; -    € ; -    € ; -    € ;OUI
+182;SALL;Dieynaba;;;;;3 Square Henri Wallon;TRAPPES;16/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+183;KARI;Laeticia;;;;;20 route de Roissy;LE THILLAY;23/05/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 7 400,00  € ; -    € ; -    € ; -    € ; -    € ;
+184;AZIZI kabene;Keltoum;;;;;SDF;AUBERVILLIERS;04/06/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+185;BENKAHLA;Mariame;;;;;6 Avenue de la Paix;VAUREAL;03/06/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 731,62  € ; -    € ; -    € ; -    € ; -    € ;
+186;BELMILOUD;Djellali;;;;;Rue Paul Doumer;TRAPPES;08/06/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 500,00  € ; 500,00  € ; -    € ; -    € ; -    € ;
+188;EL BADAOUI;Fatima;;;;;10 Allée de Versailles;GUYANCOURT;27/06/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 176,00  € ; -    € ; -    € ; -    € ; -    € ;
+189;KECHIRAT;Ali;;;;;7 cours de la Garonne;SERRIS;01/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 150,00  € ; -    € ; -    € ; -    € ;
+190;SHARIF;Ayisha;;;;;3 Square Henri Wallon;TRAPPES;01/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 700,00  € ; -    € ; -    € ; -    € ; -    € ;
+191;BOUZIANI;Rabia;;;;;4 avenue du président john kennedy ;ROSNY SOUS BOIS;10/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+192;BASSOUM;Yaya;;;;;2 Allée des Essaims;COIGNIERES;14/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 650,00  € ; 4 200,00  € ; 3 850,00  € ; 2 450,00  € ; -    € ;
+193;ADILA;Afaf;;;;;1 rue Simone de Beauvoire;ELANCOURT;23/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+194;HAMMANI;Aziza;;;;;47 rue Myra;PARIS;03/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 900,00  € ; 3 550,00  € ; 1 000,00  € ; 2 000,00  € ; -    € ;
+195;AMARA;khadidja;;;;;7 rue aimé césaire;BESSANCOURT;05/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+196;NADJEM;Nassima;;;;;35 rue henri barbusse;NOISY LE SEC;06/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+197;SY;Aissatou;;;;;4 allée des Essaims;LA VERRIERE;09/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 387,00  € ; -    € ; -    € ; -    € ; -    € ;
+198;ESSHAYMI;Hanane;;;;;42 rue émile Zola ;FOLLAINVILLE DENNEMONT  ;09/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 800,00  € ; 1 350,00  € ; -    € ; -    € ; -    € ;
+199;AYADI;Aymen;;;;;7 bis villa parmentier ;ROMAINVILLE;17/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 700,00  € ; 350,00  € ; -    € ; -    € ; -    € ;
+200;BENFARES;Hassina;;;;;49 rue youri gagarine ;COLOMBES;11/07/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 175,00  € ; -    € ; -    € ; -    € ; -    € ;
+201;PREVOST;Maryline;;;;;rue mulot;EPINAY SUR SEINE;18/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+202;HASSAINE;Anissa;;;;;10 chemin du roi;DREUX;29/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 045,00  € ; 2 000,00  € ; -    € ; -    € ; -    € ;
+203;MERGHAD;Kenza;;;;;28 rue de la gare;PLAISIR;17/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 585,00  € ; 3 250,00  € ; -    € ; -    € ; -    € ;
+204;LARBI;Zoubeyda;;;;;8 bd Louis Lemelle  ;POISSY;17/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+205;NAIT SIDENAS;samira;;;;;10 rue des prés fleuris;DOMONT;18/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+206;IDOULI;Séverine;;;;;54  rue jean jaurès;TRAPPES;13/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+207;BACHA;NOUR EL HOUDA;;;;;30 allee de l'arlequin ;NANTERRE;27/09/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+208;BENDIAF;Deborah;;;;;1A rue michel boucher ; HERIMONCOURT;21/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+209;ZEDAM;Hala;;;;;28 rue de la Gare;PLAISIR;19/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 155,79  € ; 2 200,00  € ; -    € ; -    € ; -    € ;
+210;BAGHDADI;Hasnia;;;;;11b Allée du Perruchet;THIAIS;24/11/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 230,00  € ; 2 400,00  € ; -    € ; -    € ;
+211;HAIDARA;Sidi Mohamed;;;;;67 Bd Descartes;MONTIGNY LE BRETONNEUX;14/12/2021;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 200,00  € ; -    € ; -    € ; -    € ;
+212;MOUNKALA;Daddah;;;;;3 rue du breuil ;BONDY;15/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+213;RADWAN;Israa;;;;;18 Rue Saint climant;SEINE SAINT DENIS;23/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 025,00  € ; 300,00  € ; -    € ; -    € ;
+214;SISSOKHO;Moustapha;;;;;6 Rue De L ecole;EVRY;17/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+215;ABOELNASER;Reda;;;;;35 rue Ernest renan;SAINT DENIS;25/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 110,00  € ; -    € ; -    € ; -    € ;OUI
+215;ABOELNASER;Reda;;;;;35 rue Ernest renan;SAINT DENIS;27/04/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 400,00  € ; -    € ; -    € ;
+216;TINHOUGGA;Dounia;;;;;36 Rue des Rougon macquart;GUYANCOURT;26/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 772,70  € ; -    € ; -    € ; -    € ;
+217;FARAA;Rida;;;;;9 Rue du Commandant Louis Boucher;ELANCOURT;27/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+218;ASAR;Nora;;;;;26 rue Brise Echalas;SAINT DENIS ;26/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 450,00  € ; -    € ; -    € ; -    € ;
+219;DIOUARA;HAMDY;;;;;14 rue Hector Berlioz A 501;BOBIGNY;28/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 000,00  € ; -    € ; -    € ; -    € ;
+220;JAIYD;GHIZLAINE;;;;;7 rue de l'oise ;MAUREPAS;01/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+221;HAKIZIMANA MALEMBERO;FABIEN;;;;;Croix rouge lot5 avenue de la petite villedieu;ELANCOURT;31/01/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 890,00  € ; -    € ; -    € ; -    € ;
+222;BOUJEMAAOUI ;KHADIJA;;;;;35 rue Raspail;L ISLE SUR SORGUE;01/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 300,00  € ; 450,00  € ; -    € ; -    € ;
+223;MIMOUNE;SAMIRA;;;;;44 Boulevard Foch;EPINAY SUR SEINE;04/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 170,00  € ; 250,00  € ; -    € ; -    € ;
+224;AL MALIKI;TAHREER;;;;;15 rue Pauline Kergomard;PARIS 20;08/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 490,00  € ; 600,00  € ; -    € ; -    € ;
+225;BERTET;VIRGINIE;;;;;2 square de la canche;ELANCOURT;08/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 026,73  € ; -    € ; -    € ; -    € ;
+226;DJOUMAKH;KAMILIA;;;;;3 rue emile Zola;LE BLANC MESNIL;15/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 700,00  € ; 1 500,00  € ; -    € ; -    € ;
+227;NAIT BACHIR;Ouardia;;;;;36 allee Eric Chabeur;PARIS ;17/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 400,00  € ; 2 200,00  € ; -    € ; -    € ;
+228;TLIHA;Khadija;;;;;Hôtel, 29 Rue des Taillandiers 75011 Paris;PARIS;16/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 687,41  € ; 200,00  € ; -    € ; -    € ;
+229;BENALI;Rkia;;;;;2 chemin des Princes;BAILLY;27/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+230;MAKRANI;LEILA;;;;;7 rue Philibert hoffman ;ROSNY SOUS BOIS;27/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+231;DKHAILIA;Mohamed yacine;;;;;50 avenue Anatole France ;AULNAY SOUS BOIS;01/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+232;BRAKHLI;Salima;;;;;3 rue André leroi gourhan;GUYANCOURT;15/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 150,00  € ; -    € ; -    € ; -    € ;OUI
+232;BRAKHLI;Salima;;;;;3 rue André leroi gourhan;GUYANCOURT;02/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 100,00  € ; -    € ;
+233;BAH;Mariama;;;;;1 rue des carrières;VITRY SUR SEINE ;15/02/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 150,00  € ; 750,00  € ; -    € ; -    € ;
+234;SAID ;Amel;;;;;1 avenue jean jaures ;LES CLAYES SOUS BOIS ;06/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 764,00  € ; -    € ; -    € ; -    € ;OUI
+234;SAID ;Amel;;;;;1 avenue jean jaures ;LES CLAYES SOUS BOIS ;16/02/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+234;SAID ;Amel;;;;;1 avenue jean jaures ;LES CLAYES SOUS BOIS ;08/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+235;DIABIRA;Habibou;;;;;2 Rue Maurice Ravel, 536;EPINAY SUR SEINE;13/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+236;MIMOUN;Safia;;;;;2 Allée des petits près;ELANCOURT;15/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+237;CHERRAD;HAYAT;;;;;Residence europa 3 rue puech du teil ;NIMES;15/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 963,00  € ; 100,00  € ; -    € ; -    € ;
+238;BENKHDIM ;Laarbi;;;;;ZA la petite villedieu lot 5 avenue de la petite villedieu;ELANCOURT;15/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 450,00  € ; 400,00  € ; -    € ; -    € ;OUI
+238;BENKHDIM ;Laarbi;;;;;ZA la petite villedieu lot 5 avenue de la petite villedieu;ELANCOURT;03/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 800,00  € ; -    € ;
+239;BOUYEDDA;Yacine;;;;;1 rue saint Andre ;MARSEILLE;17/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+240;MECHOUCHE ;Halima;;;;;3 avenue Simon vouet;PORT MARLY;20/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 625,00  € ; 1 375,00  € ; -    € ; -    € ;
+241;DOUCOURE;Aminata;;;;;14 rue de paris;EPINAY SUR SEINE ;18/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+242;ARKANI;Rahman;;;;;93 rue du Landy;SAINT DENIS ;20/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 050,00  € ; 750,00  € ; -    € ; -    € ;
+243;TSASSONG;Djibril;;;;;6 residence Louis Bouchet;ELANCOURT ;18/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 529,00  € ; -    € ; -    € ; -    € ;OUI
+243;TSASSONG;Djibril;;;;;6 residence Louis Bouchet;ELANCOURT ;20/10/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 500,00  € ; -    € ; -    € ;OUI
+243;TSASSONG;Djibril;;;;;6 residence Louis Bouchet;ELANCOURT ;02/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+243;TSASSONG;Djibril;;;;;6 residence Louis Bouchet;ELANCOURT ;19/08/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+244;CHERIF ;Rahmouna;;;;;10 rue des carrières;PONTOISE;26/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+245;OULAL;Dalila;;;;;4 avenue du 18 avril 1944 ;NOISY LE SEC;27/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+246;EL ARRAG ;Lalla hasna;;;;;86 avenue Gallieni;EPINAY SUR SEINE;28/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+247;BACARY;Ahmed;;;;;18 Allée de la Closeraie ;CHENNEVIERES SUR MARNE;29/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+248;SALAH;SOUAD;;;;;2 ALLEE MARCEL PAUL;ELANCOURT ;29/03/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 513,15  € ; -    € ; -    € ; -    € ;OUI
+248;SALAH;SOUAD;;;;;2 ALLEE MARCEL PAUL;ELANCOURT ;28/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+249;NEFISS;SOUMIA;;;;;3 RUE PIERRE FLANDRE;REIMS;22/04/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 287,11  € ; -    € ; -    € ; -    € ;
+250;BERTUZZI;Sylvianna;;;;;2 route de Saint Mathieu;GRASSE;09/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+251;YOUSSOUF;Faida;;;;;24 rue de la Saône;MAUREPAS;18/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+252;SY;Adama;;;;;6 rue des maréchaux;MULHOUSE;19/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 000,00  € ; -    € ; -    € ; -    € ;
+253;KONATE;Nathalie;;;;;6 place pierre Bérégovoy;GUYANCOURT;21/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+253;KONATE;Nathalie;;;;;6 place pierre Bérégovoy;GUYANCOURT;23/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 800,00  € ; -    € ; -    € ;
+254;BOUET;Emilie;;;;;18b rue Marc sangnier;LIVRY GARGAN;21/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 950,00  € ; -    € ; -    € ; -    € ;
+255;KROUNA;Btissem;;;;;7 square Baudelaire;COMPIEGNES;09/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+256;BERRAYAH;Najat;;;;;A3 ESC 1 LOUIS ARAGON;TRAPPES;15/06/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+257;RAOUDHI;Hafida ;;;;;10 Square georges sand ;TRAPPES ;15/06/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+258;MENANA;Noura;;;;;3 avenue Jean jaures;COLOMBES;16/06/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 206,07  € ; 150,00  € ; -    € ; -    € ;OUI
+258;MENANA;Noura;;;;;3 avenue Jean jaures;COLOMBES;04/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+259;SANE;Seni;;;;;20 RUE TCHAIKOSVIC;PARIS;08/05/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+260;DIAW;Kardiatou;;;;;10 Rue de l'aube ;MAUREPAS;30/06/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; 400,00  € ; -    € ; -    € ;
+261;KASSID;Ghizlaine;;;;;4 florence arthaud;MASSY;23/06/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+262;YEDJAR;Mohamed;;;;;8 rue Bourcy etage 17 appart 16;PARIS;28/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+262;YEDJAR;Mohamed;;;;;8 rue Bourcy etage 17 appart 16;PARIS;07/07/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+263;TALL ;AMADOU MADANI;;;;;7 rue de provence;CLAMART;12/07/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+264;BACHA;SALAH;;;;;30 Allée de l'arlequin;NANTERRE;13/07/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+265;MERCIER;Thomas;;;;;1 Residence du bois de l'étang;LA VERRIERE;29/07/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 750,00  € ; -    € ; -    € ; -    € ;
+266;AKTOUF ;Linda;;;;;logely appart city poissy 12 rue jacob courant;POISSY;19/08/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 600,00  € ; 800,00  € ; -    € ; -    € ;
+267;MOUSSAOUI;Nadia;;;;;73 avenue de la convention;SARTROUVILLE ;23/08/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+268;BANOR;Kadidia;;;;;70 rue Léon Gambetta;DRANCY;06/09/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; 2 000,00  € ; -    € ; -    € ;
+269;RAMADAN;Sultaneh;;;;;64 RUE BONNEVIDE;SAINT DENIS ;18/09/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+270;LAVOLLEE;Guillaume;;;;;1 rond point du moustoir;LORIENT;09/09/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 561,00  € ; -    € ; -    € ; -    € ;
+271;MOUNKORO;Néhémie;;;;;Kalaban coro Adeken;BAMAKO;22/09/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+272;GAYE;Ibrahim;;;;;5 ESPACE YOURI GAGARINE ;VILLEPINTE;02/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 200,00  € ; -    € ; -    € ; -    € ;
+273;MAMBOU;Judith;;;;;24 Rue de Verdun;CHATENAY MALABRY;07/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+274;AZIZ;OURDIA;;;;;9 rue Jules Vallés ;LIVRY GARGAN;08/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 400,00  € ; -    € ; -    € ;
+275;BOUHLI;ICHRAK;;;;;1 Avenue Claude Debussy;FONTENAY LE FLEURY;09/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+276;LO ;OURAYE;;;;;15 RUE DE LA CHASSE;LIMAY;11/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+277;HADJEM;RACHID;;;;;4 résidence Louis bouchet;ELANCOURT ;12/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+278;DERROUAZI;Hayat;;;;;HOTEL SAINT CYR ;SAINT CYR ;14/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 000,00  € ; -    € ; -    € ;
+279;SOKHNA;DIARA;;;;;4 Square Paul Verlaine;TRAPPES;24/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 500,00  € ; 1 000,00  € ; -    € ; -    € ;
+280;MASROUH;Fatima;;;;;4 rue bayoutch;PLOERMEL;25/09/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 850,00  € ; -    € ; -    € ; -    € ;
+281;BENTALEB;tahar;;;;;1 RESIDENCE LOUIS BOUCHET ;ELANCOURT;24/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 486,79  € ; 276,90  € ; -    € ; -    € ;
+282;THIAM;Penda;;;;;13 RUE ARISTIDE Briand;LES MUREAUX;22/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+283;SAKHO;Cénie;;;;;105 avenue de Fontainebleau;LE KREMLIN BICETRE;22/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+284;SAKHO ;Samba Harouna;;;;;2 passe(s) reflut;CLICHY;23/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+285;DIA;Abou;;;;;2 rue Arthur Raimbault;CHEVILLYE LARUE;23/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 518,00  € ; -    € ; -    € ;OUI
+598;DIA;Abou;;;;;1 RUE LAMARTINE;SARTROUVILLE;02/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 298,00  € ;
+286;TOURE DIOP ;Hawa;;;;;2 SQUARE LAMARTINE;FONTENAY LE FLEURY ;24/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+286;TOURE DIOP ;Hawa;;;;;2 SQUARE LAMARTINE;FONTENAY LE FLEURY ;21/09/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 030,30  € ; -    € ;
+287;CHERFA;Zahra;;;;;101 rue de Choisy;VITRY SUR SEINE ;26/11/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+288;SOUMARE;N'deye;;;;;41 RUE CHEVALERET;PARIS;01/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+289;SADA;Oulimata;;;;;Chez l'Ermitage 93 boulevard Robespierre;POISSY;01/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+290;CISSOKHO;Condourou;;;;;54 rue de grèce;PLAISIR;01/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+291;MAHI;HADHOUM;;;;;31 rue Edgar Degas;AULNAY SOUS BOIS;02/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+292;SLIMANI;Djamali;;;;;20 36 ALLEE ERIC CHABOURG HOTEL PALATINO;PARIS;05/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 150,00  € ; 4 200,00  € ; -    € ;
+293;CAMARA;OUMAR;;;;;2 Av PAUL RAOULT;LES MUREAUX;08/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+294;AKKOUCHE;Thiziri;;;;;6 allée de la Fresnerie;FONTENAY LE FLEURY ;09/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 700,00  € ; -    € ; -    € ;
+295;PUCEL;Charlotte;;;;;29 RES parc le Notre;SAINT OUEN L AUMONE;11/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+295;PUCEL;Charlotte;;;;;29 RES parc le Notre;SAINT OUEN L AUMONE;02/01/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 800,00  € ; -    € ; -    € ;
+296;DIALLO;ADAMA;;;;;15 rue gracuhs babeuf;GUYANCOURT ;13/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 893,00  € ; -    € ; -    € ;
+297;BERKANI;NORA;;;;;1 sq daumier;TRAPPES;22/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 636,14  € ; 2 400,00  € ; -    € ; -    € ;
+298;CISSOKHO;Hawa;;;;;Cite refuge centre espoir 12 rue Cantagrel;PARIS ;15/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+298;Cissoko;Hawa;;;;;Cite refuge centre espoir 12 rue Cantagrel;PARIS ;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+299;DEMBELE;Bakary;;;;;113 RUE DES FAUVELLES ;COURBEVOIE ;21/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 550,00  € ; -    € ; -    € ; -    € ;
+300;ZEBIRI;Aicha;;;;;5 rue galile galileo;TRAPPES;26/12/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 745,00  € ; 900,00  € ; 300,00  € ; -    € ;
+301;BOUTCHICHE;Imane;;;;;100 Avenue Pablo Picasso;NANTERRE;06/01/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+302;TOUCHOUNI;Sarah;;;;;45 Rue pierre curie;PLAISIR;12/01/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+303;MELISSE;Nassera;;;;;16 rue du sergent bobillot;BONDY;20/01/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+304;NIANG;aL HASSANE;;;;;4 Rue Robert Legros;MONTREUIL;24/01/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+305;LARABI;Najat;;;;;Batiment 1E avenue des cardalines;ISTRES;31/01/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+306;DIALLO;YORO;;;;;10 rue bobby sands;TRAPPES;02/02/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 529,18  € ; -    € ; -    € ;
+307;KOUYATE;DJENEBA;;;;;11 bis rue graffan;LIVRY GARGAN;15/02/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+308;DIA;ABDOULAYE;;;;;Adoma 5 rue galileo c404;TRAPPES;02/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ; -    € ;
+309;CAMARA;HAWA;;;;;118 rue Rambuteau;PARIS ;02/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+310;KOUYATE;IBRAHIM;;;;;11 bis rue graffan;LIVRY GARGAN;04/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+311;BOUYAZRA;NORA;;;;;Avenue du noyer dore;ANTONY;07/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+312;DIAKHO;ASTOU;;;;;1 rue du luxembourg ;ELANCOURT ;11/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 250,00  € ; 350,00  € ; -    € ;
+313;TOUAF;MOHAMMED;;;;;10 Rue Gaston Bonnier;ASNIERE SUR SEINE ;12/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+314;KONATE;HALIMATA;;;;;44 RUE ALBERT EINSTEIN;ELANCOURT;15/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ; -    € ;
+315;JARBOUA;SAMMY;;;;;8 bis All de L'ivraie logement 0603;MONTIGNY LE BRETONNEUX ;17/03/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 900,00  € ; 600,00  € ; -    € ;
+316;BOUZID;Nessrine;;;;;30 rue des fillettes ;AUBERVILLIERS;13/04/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 170,00  € ; 2 000,00  € ; -    € ;
+317;DIALLO;Mariama;;;;;D PASSAGE MARIN ;ELANCOURT ;24/04/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+318;MBALLO;Abdoulaye;;;;;6 rue normandie niemen logement a 110;ELANCOURT ;27/04/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+319;HACH MOHAMED AHMED ;Degna;;;;;4 rue Pierre de Ronsard;MANTES LA JOLIE ;29/04/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+320;OUARKI BOUALAM;Sanaa;;;;;49 rue de la liberté;MANTES LA JOLIE ;30/04/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 253,00  € ; -    € ; -    € ;
+321;BELADEL;Naouel;;;;;20 All. Sautereau;PAVILLON SOUS BOIS;09/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+322;CHEBOUROU ;Scherazade;;;;;12 Ave de La Porte De Clignancourt;PARIS;11/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+323;OUGHALM;Mounia;;;;;4 rue youri gagarine;GUYANCOURT;11/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 775,00  € ; -    € ; -    € ;
+324;TAOURIT;Zakaria;;;;;8 bis allée de l'avraie;MONTIGNY LE BRETONNEUX ;12/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 459,22  € ; -    € ; -    € ;
+325;BANNE;Amadou;;;;;44 RUE EINSTEIN;ELANCOURT;16/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+326;N DIAYE;Mama;;;;;RESIDENCE BOIS DE L'ETANG;LA VERRIERE;16/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 450,00  € ; -    € ; -    € ;
+327;BOUHFSI;SALIMA;;;;;6  CHEMIN DU GRAND CHENE;FONTENAY LE FLEURY;25/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+328;TRAORE;AICHA;;;;;HOTEL FORMULE 1;TRAPPES;23/05/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 900,00  € ; -    € ; -    € ;
+329;OUCHAN;MOHAMED;;;;;6 RUE DE NORMANDIE NIEMEN;ELANCOURT;01/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+330;TRAORE;YARIE;;;;;4 RUE LOUISE MICHEL;ELANCOURT;04/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 087,57  € ; -    € ; -    € ;
+331;NIANG SOKHNA;YACINE;;;;;1 PLACE BEREGOVOY;GUYANCOURT;06/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ; -    € ;
+332;SOIHILI;FAOULA;;;;;4 ALLEE DU GATINAIS;LES ULIS ;06/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+333;SID;FAROUK;;;;;hotel formule 1 maurepas ;MAUREPAS ;09/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+334;MAAROUFI;AMAL;;;;;2 ALLEE DU STADE ;TRAPPES;15/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+335;KEITA;Tidiane;;;;;2A avenue Henri Charon;VIGNEUX SUR SEINE;17/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 617,45  € ; -    € ; -    € ;
+336;MANSOUR ;HANANE;;;;;3 rue du commandant boucher;ELANCOURT;19/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 300,00  € ; 6 900,00  € ; -    € ;
+337;PARI;JANELLE;;;;;47 RUE JEAN JAURES;TRAPPES;26/06/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+338;JAZOULI;Maryame;;;;;10 Rue Bethisy;NOISY LE SEC;21/07/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 13 983,44  € ; -    € ; -    € ;
+339;DIARRA NIAKATE;Assa;;;;;5 rue Jean de la fontaine;CHENNEVIERES SUR MARNE;19/07/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+340;LO ;Seydi Djibi;;;;;2 avenue des noes;LA VERRIERE;22/07/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 300,00  € ; -    € ; -    € ;OUI
+340;LO ;Seydi Djibi;;;;;2 avenue des noes;LA VERRIERE;21/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 250,00  € ; -    € ;
+341;BOURGUIGNON;Vincent;;;;;12 square Yves Farges;TRAPPES;25/07/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 207,00  € ; 500,00  € ; -    € ;OUI
+341;BOURGUIGNON;Vincent;;;;;12 square Yves Farges;TRAPPES;04/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+342;DOUMBIA;Rokia;;;;;12 AVENUE MAURICE BEN HAMOU;BONDY;01/09/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+343;BOUZGUENDA;Abdelmomen;;;;;12 RTE NATIONAL 10;MAUREPAS;14/09/2023;OUI; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 7 250,00  € ; -    € ; -    € ;
+344;ZEROUAL;Ali;;;;;4 Square Louis Pergaud;TRAPPES;15/09/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 325,00  € ; 2 650,00  € ; -    € ;
+345;MELOUK;Leila;;;;;28 rue hussenet;ROSNY SUR SEINE;14/09/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 805,00  € ; -    € ; -    € ;
+346;LASSOUED;Yakine;;;;;hotel formule 1 renové RUE EVARISTE GALOIS;MAUREPAS ;15/09/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ;OUI
+346;LASSOUED;Yakine;;;;;hotel formule 1 renové RUE EVARISTE GALOIS;MAUREPAS ;12/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+347;LOUAHAB;Nasredinne;;;;;11 rue Jean Catelas;SAINT CYR L'ECOLE;08/10/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 600,00  € ; 300,00  € ; -    € ;
+348;FODIL;Nadia;;;;;3 Allée de Florence;NEUILLY PLAISANCE ;26/09/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+349;GHOMARI;Leila;;;;;49 avenue jean jaures;VITRY SUR SEINE;21/10/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+350;MERROUCHE;Rafika;;;;;28 rue de la gare ;PLAISIR ;23/10/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 280,00  € ; -    € ;OUI
+350;MERROUCHE;Rafika;;;;;28 rue de la gare ;PLAISIR ;11/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+351;SYLLA;Mahmadou;;;;;5  bld de la liberté;BEZIERS;26/10/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+352;KHADDOUJ;Fedila;;;;;3 RUE DANTON;PLAISIR;14/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+352;KHADDOUJ;Fedila;;;;;3 RUE DANTON;PLAISIR;02/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+353;DIAS;Braima;;;;;10 RUE BOBBY SANDS ;TRAPPES;14/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ;
+354;MARTIN ;YOHAN;;;;;3 Rue de l'ile de france ;SEVRAN;20/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+355;FALL;MAMAN HABOUSS;;;;;SDF;TRAPPES;20/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 600,00  € ; -    € ; -    € ;
+356;BEN YOUNES;OUSAMA;;;;;11 ALLEE FERNAND LEGER;VIGNEUX SUR SEINE;19/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+357;DJEDDOU;ISMAHAN;;;;;16 rue Jacques Salomon;SAINT CYR L ECOLE ;22/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+358;BENZAOUI;KHADIDJA;;;;;4 RUE AIME CESAIRE;SAINT OUEN L AUMONE;27/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 200,00  € ; -    € ;
+359;BAJJOU;HAJIRA;;;;;10 IMPASSE DU VICUS;VITRY SUR ORNE;29/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 638,00  € ; -    € ; -    € ;
+360;HASSANI ;CHERIFA;;;;;26 RUE DE PAJOL;PARIS 8;27/11/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 525,59  € ; -    € ;
+361;YAHI;NACIRA;;;;;25 AV DE LA REDOUTE ;ASNIERES SUR SEINE;10/12/2023;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+362;SARAMBOUNOU;Sadio;;;;;87 rue Jean Jaurès;TRAPPES;05/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 9 000,00  € ; -    € ;
+363;DADI;Nawel;;;;;Tour altais 1/3place aime cesaire b.a.l 648;MONTREUIL;03/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 250,00  € ; -    € ;
+364;TLIHA;SOUAD;;;;;3 RUE DE LA TIARCHE ;MAUREPAS;19/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+365;OUNOUNA;Walid;;;;;13 avenue raspail;GENTILLY;17/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 421,96  € ; -    € ;
+366;JEBALI;SAMIR;;;;;4 RE MARCEL RIVIERE;LA VERRIERE;28/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 480,00  € ; -    € ;
+367;BARRY;IBRAHIMA;;;;;12 rue des Chesneaux;AISNE;05/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 514,00  € ; -    € ;
+368;SIMON;JANINE;;;;;124 Boulevard Victor Hugo;CLICHY;05/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 900,00  € ; -    € ;
+369;RASHID;HEKMAN;;;;;AIRBNB;SAINT GENEVIEVE DES BOIS ;02/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 250,00  € ; -    € ;
+370;DINER ;EMMA;;;;;21 avenue saint saens;NEUILLY SUR MARNE ;18/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 178,00  € ; 2 580,00  € ;
+371;BOUZID;LINA;;;;;30 rue des fillettes Aubervilliers;AUBERVILLIERS;17/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 358,21  € ; -    € ;
+372;KORE;LIDA;;;;;2 rue jean zay;SAINT CYR L ECOLE;21/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+373;ZRIBI ;AMINE;;;;;CCAS  Montrouge;MONTROUGE;23/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 400,00  € ; -    € ;
+374;DIOUF;SOKHNA;;;;;;PARIS;24/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+375;NAJI;ASSIA;;;;;436 avenue des droits de l homme ;PLAISIR;27/02/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 859,69  € ; -    € ;
+376;EL MAAZOUZI;ITIMAD;;;;;1 RUE DE L OISE ;PARIS;06/03/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+377;AIT SAHNOUN;SONIA;;;;;10 RUE LOUISE MICHEL;ELANCOURT;09/03/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+378;SANOGO ;Mamadou;;;;;10 RUE BOBBY SANDS;TRAPPES;07/10/2022;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 778,00  € ; -    € ;
+379;HADDAD;Karima;;;;;1 PLACE DE LA REPUBLIQUE ;TRAPPES ;26/03/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ; -    € ;
+379;HADDAD;HAMID;;;;;1 PLACE DE LA REPUBLIQUE ;TRAPPES ;03/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+380;DOUKHANA;ANAS;;;;;3 RUE PANICALE ;LA VERRIERE;16/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 900,00  € ; -    € ;
+381;MISSAOUI;ASMAE;;;;;1 RUE DU PLESSIS BOUCHARD;MONTIGNY LES CORMEILLES;15/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+382;KONTE;FATOUMATA;;;;;17 RUE D ALESIA;BOBIGNY;15/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 604,46  € ; -    € ;
+383;HORTH;ANAIS;;;;;59 AVENUE KLEBER;TRAPPES;15/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 400,00  € ; -    € ;
+384;FALEK;MUSTAPHA;;;;;6 RUE DE LA PAIX ;NANTERRE ;16/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+385;MEZOUAR;FARAH;;;;;90 RUE DE CHATEAUDUN ;LE HAVRE ;16/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+386;EL ALAOUI;FATIMA;;;;;9 RUE HECTOR BERLIOZ;CROSNE;17/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+387;NAHHAL ;IBTISSEM;;;;;5 RUE DE MAROSTICA;MONTIGNY LE BRETONNEUX;17/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 600,00  € ; -    € ;
+388;CAMARA;AMINATA;;;;;4B AVENUE DU 11 NOVEMBRE 1918;CHAMPIGNY SUR MARNE ;19/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ;
+389;TOUATI;BAYA;;;;;41 RUE DES LEVRIERS;MONTMAGNY;19/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+390;HASNA ;SALMA;;;;;8 AVENUE DES HAUTS DE BRUYERES;VILLEJUIF;21/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 742,96  € ; -    € ;
+391;PEREIRA ;MELANIE;;;;;37 ALLEE DES YVELINES ;TRAPPES ;26/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 470,00  € ; -    € ;
+392;KONATE ;BOYE;;;;;4 SQ DE LA COMMUNE ;TRAPPES ;29/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 681,31  € ; -    € ;
+393;BATHILY;SALIMTA;;;;;7 RUE DE LA FOSSE AUX MOINES ;CRETEIL;30/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 474,69  € ; -    € ;
+394;TAMERNI;SALIMA;;;;;3 RUE DE COME;GUYANCOURT ;02/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 432,64  € ; -    € ;
+395;SIMA;AMINATA;;;;;36 AVENUE HENRI BARBUSSE;IVRY SUR SEINE;03/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+396;NIAKATE;MOUSSA;;;;;4B AVENUE DU 11 NOVEMBRE 1918;CHAMPIGNY SUR MARNE ;19/04/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+397;MOKHTARI;ISLAM;;;;;2 RUE COMMANDANT BOUCHET;ELANCOURT;17/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 490,00  € ; -    € ;
+398;NOUVI;MIREILLE ;;;;;87 rue de paris;MONTREUIL;11/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+398;NOUVI;MIREILLE ;;;;;87 rue de paris;MONTREUIL;11/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+399;PASSIER ;CECILE;;;;;4 route de loire;LE BOURG D'IRE;13/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+400;MUZY;ANAIS;;;;;2 avenue jean baptiste busnel;LE BLANC MESNIL;15/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+401;KANTE;SAFIATOU;;;;;11 avenue Joseph rollo;LA VERRIERE;19/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 976,00  € ; -    € ;
+402;BATHILY;SAMBA;;;;;12 Rue Neuve Tolbiac, 252;PARIS;20/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ; -    € ;
+403;MILADI ;IMEN;;;;;28 RUE DE LA GARE ;PLAISIR;20/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 8 650,43  € ; -    € ;
+404;NDOME;RAMATA;;;;;44 Rue de la Station;DEUIL LA BARRE;23/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 880,21  € ; -    € ;
+405;HUEZ;JENNIFER;;;;;19 rue auguste delaune;SAINT DENIS ;25/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 494,58  € ; -    € ;
+406;SOUMARE;aminata ramata;;;;;16 place du 19 mars 1962;VILLIERS LE BEL ;29/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+406;SOUMARE;aminata ramata;;;;;16 place du 19 mars 1962;VILLIERS LE BEL ;30/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+407;DIARRA ;ALIMATOU ;;;;;6 rue Mouloud Aounit;AUBERVILLIERS;30/05/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+408;DANIOKHO ;SALAMA;;;;;36 avenue Paul vaillant couturier;TRAPPES;04/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+409;SYLLA;AISSATOU;;;;;93 avenue Blanche de Castille;POISSY;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+410;CHERIF ;ZEINAB;;;;;12 CHEMIN DE LA CROIX DE BOIS;HERBLAY SUR SEINE;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+411;DIARRA;BINTOU;;;;;135 boulevard de stalingrad 94400 vitry sur seine;VITRY SUR SEINE ;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+412;BOCAR;FATIMATA;;;;;4 Place Antoine Renard 93160 Noisy Le Grand;NOISY LE GRAND ;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;OUI
+412;BOCAR;FATIMATA;;;;;4 Place Antoine Renard 93160 Noisy Le Grand;NOISY LE GRAND ;17/08/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+413;Cisse;Rokhia;;;;;27 rue javelot;PARIS;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 900,00  € ; -    € ;
+415;Camara;Salimata;;;;;103 Rue Anizan Cavillon;LE BOURGET;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+416;Baradji;Khadidiatou;;;;;26 rue L'écuyer;AUBERVILLIERS;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+417;Diallo;Salimata;;;;;67 rue de Chanval;GUILLERVAL;06/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 210,00  € ; -    € ;
+418;Camara;Assa;;;;;1 allee des bleuets;VILLIERS LE BEL ;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+419;Sylla;Assa;;;;;2 rue Alexandre Dumas;VILLEJUIF;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+420;Diallo;Tako;;;;;4 place de la hetraie;LIMEIL BREVANNES;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 400,00  € ; -    € ;
+421;Alves;Nilay;;;;;18 c allée des magnolias;LISSES;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 200,00  € ; -    € ;
+422;Baradji;HAWA;;;;;10 allée Clément Marot;ORGEVAL;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+423;Sissoko;Manthita;;;;;7 place Pablo Picasso;NOISY LE GRAND;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+424;Ndiaye;Maryam;;;;;23 rue jean moulin;GAGNY;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 831,00  € ; -    € ;
+425;Diarra;Tene;;;;;2, Place Pablo Picasso;NOISY LE GRAND;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 100,00  € ; -    € ;
+426;BARADJI;Mariame;;;;;3 rue du tunnel;CHAMPIGNY SUR MARNE ;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 745,00  € ; -    € ;
+427;Sylla;Maro;;;;;6 rue Albert bayet;PARIS ;07/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+428;Bouhania;Moussa;;;;;CCAS centre l'agora Guy Boniface;ELANCOURT;08/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 200,00  € ; -    € ;
+429;MELLAT ;NABIL;;;;;HOTEL FORMULE 1;TRAPPES;10/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 100,00  € ; -    € ;
+430;Barry tandia;tapa;;;;;4 sentier de villers;ALFORTVILLE;11/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 514,00  € ; -    € ;
+431;Zerti;Aissam;;;;;5 RUE DES LIEGE PETITE VILLEDIEU, CROIX ROUGE ST QUENTIN YVELINES ZA PET;ELANCOURT;11/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+432;Camara;Aminata;;;;;6 rue de la prairie;ORLEANS;11/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 500,00  € ; -    € ;OUI
+432;Camara;Aminata;;;;;6 rue de la prairie;ORLEANS;10/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+433;EL KAROUI ;KARIMA;;;;;5 RUE DES LIEGE PETITE VILLEDIEU, CROIX ROUGE ST QUENTIN YVELINES ZA PET;ELANCOURT ;14/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+434;FARJALLAH;REFKA;;;;;2 allée Hélène Boucher;SEVRAN;15/06/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+435;DIAKITE;HADJA;;;;;5 sq des tilleuls ;NOISY LE SEC;08/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 888,10  € ; -    € ;OUI
+435;DIAKITE;HADJA;;;;;5 sq des tilleuls ;NOISY LE SEC;03/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+436;SYLLA ;YOUSSOUPHA;;;;;16 AV DOCTEUR LAMAZE;SAINT DENIS ;09/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+437;N DIAYE ;N DEYE ;;;;;HOTEL FORMULE 1 ;TRAPPES;06/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 430,00  € ; 8 215,00  € ;
+438;DIAKITE ;DABA;;;;;170 BLD THEOPHILE SUEUR;MONTREUIL;15/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 8 866,07  € ; -    € ;
+439;CLEMENT;Camille;;;;;11 rue du port royal;TRAPPES;22/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 324,31  € ; -    € ;
+440;NIAKHATE;Khoudiedji;;;;;51 Allée Francois Arago;LIVRY GARGAN;24/07/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 500,00  € ; -    € ;
+441;BA;Thilel;;;;;27 Allée des bois;LES MUREAUX;06/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+442;FALL;Ameth;;;;;3c rue Danielle Casanova;VIRY CHATILLON;09/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+443;CHEMLAL;Samia;;;;;76 avenue georges gosnat;IVRY SUR SEINE;09/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 572,73  € ; -    € ;
+444;LABED;Sonia;;;;;5 rue Magenta;PANTIN;12/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+445;CHOUAOUI;Bilal;;;;;1 rue Pierre Semard;DRANCY;13/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 150,00  € ; -    € ;
+446;DRAME ;FOULEMATA;;;;;9 rue moliere;LES MUREAUX ;15/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 469,00  € ; -    € ;
+447;FALL;MYRIAM;;;;;16 rue raspail - batiment A;IVRY SUR SEINE ;14/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+448;DIABY ;FATIMATA;;;;;11 Rue d'Estienne d'Orves;BRETIGNY SUR ORGE;16/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+449;NIAKHATE;Oumou;;;;;35  rue van gogh;MAGNY LES HAMEAUX ;20/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 578,00  € ; -    € ;
+450;MERIKHI;Ahmed;;;;;09 rue jean Macé;FONTENAY SOUS BOIS ;22/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+451;KEITA;Mahge;;;;;3 rue Didier daurat;TOURS;22/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 073,29  € ; -    € ;
+452;DIARRA;Mamadou;;;;;13 rue Edouard Roemer;DAMARIE LES LYS ;23/08/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 715,00  € ; -    € ;
+453;MOHIDINKHAN;YOUSSOUF;;;;;30 RUE MATURIN RENAUD APP 5311;BOBIGNY;02/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+454;HAMMUTI;SAMIYA;;;;;MAIRIE ATRIUM 39 AV DE LA PAIX;AMIENS;01/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 030,00  € ; -    € ;
+455;PAREY ;LAURENA;;;;;8 AVENUE D ALSACE ;PONTOISE;04/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+456;SESSA;Marina;;;;;13 RUE DE LONDRES ;LA QUEUE EN BRIE;04/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+457;BOISELLE ;AURORE;;;;;59 Domaine de villiers bat 42 esc 1;DRAVEIL;10/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 550,00  € ; -    € ;
+458;LECHEKHAB;LINA;;;;;201 RUE LOUISE MICHEL ;TRAPPES;10/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+459;DJABALI;LINDA;;;;;50 Allée des bois ;HERBLAY SUR SEINE;13/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 939,71  € ; -    € ;
+460;N DIAYE ;SAMBA;;;;;FOYER ELANCOURT ;ELANCOURT;17/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 400,00  € ; -    € ;
+461;MINATOU;Kleib;;;;;4 rue Mousselot;ETROCHEY;04/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 700,00  € ; -    € ;
+462;MERIMI;Amel;;;;;14 SQ PAUL LANGEVIN ;TRAPPES ;20/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+463;DIARRA ;Demba;;;;;5 rue pierre brossolette;SEVRAN;28/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 557,86  € ; -    € ;
+464;CISSE SY SAVANE;BINTOU;;;;;4 Sente de Villiers;ALFORTVILLE;30/09/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+465;DIAKITE ;KADY;;;;;2 passage moglia;AUBERVILLIERS;01/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 912,99  € ; -    € ;
+466;SY SAVANE ;FATOUMATA;;;;;8 rue des marchands;COIGNIERES;04/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 858,00  € ; -    € ;
+467;FIDAH ;Marie;;;;;13 rue des sapins ;ARGENTEUIL ;06/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+468;KANE;Hawa;;;;;1 Allée rodins;EPINAY SUR SEINE;07/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+469;DIARRA ;Mariame;;;;;36 Allée des amonts ;LES ULIS ;10/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+470;DIANE ;Sarah;;;;;6 rue de la treille ;TAVERNY ;13/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+471;LIAOURACI;Mehdi;;;;;1 rue de la resistance ;VIGNEUX SUR SEINE ;14/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 525,56  € ; -    € ;
+472;MEZRAR;Sarah;;;;;27A rue Lafarge;LIMAY;15/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+473;ZEDAM;Khadija Rim;;;;;160 impasse du Roussillon;LA MURE ;16/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+474;TALLA;AL HASSANE;;;;;8 Résidence du bois de l'étang; VERRIERE;21/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 405,00  € ; -    € ;
+475;MOHAMED;Nassabie sylvie;;;;;3 allée du maronnier ;VITRY SUR SEINE ;23/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+476;MOUNTASSER;Souad;;;;;3 allée françois babeuf;PLAISIR;23/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 620,00  € ;
+477;KERICHA;Hassan;;;;;50 rue du docteur vaillant;SAINT CYR L'ECOLE;30/10/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 715,12  € ;
+478;MEKKI;Nadjim;;;;;7 rue du rouillon;STAINS;01/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 375,00  € ;
+479;CISSOKO;FATOU;;;;;3 Rue des Tilleuls;VILLENEUVE SAINT GEORGES;07/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+480;SACKO;Amadi;;;;;50 avenue du géneral de gaulle ;NEUILLY SUR MARNE ;07/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 243,00  € ;
+481;BELAGHDAME;Latifa;;;;;3 RUE JACQUES ANGE GABRIEL ;GUYANCOURT;12/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 295,22  € ;
+482;MERHOM;Hassan;;;;;2 Av des noés;LA VERRIERE;17/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+483;EL MISSAOUI ;Hassan;;;;;7 rue jean jaures ;MAGNY LES HAMEAUX;17/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+484;DIALLO;OUSMANE ;;;;;165 AV HENRI BARBUSSE;SARTROUVILLE ;18/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+485;DIABY;FANTA;;;;;47 AV ARISTIDE BRIAND;LES PAVILLONS SOUS BOIS ;19/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 7 947,92  € ;
+486;BADRA;EMAN;;;;;31 RUE ANDRE;DRANCY;20/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+487;BOURGERY;MARIAM;;;;;12 PASSAGE GAMBETTA;PARIS;22/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+488;KEITA ;Fatoumata;;;;;156 rue du limousin;TREMBLAY EN FRANCE ;26/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+489;Nagoudi;Nada;;;;;7 rue rené vautier APPT 1320;MONTREUIL;27/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 800,00  € ;
+490;Dianka;Cheickne;;;;;9 Place Des Tulipes;CARRIERES SS POISSY ;27/11/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 644,41  € ;
+491;BENBARA;FLORA;;;;;44 boulevard Alexandre de Fraissinette;ST ETIENNE ;02/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 520,00  € ; -    € ;
+492;ACHAKOUR;Latifa;;;;;12 square des moulineaux;BOULOGNE BILLANCOURT;04/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 600,00  € ;
+493;REGICHI;ANIS;;;;;5 allée Gabriel zirnhelt;ROSNY SOUS BOIS;07/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+494;BENSAID;Hadjira;;;;;7 Rue Fernand leger;FONTENAY SOUS BOIS ;17/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 031,12  € ;
+495;TAKOUCHT;Lojine;;;;;142 avenue foch;SAINT MAUR DES FOSSES ;18/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+496;EL YAJDAINI;Abdelkader;;;;;26 rue du chemin vert. appart 136;BOBIGNY;21/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 700,00  € ;
+497;SAKER;Sonia;;;;;27 rue de paris;TORCY;22/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+498;TAZART;Abdelilah;;;;;Rue d'orgeval;ORSAY;30/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 400,00  € ;
+499;HARZLI;Rim;;;;;216 rue du Martin rey;CHIRENS;31/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 600,00  € ;
+500;HAIDAG;Fatima;;;;;9 place Etienne François Choiseul;MONTIGNY LE BRETONNEUX;31/12/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 260,00  € ;
+501;GOLOKO;Aminata;;;;;53 rue de Stalingrad;ARCUEIL;01/01/2024;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+502;LETABI;Rabah chafik;;;;;8 Rue des carrouges;NOISY LE SEC;02/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+503;EL GUSWANI;ABDELAKRIM;;;;;4 sq la commune ;TRAPPES ;03/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+504;NIASS;Mamadou;;;;;12 résidence bois de l'étang;LA VERRIERE;03/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 184,43  € ;
+505;SOUNDARARAJAH;Sophie;;;;;;ROUEN;09/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+506;CHAIBI;MYRIAM;;;;;12 Square des Moulineaux;BOULOGNE BILLANCOURT;14/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+507;AYEB;HAJER;;;;;28 rue de la gare;PLAISIR;15/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+508;MESSOUS;MOUKTAR;;;;;6 residence bois de l'étang;LA VERRIERE;16/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 860,00  € ;
+509;MOUCH;NADIA;;;;;21 residence bois de l'étang;LA VERRIERE;16/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 610,00  € ;
+510;SALHI;MORAD;;;;;SOS ACCUEIL ST CYR ;LA VERRIERE;16/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 080,00  € ;
+511;ALTERO;MARIE ANGE;;;;;52 RUE DES SAULES;LE HAVRE;20/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 200,83  € ;
+512;KONATE;BAKARY;;;;;FOYER;ELANCOURT;21/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 020,00  € ;
+513;AZNI;SIHAM;;;;;46 ALBERT JOLY;VERSAILLES;24/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+514;ADEM MOHAMED;Boumezber;;;;;1 ALLEE DU BOIS;MAGNY LES HAMEAUX;25/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+515;SETA;PARI;;;;;RUE ANATOLE FRANCE ;TRAPPES;29/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+516;FARHAT;CHAOUKI;;;;;2 SQUARE YVES FARGES ;TRAPPES;30/01/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+517;BELAHCENE;Abdellah;;;;;1 rue du sanitas;PITHIVIERS;03/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+518;Farassi;Anouhar;;;;;15 Impasse Louis Pasteur Vallery Radot ;CRETEIL;03/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 006,00  € ;
+519;Kadiakhe;Aminata;;;;;1 Rue Blaise Pascal;BRUYERES SUR OISE;03/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 000,00  € ;
+520;SALHI;Mastapha;;;;;13 boulevard du chateau ;Guyancourt;04/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+521;Vilfrit shalaby;Camelia;;;;;10 rue fursthenfeldbruck;LIVRY GARGAN;09/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+522;Abbes;célia;;;;;2 RUE LOUISE MICHEL;ELANCOURT;11/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 500,00  € ;
+523;DIALLO;MAHMOUD;;;;;2 AVENUE DES NOES;LA VERRIERE;12/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 540,00  € ;
+524;FADIL;SARA;;;;;15 RUE DE LA CHARITE;ANGOULEME;16/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+525;FOFANA;SOKONA;;;;;13 RUE DU GENERAL LECLERC ;ROSNY SOUS BOIS;17/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+526;Diaby;Nâenene;;;;;1 rue des Freres Bonneff;Champigny sur Marne;18/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+527;Savane;Hawa;;;;;2 rue de la rapérie;OISSERY;18/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+528;DIBA;Kady;;;;;16A avenue JACQUES HEUCLIN;PONTAULT COMBAULT;19/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+529;Diaby;Mariama;;;;;2 Rue Odette Pain , Batiment A6 Appartement 102;BONDY;20/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+530;BOUKAMBOUCHE;Amina;;;;;91 Rue Charles Tillon;AUBERVILLIERS;28/02/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+531;Shaik Farooq;Mohammed;;;;;7 rue Joseph Marie jacquard welcomotel hotel;COIGNIERES;31/03/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 000,00  € ;
+532;YODI;Helena;;;;;120 rue du Général Malleret Joinville;VITRY SUR SEINE ;31/03/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 545,18  € ;
+533;LOUCIF;Sofiane;;;;;65B avenue Georges Politzer;TRAPPES;31/03/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 150,00  € ;
+534;Tahiri;Farah;;;;;25 avenue du prÃ©sident Salvador Allende;BOBIGNY;31/03/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 704,00  € ;
+535;Ghezouar;Zoulikha;;;;;13 rue de Toulouse;PARIS;01/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+536;SISSOKO;MARIAM;;;;;17 villa Frédéric mistral;PARIS;07/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+537;Chekhab;Leila;;;;;17 BD du Général Leclerc;Argenteuil;03/04/2025;OUI; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+538;Drame;Nâ€™nabintou;;;;;5 Rue du Roussillon;NEUILLY SUR MARNE ;03/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+539;DIARRASSOUBA;MASSOUN;;;;;HOTEL Formule 1, rue Gaston Monmousseau;TRAPPES;04/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 835,00  € ;
+540;DOGON;TESSA;;;;;77 Rue des Mourinoux;ASNIERE SUR SEINE ;08/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+541;ABDOU;SITTI;;;;;07 Avenue Walwein Appt 715;MONTREUIL;10/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+542;DIOP;PAPE;;;;;Hotel Le Pile ou Face Café - 116 rue de la voie verte;ATHIS-MONS;13/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+543;BOUCEDRA;NADJET;;;;;12 Avenue Louis Pasteur ;BAGNEUX;17/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 644,42  € ;
+544;HUSSEIN;ALI;;;;;3 avenue de saint germain;PLAISIR;17/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 881,00  € ;
+545;DARWICH;AHMED;;;;;22 Rue des mésanges;ERAGNY;17/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 12 260,00  € ;
+546;BIBA;DIATOUROU;;;;;63 boulevard d'ecancourt;JOUY LE MOUTIER ;23/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+547;BEJHIH;AMAL;;;;;215 bis boulevard marÃ©chal juin;MANTES LA JOLIE ;24/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 6 581,63  € ;
+548;Kuntu Mbuyakoy;Pauline;;;;;19 Terrasse Jeanne Hachette;IVRY SUR SEINE ;30/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+549;Soukouna N DIAYE;Dianeba;;;;;20 rue Winston Churchill;MEAUX;30/04/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+550;DIABY ;Nnaouma;;;;;1 allée des hauts herbes;Noisy le grand;01/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+551;DIABY;N nesta;;;;;15 b rue Jules romains;Paris;03/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+552;Hadjyoucef;Jennifer;;;;;21 avenue de l'Europe;Colombes;06/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 409,00  € ;
+553;Cisse;Foulei;;;;;632 Avenue Pierre Mendes France;SAVIGNY LE TEMPLE;06/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+554;N'guessan;Prisca;;;;;172 rue Paul et Camille Thomoux;NEUILLY SUR MARNE ;06/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+555;DIABY;AWA;;;;;30 Rue Des Chaufourniers;Paris;07/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 836,00  € ;
+556;OUAFFAI;ASMA;;;;;3 rue des Fossés;CORBEIL ESSONNES;09/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+557;BOUTARFA;ALI;;;;;16 rue Haras;Nanterre;12/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 820,00  € ;
+558;AITOUT;LOUISA;;;;;31 Avenue Marceau;TRAPPES;13/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 095,00  € ;
+559;TOUKAL ;MARBOUHA;;;;;41 rue d'Aigremont;POISSY;15/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 8 437,71  € ;
+560;MADANI;Soulimane;;;;;10 Rue de la Boissière;PLAISIR;19/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+561;DIOUMANSI;YOUSSOUF;;;;;42 rue du nivernais;CHEVILLY LARUE;22/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 182,00  € ;
+562;TRAORE;MARIAM;;;;;45 avenue colonel Fabian;SAINT CYR L ECOLE ;22/05/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+563;BOUZIANE;NOUR EDDINE;;;;;Rue de liege;ELANCOURT;01/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 030,00  € ;
+564;ZEDEK;AMMAR;;;;;CCAS de Maurepas square de la marche boite 731;MAUREPAS;02/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+565;DOMINGUE;SABRINA;;;;;45 rue d estoutevillle;MANEVILLE;03/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 515,50  € ;
+567;TAGOURLA;MERIEM;;;;;9 BIS SQUARE HENRI WALLON;TRAPPES;04/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 173,00  € ;
+568;AIT ABDALLAH;AGHILES;;;;;6 AVENUE DE PARIS ;ETAMPES;06/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+569;TAGOURLA;KADIATOU;;;;;9 BIS SQUARE HENRI WALLON;TRAPPES;06/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 503,00  € ;
+570;ALIOU;BOUCHRA;;;;;9 mail fédérico Garcia Lorca;NOISY LE GRAND;10/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 234,00  € ;
+571;GUEYE;N'GONE ;;;;;13 rue du bourbonnais;CHAMPIGNY SUR MARNE;12/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 642,38  € ;
+572;MELLOUK ;NAJATE;;;;;280 avenue Aristide Briand;PAVILLON SS BOIS;16/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 691,11  € ;
+573;LIBASS;SAMBA;;;;;3 rue Marcel Duchamp;FRESNES;16/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+574;JELIDI;MYRIAM;;;;;10 rue Denis Papin;VILLEMOMBLE;19/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 965,99  € ;
+575;DIANOKO;DAKOUTOU;;;;;Foyer;ELANCOURT;20/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 856,70  € ;
+576;SISSOKO;SEKOU;;;;;Foyer;ELANCOURT;20/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 746,88  € ;
+577;AHMED MOHAMED;ADAM;;;;;Foyer;ELANCOURT;20/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 5 253,90  € ;
+578;NDONGO;IBRAHIM;;;;;Foyer;ELANCOURT;20/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 13 070,55  € ;
+579;BOUGUETAFF;AHMED;;;;;Foyer;ELANCOURT;20/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 3 780,93  € ;
+580;TRAORE;MARIAM;;;;;45 avenue Jules valles;VAUREAL;23/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+581;ADAM Idris;FOSIA;;;;;Pas d'adresse ;TRAPPES;24/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+582;TAMBA;JENNY;;;;;69 rue de Villiers;LONGPONT SUR ORGE;25/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+583;SARAMBOUNOU;Assa;;;;;12 ROUTE DE L OBSERVATOIRE;TRAPPES;28/06/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+584;DEMBELE;Assitou;;;;;FOYER ELANCOURT ;ELANCOURT;04/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 010,00  € ;
+585;BA;Oumar;;;;;FOYER ELANCOURT ;ELANCOURT;04/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 667,00  € ;
+586;BENNACEUR;Bouabid;;;;;FOYER ELANCOURT ;ELANCOURT;04/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+587;KOUSKOUS;Malika;;;;;Square Gerard Philippe;TRAPPES;04/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+588;MOUFFOK;Ouazania;;;;;11 allée du bataillon hildevert;NOISY LE GRAND ;04/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+589;FATAH;Mohamed;;;;;Rue Pierre Semard;TRAPPES;04/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 800,00  € ;
+590;LAFAYE;Julien;;;;;;ANNEMASSE;21/07/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 7 300,00  € ;
+591;TAMERNI;YLIES;;;;;3 RUE DE COME;GUYANCOURT;08/08/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 1 150,00  € ;
+592;THIAM;BOCAR;;;;;71 rue du Conservatoire;TRAPPES;22/08/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 4 973,86  € ;
+593;SABEG;OUSSAMA;;;;;3 SQUARE MONGE;FONTENAY LE FLEURY;17/08/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+594;BENATALLAH;TURKIYA;;;;;3 RUE DU VIEUX MOULIN;PLAISIR;26/08/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+595;MAAZOUZA;NORA;;;;;;CERGY;31/08/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+596;KADJI;SALIMA;;;;;2 SQUARE LAMARTINE;FONTENAY LE FLEURY;01/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+597;BENKHALA;HANANE;;;;;3 RUE DES VALANCHARDS;JOUY LE MOUTIER;01/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+599;BELARBI;RKIA;;;;;3 SQUARE JULES VEDRINE;TRAPPES ;03/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; 2 483,76  € ;
+600;DIOUF;AWA;;;;;11 RUE DES FERMES;MAGNY LE HONGRE;05/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+601;FOFANA;SIRABA;;;;;3 SQUARE HENRI WALLON;TRAPPES;09/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+602;COULIBALY;SALA;;;;;65 bis avenue Georges politzer;TRAPPES;10/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+603;SAADALLAH;SALEM ;;;;;25 artiste breiand;POINTOISE;13/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+604;TOUNKARA;BAMBI;;;;;22 rue jacques tati;BOIS D'ARCY;13/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+605;KASMI;ZOULIKHA;;;;;27 allée de chartres;LIVRY GARGAN;17/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+606;ARROUDI;SAMIA;;;;;32 Avenue du Maréchal Leclerc;LIVRY GARGAN;17/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+607;FIDAH HASNA;SELMA;;;;;8 AVENUE DES HAUTES BRUYERES;VILLEJUIF;18/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
+608;BRIDIZ;FATIHA;;;;;8 rue Guillaume Apollinaire;BONDY;22/09/2025;; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ; -    € ;
