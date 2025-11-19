@@ -17,7 +17,8 @@ interface BeneficiaireRow {
   Adresse: string;
   Ville: string;
   ['Black listé']: string;
-  ['Date de naissance']:string
+  ['Date de naissance']:string;
+  ['Date de la demande']:string
 }
 
 function askQuestion(query: string): Promise<string> {
@@ -41,7 +42,7 @@ async function resyncSequence(table: string) {
 }
 
 async function importContacts() {
-  const filePath = '/app/scripts/data/contacts.csv';
+  const filePath = '/data/scripts/data/contacts.csv';
 
   console.log('📥 Lecture du fichier contacts.csv...');
 
@@ -67,7 +68,7 @@ async function importContacts() {
 
   const contacts: BeneficiaireRow[] = [];
   fs.createReadStream(filePath)
-    .pipe(csv({ separator: ';' })) // adapte le séparateur si besoin
+    .pipe(csv({ separator: ',' })) // adapte le séparateur si besoin
     .on('data', (data: BeneficiaireRow) => contacts.push(data))
     .on('end', async () => {
       console.log(`📄 ${contacts.length} lignes lues.`);
@@ -86,6 +87,11 @@ async function importContacts() {
           const ville = row.Ville?.trim() || null;
           const age = row.Age ? Number(row.Age) : null;
           const dateNaissance = parseDate(row['Date de naissance']);
+          
+          const createdAt =
+  row['Date de la demande'] && row['Date de la demande'].trim() !== ""
+    ? parseDate(row['Date de la demande']) || new Date()  // fallback ici
+    : new Date();
 
           const blackListe = row['Black listé']?.trim().toUpperCase() === 'OUI';
           const status = blackListe ? 'blacklisté' : 'active';
@@ -101,6 +107,7 @@ async function importContacts() {
               age,
               dateNaissance,          
               status,
+              createdAt
             },
           });
 

@@ -94,7 +94,7 @@ async function maybeReset(): Promise<void> {
 }
 
 async function main() {
-  const inputFile = '/app/scripts/data/demandes-aides.csv';
+  const inputFile = '/data/scripts/data/demandes-aides.csv';
   const rows: CsvRow[] = [];
 
   await maybeReset();
@@ -102,7 +102,7 @@ async function main() {
   console.log('📥 Lecture du fichier CSV…');
   await new Promise<void>((resolve, reject) => {
     fs.createReadStream(inputFile)
-      .pipe(csv({ separator: ';' }))
+      .pipe(csv({ separator: ',' }))
       .on('data', (row: CsvRow) => rows.push(row))
       .on('end', resolve)
       .on('error', reject);
