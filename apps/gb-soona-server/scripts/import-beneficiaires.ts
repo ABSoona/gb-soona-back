@@ -82,7 +82,7 @@ async function importContacts() {
           const nom = row.Nom?.trim() || null;
           const prenom = row['Prénom']?.trim() || null;
           const email = row.Email?.trim() || null;
-          const telephone = row.Tel?.trim() || null;
+          const telephone = normalizePhone(row.Tel) || null;
           const adresse = row.Adresse?.trim() || null;
           const ville = row.Ville?.trim() || null;
           const age = row.Age ? Number(row.Age) : null;
@@ -138,5 +138,14 @@ function parseDate(value: string | null): Date | null {
   // format ISO ou autre → laisser JS gérer
   return new Date(value);
 }
+function normalizePhone(phone?: string | null): string | null {
+  if (!phone) return null;
 
+  let p = phone.replace(/[^0-9+]/g, '');
+
+  if (p.startsWith('+33')) p = '0' + p.slice(3);
+  if (p.startsWith('0033')) p = '0' + p.slice(4);
+
+  return p;
+}
 importContacts();
