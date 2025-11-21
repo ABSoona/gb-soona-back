@@ -13,6 +13,7 @@ import {
 } from "@prisma/client";
 import { WebsiteDemandeNotificationService } from './website-demande-notification.service';
 import { QueryMode } from 'src/util/QueryMode';
+import { normalizePhone } from 'src/util/misc';
 
 @Injectable()
 export class WebSiteDemandeProcessor implements OnModuleInit {
@@ -94,6 +95,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
      console.log("date calculé:",dateNaissance);
   }
  
+  const normalizedPhone = normalizePhone(args.telephoneDemandeur);
     const strategies = [
       dateNaissance?
       {
@@ -108,7 +110,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
       {
         label: 'téléphone',
         where: args.telephoneDemandeur
-          ? { telephone: { equals: args.telephoneDemandeur } }
+        ? { telephone: { equals: normalizedPhone } }
           : null,
       },
       {
@@ -154,7 +156,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         prenom: args.prenomDemandeur,
         age: args.ageDemandeur,
         dateNaissance : dateNaissance,
-        telephone: args.telephoneDemandeur,
+        telephone: normalizedPhone,
         email: args.emailDemandeur,
         adresse: args.adresseDemandeur,
         codePostal: args.codePostalDemandeur,
