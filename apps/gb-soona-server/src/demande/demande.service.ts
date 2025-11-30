@@ -12,6 +12,7 @@ import { Response } from 'express';
 import { TokenService } from "src/auth/token.service";
 import * as common from "@nestjs/common";
 import { logAffectation, logStatusChange } from "./demande-activity.helper";
+import { buildFullSearch } from "src/util/misc";
 
 @Injectable()
 export class DemandeService extends DemandeServiceBase {
@@ -42,8 +43,45 @@ export class DemandeService extends DemandeServiceBase {
   }
 
   async updateDemande(args: Prisma.DemandeUpdateArgs): Promise<PrismaDemande> {
-    const current = await this.prisma.demande.findUnique({ where: { id: args.where.id } });
-    const demande = await super.updateDemande(args);
+    // 1️⃣ On récupère la demande actuelle AVANT mise à jour
+    const current = await this.prisma.demande.findUnique({
+      where: { id: args.where.id },
+      include: { contact: true }, // important pour comparar contactId
+    });
+  
+    let fullSearch: string | undefined = undefined;
+
+    let contactId: number | undefined = undefined;
+    
+    // Si le contact est remplacé par un nouveau :
+    if (args.data.contact?.connect?.id) {
+      contactId = args.data.contact.connect.id;
+    }
+    
+    // Si le contact est modifié, on garde l’ID actuel :
+    else if (args.data.contact?.update) {
+      contactId = current?.contactId;
+    }
+    
+    // Si un contactId est défini, on recalcule fullSearch :
+    if (contactId) {
+      const updatedContact = await this.prisma.contact.findUnique({
+        where: { id: contactId },
+      });
+    
+      if (updatedContact) {
+        fullSearch = buildFullSearch(updatedContact);
+      }
+    }
+  
+    // 3️⃣ On applique les changements (avec fullSearch si nécessaire)
+    const demande = await super.updateDemande({
+      ...args,
+      data: {
+        ...args.data,
+        ...(fullSearch !== undefined && { fullSearch }),
+      },
+    });
   
     if (demande.status && current?.status && current?.status !== demande.status) {
       await logStatusChange(this.prisma, current.status, demande.status, demande.id);

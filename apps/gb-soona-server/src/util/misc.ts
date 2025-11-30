@@ -12,3 +12,26 @@ export function capitalizeFirstLetter(value?: string | null): string {
   
     return p;
   }
+
+
+  export function buildFullSearch(contact: any): string {
+    const nom = contact?.nom?.trim() ?? '';
+    const prenom = contact?.prenom?.trim() ?? '';
+    const email = contact?.email?.trim() ?? '';
+    const telephone = contact?.telephone?.trim() ?? '';
+  
+    const departement =
+      contact?.codePostal
+        ? contact.codePostal.toString().slice(0, 2)
+        : '';
+  
+    return [
+      `${nom} ${prenom}`.trim(),
+      `${prenom} ${nom}`.trim(),
+      departement,
+      email,
+      telephone,
+    ]
+      .filter(Boolean)
+      .join(', ');
+  }
