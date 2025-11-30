@@ -307,6 +307,7 @@ type Demande {
   loyer: Float
   natureDettes: String
   nombreEnfants: Float
+  nombrePersonnes: Float
   nombreRelances: Float
   proprietaire: User
   recommandation: String
@@ -434,6 +435,7 @@ input DemandeCreateInput {
   loyer: Float
   natureDettes: String
   nombreEnfants: Float
+  nombrePersonnes: Float
   nombreRelances: Float
   proprietaire: UserWhereUniqueInput
   recommandation: String
@@ -480,6 +482,7 @@ input DemandeOrderByInput {
   loyer: SortOrder
   natureDettes: SortOrder
   nombreEnfants: SortOrder
+  nombrePersonnes: SortOrder
   nombreRelances: SortOrder
   proprietaireId: SortOrder
   recommandation: SortOrder
@@ -555,6 +558,7 @@ input DemandeUpdateInput {
   loyer: Float
   natureDettes: String
   nombreEnfants: Float
+  nombrePersonnes: Float
   nombreRelances: Float
   proprietaire: UserWhereUniqueInput
   recommandation: String
@@ -603,6 +607,7 @@ input DemandeWhereInput {
   loyer: IntNullableFilter
   natureDettes: StringNullableFilter
   nombreEnfants: IntNullableFilter
+  nombrePersonnes: IntNullableFilter
   nombreRelances: IntNullableFilter
   recommandation: StringNullableFilter
   remarques: StringNullableFilter
