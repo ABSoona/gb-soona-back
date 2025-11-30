@@ -19,6 +19,7 @@ import {
   IsInt,
   Max,
   IsEnum,
+  IsNumber,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { Document } from "../../document/base/Document";
@@ -71,7 +72,7 @@ class Versement {
     required: true,
     type: Number,
   })
-  @IsInt()
+  @IsNumber()
   @Max(99999999999)
   @Field(() => Number)
   montant!: number;
