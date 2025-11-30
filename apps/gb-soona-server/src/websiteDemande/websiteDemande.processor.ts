@@ -13,7 +13,7 @@ import {
 } from "@prisma/client";
 import { WebsiteDemandeNotificationService } from './website-demande-notification.service';
 import { QueryMode } from 'src/util/QueryMode';
-import { normalizePhone } from 'src/util/misc';
+import { buildFullSearch, normalizePhone } from 'src/util/misc';
 
 @Injectable()
 export class WebSiteDemandeProcessor implements OnModuleInit {
@@ -170,6 +170,10 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
   private async createDemande(args: PrismaWebsiteDemande, contact: PrismaContact) {
     const defaultActeur = await this.prisma.user.findFirst({where:{role:"assistant_social"}})
     const adminUser =  await this.prisma.user.findFirst({where:{role:"admin"}})
+
+   
+    const fullSearch = buildFullSearch(contact);
+
     const demande = await this.demandeService.createDemande({
       data: {
         contact: {
@@ -191,6 +195,7 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
         facturesEnergie: args.facturesEnergie,
         remarques: args.remarques,
         status: 'recue',
+        fullSearch:fullSearch,
         acteur:defaultActeur? {connect:{id:defaultActeur?.id}}:{connect:{id:adminUser?.id}},
         proprietaire :defaultActeur? {connect:{id:defaultActeur?.id}}:{connect:{id:adminUser?.id}},
       },
@@ -219,3 +224,5 @@ function mapSituationProfessionnelle(value: string): string {
   };
   return mappings[value] ?? value.toLowerCase();
 }
+
+

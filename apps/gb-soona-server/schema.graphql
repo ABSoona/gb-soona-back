@@ -302,6 +302,7 @@ type Demande {
   dettes: Float
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   facturesEnergie: Float
+  fullSearch: String
   id: Float!
   loyer: Float
   natureDettes: String
@@ -429,6 +430,7 @@ input DemandeCreateInput {
   dettes: Float
   documents: DocumentCreateNestedManyWithoutDemandesInput
   facturesEnergie: Float
+  fullSearch: String
   loyer: Float
   natureDettes: String
   nombreEnfants: Float
@@ -473,6 +475,7 @@ input DemandeOrderByInput {
   derniereRelance: SortOrder
   dettes: SortOrder
   facturesEnergie: SortOrder
+  fullSearch: SortOrder
   id: SortOrder
   loyer: SortOrder
   natureDettes: SortOrder
@@ -548,6 +551,7 @@ input DemandeUpdateInput {
   dettes: Float
   documents: DocumentUpdateManyWithoutDemandesInput
   facturesEnergie: Float
+  fullSearch: String
   loyer: Float
   natureDettes: String
   nombreEnfants: Float
@@ -594,6 +598,7 @@ input DemandeWhereInput {
   dettes: IntNullableFilter
   documents: DocumentListRelationFilter
   facturesEnergie: IntNullableFilter
+  fullSearch: StringNullableFilter
   id: IntFilter
   loyer: IntNullableFilter
   natureDettes: StringNullableFilter

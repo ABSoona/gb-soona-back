@@ -408,6 +408,7 @@ export class ContactControllerBase {
         situationFamiliale: true,
         situationProConjoint: true,
         situationProfessionnelle: true,
+        fullSearch : true,
         status: true,
         updatedAt: true,
       },

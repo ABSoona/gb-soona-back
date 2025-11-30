@@ -21,7 +21,8 @@
     "start:vercel": "node dist/main.js",
     "generate:schema": "ts-node -r tsconfig-paths/register src/main.ts",
     "import:beneficiaires": "ts-node scripts/import-beneficiaires.ts",
-    "import:demandes": "ts-node scripts/import-demandes.ts"
+    "import:demandes": "ts-node scripts/import-demandes.ts",
+    "update:fullsearch": "ts-node --transpile-only scripts/update-fullsearch.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",

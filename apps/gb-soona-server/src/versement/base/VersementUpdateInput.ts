@@ -19,6 +19,7 @@ import {
   IsInt,
   Max,
   IsEnum,
+  IsNumber,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { DocumentWhereUniqueInput } from "../../document/base/DocumentWhereUniqueInput";
@@ -65,7 +66,7 @@ class VersementUpdateInput {
     required: false,
     type: Number,
   })
-  @IsInt()
+  @IsNumber()
   @Max(99999999999)
   @IsOptional()
   @Field(() => Number, {

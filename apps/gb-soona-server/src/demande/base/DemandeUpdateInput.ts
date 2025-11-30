@@ -353,6 +353,18 @@ class DemandeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  fullSearch?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   situationProConjoint?: string | null;
 
   @ApiProperty({

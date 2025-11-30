@@ -23,6 +23,7 @@ import {
   MaxLength,
   Max,
   IsBoolean,
+  IsNumber,
 } from "class-validator";
 
 import { Type } from "class-transformer";
@@ -154,7 +155,7 @@ class Aide {
     required: false,
     type: Number,
   })
-  @IsInt()
+  @IsNumber()
   @Max(99999999999)
   @IsOptional()
   @Field(() => Number, {

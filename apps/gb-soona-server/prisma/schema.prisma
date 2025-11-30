@@ -21,7 +21,7 @@ model Aide {
   frequence         EnumAideFrequence?
   id                Int                @id @default(autoincrement())
   infosCrediteur    String?
-  montant           Int?
+  montant           Float?
   nombreVersements  Int?
   reetudier         Boolean            @default(false)
   remarque          String?
@@ -69,6 +69,7 @@ model Demande {
   status                   String?
   updatedAt                DateTime                       @updatedAt
   visites                  Visite[]
+  fullSearch               String?
 }
 
 
@@ -264,7 +265,7 @@ model Versement {
   dataVersement DateTime
   document      Document?
   id            Int                 @id @default(autoincrement())
-  montant       Int
+  montant       Float
   status        EnumVersementStatus
   updatedAt     DateTime            @updatedAt
   
