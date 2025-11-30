@@ -70,6 +70,7 @@ model Demande {
   updatedAt                DateTime                       @updatedAt
   visites                  Visite[]
   fullSearch               String?
+  nombrePersonnes          Int?                            
 }
 
 
