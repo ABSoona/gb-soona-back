@@ -333,6 +333,19 @@ class DemandeUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  nombrePersonnes?: number | null;
+
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
