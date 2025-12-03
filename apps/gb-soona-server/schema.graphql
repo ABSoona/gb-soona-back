@@ -1422,11 +1422,13 @@ type WebsiteDemande {
   autresAides: String
   autresCharges: Float
   codePostalDemandeur: Float
+  contactId: Float
   createdAt: DateTime!
   dettes: Float
   emailDemandeur: String
   erreur: String
   facturesEnergie: Float
+  forceNewContact: Boolean!
   id: String!
   loyer: Float
   natureDettes: String
@@ -1453,10 +1455,12 @@ input WebsiteDemandeCreateInput {
   autresAides: String
   autresCharges: Float
   codePostalDemandeur: Float
+  contactId: Float
   dettes: Float
   emailDemandeur: String
   erreur: String
   facturesEnergie: Float
+  forceNewContact: Boolean!
   loyer: Float
   natureDettes: String
   nomDemandeur: String
@@ -1481,11 +1485,13 @@ input WebsiteDemandeOrderByInput {
   autresAides: SortOrder
   autresCharges: SortOrder
   codePostalDemandeur: SortOrder
+  contactId: SortOrder
   createdAt: SortOrder
   dettes: SortOrder
   emailDemandeur: SortOrder
   erreur: SortOrder
   facturesEnergie: SortOrder
+  forceNewContact: SortOrder
   id: SortOrder
   loyer: SortOrder
   natureDettes: SortOrder
@@ -1512,10 +1518,12 @@ input WebsiteDemandeUpdateInput {
   autresAides: String
   autresCharges: Float
   codePostalDemandeur: Float
+  contactId: Float
   dettes: Float
   emailDemandeur: String
   erreur: String
   facturesEnergie: Float
+  forceNewContact: Boolean
   loyer: Float
   natureDettes: String
   nomDemandeur: String
@@ -1540,10 +1548,12 @@ input WebsiteDemandeWhereInput {
   autresAides: StringNullableFilter
   autresCharges: IntNullableFilter
   codePostalDemandeur: IntNullableFilter
+  contactId: IntNullableFilter
   dettes: IntNullableFilter
   emailDemandeur: StringNullableFilter
   erreur: StringNullableFilter
   facturesEnergie: IntNullableFilter
+  forceNewContact: BooleanFilter
   id: StringFilter
   loyer: IntNullableFilter
   natureDettes: StringNullableFilter

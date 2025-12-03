@@ -120,32 +120,37 @@ export class WebSiteDemandeProcessor implements OnModuleInit {
           : null,
       },
     ].filter(Boolean);
-
-    for (const strategy of strategies) {
-      if (!strategy?.where) continue;
-      
-      const contacts = await prisma.contact.findMany({ where: strategy.where });
-
-      if (contacts.length > 1) {
-        throw new Error(`Plusieurs contacts trouvés avec le même ${strategy.label}`);
-      }
-
-      if (contacts.length === 1) {
-        if (contacts[0].status === 'blacklisté') {
-          
-          if(contacts[0]?.email){
-            const contact_name = contacts[0].prenom?contacts[0].prenom:'Assalamou Alaykoum'
-            await this.websiteDemandeNotificationService.notifyBlacklistContact(contacts[0].email, contacts[0]?.prenom);
+    if(args.contactId){
+     return  await prisma.contact.findUnique({where:{id:args.contactId}});
+    }
+    if(!args.forceNewContact){
+      for (const strategy of strategies) {
+        if (!strategy?.where) continue;
+        
+        const contacts = await prisma.contact.findMany({ where: strategy.where });
+  
+        if (contacts.length > 1) {
+          throw new Error(`Plusieurs contacts trouvés avec le même ${strategy.label}`);
+        }
+  
+        if (contacts.length === 1) {
+          if (contacts[0].status === 'blacklisté') {
+            
+            if(contacts[0]?.email){
+              const contact_name = contacts[0].prenom?contacts[0].prenom:'Assalamou Alaykoum'
+              await this.websiteDemandeNotificationService.notifyBlacklistContact(contacts[0].email, contacts[0]?.prenom);
+            }
+            
+            throw new Error(`Contact Blacklisté, aucune demande ne sera créée`);
           }
-          
-          throw new Error(`Contact Blacklisté, aucune demande ne sera créée`);
+          else {
+            return contacts[0];
+          }
+  
         }
-        else {
-          return contacts[0];
-        }
-
       }
     }
+    
 
    
 
