@@ -17,6 +17,7 @@ import { IsOptional, IsEnum } from "class-validator";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
+import { BooleanFilter } from "src/util/BooleanFilter";
 
 @InputType()
 class WebsiteDemandeWhereInput {
@@ -242,6 +243,17 @@ class WebsiteDemandeWhereInput {
 
   @ApiProperty({
     required: false,
+    type: IntNullableFilter,
+  })
+  @Type(() => IntNullableFilter)
+  @IsOptional()
+  @Field(() => IntNullableFilter, {
+    nullable: true,
+  })
+  contactId?: IntNullableFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringNullableFilter,
   })
   @Type(() => StringNullableFilter)
@@ -305,6 +317,19 @@ class WebsiteDemandeWhereInput {
     nullable: true,
   })
   villeDemandeur?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanFilter,
+  })
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  forceNewContact?: BooleanFilter;
 }
+
+
 
 export { WebsiteDemandeWhereInput as WebsiteDemandeWhereInput };

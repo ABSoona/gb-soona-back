@@ -72,6 +72,7 @@ export class WebsiteDemandeControllerBase {
         remarques: true,
         revenus: true,
         revenusConjoint: true,
+        contactId:true,
         situationFamiliale: true,
         situationProConjoint: true,
         situationProfessionnelle: true,
@@ -79,6 +80,7 @@ export class WebsiteDemandeControllerBase {
         telephoneDemandeur: true,
         updatedAt: true,
         villeDemandeur: true,
+        forceNewContact : true,
       },
     });
   }
@@ -123,6 +125,7 @@ export class WebsiteDemandeControllerBase {
         remarques: true,
         revenus: true,
         revenusConjoint: true,
+        contactId:true,
         situationFamiliale: true,
         situationProConjoint: true,
         situationProfessionnelle: true,
@@ -130,6 +133,7 @@ export class WebsiteDemandeControllerBase {
         telephoneDemandeur: true,
         updatedAt: true,
         villeDemandeur: true,
+        forceNewContact : true,
       },
     });
   }
@@ -173,6 +177,7 @@ export class WebsiteDemandeControllerBase {
         remarques: true,
         revenus: true,
         revenusConjoint: true,
+        contactId:true,
         situationFamiliale: true,
         situationProConjoint: true,
         situationProfessionnelle: true,
@@ -180,6 +185,7 @@ export class WebsiteDemandeControllerBase {
         telephoneDemandeur: true,
         updatedAt: true,
         villeDemandeur: true,
+        forceNewContact : true,
       },
     });
     if (result === null) {
@@ -232,6 +238,7 @@ export class WebsiteDemandeControllerBase {
           remarques: true,
           revenus: true,
           revenusConjoint: true,
+          contactId:true,
           situationFamiliale: true,
           situationProConjoint: true,
           situationProfessionnelle: true,
@@ -239,6 +246,7 @@ export class WebsiteDemandeControllerBase {
           telephoneDemandeur: true,
           updatedAt: true,
           villeDemandeur: true,
+          forceNewContact : true,
         },
       });
     } catch (error) {
@@ -290,6 +298,7 @@ export class WebsiteDemandeControllerBase {
           remarques: true,
           revenus: true,
           revenusConjoint: true,
+          contactId:true,
           situationFamiliale: true,
           situationProConjoint: true,
           situationProfessionnelle: true,
@@ -297,6 +306,7 @@ export class WebsiteDemandeControllerBase {
           telephoneDemandeur: true,
           updatedAt: true,
           villeDemandeur: true,
+          forceNewContact : true,
         },
       });
     } catch (error) {

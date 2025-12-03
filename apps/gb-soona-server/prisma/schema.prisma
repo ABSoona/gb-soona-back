@@ -233,6 +233,8 @@ model WebsiteDemande {
   telephoneDemandeur       String?
   updatedAt                DateTime                 @updatedAt
   villeDemandeur           String?
+  forceNewContact          Boolean            @default(false)
+  contactId                Int?
 }
 
 model DemandeStatusHistory {

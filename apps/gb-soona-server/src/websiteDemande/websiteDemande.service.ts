@@ -19,4 +19,13 @@ export class WebsiteDemandeService extends WebsiteDemandeServiceBase {
     await this.queueDispatcherService.dispatch(Queues.DEMANDE, demande); // differer la creation du contact et la demande finale
     return demande;
   }
+
+  async updateWebsiteDemande(
+    args: Prisma.WebsiteDemandeUpdateArgs
+  ): Promise<PrismaWebsiteDemande> {
+    args.data.status='Recue'
+    const demande = await super.updateWebsiteDemande(args); // percisiter la demande brute
+    await this.queueDispatcherService.dispatch(Queues.DEMANDE, demande); // differer la creation du contact et la demande finale
+    return demande;
+  }
 }
