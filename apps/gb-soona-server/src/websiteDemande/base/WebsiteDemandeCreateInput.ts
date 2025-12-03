@@ -18,6 +18,7 @@ import {
   IsInt,
   Max,
   IsEnum,
+  IsBoolean,
 } from "class-validator";
 import { EnumWebsiteDemandeStatus } from "./EnumWebsiteDemandeStatus";
 
@@ -252,6 +253,18 @@ class WebsiteDemandeCreateInput {
 
   @ApiProperty({
     required: false,
+    type: Number,
+  })
+  @IsInt()
+  @Max(99999999999)
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  contactId?: number | null;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()
@@ -317,6 +330,17 @@ class WebsiteDemandeCreateInput {
     nullable: true,
   })
   villeDemandeur?: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  forceNewContact!: boolean;
 }
+
+
+
 
 export { WebsiteDemandeCreateInput as WebsiteDemandeCreateInput };

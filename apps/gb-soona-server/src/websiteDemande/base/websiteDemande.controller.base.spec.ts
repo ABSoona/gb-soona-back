@@ -39,12 +39,14 @@ const CREATE_INPUT = {
   remarques: "exampleRemarques",
   revenus: 42,
   revenusConjoint: 42,
+  contactId : 0,
   situationFamiliale: "exampleSituationFamiliale",
   situationProConjoint: "exampleSituationProConjoint",
   situationProfessionnelle: "exampleSituationProfessionnelle",
   telephoneDemandeur: "exampleTelephoneDemandeur",
   updatedAt: new Date(),
   villeDemandeur: "exampleVilleDemandeur",
+  forceNewContact : false,
 };
 const CREATE_RESULT = {
   adresseDemandeur: "exampleAdresseDemandeur",
@@ -68,12 +70,14 @@ const CREATE_RESULT = {
   remarques: "exampleRemarques",
   revenus: 42,
   revenusConjoint: 42,
+  contactId:0,
   situationFamiliale: "exampleSituationFamiliale",
   situationProConjoint: "exampleSituationProConjoint",
   situationProfessionnelle: "exampleSituationProfessionnelle",
   telephoneDemandeur: "exampleTelephoneDemandeur",
   updatedAt: new Date(),
   villeDemandeur: "exampleVilleDemandeur",
+  forceNewContact : false,
 };
 const FIND_MANY_RESULT = [
   {
@@ -98,12 +102,14 @@ const FIND_MANY_RESULT = [
     remarques: "exampleRemarques",
     revenus: 42,
     revenusConjoint: 42,
+    contactId:0,
     situationFamiliale: "exampleSituationFamiliale",
     situationProConjoint: "exampleSituationProConjoint",
     situationProfessionnelle: "exampleSituationProfessionnelle",
     telephoneDemandeur: "exampleTelephoneDemandeur",
     updatedAt: new Date(),
     villeDemandeur: "exampleVilleDemandeur",
+    forceNewContact : false,
   },
 ];
 const FIND_ONE_RESULT = {
@@ -128,12 +134,14 @@ const FIND_ONE_RESULT = {
   remarques: "exampleRemarques",
   revenus: 42,
   revenusConjoint: 42,
+  contactId:0,
   situationFamiliale: "exampleSituationFamiliale",
   situationProConjoint: "exampleSituationProConjoint",
   situationProfessionnelle: "exampleSituationProfessionnelle",
   telephoneDemandeur: "exampleTelephoneDemandeur",
   updatedAt: new Date(),
   villeDemandeur: "exampleVilleDemandeur",
+  forceNewContact : false,
 };
 
 const service = {
