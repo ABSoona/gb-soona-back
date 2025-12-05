@@ -70,7 +70,7 @@ export class DocumentServiceBase {
     file.filename = `profilePicture-${args.where.id}.${file.filename
       .split(".")
       .pop()}`;
-    const containerPath = "/uploads";
+    const containerPath = "documents";
     const contenu = await this.localStorageService.uploadFile(
       file,
       [],
