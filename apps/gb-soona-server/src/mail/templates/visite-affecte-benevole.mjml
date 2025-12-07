@@ -9,7 +9,7 @@
     </mj-text>
       
     <mj-text font-size="16px" color="#555555">
-      Un bénévole dont vous êtes le contact principal, <strong>{{nomBenevole}}</strong>, a été proposé pour réaliser une visite dans à <strong>{{departement}}</strong>.
+      Un bénévole dont vous êtes le contact principal, <strong>{{nomBenevole}}</strong>, a été proposé pour réaliser une visite à <strong>{{departement}}</strong>.
     </mj-text>
 
     <mj-text font-size="16px" color="#555555">
