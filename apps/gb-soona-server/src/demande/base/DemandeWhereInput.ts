@@ -186,6 +186,17 @@ class DemandeWhereInput {
   @Field(() => DateTimeNullableFilter, {
     nullable: true,
   })
+  decisionDate?: DateTimeNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: DateTimeNullableFilter,
+  })
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
   derniereRelance?: DateTimeNullableFilter;
 
   @ApiProperty({
