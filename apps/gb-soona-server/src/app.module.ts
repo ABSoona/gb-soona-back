@@ -27,6 +27,8 @@ import { DemandeStatusHistoryModuleBase } from "./demandeStatusHistory/base/dema
 import { DemandeActivityModule } from "./demandeActivity/demandeActivity.module";
 import { VersementModule } from "./versement/versement.module";
 import { VisiteModule } from "./visite/visite.module";
+import { TelegramModule } from "./telegram/telegram.module";
+import { CommitteeModule } from "./committee/committee.module";
 
 @Module({
   controllers: [],
@@ -52,6 +54,8 @@ import { VisiteModule } from "./visite/visite.module";
     PrismaModule,
     SecretsManagerModule,
     VersementModule,
+    TelegramModule,
+    CommitteeModule,
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRootAsync({
       useClass: ServeStaticOptionsService,
