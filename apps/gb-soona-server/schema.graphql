@@ -295,6 +295,7 @@ type Demande {
   contact: Contact
   createdAt: DateTime
   dateVisite: DateTime
+  decisionDate: DateTime
   demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
   demandeStatusHistories(orderBy: [DemandeStatusHistoryOrderByInput!], skip: Float, take: Float, where: DemandeStatusHistoryWhereInput): [DemandeStatusHistory!]!
   dernierContact: DateTime
@@ -424,6 +425,7 @@ input DemandeCreateInput {
   categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: ContactWhereUniqueInput!
   dateVisite: DateTime
+  decisionDate: DateTime
   demandeActivities: DemandeActivityCreateNestedManyWithoutDemandesInput
   demandeStatusHistories: DemandeStatusHistoryCreateNestedManyWithoutDemandesInput
   dernierContact: DateTime
@@ -473,6 +475,7 @@ input DemandeOrderByInput {
   contactId: SortOrder
   createdAt: SortOrder
   dateVisite: SortOrder
+  decisionDate: SortOrder
   dernierContact: SortOrder
   derniereRelance: SortOrder
   dettes: SortOrder
@@ -547,6 +550,7 @@ input DemandeUpdateInput {
   categorieDemandeur: EnumDemandeCategorieDemandeur
   contact: ContactWhereUniqueInput
   dateVisite: DateTime
+  decisionDate: DateTime
   demandeActivities: DemandeActivityUpdateManyWithoutDemandesInput
   demandeStatusHistories: DemandeStatusHistoryUpdateManyWithoutDemandesInput
   dernierContact: DateTime
@@ -595,6 +599,7 @@ input DemandeWhereInput {
   contact: ContactWhereUniqueInput
   createdAt: DateTimeNullableFilter
   dateVisite: DateTimeNullableFilter
+  decisionDate: DateTimeNullableFilter
   demandeActivities: DemandeActivityListRelationFilter
   demandeStatusHistories: DemandeStatusHistoryListRelationFilter
   dernierContact: DateTimeNullableFilter

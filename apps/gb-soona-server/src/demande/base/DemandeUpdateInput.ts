@@ -185,6 +185,17 @@ class DemandeUpdateInput {
   @Field(() => Date, {
     nullable: true,
   })
+  decisionDate?: Date | null;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
   derniereRelance?: Date | null;
 
   @ApiProperty({
