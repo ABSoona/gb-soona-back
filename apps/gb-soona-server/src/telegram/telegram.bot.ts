@@ -168,9 +168,10 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
     await this.committeeService.closeDemande(demandeId, results);
     // marque clôturée côté bot
     this.closedDemandes.add(demandeId);
-    clearVotes(demandeId);
+    
     // met à jour Telegram
     await this.refreshMessage(demandeId, payload, true, ref);
+    clearVotes(demandeId);
     await ctx.reply(`Vote clôturé pour la demande #${demandeId}.`);
         });
   }
@@ -196,7 +197,8 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
         messageRef.chatId,
         messageRef.messageId,
         text,
-        { reply_markup: keyboard }
+        { reply_markup: keyboard,
+          link_preview_options: { is_disabled: true }, }
       );
     } catch {
       // édition parfois refusée si texte identique
@@ -218,7 +220,10 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
     const msg = await this.bot.api.sendMessage(
       this.committeeChatId,
       text,
-      { reply_markup: keyboard }
+      { reply_markup: keyboard, 
+        link_preview_options: { is_disabled: true },
+      },
+      
     );
 
     this.publishedMessages.set(payload.demandeId, {
