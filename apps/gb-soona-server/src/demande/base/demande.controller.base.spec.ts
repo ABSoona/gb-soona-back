@@ -43,6 +43,7 @@ const CREATE_INPUT = {
   fullSearch: "exampleSituationFamiliale",
   situationProConjoint: "exampleSituationProConjoint",
   situationProfessionnelle: "exampleSituationProfessionnelle",
+  telegramComiteeAction: false,
   status: "exampleStatus",
   updatedAt: new Date(),
 };
@@ -72,6 +73,7 @@ const CREATE_RESULT = {
   fullSearch:"exampleSituationFamiliale",
   situationProConjoint: "exampleSituationProConjoint",
   situationProfessionnelle: "exampleSituationProfessionnelle",
+  telegramComiteeAction: false,
   status: "exampleStatus",
   updatedAt: new Date(),
 };
@@ -103,6 +105,7 @@ const FIND_MANY_RESULT = [
     situationProConjoint: "exampleSituationProConjoint",
     situationProfessionnelle: "exampleSituationProfessionnelle",
     status: "exampleStatus",
+    telegramComiteeAction: false,
     updatedAt: new Date(),
   },
 ];
@@ -133,6 +136,7 @@ const FIND_ONE_RESULT = {
   situationProConjoint: "exampleSituationProConjoint",
   situationProfessionnelle: "exampleSituationProfessionnelle",
   status: "exampleStatus",
+  telegramComiteeAction: false,
   updatedAt: new Date(),
 };
 

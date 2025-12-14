@@ -157,6 +157,7 @@ async function main() {
         situationProfessionnelle: 'Inconnue',
         status: 'clôturée',
         createdAt: dateDemande,
+        telegramComiteeAction: false
       },
     });
     createdDemandes++;

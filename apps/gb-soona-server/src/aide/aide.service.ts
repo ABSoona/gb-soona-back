@@ -28,6 +28,10 @@ export class AideService extends AideServiceBase {
     const aide = await super.createAide(args);
     await this.createRelatedVersement(aide);
     await this.addCreateActivity(aide);
+    aide.demandeId && await this.demandeService.updateDemande({
+      data: { telegramComiteeAction: false},
+      where: { id: aide.demandeId },
+    });
 
     return aide;
   }
@@ -45,6 +49,7 @@ export class AideService extends AideServiceBase {
     }
     return aide;
   }
+
   
  
 

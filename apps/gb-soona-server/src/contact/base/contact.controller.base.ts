@@ -411,6 +411,7 @@ export class ContactControllerBase {
         fullSearch : true,
         status: true,
         updatedAt: true,
+        telegramComiteeAction: false,
       },
     });
     if (results === null) {
