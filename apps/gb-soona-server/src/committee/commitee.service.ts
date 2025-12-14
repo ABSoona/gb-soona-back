@@ -23,6 +23,12 @@ export class CommitteeService {
         data: { status: "refusée" },
       });
 
+      (decision == "ACCEPTEE") &&
+      await this.demandeService.updateDemande({
+        where: { id: demandeId },
+        data: { telegramComiteeAction: true },
+      });
+
 
     return decision;
   }

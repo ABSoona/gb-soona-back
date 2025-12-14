@@ -26,6 +26,7 @@ import { DocumentListRelationFilter } from "../../document/base/DocumentListRela
 import { IntFilter } from "../../util/IntFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { VisiteListRelationFilter } from "../../visite/base/VisiteListRelationFilter";
+import { BooleanFilter } from "src/util/BooleanFilter";
 
 @InputType()
 class DemandeWhereInput {
@@ -386,6 +387,17 @@ class DemandeWhereInput {
     nullable: true,
   })
   situationProfessionnelle?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: BooleanFilter,
+  })
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  telegramComiteeAction?: BooleanFilter;
 
   @ApiProperty({
     required: false,

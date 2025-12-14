@@ -22,6 +22,7 @@ import {
   Max,
   IsEnum,
   IsDate,
+  IsBoolean,
 } from "class-validator";
 
 import { Type } from "class-transformer";
@@ -402,6 +403,17 @@ class DemandeUpdateInput {
     nullable: true,
   })
   situationProfessionnelle?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  telegramComiteeAction?: boolean;
 
   @ApiProperty({
     required: false,

@@ -319,6 +319,7 @@ type Demande {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  telegramComiteeAction: Boolean!
   updatedAt: DateTime!
   visites(orderBy: [VisiteOrderByInput!], skip: Float, take: Float, where: VisiteWhereInput): [Visite!]!
 }
@@ -448,6 +449,7 @@ input DemandeCreateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  telegramComiteeAction: Boolean!
   visites: VisiteCreateNestedManyWithoutDemandesInput
 }
 
@@ -496,6 +498,7 @@ input DemandeOrderByInput {
   situationProConjoint: SortOrder
   situationProfessionnelle: SortOrder
   status: SortOrder
+  telegramComiteeAction: SortOrder
   updatedAt: SortOrder
 }
 
@@ -573,6 +576,7 @@ input DemandeUpdateInput {
   situationProConjoint: String
   situationProfessionnelle: String
   status: String
+  telegramComiteeAction: Boolean
   visites: VisiteUpdateManyWithoutDemandesInput
 }
 
@@ -622,6 +626,7 @@ input DemandeWhereInput {
   situationProConjoint: StringNullableFilter
   situationProfessionnelle: StringNullableFilter
   status: StringNullableFilter
+  telegramComiteeAction: BooleanFilter
   updatedAt: DateTimeFilter
   visites: VisiteListRelationFilter
 }
