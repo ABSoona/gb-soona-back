@@ -1,44 +1,66 @@
 import { InlineKeyboard } from "grammy";
-import type { PublishCommitteePayload } from "./telegram.types";
 import type { CommitteeVote } from "./vote.store";
+import type { PublishCommitteePayload } from "./telegram.types";
 
+/**
+ * Boutons de vote (sobres, institutionnels)
+ */
 export function buildCommitteeKeyboard(demandeId: number) {
   return new InlineKeyboard()
-    .text("👍 Accepter", `vote:${demandeId}:accept`)
-    .text("🤔 Reporter", `vote:${demandeId}:postpone`)
-    .text("👎 Refuser", `vote:${demandeId}:reject`);
+    .text("✅ ACCEPTER", `vote:${demandeId}:accept`)
+    .text("⏸️ AJOURNER", `vote:${demandeId}:postpone`)
+    .text("🟥 REFUSER", `vote:${demandeId}:reject`);
 }
 
-export function buildMessage(payload: PublishCommitteePayload, results: { accept: number; postpone: number; reject: number }, closed = false) {
+/**
+ * Construction du message Telegram à partir d’un payload fourni par le front
+ */
+export function buildCommitteeMessage(
+  payload: PublishCommitteePayload,
+  results: { accept: number; postpone: number; reject: number },
+  closed = false
+): string {
   const lines: string[] = [];
 
-  lines.push(`📄 DEMANDE #${payload.demandeId}`);
-  lines.push(`👤 ${payload.beneficiaire}`);
-
-  if (payload.situationFam) lines.push(`👨‍👩‍👧 ${payload.situationFam}`);
-  if (payload.situationPro) lines.push(`💼 ${payload.situationPro}`);
-  if (typeof payload.montant === "number") lines.push(`💰 ${payload.montant} €`);
-  if (payload.motif) lines.push(`📝 ${payload.motif}`);
-  if (payload.createdAt) lines.push(`📅 Déposée le : ${new Date(payload.createdAt).toLocaleDateString("fr-FR")}`);
-
+  // Titre
+  lines.push(`📄 ${payload.title ?? `DEMANDE #${payload.demandeId}`}`);
   lines.push("");
-  lines.push(`📊 ${closed ? "RÉSULTAT FINAL" : "Votes"} :`);
-  lines.push(`👍 ${results.accept} | 🤔 ${results.postpone} | 👎 ${results.reject}`);
+
+  // Lignes fournies par le front
+  for (const line of payload.lines) {
+    lines.push(`• ${line}`);
+  }
+
+  // Bloc décision
+  lines.push("");
+  lines.push(closed ? "Décision finale du comité :" : "Décision du comité :");
+  lines.push(`✅ ACCEPTER : ${results.accept}`);
+  lines.push(`⏸️ AJOURNER : ${results.postpone}`);
+  lines.push(`🟥 REFUSER : ${results.reject}`);
 
   if (closed) {
     lines.push("");
-    lines.push("⏰ Vote clôturé");
+    lines.push("Vote clôturé");
   }
 
   return lines.join("\n");
 }
 
-export function parseVoteData(data: string): { demandeId: number; vote: CommitteeVote } | null {
+/**
+ * Parsing sécurisé des callbacks de vote
+ */
+export function parseVoteData(
+  data: string
+): { demandeId: number; vote: CommitteeVote } | null {
   if (!data?.startsWith("vote:")) return null;
+
   const [, demandeIdRaw, voteRaw] = data.split(":");
   const demandeId = Number(demandeIdRaw);
-  if (!Number.isFinite(demandeId)) return null;
 
-  if (voteRaw !== "accept" && voteRaw !== "postpone" && voteRaw !== "reject") return null;
+  if (!Number.isFinite(demandeId)) return null;
+  if (voteRaw !== "accept" && voteRaw !== "postpone" && voteRaw !== "reject") {
+    return null;
+  }
+
   return { demandeId, vote: voteRaw };
 }

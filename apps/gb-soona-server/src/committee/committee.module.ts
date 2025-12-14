@@ -1,9 +1,13 @@
 import { Module } from "@nestjs/common";
-import { CommitteeController } from "./committee.controller";
-import { TelegramModule } from "../telegram/telegram.module";
+
+
+import { DemandeModule } from "src/demande/demande.module";
+import { CommitteeService } from "./commitee.service";
+
 
 @Module({
-  imports: [TelegramModule],
-  controllers: [CommitteeController],
+  imports: [DemandeModule],
+  providers: [CommitteeService],
+  exports: [CommitteeService], // ⬅️ INDISPENSABLE
 })
 export class CommitteeModule {}

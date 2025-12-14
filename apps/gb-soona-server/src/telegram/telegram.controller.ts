@@ -1,18 +1,19 @@
 import * as common from "@nestjs/common";
 import * as swagger from "@nestjs/swagger";
-import { TelegramService } from "../telegram/telegram.service";
+import { TelegramService } from "./telegram.service";
 import { Public } from "src/decorators/public.decorator";
+import type { PublishCommitteePayload } from "./telegram.types";
 
-@swagger.ApiTags("committee")
-@common.Controller("committee")
-export class CommitteeController {
+@swagger.ApiTags("telegram")
+@common.Controller("telegram")
+export class TelegramController {
   constructor(
     private readonly telegramService: TelegramService
   ) {}
 
   @common.Post("publish")
-  @Public() // ⬅️ important si ton backend est protégé par défaut
-  async publish(@common.Body() body: any) {
+  @Public()
+  async publish(@common.Body() body: PublishCommitteePayload) {
     await this.telegramService.publishToCommittee(body);
     return { ok: true };
   }
