@@ -71,7 +71,8 @@ model Demande {
   visites                  Visite[]
   fullSearch               String?
   nombrePersonnes          Int?   
-  decisionDate             DateTime?                         
+  decisionDate             DateTime?
+  telegramComiteeAction    Boolean                      @default(false)                         
 }
 
 
