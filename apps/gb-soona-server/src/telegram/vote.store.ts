@@ -1,4 +1,4 @@
-export type CommitteeVote = "accept" | "postpone" | "reject";
+export type CommitteeVote = "accept" | "postpone" ;
 
 const votes = new Map<number, Map<number, CommitteeVote>>(); // demandeId -> (telegramUserId -> vote)
 
@@ -8,7 +8,7 @@ export function setVote(demandeId: number, telegramUserId: number, vote: Committ
 }
 
 export function getResults(demandeId: number) {
-  const r = { accept: 0, postpone: 0, reject: 0 };
+  const r = { accept: 0, postpone: 0};
   votes.get(demandeId)?.forEach((v) => (r[v] += 1));
   return r;
 }

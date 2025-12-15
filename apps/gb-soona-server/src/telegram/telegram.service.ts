@@ -11,3 +11,4 @@ export class TelegramService {
     return this.telegramBot.publishCommittee(payload);
   }
 }
+

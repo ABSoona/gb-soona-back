@@ -165,7 +165,7 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
       const results = getResults(demandeId);
 
     // 🔴 ICI : mise à jour MÉTIER (DB)
-    await this.committeeService.closeDemande(demandeId, results);
+    await this.committeeService.closeDemande(demandeId, results,payload.recommandation);
     // marque clôturée côté bot
     this.closedDemandes.add(demandeId);
     
