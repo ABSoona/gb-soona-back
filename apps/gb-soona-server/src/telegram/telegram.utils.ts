@@ -7,9 +7,18 @@ import type { PublishCommitteePayload } from "./telegram.types";
  */
 export function buildCommitteeKeyboard(demandeId: number) {
   return new InlineKeyboard()
-    .text("✅ Accepter", `vote:${demandeId}:accept`)
-    .text("⏸️ Ajourner", `vote:${demandeId}:postpone`)
-    .text("🟥 Refuser", `vote:${demandeId}:reject`);
+    .row(
+      InlineKeyboard.text(
+        "✅ J'approuve la recommandation",
+        `vote:${demandeId}:accept`
+      )
+    )
+    .row(
+      InlineKeyboard.text(
+        "⏸️ On en parle vendredi",
+        `vote:${demandeId}:postpone`
+      )
+    )
 }
 
 /**
@@ -17,7 +26,7 @@ export function buildCommitteeKeyboard(demandeId: number) {
  */
 export function buildCommitteeMessage(
   payload: PublishCommitteePayload,
-  results: { accept: number; postpone: number; reject: number },
+  results: { accept: number; postpone: number; },
   closed = false
 ): string {
   const lines: string[] = [];
@@ -31,6 +40,9 @@ export function buildCommitteeMessage(
     lines.push(`• ${line}`);
   }
   lines.push("");
+  lines.push(`Recommandation de l'AS : ${payload.recommandation=="accept"?"Accorder":"Rejet"}`);
+  lines.push(`${payload.message}`);
+  lines.push("");
   lines.push(`🔗 Lien vers la demande :`);
   lines.push(`${payload.demandeUrl}`);
   
@@ -40,7 +52,7 @@ export function buildCommitteeMessage(
       lines.push(closed ? "Vote finale du comité :" : "Vote du comité :");
       lines.push(`Accord : ${results.accept}`);
       lines.push(`Ajournement : ${results.postpone}`);
-      lines.push(`Refus : ${results.reject}`);
+      //lines.push(`Refus : ${results.reject}`);
   }
 
 
@@ -64,7 +76,7 @@ export function parseVoteData(
   const demandeId = Number(demandeIdRaw);
 
   if (!Number.isFinite(demandeId)) return null;
-  if (voteRaw !== "accept" && voteRaw !== "postpone" && voteRaw !== "reject") {
+  if (voteRaw !== "accept" && voteRaw !== "postpone") {
     return null;
   }
 
