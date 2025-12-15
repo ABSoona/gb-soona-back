@@ -34,13 +34,15 @@ export function buildCommitteeMessage(
   lines.push(`🔗 Lien vers la demande :`);
   lines.push(`${payload.demandeUrl}`);
   
-
+  if(payload.authoriseVote){
   // Bloc décision
-  lines.push("");
-  lines.push(closed ? "Vote finale du comité :" : "Vote du comité :");
-  lines.push(`Accord : ${results.accept}`);
-  lines.push(`Ajournement : ${results.postpone}`);
-  lines.push(`Refus : ${results.reject}`);
+      lines.push("");
+      lines.push(closed ? "Vote finale du comité :" : "Vote du comité :");
+      lines.push(`Accord : ${results.accept}`);
+      lines.push(`Ajournement : ${results.postpone}`);
+      lines.push(`Refus : ${results.reject}`);
+  }
+
 
   if (closed) {
     lines.push("");
