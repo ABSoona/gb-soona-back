@@ -1,7 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { DemandeService } from "src/demande/demande.service";
-import { TelegramService } from "src/telegram/telegram.service";
-import { PublishCommitteePayload } from "src/telegram/telegram.types";
+import { recommandationType } from "src/telegram/telegram.types";
+
+
+
 
 @Injectable()
 export class CommitteeService {
@@ -13,22 +15,25 @@ export class CommitteeService {
 
   async closeDemande(
     demandeId: number,
-    results: { accept: number; postpone: number; reject: number }
+    results: { accept: number; postpone: number;},
+    recommandation : recommandationType
   ) {
     const decision = this.computeDecision(results);
 
-    (decision == "REFUSEE") &&
-    await this.demandeService.updateDemande({
-        where: { id: demandeId },
-        data: { status: "refusée" },
-      });
+    
 
-      (decision == "ACCEPTEE") &&
-      await this.demandeService.updateDemande({
-        where: { id: demandeId },
-        data: { telegramComiteeAction: true },
-      });
-
+      if (decision == "ACCEPTEE" && recommandation == "accept") {
+        await this.demandeService.updateDemande({
+          where: { id: demandeId },
+          data: { telegramComiteeAction: true },
+        });
+      }
+      if (decision == "ACCEPTEE" && recommandation == 'reject') {
+        await this.demandeService.updateDemande({
+          where: { id: demandeId },
+          data: { status: "refusée" },
+        });
+      }
 
     return decision;
   }
@@ -36,11 +41,11 @@ export class CommitteeService {
   private computeDecision(results: {
     accept: number;
     postpone: number;
-    reject: number;
-  }): "ACCEPTEE" | "AJOURNEE" | "REFUSEE" {
+
+  }): "ACCEPTEE" | "AJOURNEE"  {
   
-    const { accept, postpone, reject } = results;
-    const max = Math.max(accept, postpone, reject);
+    const { accept, postpone } = results;
+    const max = Math.max(accept, postpone);
   
     // Aucun vote
     if (max === 0) {
@@ -48,7 +53,7 @@ export class CommitteeService {
     }
   
     // Détection d’égalité
-    const winners = [accept, postpone, reject].filter(v => v === max);
+    const winners = [accept, postpone].filter(v => v === max);
     if (winners.length > 1) {
       return "AJOURNEE";
     }
@@ -56,6 +61,6 @@ export class CommitteeService {
     // Décision claire
     if (max === accept) return "ACCEPTEE";
     if (max === postpone) return "AJOURNEE";
-    return "REFUSEE";
+    return "AJOURNEE";
   }
 }
