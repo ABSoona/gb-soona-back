@@ -3,4 +3,5 @@ export type PublishCommitteePayload = {
     title?: string;
     lines: string[];
     demandeUrl?:string;
+    authoriseVote?:boolean;
   };

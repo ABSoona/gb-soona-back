@@ -210,22 +210,25 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
   // =========================
   async publishCommittee(payload: PublishCommitteePayload) {
     if (!this.bot) throw new Error("Bot Telegram non initialisé");
-
+  
     this.publishedPayloads.set(payload.demandeId, payload);
-
+  
     const results = getResults(payload.demandeId);
     const text = buildCommitteeMessage(payload, results, false);
-    const keyboard = buildCommitteeKeyboard(payload.demandeId);
-
+  
+    const keyboard = payload.authoriseVote
+      ? buildCommitteeKeyboard(payload.demandeId)
+      : undefined;
+  
     const msg = await this.bot.api.sendMessage(
       this.committeeChatId,
       text,
-      { reply_markup: keyboard, 
+      {
+        reply_markup: keyboard,
         link_preview_options: { is_disabled: true },
-      },
-      
+      }
     );
-
+  
     this.publishedMessages.set(payload.demandeId, {
       chatId: msg.chat.id,
       messageId: msg.message_id,
