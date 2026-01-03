@@ -5,6 +5,7 @@ import { AideService } from "./aide.service";
 import { AideController } from "./aide.controller";
 import { AideResolver } from "./aide.resolver";
 import { DemandeModule } from "src/demande/demande.module";
+import { MailModule } from "src/mail/mail.module";
 
 @Module({
   imports: [AideModuleBase, forwardRef(() => AuthModule),DemandeModule],
