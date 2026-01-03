@@ -6,9 +6,10 @@ import { VersementController } from "./versement.controller";
 import { VersementResolver } from "./versement.resolver";
 
 import { DemandeModule } from "src/demande/demande.module";
+import { MailModule } from "src/mail/mail.module";
 
 @Module({
-  imports: [VersementModuleBase,DemandeModule, forwardRef(() => AuthModule)],
+  imports: [VersementModuleBase,DemandeModule, forwardRef(() => AuthModule), MailModule],
   controllers: [VersementController],
   providers: [VersementService, VersementResolver],
   exports: [VersementService],

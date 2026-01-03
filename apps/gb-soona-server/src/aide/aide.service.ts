@@ -1,3 +1,4 @@
+import { Int } from '@nestjs/graphql';
 import { NotFoundException } from './../errors';
 import { DemandeService } from './../demande/demande.service';
 import { Injectable } from "@nestjs/common";
@@ -12,6 +13,7 @@ import { VersementCreateInput } from 'src/versement/base/VersementCreateInput';
 import { EnumVersementStatus } from 'src/versement/base/EnumVersementStatus';
 import { addMonths } from 'date-fns';
 import { generateAideActivityMessage, generateAideSuspendActivityMessage as generateAideSuspendActivityMessage, generateVersements } from './aide.logic';
+import { MailService } from 'src/mail/mail.service';
 
 
 
@@ -19,6 +21,7 @@ import { generateAideActivityMessage, generateAideSuspendActivityMessage as gene
 export class AideService extends AideServiceBase {
   constructor(protected readonly prisma: PrismaService,
     protected readonly demandeService: DemandeService
+
     ) {
     super(prisma);
   }
@@ -42,7 +45,9 @@ export class AideService extends AideServiceBase {
     await this.createRelatedVersement(aide);
     //todo : await this.addUpdateActivity(aide);
     if(newStatus == 'EnCours' && aide.status=='Expir'){
-      await this.demandeService.updateDemandeWhenExpir(aide.id)
+      await this.demandeService.updateDemandeWhenExpir(aide.id);
+      console.log("Envoi du mail de notification expiration aide")
+     
     }
     if(newStatus == 'EnCours' && aide.suspendue){
     await this.addSuspendActivity(aide)
@@ -51,8 +56,7 @@ export class AideService extends AideServiceBase {
   }
 
   
- 
-
+  
   async createRelatedVersement(newAide: Aide) {
     const versements = generateVersements(newAide);
     await this.prisma.versement.createMany({ data: versements });
