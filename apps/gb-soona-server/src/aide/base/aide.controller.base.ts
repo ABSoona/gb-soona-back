@@ -62,7 +62,13 @@ export class AideControllerBase {
         contact: {
           connect: data.contact,
         },
-
+        
+        acteurVersement: data.acteurVersement
+          ? {
+              connect: data.acteurVersement,
+            }
+          : undefined,
+          
         demande: data.demande
           ? {
               connect: data.demande,
@@ -75,7 +81,11 @@ export class AideControllerBase {
             id: true,
           },
         },
-
+        acteurVersement: {
+          select: {
+            id: true,
+          },
+        },
         createdAt: true,
         crediteur: true,
         dateAide: true,
@@ -120,6 +130,11 @@ export class AideControllerBase {
       ...args,
       select: {
         contact: {
+          select: {
+            id: true,
+          },
+        },
+        acteurVersement: {
           select: {
             id: true,
           },
@@ -174,6 +189,12 @@ export class AideControllerBase {
             id: true,
           },
         },
+        acteurVersement: {
+          select: {
+            id: true,
+          },
+        },
+        
 
         createdAt: true,
         crediteur: true,
@@ -238,9 +259,19 @@ export class AideControllerBase {
                 connect: data.demande,
               }
             : undefined,
+          acteurVersement: data.acteurVersement
+            ? {
+                connect: data.acteurVersement,
+              }
+            : undefined,
         },
         select: {
           contact: {
+            select: {
+              id: true,
+            },
+          },
+          acteurVersement: {
             select: {
               id: true,
             },
@@ -299,6 +330,11 @@ export class AideControllerBase {
         where: params,
         select: {
           contact: {
+            select: {
+              id: true,
+            },
+          },
+          acteurVersement: {
             select: {
               id: true,
             },
