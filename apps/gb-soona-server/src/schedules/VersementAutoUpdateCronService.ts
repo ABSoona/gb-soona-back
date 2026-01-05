@@ -19,7 +19,9 @@ export class VersementAutoUpdateCronService {
 
     const versements = await this.prisma.versement.findMany({
       where: {
-        status: 'AVerser',
+        status: {
+          in: ['AVerser', 'Planifie'],
+        },
         dataVersement: { lte: now },
         document: { isNot: null }, // 🔒 Preuve de virement obligatoire
       },
