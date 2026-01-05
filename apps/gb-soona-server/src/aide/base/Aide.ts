@@ -35,6 +35,7 @@ import { EnumAideFrequence } from "./EnumAideFrequence";
 import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
 import { Versement } from "../../versement/base/Versement";
+import { User } from "src/user/base/User";
 
 @ObjectType()
 class Aide {
@@ -95,6 +96,15 @@ class Aide {
   @Type(() => Demande)
   @IsOptional()
   demande?: Demande | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  acteurVersement?: User | null;
 
   @ApiProperty({
     required: false,

@@ -10,6 +10,8 @@ generator client {
 model Aide {
   contact           Contact            @relation(fields: [contactId], references: [id])
   contactId         Int
+  acteurVersement   User?                          @relation(name: "acteurVersement", fields: [acteurVersementId], references: [id])
+  acteurVersementId   String?
   createdAt         DateTime           @default(now())
   crediteur         EnumAideCrediteur?
   dateAide          DateTime?
@@ -106,6 +108,7 @@ model User {
   createdAt                   DateTime                     @default(now())
   demandeActivities DemandeActivity[]
   demandesActeurs     Demande[]                            @relation(name: "acteur")
+  versementsActeurs     Aide[]                           @relation(name: "acteurVersement")
   demandesEnPropriete Demande[]                            @relation(name: "demandesEnPropriete")
   email                       String?                      @unique
   firstName                   String?
