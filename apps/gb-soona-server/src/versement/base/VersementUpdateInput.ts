@@ -83,7 +83,7 @@ class VersementUpdateInput {
   @Field(() => EnumVersementStatus, {
     nullable: true,
   })
-  status?: "AVerser" | "Verse";
+  status?: "AVerser" | "Verse" | "Planifie";
 }
 
 export { VersementUpdateInput as VersementUpdateInput };

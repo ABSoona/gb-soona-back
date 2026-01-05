@@ -322,4 +322,5 @@ enum EnumAideStatus {
 enum EnumVersementStatus {
   AVerser
   Verse
+  Planifie
 }
