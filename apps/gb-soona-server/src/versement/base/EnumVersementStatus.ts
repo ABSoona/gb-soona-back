@@ -14,6 +14,7 @@ import { registerEnumType } from "@nestjs/graphql";
 export enum EnumVersementStatus {
   AVerser = "AVerser",
   Verse = "Verse",
+  Planifie="Planifie",
 }
 
 registerEnumType(EnumVersementStatus, {

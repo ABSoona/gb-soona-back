@@ -87,7 +87,7 @@ class VersementWhereInput {
   @Field(() => EnumVersementStatus, {
     nullable: true,
   })
-  status?: "AVerser" | "Verse";
+  status?: "AVerser" | "Verse" |"Planifie";
 }
 
 export { VersementWhereInput as VersementWhereInput };

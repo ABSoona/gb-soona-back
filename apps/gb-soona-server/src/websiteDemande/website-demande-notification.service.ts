@@ -18,7 +18,7 @@ export class WebsiteDemandeNotificationService {
     for (const notif of notifs) {
       const user = await this.prisma.user.findUnique({ where: { id: notif.userId } });
 
-      if (user?.email && Array.isArray(user.roles) && user.roles.includes("admin")) {
+      if (user?.email) {
         const lien_demande = `${process.env.FRONTEND_URL}/website-demandes`;
         await this.mailService.sendMailAsync(
           'website-demande-error',
