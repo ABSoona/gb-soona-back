@@ -7,8 +7,9 @@ import { AideResolver } from "./aide.resolver";
 import { DemandeModule } from "src/demande/demande.module";
 import { MailModule } from "src/mail/mail.module";
 
+
 @Module({
-  imports: [AideModuleBase, forwardRef(() => AuthModule),DemandeModule],
+  imports: [AideModuleBase, forwardRef(() => AuthModule),DemandeModule,MailModule],
   controllers: [AideController],
   providers: [AideService, AideResolver],
   exports: [AideService],

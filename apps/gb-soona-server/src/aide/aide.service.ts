@@ -20,15 +20,17 @@ import { MailService } from 'src/mail/mail.service';
 @Injectable()
 export class AideService extends AideServiceBase {
   constructor(protected readonly prisma: PrismaService,
-    protected readonly demandeService: DemandeService
+    protected readonly demandeService: DemandeService,
+    protected readonly mailService: MailService
 
     ) {
     super(prisma);
   }
 
   async createAide(args: Prisma.AideCreateArgs): Promise<PrismaAide> {
-
+   
     const aide = await super.createAide(args);
+    const contact = await this.prisma.contact.findUnique({where : {id:aide.contactId}})
     await this.createRelatedVersement(aide);
     await this.addCreateActivity(aide);
     aide.demandeId && await this.demandeService.updateDemande({
@@ -36,13 +38,57 @@ export class AideService extends AideServiceBase {
       where: { id: aide.demandeId },
     });
 
+    if(aide.acteurVersementId==null)
+      return aide;
+    
+    const user = await this.prisma.user.findUnique({ where: { id: aide.acteurVersementId} });
+    if (user?.email && user.hasAccess) {
+      const lien_versement = `${process.env.FRONTEND_URL}/versements`;
+      await this.mailService.sendMailAsync(
+        'affectation-aide',
+        user.email,
+        {
+          lien_versement,
+          beneficiaire: `${contact?.prenom} ${contact?.nom}` ,
+          montant :`${aide.montant?.toLocaleString()}€`,
+          nombreVersements : `${aide.nombreVersements}`,
+          dateAide : `${aide.dateAide?.toLocaleDateString()}`,
+          demandeId :`${aide.demandeId}`
+         
+        },
+        "Vous avez été chargé du versement d'une aide",
+      );
+  }
+
     return aide;
   }
+
   async updateAide(args: Prisma.AideUpdateArgs): Promise<PrismaAide> {
+    const aideId = args.where?.id;
+  if (typeof aideId !== "number") {
+    throw new Error("updateAide: args.where.id manquant ou invalide");
+  }
     const  newStatus= args.data.status;
+    const currentAide = await this.prisma.aide.findUnique({where : {id :aideId }, include:{contact:true}})
     const aide = await super.updateAide(args);
-    const versement = await this.prisma.versement.deleteMany({where:{aideId :{equals:aide.id},status:{equals:'AVerser'}}})
-    await this.createRelatedVersement(aide);
+    
+    if ((currentAide?.nombreVersements != args.data.nombreVersements && args.data.nombreVersements != null) ||
+        (currentAide?.dateAide !=args.data.dateAide && args.data.dateAide != null) ||
+        (currentAide?.frequence !=args.data.frequence && args.data.frequence != null)
+       ){
+      const versement = await this.prisma.versement.deleteMany({where:{aideId :{equals:aide.id},status:{equals:'AVerser'}}})
+      await this.createRelatedVersement(aide);
+    }
+    else {
+      if (aide.montant != null ){
+        await this.prisma.versement.updateMany({where:{ aideId: aideId}, data:{
+          montant : aide.montant,
+        }
+        })
+      }
+        
+    }
+    
     //todo : await this.addUpdateActivity(aide);
     if(newStatus == 'EnCours' && aide.status=='Expir'){
       await this.demandeService.updateDemandeWhenExpir(aide.id);
@@ -52,6 +98,34 @@ export class AideService extends AideServiceBase {
     if(newStatus == 'EnCours' && aide.suspendue){
     await this.addSuspendActivity(aide)
     }
+
+    //envoi de la notification au tresorier
+    if(currentAide?.acteurVersementId !== aide.acteurVersementId)
+    {
+      if (aide.acteurVersementId==undefined) {
+        throw new Error("updateAide: args.where.id manquant ou invalide");
+      }
+      
+      const user = await this.prisma.user.findUnique({ where: { id: aide.acteurVersementId} });
+      if (user?.email && user.hasAccess) {
+        const lien_versement = `${process.env.FRONTEND_URL}/versements`;
+        await this.mailService.sendMailAsync(
+          'affectation-aide',
+          user.email,
+          {
+            lien_versement,
+            beneficiaire: `${currentAide?.contact.prenom} ${currentAide?.contact.nom}` ,
+            montant :`${aide.montant?.toLocaleString()}€`,
+            nombreVersements : `${aide.nombreVersements}`,
+            dateAide : `${aide.dateAide?.toLocaleDateString()}`,
+            demandeId :`${aide.demandeId}`
+           
+          },
+          "Vous avez été chargé du versement d'une aide",
+        );
+    }
+    }
+    
     return aide;
   }
 
