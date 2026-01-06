@@ -35,6 +35,7 @@ import { Versement } from "../../versement/base/Versement";
 import { Contact } from "../../contact/base/Contact";
 import { Demande } from "../../demande/base/Demande";
 import { AideService } from "../aide.service";
+import { User } from "src/user/base/User";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Aide)
 export class AideResolverBase {
@@ -106,6 +107,12 @@ export class AideResolverBase {
               connect: args.data.demande,
             }
           : undefined,
+
+        acteurVersement: args.data.acteurVersement
+          ? {
+              connect: args.data.acteurVersement,
+            }
+          : undefined,
       },
     });
   }
@@ -131,6 +138,12 @@ export class AideResolverBase {
           demande: args.data.demande
             ? {
                 connect: args.data.demande,
+              }
+            : undefined,
+
+          acteurVersement: args.data.acteurVersement
+            ? {
+                connect: args.data.acteurVersement,
               }
             : undefined,
         },
@@ -236,6 +249,25 @@ export class AideResolverBase {
   })
   async getContact(@graphql.Parent() parent: Aide): Promise<Contact | null> {
     const result = await this.service.getContact(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, {
+    nullable: true,
+    name: "acteurVersement",
+  })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async getActeurVersement(@graphql.Parent() parent: Aide): Promise<User | null> {
+    const result = await this.service.getActeurVersement(parent.id);
 
     if (!result) {
       return null;

@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type Aide {
+  acteurVersement: User
   contact: Contact
   createdAt: DateTime!
   crediteur: EnumAideCrediteur
@@ -26,6 +27,7 @@ type Aide {
 }
 
 input AideCreateInput {
+  acteurVersement: UserWhereUniqueInput
   contact: ContactWhereUniqueInput!
   crediteur: EnumAideCrediteur
   dateAide: DateTime
@@ -80,6 +82,7 @@ input AideOrderByInput {
 }
 
 input AideUpdateInput {
+  acteurVersement: UserWhereUniqueInput
   contact: ContactWhereUniqueInput
   crediteur: EnumAideCrediteur
   dateAide: DateTime
@@ -112,6 +115,7 @@ input AideUpdateManyWithoutDemandesInput {
 }
 
 input AideWhereInput {
+  acteurVersement: UserWhereUniqueInput
   contact: ContactWhereUniqueInput
   createdAt: DateTimeFilter
   crediteur: EnumAideCrediteur

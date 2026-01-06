@@ -19,6 +19,7 @@ import {
   Versement as PrismaVersement,
   Contact as PrismaContact,
   Demande as PrismaDemande,
+  User as PrismaUser,
 } from "@prisma/client";
 
 export class AideServiceBase {
@@ -83,6 +84,14 @@ export class AideServiceBase {
         where: { id: parentId },
       })
       .contact();
+  }
+
+  async getActeurVersement(parentId: number): Promise<PrismaUser | null> {
+    return this.prisma.aide
+      .findUnique({
+        where: { id: parentId },
+      })
+      .acteurVersement();
   }
 
   async getDemande(parentId: number): Promise<PrismaDemande | null> {

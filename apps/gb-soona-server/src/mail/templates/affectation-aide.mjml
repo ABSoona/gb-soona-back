@@ -1,0 +1,44 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+
+    <!-- Salutation -->
+    <mj-text font-size="16px" color="#555555" padding-bottom="10px">
+      Bonjour,
+    </mj-text>
+
+    <!-- Intro -->
+    <mj-text font-size="16px" color="#555555" padding-bottom="10px">
+      Vous avez été chargé du traitement du versement d'une nouvelle aide.
+      Vous trouverez ci-dessous le détail :
+    </mj-text>
+
+    <!-- Détails -->
+    <mj-text font-size="16px" color="#555555"  padding-bottom="10px">
+      <strong>Bénéficiaire :</strong> {{beneficiaire}}<br/>
+      <strong>Montant :</strong> {{montant}}<br/>
+      <strong>Nombre de versements :</strong> {{nombreVersements}}<br/>
+      <strong>Date de début :</strong> {{dateAide}}<br/>
+      <strong>N° Demande :</strong> {{demandeId}}
+    </mj-text>
+
+    <!-- Bouton -->
+    <mj-button
+      href="{{lien_versement}}"
+      background-color="#2563EB"
+      color="#ffffff"
+      padding="20px 0"
+      border-radius="6px"
+      font-size="16px"
+      align="left"
+    >
+      Accéder aux versements
+    </mj-button>
+
+    <!-- Footer -->
+    <mj-text font-size="13px" color="#999999" padding-top="20px">
+      Vous pouvez à tout moment régler les notifications que vous souhaitez recevoir
+      en vous rendant dans <em>Réglages &gt; Notifications</em>.
+    </mj-text>
+
+  </mj-column>
+</mj-section>
