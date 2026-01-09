@@ -1,0 +1,34 @@
+<mj-section background-color="#ffffff" padding="20px">
+  <mj-column>
+
+    <!-- Salutation -->
+    <mj-text font-size="16px" color="#555555" padding-bottom="10px">
+      Bonjour,
+    </mj-text>
+
+    <!-- Intro -->
+    <mj-text font-size="16px" color="#555555" padding-bottom="10px">
+     Le versement de l'aide de {{montant}} attribué à {{beneficiaire}} est prevue pour aujourd'hui, 
+      pensez a faire le virement correspondant et attacher la preuve au versement.
+    </mj-text>
+
+    <!-- Détails -->
+    <mj-text font-size="16px" color="#555555"  padding-bottom="10px">
+      <strong>Bénéficiaire :</strong> {{beneficiaire}}<br/>
+      <strong>Montant :</strong> {{montant}}<br/>
+      <strong>Nombre de versements :</strong> {{nombreVersements}}<br/>
+      <strong>Date de début :</strong> {{dateAide}}<br/>
+      <strong>N° Demande :</strong> {{demandeId}}
+    </mj-text>
+
+    <!-- Bouton -->
+   
+
+    <!-- Footer -->
+    <mj-text font-size="13px" color="#999999" padding-top="20px">
+      Vous pouvez à tout moment régler les notifications que vous souhaitez recevoir
+      en vous rendant dans <em>Réglages &gt; Notifications</em>.
+    </mj-text>
+
+  </mj-column>
+</mj-section>
