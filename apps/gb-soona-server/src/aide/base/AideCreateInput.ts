@@ -193,6 +193,15 @@ class AideCreateInput {
   reetudier!: boolean;
 
   @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  acteurAlertSent!: boolean;
+
+
+  @ApiProperty({
     required: false,
     type: String,
   })

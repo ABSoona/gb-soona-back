@@ -202,6 +202,17 @@ class AideUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  acteurAlertSent?: boolean;
+  
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()

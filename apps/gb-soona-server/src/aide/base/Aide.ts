@@ -194,6 +194,14 @@ class Aide {
   reetudier!: boolean;
 
   @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  acteurAlertSent!: boolean | false;
+
+  @ApiProperty({
     required: false,
     type: String,
   })
