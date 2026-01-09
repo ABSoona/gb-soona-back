@@ -502,6 +502,7 @@ export class DemandeControllerBase {
         montant: true,
         nombreVersements: true,
         reetudier: true,
+        acteurAlertSent:true,
         remarque: true,
         status: true,
         suspendue: true,

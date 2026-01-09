@@ -12,7 +12,7 @@ export class VersementAutoUpdateCronService {
     private readonly prisma: PrismaService,
   ) {}
 
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  @Cron(CronExpression.EVERY_30_MINUTES)
   async mettreAJourVersements() {
     const now = new Date();
     this.logger.log(`🔍 Vérification des versements à mettre à jour au statut "Verse"`);

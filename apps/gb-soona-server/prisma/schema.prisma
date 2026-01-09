@@ -32,6 +32,7 @@ model Aide {
   typeField         EnumAideTypeField?
   updatedAt         DateTime           @updatedAt
   versements        Versement[]
+  acteurAlertSent         Boolean            @default(false)
 }
 
 model Demande {
