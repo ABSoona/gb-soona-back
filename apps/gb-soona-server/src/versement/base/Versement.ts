@@ -85,7 +85,7 @@ class Versement {
   @Field(() => EnumVersementStatus, {
     nullable: true,
   })
-  status?: "AVerser" | "Verse" | "Planifie";
+  status?: "AVerser" | "Verse" | "Planifie" |"Annulee";
 
   @ApiProperty({
     required: true,

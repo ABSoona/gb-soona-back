@@ -71,7 +71,7 @@ class VersementCreateInput {
   })
   @IsEnum(EnumVersementStatus)
   @Field(() => EnumVersementStatus)
-  status!: "AVerser" | "Verse" | "Planifie";
+  status!: "AVerser" | "Verse" | "Planifie" | "Annulee";
 }
 
 export { VersementCreateInput as VersementCreateInput };
