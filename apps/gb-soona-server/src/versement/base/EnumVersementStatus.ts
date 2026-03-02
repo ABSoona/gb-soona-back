@@ -15,6 +15,7 @@ export enum EnumVersementStatus {
   AVerser = "AVerser",
   Verse = "Verse",
   Planifie="Planifie",
+  Annulee="Annulee",
 }
 
 registerEnumType(EnumVersementStatus, {

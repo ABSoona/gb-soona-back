@@ -327,4 +327,5 @@ enum EnumVersementStatus {
   AVerser
   Verse
   Planifie
+  Annulee
 }
