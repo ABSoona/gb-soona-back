@@ -71,23 +71,12 @@ export class AideService extends AideServiceBase {
     const  newStatus= args.data.status;
     const currentAide = await this.prisma.aide.findUnique({where : {id :aideId }, include:{contact:true}})
     const aide = await super.updateAide(args);
-    
-    if ((currentAide?.nombreVersements != args.data.nombreVersements && args.data.nombreVersements != null) ||
-        (currentAide?.dateAide !=args.data.dateAide && args.data.dateAide != null) ||
-        (currentAide?.frequence !=args.data.frequence && args.data.frequence != null)
-       ){
-      const versement = await this.prisma.versement.deleteMany({where:{aideId :{equals:aide.id},status:{equals:'AVerser'}}})
+    const VersementsVersees = await this.prisma.versement.count({where:{aideId :{equals:aide.id},status:{in:['Verse','Planifie']}}})
+    if (VersementsVersees == 0){
+      const versement = await this.prisma.versement.deleteMany({where:{aideId :{equals:aide.id}}})
       await this.createRelatedVersement(aide);
     }
-    else {
-      if (aide.montant != null ){
-        await this.prisma.versement.updateMany({where:{ aideId: aideId}, data:{
-          montant : aide.montant,
-        }
-        })
-      }
-        
-    }
+    
     
     //todo : await this.addUpdateActivity(aide);
     if(newStatus == 'EnCours' && aide.status=='Expir'){
