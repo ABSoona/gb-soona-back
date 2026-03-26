@@ -10,7 +10,7 @@ export class AidStatusCronService {
 
   constructor(private prisma: PrismaService, private demandeService: DemandeService) {}
   // clotue les demande qui on expiré il y 27 jours si jamais ils n'ont pas été cloturés avec les versements
-  @Cron(CronExpression.EVERY_30_MINUTES)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async handleAidExpiration() {
     this.logger.log("Mise a jour des status de taches");
     const now = new Date();
@@ -20,7 +20,7 @@ const aides = await this.prisma.aide.findMany({
    where: {
     status: 'EnCours',
     //reetudier: true,
-    dateExpiration: { lt: someMonthsAgo },
+    dateExpiration: { lt: now },
    /*  frequence: {
       not: 'Unefois', // ✅ nouvelle condition
     }, */

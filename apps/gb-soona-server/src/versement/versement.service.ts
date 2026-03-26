@@ -20,7 +20,8 @@ export class VersementService extends VersementServiceBase {
     const aide = await this.prisma.aide.findUnique({where:{id:versement.aideId}});
     const TousVerses = !((await this.prisma.versement.findMany({
       where:{aideId:versement.aideId,status: { in : ["AVerser","Planifie"]}}})).length>0);
-    if(TousVerses){
+      //on ferme les aide dont tout les verements on été versé et qui ne sont pas a reetudier
+    if(TousVerses && !aide?.reetudier ){
       await this.prisma.aide.update({where:{id:versement.aideId},data:{status:"Expir"}});
       aide?.frequence =="Mensuelle" && await this.notifyAideExpire(aide.id);
       await this.demandeService.updateDemandeWhenExpir(versement.aideId)
