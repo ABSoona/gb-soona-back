@@ -21,9 +21,9 @@ const aides = await this.prisma.aide.findMany({
     status: 'EnCours',
     //reetudier: true,
     dateExpiration: { lt: now },
-   /*  frequence: {
+     frequence: {
       not: 'Unefois', // ✅ nouvelle condition
-    }, */
+    }, 
   },
   include: {
     demande: true,
