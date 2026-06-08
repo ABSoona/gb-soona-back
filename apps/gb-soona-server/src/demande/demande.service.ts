@@ -106,7 +106,7 @@ export class DemandeService extends DemandeServiceBase {
     const demande = await this.prisma.demande.findUnique({ where: { id: data.demandeId } })
     const contact = await this.prisma.contact.findUnique({ where: { id: demande?.contactId } })
     console.log(subordonne, demande, contact)
-    const token = await this.tokenService.createTokenForPasswordReset(data.userId);
+    const token = await this.tokenService.createTokenForShare(data.userId);
     await this.prisma.user.update({ where: { id: user?.id }, data: { token: token } })
      //const template = (subordonne?.id===user?.id )?"visite-affecte-membre":"visite-affecte-benevole"
     user?.email && await this.mailService.sendMailAsync("partage-demande", user?.email, {

@@ -21,7 +21,7 @@ export class VisiteService extends VisiteServiceBase {
     const visite = await super.createVisite(args);
     const acteur = await this.prisma.user.findUnique({ where: { id: visite.acteurId }, include: { superieur: true } })
     const demande = await this.prisma.demande.findUnique({ where: { id: args.data.demande?.connect?.id }, include: { contact: true } })
-    const token = await this.tokenService.createTokenForPasswordReset(visite.acteurId);
+    const token = await this.tokenService.createTokenForShare(visite.acteurId);
     await this.prisma.user.update({ where: { id: visite.acteurId }, data: { token: token } })
 
     /////////////////////envoie du mail au visiteur
