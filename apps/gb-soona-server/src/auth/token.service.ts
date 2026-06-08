@@ -27,6 +27,20 @@ export class TokenService extends TokenServiceBase implements ITokenService {
             }
         );
     }
+    async createTokenForShare(userId: string): Promise<string> {
+        const secret = await this.secretsManager.getSecret<string>(EnumSecretsNameKey.JwtSecretKey);
+
+        if (!secret) {
+            throw new Error('Missing JWT secret');
+        }
+        return this.jwtService.signAsync(
+            { userId }, // payload
+            {
+                secret,
+                expiresIn: '168h',
+            }
+        );
+    }
 
     async decodeJwtToken(token: string): Promise<string> {
         const secret = await this.secretsManager.getSecret<string>(EnumSecretsNameKey.JwtSecretKey);
