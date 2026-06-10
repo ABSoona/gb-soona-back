@@ -15,7 +15,7 @@ export function buildCommitteeKeyboard(demandeId: number) {
     )
     .row(
       InlineKeyboard.text(
-        "⏸️ On en parle vendredi",
+        "⏸️ On en parle en comité",
         `vote:${demandeId}:postpone`
       )
     )
