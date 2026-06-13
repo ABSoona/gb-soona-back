@@ -17,10 +17,15 @@ COPY prisma/schema.prisma ./prisma/
 
 # generate the prisma client based on the schema
 RUN npm run prisma:generate
-
+RUN apt-get update && apt-get install -y \
+    chromium \
+    libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
+    libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
+    libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 \
+    && rm -rf /var/lib/apt/lists/*
 # copy over the code base
 COPY . .
-RUN npx puppeteer browsers install chrome
+
 # create the bundle of the application
 RUN npm run build
 
