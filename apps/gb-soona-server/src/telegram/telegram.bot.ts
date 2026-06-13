@@ -234,4 +234,24 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
       messageId: msg.message_id,
     });
   }
+  // Dans telegram.bot.ts, ajoutez cette méthode publique
+
+async sendDocument(
+  filePath: string,
+  fileName: string,
+  caption: string,
+  chatId?: number
+): Promise<void> {
+  if (!this.bot) throw new Error('Bot Telegram non initialisé');
+
+  const targetChatId = chatId ?? this.committeeChatId;
+  const { InputFile } = await import('grammy');
+
+  await this.bot.api.sendDocument(
+    targetChatId,
+    new InputFile(filePath, fileName),
+    { caption, parse_mode: 'Markdown' }
+  );
+}
+
 }

@@ -50,13 +50,22 @@ for (const aide of aides) {
         createdAt: now,
       },
     });
-    
-    const newDemandeStatus = aide.reetudier? 'en_commision':'clôturée'
+     const othersAides = await this.prisma.aide.findMany({where : {demandeId: aide.demandeId }});
+
+    const allAidesExpired = othersAides.every(
+  (otherAide) => otherAide.status === 'Expir'
+    );
+
+    const hasReetudier = othersAides.some(
+      (otherAide) => otherAide.reetudier === true
+    );
+    if(allAidesExpired){
+    const newDemandeStatus = hasReetudier? 'en_commision':'clôturée'
     await this.demandeService.updateDemande({
       where: { id: aide.demandeId },
       data: { status: newDemandeStatus },
     });
-
+    }
     // 4. Ajout d'une activité dans demandeActivity
     
   }
