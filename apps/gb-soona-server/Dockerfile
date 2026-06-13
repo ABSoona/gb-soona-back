@@ -20,11 +20,11 @@ RUN npm run prisma:generate
 
 # copy over the code base
 COPY . .
-
+RUN npx puppeteer browsers install chrome
 # create the bundle of the application
 RUN npm run build
 
-RUN npx puppeteer browsers install chrome
+
 
 
 # copier manuellement les templates MJML dans dist après le build
