@@ -24,6 +24,9 @@ COPY . .
 # create the bundle of the application
 RUN npm run build
 
+RUN npx puppeteer browsers install chrome
+
+
 # copier manuellement les templates MJML dans dist après le build
 RUN mkdir -p dist/mail/templates && cp -r src/mail/templates/* dist/mail/templates/
 
