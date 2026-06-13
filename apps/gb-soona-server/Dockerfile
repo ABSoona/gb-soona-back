@@ -17,12 +17,7 @@ COPY prisma/schema.prisma ./prisma/
 
 # generate the prisma client based on the schema
 RUN npm run prisma:generate
-RUN apt-get update && apt-get install -y \
-    chromium \
-    libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
-    libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
-    libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 \
-    && rm -rf /var/lib/apt/lists/*
+
 # copy over the code base
 COPY . .
 
@@ -47,6 +42,16 @@ ARG group=${user}
 ARG uid=1001
 ARG gid=$uid
 
+# [temporary] work around to be able to run prisma + Chromium dependencies
+RUN apt-get update -y && apt-get install -y \
+    openssl \
+    chromium \
+    libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
+    libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
+    libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 \
+    && rm -rf /var/lib/apt/lists/*
+    
+ENV PUPPETEER_SKIP_DOWNLOAD=true
 # [temporary] work around to be able to run prisma
 RUN apt-get update -y && apt-get install -y openssl
 
