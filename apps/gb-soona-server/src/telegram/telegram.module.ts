@@ -12,5 +12,6 @@ import { CommitteeModule } from "../committee/committee.module";
   ],
   controllers: [TelegramController],
   providers: [TelegramService, TelegramBot],
+  exports: [TelegramBot],
 })
 export class TelegramModule {}

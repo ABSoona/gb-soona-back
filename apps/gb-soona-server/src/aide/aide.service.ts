@@ -80,7 +80,7 @@ export class AideService extends AideServiceBase {
     
     //todo : await this.addUpdateActivity(aide);
     if(newStatus == 'EnCours' && aide.status=='Expir'){
-      await this.demandeService.updateDemandeWhenExpir(aide.id);
+     // await this.demandeService.updateDemandeWhenExpir(aide.id);
       console.log("Envoi du mail de notification expiration aide")
      
     }
