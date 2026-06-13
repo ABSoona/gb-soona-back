@@ -21,7 +21,7 @@ export class MonthlyReportCronService {
   // Exécution le 1er de chaque mois à 08:00
   @Cron(CronExpression.EVERY_5_MINUTES)
   async handleMonthlyReport() {
-    this.logger.log('Début de la génération du rapport...');
+    this.logger.log('Début de la génération du rapport mensuel...');
 
     const now = new Date();
     const targetDate = subMonths(now, 1);
@@ -169,9 +169,10 @@ export class MonthlyReportCronService {
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
         <style>
+          @page { size: 1280px 720px; margin: 0; }
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { background: #e5e7eb; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px; }
-          .slide-container { width: 1280px; height: 720px; background: #FFFFFF; font-family: 'Inter', sans-serif; color: #065F46; overflow: hidden; page-break-after: always; }
+          html, body { margin: 0; padding: 0; background: #FFFFFF; }
+          .slide-container { width: 1280px; height: 720px; background: #FFFFFF; font-family: 'Inter', sans-serif; color: #065F46; overflow: hidden; page-break-after: always; page-break-inside: avoid; }
           .top-bar { width: 100%; height: 5px; background: #10B981; }
           .header { background: #064E3B; padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
           .header h1 { font-size: 28px; font-weight: 700; color: #FFFFFF; }
@@ -343,6 +344,8 @@ export class MonthlyReportCronService {
         width: '1280px',
         height: '720px',
         printBackground: true,
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
+        preferCSSPageSize: true,
       });
 
       await browser.close();
