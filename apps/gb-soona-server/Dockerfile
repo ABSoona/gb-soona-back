@@ -25,13 +25,14 @@ COPY . .
 RUN npm run build
 
 
-
-
 # copier manuellement les templates MJML dans dist après le build
 RUN mkdir -p dist/mail/templates && cp -r src/mail/templates/* dist/mail/templates/
 
 # copier aussi les assets email (images, etc.)
 RUN mkdir -p dist/mail/assets && cp -r src/mail/assets/* dist/mail/assets/
+
+# copier les assets PDF (logo, etc.) dans dist après le build
+RUN mkdir -p dist/demande/assets && cp -r src/demande/assets/* dist/demande/assets/
 
 # multi-stage: production (runtime)
 FROM node:18.13.0-slim AS production
@@ -50,7 +51,7 @@ RUN apt-get update -y && apt-get install -y \
     libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
     libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 \
     && rm -rf /var/lib/apt/lists/*
-    
+
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 # [temporary] work around to be able to run prisma
 RUN apt-get update -y && apt-get install -y openssl
