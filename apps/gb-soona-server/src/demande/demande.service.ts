@@ -134,7 +134,7 @@ export class DemandeService extends DemandeServiceBase {
     console.log(userId)
     const user = await this.prisma.user.findUnique({ where: { id: userId } })
     if (user?.token === token) {
-      return generateDemandePdf(demande, contact, res);
+      return await generateDemandePdf(demande, contact, res);
     } else {
       throw new common.BadRequestException(`invalid token`);
     }
@@ -150,7 +150,7 @@ export class DemandeService extends DemandeServiceBase {
     if (!contact) {
       throw new common.InternalServerErrorException(`Contact  introuvable`);
     }
-    return generateDemandePdf(demande, contact, res);
+    return await generateDemandePdf(demande, contact, res);
    
   }
 
