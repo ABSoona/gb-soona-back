@@ -19,7 +19,7 @@ export class MonthlyReportCronService {
   ) {}
 
   // Exécution le 1er de chaque mois à 08:00
-  @Cron('0 8 1 * *')
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async handleMonthlyReport() {
     this.logger.log('Début de la génération du rapport mensuel...');
 
@@ -31,6 +31,9 @@ export class MonthlyReportCronService {
     const moisAnneeStr = format(targetDate, 'MMMM yyyy', { locale: fr });
     const moisAnneeCapitalized =
       moisAnneeStr.charAt(0).toUpperCase() + moisAnneeStr.slice(1);
+
+    const LOGO_PATH = path.resolve(__dirname, '../../assets/soona-logo.png');
+    const LOGO_SRC = `data:image/png;base64,${fs.readFileSync(LOGO_PATH).toString('base64')}`;
 
     try {
       // ==========================================
@@ -172,47 +175,49 @@ export class MonthlyReportCronService {
           @page { size: 1280px 720px; margin: 0; }
           * { margin: 0; padding: 0; box-sizing: border-box; }
           html, body { margin: 0; padding: 0; background: #FFFFFF; }
-          .slide-container { width: 1280px; height: 720px; background: #FFFFFF; font-family: 'Inter', sans-serif; color: #065F46; overflow: hidden; page-break-after: always; page-break-inside: avoid; }
-          .top-bar { width: 100%; height: 5px; background: #10B981; }
-          .header { background: #064E3B; padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
-          .header h1 { font-size: 28px; font-weight: 700; color: #FFFFFF; }
-          .header .month-badge { font-size: 15px; font-weight: 600; color: #D1FAE5; background: rgba(255,255,255,0.12); padding: 5px 16px; border-radius: 4px; }
-          .body { display: flex; padding: 24px 48px; gap: 0; height: calc(100% - 75px); }
-          .col-left { width: 38%; padding-right: 36px; border-right: 2px solid #D1FAE5; display: flex; flex-direction: column; gap: 10px; }
+          .slide-container { width: 1280px; height: 720px; background: #FFFFFF; font-family: 'Inter', sans-serif; color: #1a5f7a; overflow: hidden; page-break-after: always; page-break-inside: avoid; }
+          .top-bar { width: 100%; height: 5px; background: #3bbcd4; }
+          .header { background: #2aa8c4; padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; }
+          .header-left { display: flex; align-items: center; gap: 18px; }
+          .header-logo { height: 44px; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
+          .header h1 { font-size: 26px; font-weight: 700; color: #FFFFFF; }
+          .header .month-badge { font-size: 15px; font-weight: 600; color: #FFFFFF; background: rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 4px; }
+          .body { display: flex; padding: 24px 48px; gap: 0; height: calc(100% - 73px); }
+          .col-left { width: 38%; padding-right: 36px; border-right: 2px solid #b8e8f0; display: flex; flex-direction: column; gap: 10px; }
           .col-right { width: 62%; padding-left: 36px; }
           .col-half { width: 50%; display: flex; flex-direction: column; gap: 20px; }
-          .col-half.left { padding-right: 48px; border-right: 2px solid #D1FAE5; }
+          .col-half.left { padding-right: 48px; border-right: 2px solid #b8e8f0; }
           .col-half.right { padding-left: 48px; }
-          .section-title { font-size: 13px; font-weight: 700; color: #10B981; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+          .section-title { font-size: 13px; font-weight: 700; color: #2aa8c4; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
           .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-          .kpi-card { background: #F0FDF4; border-left: 4px solid #10B981; padding: 12px 14px; }
+          .kpi-card { background: #eaf8fb; border-left: 4px solid #2aa8c4; padding: 12px 14px; }
           .kpi-card.refused  { border-left-color: #6B7280; }
           .kpi-card.backlog  { border-left-color: #F59E0B; }
-          .kpi-card.accepted { border-left-color: #10B981; }
-          .kpi-card.received { border-left-color: #064E3B; }
-          .kpi-value { font-size: 36px; font-weight: 700; color: #064E3B; line-height: 1; }
-          .kpi-label { font-size: 13px; font-weight: 400; color: #065F46; margin-top: 4px; }
-          .visites-box { margin-top: 12px; background: #D1FAE5; padding: 12px 14px; border-left: 4px solid #064E3B; }
-          .visites-box .visites-title { font-size: 13px; font-weight: 700; color: #064E3B; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-          .visites-box .visites-value { font-size: 28px; font-weight: 700; color: #064E3B; }
-          .visites-box .visites-note { font-size: 11px; color: #065F46; margin-top: 4px; font-style: italic; }
+          .kpi-card.accepted { border-left-color: #2aa8c4; }
+          .kpi-card.received { border-left-color: #1a7a94; }
+          .kpi-value { font-size: 36px; font-weight: 700; color: #1a5f7a; line-height: 1; }
+          .kpi-label { font-size: 13px; font-weight: 400; color: #2a7a94; margin-top: 4px; }
+          .visites-box { margin-top: 12px; background: #b8e8f0; padding: 12px 14px; border-left: 4px solid #1a7a94; }
+          .visites-box .visites-title { font-size: 13px; font-weight: 700; color: #1a5f7a; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+          .visites-box .visites-value { font-size: 28px; font-weight: 700; color: #1a5f7a; }
+          .visites-box .visites-note { font-size: 11px; color: #1a5f7a; margin-top: 4px; font-style: italic; }
           table { width: 100%; border-collapse: collapse; font-size: 14px; }
-          thead tr { background: #064E3B; color: #FFFFFF; }
+          thead tr { background: #2aa8c4; color: #FFFFFF; }
           thead th { padding: 9px 12px; font-weight: 700; text-align: center; font-size: 13px; }
           thead th:first-child { text-align: left; }
-          tbody tr:nth-child(odd)  { background: #F0FDF4; }
+          tbody tr:nth-child(odd)  { background: #eaf8fb; }
           tbody tr:nth-child(even) { background: #FFFFFF; }
-          tbody tr.total-row { background: #D1FAE5; font-weight: 700; }
-          tbody td { padding: 7px 12px; text-align: center; color: #065F46; font-size: 14px; }
+          tbody tr.total-row { background: #b8e8f0; font-weight: 700; }
+          tbody td { padding: 7px 12px; text-align: center; color: #1a5f7a; font-size: 14px; }
           tbody td:first-child { text-align: left; font-weight: 600; }
           .note-text { font-size: 11px; color: #6B7280; font-style: italic; margin-top: 8px; }
           .big-metric { display: flex; flex-direction: column; gap: 4px; margin-bottom: 20px; }
-          .big-value { font-size: 64px; font-weight: 700; color: #064E3B; line-height: 1; }
-          .big-label { font-size: 18px; font-weight: 400; color: #065F46; }
-          .divider { width: 48px; height: 3px; background: #10B981; margin-bottom: 20px; }
-          .info-box { background: #F0FDF4; border-left: 4px solid #10B981; padding: 14px 18px; margin-top: 8px; }
-          .info-box .info-label { font-size: 13px; font-weight: 600; color: #064E3B; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-          .info-box .info-value { font-size: 22px; font-weight: 700; color: #064E3B; }
+          .big-value { font-size: 64px; font-weight: 700; color: #1a5f7a; line-height: 1; }
+          .big-label { font-size: 18px; font-weight: 400; color: #2a7a94; }
+          .divider { width: 48px; height: 3px; background: #2aa8c4; margin-bottom: 20px; }
+          .info-box { background: #eaf8fb; border-left: 4px solid #2aa8c4; padding: 14px 18px; margin-top: 8px; }
+          .info-box .info-label { font-size: 13px; font-weight: 600; color: #1a5f7a; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+          .info-box .info-value { font-size: 22px; font-weight: 700; color: #1a5f7a; }
           .annule-box { background: #FEF9C3; border-left: 4px solid #F59E0B; padding: 12px 18px; margin-top: 12px; }
           .annule-box .annule-label { font-size: 13px; font-weight: 600; color: #92400E; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
           .annule-box .annule-value { font-size: 18px; font-weight: 700; color: #92400E; }
@@ -224,7 +229,10 @@ export class MonthlyReportCronService {
         <div class="slide-container">
           <div class="top-bar"></div>
           <div class="header">
-            <h1>Demandes &amp; Visites</h1>
+            <div class="header-left">
+              <img class="header-logo" src="${LOGO_SRC}" alt="Logo Soona" />
+              <h1>Demandes &amp; Visites</h1>
+            </div>
             <span class="month-badge">${moisAnneeCapitalized}</span>
           </div>
           <div class="body">
@@ -286,7 +294,10 @@ export class MonthlyReportCronService {
         <div class="slide-container">
           <div class="top-bar"></div>
           <div class="header">
-            <h1>Aides &amp; Versements</h1>
+            <div class="header-left">
+              <img class="header-logo" src="${LOGO_SRC}" alt="Logo Soona" />
+              <h1>Aides &amp; Versements</h1>
+            </div>
             <span class="month-badge">${moisAnneeCapitalized}</span>
           </div>
           <div class="body">
