@@ -31,8 +31,6 @@ RUN mkdir -p dist/mail/templates && cp -r src/mail/templates/* dist/mail/templat
 # copier aussi les assets email (images, etc.)
 RUN mkdir -p dist/mail/assets && cp -r src/mail/assets/* dist/mail/assets/
 
-# copier les assets PDF (logo, etc.) dans dist après le build
-RUN mkdir -p dist/demande/assets && cp -r src/demande/assets/* dist/demande/assets/
 
 # multi-stage: production (runtime)
 FROM node:18.13.0-slim AS production
