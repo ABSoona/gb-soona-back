@@ -31,7 +31,8 @@ RUN mkdir -p dist/mail/templates && cp -r src/mail/templates/* dist/mail/templat
 # copier aussi les assets email (images, etc.)
 RUN mkdir -p dist/mail/assets && cp -r src/mail/assets/* dist/mail/assets/
 
-COPY --from=base /app/assets ./assets
+
+
 # multi-stage: production (runtime)
 FROM node:18.13.0-slim AS production
 
@@ -69,6 +70,7 @@ COPY --from=base /app/prisma ./prisma
 COPY --from=base /app/scripts ./scripts
 COPY --from=base /app/src ./src
 COPY --from=base /app/tsconfig* ./
+COPY --from=base /app/assets ./assets 
 
 # change ownership of the workspace directory
 RUN chown -R ${uid}:${gid} /app/
