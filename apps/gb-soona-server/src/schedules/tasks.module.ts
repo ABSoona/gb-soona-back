@@ -7,10 +7,14 @@ import { VersementAutoUpdateCronService } from './VersementAutoUpdateCronService
 import { VersementModule } from 'src/versement/versement.module';
 import { MailModule } from 'src/mail/mail.module';
 import { VersementReminderService } from './Versement-reminder';
+import { TelegramModule } from 'src/telegram/telegram.module';
+import { MonthlyReportCronService } from './monthly-report-cron.service';
 
 @Module({
-  imports: [DemandeModule,VersementModule,MailModule],
-  providers: [AidStatusCronService,AbandonDemandeCronService, PrismaService,VersementAutoUpdateCronService,VersementReminderService
+  imports: [DemandeModule,VersementModule,MailModule,TelegramModule],
+  providers: [AidStatusCronService,AbandonDemandeCronService, 
+    PrismaService,VersementAutoUpdateCronService,VersementReminderService,
+    MonthlyReportCronService
 
   ],
 })

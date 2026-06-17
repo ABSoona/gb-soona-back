@@ -24,11 +24,14 @@ COPY . .
 # create the bundle of the application
 RUN npm run build
 
+
 # copier manuellement les templates MJML dans dist après le build
 RUN mkdir -p dist/mail/templates && cp -r src/mail/templates/* dist/mail/templates/
 
 # copier aussi les assets email (images, etc.)
 RUN mkdir -p dist/mail/assets && cp -r src/mail/assets/* dist/mail/assets/
+
+
 
 # multi-stage: production (runtime)
 FROM node:18.13.0-slim AS production
@@ -39,6 +42,16 @@ ARG group=${user}
 ARG uid=1001
 ARG gid=$uid
 
+# [temporary] work around to be able to run prisma + Chromium dependencies
+RUN apt-get update -y && apt-get install -y \
+    openssl \
+    chromium \
+    libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
+    libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
+    libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PUPPETEER_SKIP_DOWNLOAD=true
 # [temporary] work around to be able to run prisma
 RUN apt-get update -y && apt-get install -y openssl
 
@@ -57,6 +70,7 @@ COPY --from=base /app/prisma ./prisma
 COPY --from=base /app/scripts ./scripts
 COPY --from=base /app/src ./src
 COPY --from=base /app/tsconfig* ./
+COPY --from=base /app/assets ./assets 
 
 # change ownership of the workspace directory
 RUN chown -R ${uid}:${gid} /app/
