@@ -19,7 +19,7 @@ export class MonthlyReportCronService {
   ) {}
 
   // Exécution le 1er de chaque mois à 08:00
-  @Cron(CronExpression.EVERY_5_MINUTES)
+  @Cron('0 8 1 * *')
   async handleMonthlyReport() {
     this.logger.log('Début de la génération du rapport mensuel...');
 
