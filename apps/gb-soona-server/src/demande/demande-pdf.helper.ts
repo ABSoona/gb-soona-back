@@ -37,13 +37,33 @@ function row(label: string, value: string): string {
 // ---------------------------------------------------------------------------
 // Template HTML
 // ---------------------------------------------------------------------------
+function calculateAge(
+  dateNaissance: string | Date | null | undefined
+): string {
+  if (!dateNaissance) return "—";
 
+  const birthDate = new Date(dateNaissance);
+  const today = new Date();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  if (
+    today.getMonth() < birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() &&
+      today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  return age.toString();
+}
 function buildHtml(demande: Demande, contact: Contact): string {
+ 
   const age =
-    contact.age
-      ? (new Date().getFullYear() - contact.age).toString()
+    contact.dateNaissance
+      ? (calculateAge(contact.dateNaissance))?.toString()
       : "—";
-
+   
   const adresse = [contact.adresse, contact.codePostal, contact.ville]
     .filter(Boolean)
     .join(" ") || "—";
