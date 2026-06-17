@@ -16,6 +16,7 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
 
   private bot!: Bot;
   private committeeChatId!: number;
+  private bureauChatId!: number;
   private autoLeaveUnauthorized = true;
 
   // Mémoire runtime
@@ -65,6 +66,13 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
       return false;
     }
 
+    const docChatIdStr = this.config.get<string>("TELEGRAM_BUREAU_CHAT_ID");
+    this.bureauChatId = docChatIdStr ? Number(docChatIdStr) : this.committeeChatId;
+    if (!Number.isFinite(this.bureauChatId)) {
+      this.logger.warn("TELEGRAM_BUREAU_CHAT_ID invalide : fallback sur TELEGRAM_COMMITTEE_CHAT_ID.");
+      this.bureauChatId = this.committeeChatId;
+    }
+
     this.autoLeaveUnauthorized =
       this.config.get<string>("TELEGRAM_AUTO_LEAVE_UNAUTHORIZED") !== "false";
 
@@ -78,7 +86,7 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
   private initSecurity() {
     this.bot.on("my_chat_member", async (ctx) => {
       const chatId = ctx.chat?.id;
-      if (!chatId || chatId === this.committeeChatId) return;
+      if (!chatId || chatId === this.committeeChatId || chatId === this.bureauChatId) return;
       if (!this.autoLeaveUnauthorized) return;
 
       try {
@@ -244,7 +252,7 @@ async sendDocument(
 ): Promise<void> {
   if (!this.bot) throw new Error('Bot Telegram non initialisé');
 
-  const targetChatId = chatId ?? this.committeeChatId;
+  const targetChatId = chatId ?? this.bureauChatId;
   const { InputFile } = await import('grammy');
 
   await this.bot.api.sendDocument(
