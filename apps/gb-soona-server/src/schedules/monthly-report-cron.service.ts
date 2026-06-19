@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron } from '@nestjs/schedule';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { TelegramBot } from 'src/telegram/telegram.bot';
 import * as puppeteer from 'puppeteer';
@@ -182,15 +182,6 @@ export class MonthlyReportCronService {
 
       const statsTraitement = calcStats(delaisTraitement);
 
-      // Versements annulés dans le mois
-      const versementsAnnules = await this.prisma.versement.aggregate({
-        where: {
-          status: 'Annulee',
-          dataVersement: { gte: debut, lte: fin },
-        },
-        _count: true,
-        _sum: { montant: true },
-      });
 
       // ==========================================
       // 2. AGRÉGATION PAR DÉPARTEMENT
@@ -305,9 +296,6 @@ export class MonthlyReportCronService {
           .info-box { background: #eaf8fb; border-left: 4px solid #2aa8c4; padding: 14px 18px; margin-top: 8px; }
           .info-box .info-label { font-size: 13px; font-weight: 600; color: #1a5f7a; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
           .info-box .info-value { font-size: 22px; font-weight: 700; color: #1a5f7a; }
-          .annule-box { background: #FEF9C3; border-left: 4px solid #F59E0B; padding: 12px 18px; margin-top: 12px; }
-          .annule-box .annule-label { font-size: 13px; font-weight: 600; color: #92400E; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
-          .annule-box .annule-value { font-size: 18px; font-weight: 700; color: #92400E; }
         </style>
       </head>
       <body>
@@ -411,7 +399,7 @@ export class MonthlyReportCronService {
                 <div class="info-label">Montant total des aides</div>
                 <div class="info-value">${formatEuro(aides._sum.montant)}</div>
               </div>
-              <div class="note-text">Toutes les aides sont de nature financière. Comptabilisées selon la date de création </div>
+              <div class="note-text">Toutes les aides sont de nature financière. Comptabilisées selon la date de création.</div>
             </div>
             <div class="col-half right">
               <div class="section-title">Versements effectués</div>
@@ -423,10 +411,6 @@ export class MonthlyReportCronService {
               <div class="info-box">
                 <div class="info-label">Montant total versé</div>
                 <div class="info-value">${formatEuro(versements._sum.montant)}</div>
-              </div>
-              <div class="annule-box">
-                <div class="annule-label">Versements annulés</div>
-                <div class="annule-value">${versementsAnnules._count} versements — ${formatEuro(versementsAnnules._sum.montant)}</div>
               </div>
               <div class="note-text">Basés sur la date effective de versement (dataVersement).</div>
             </div>
