@@ -19,7 +19,7 @@ export class MonthlyReportCronService {
   ) {}
 
   // Exécution le 1er de chaque mois à 08:00
-  @Cron('0 8 1 * *')
+  @Cron(CronExpression.EVERY_MINUTE)
   async handleMonthlyReport() {
     this.logger.log('Début de la génération du rapport mensuel...');
 
@@ -31,6 +31,11 @@ export class MonthlyReportCronService {
     const moisAnneeStr = format(targetDate, 'MMMM yyyy', { locale: fr });
     const moisAnneeCapitalized =
       moisAnneeStr.charAt(0).toUpperCase() + moisAnneeStr.slice(1);
+
+    // Période glissante 3 mois pour les indicateurs de délais
+    const debut3Mois = startOfMonth(subMonths(now, 3));
+    const fin3Mois = endOfMonth(subMonths(now, 1));
+    const periode3MoisStr = `${format(debut3Mois, 'MMM', { locale: fr })} – ${format(fin3Mois, 'MMM yyyy', { locale: fr })}`;
 
     const LOGO_PATH = path.resolve(__dirname, '../../assets/soona-logo.png');
     const LOGO_SRC = `data:image/png;base64,${fs.readFileSync(LOGO_PATH).toString('base64')}`;
@@ -94,6 +99,88 @@ export class MonthlyReportCronService {
         _count: true,
         _sum: { montant: true },
       });
+
+      // ==========================================
+      // DÉLAIS DE PRISE EN CHARGE
+      // Délai entre createdAt de la demande et la première prise de contact
+      // (DemandeActivity typeField = priseContactEchec ou priseContactReussie)
+      // ou à défaut le premier passage en statut EnAttenteDocs
+      // ==========================================
+
+      // Demandes reçues sur les 3 derniers mois avec leurs activités et historique de statut
+      const demandesAvecDelais = await this.prisma.demande.findMany({
+        where: { createdAt: { gte: debut3Mois, lte: fin3Mois } },
+        select: {
+          id: true,
+          createdAt: true,
+          demandeActivities: {
+            where: { typeField: { in: ['priseContactEchec', 'priseContactReussie'] } },
+            orderBy: { createdAt: 'asc' },
+            take: 1,
+            select: { createdAt: true },
+          },
+          demandeStatusHistories: {
+            where: { status: 'EnAttenteDocs' },
+            orderBy: { createdAt: 'asc' },
+            take: 1,
+            select: { createdAt: true },
+          },
+        },
+      });
+
+      const delaisPriseEnCharge: number[] = [];
+      for (const d of demandesAvecDelais) {
+        let eventDate: Date | null = null;
+        if (d.demandeActivities.length > 0) {
+          eventDate = d.demandeActivities[0].createdAt;
+        } else if (d.demandeStatusHistories.length > 0) {
+          eventDate = d.demandeStatusHistories[0].createdAt;
+        }
+        if (eventDate && d.createdAt) {
+          const diffMs = eventDate.getTime() - d.createdAt.getTime();
+          const diffJours = Math.round(diffMs / (1000 * 60 * 60 * 24));
+          if (diffJours >= 0) delaisPriseEnCharge.push(diffJours);
+        }
+      }
+
+      const calcStats = (arr: number[]) => {
+        if (arr.length === 0) return { moy: null, min: null, max: null };
+        const moy = Math.round(arr.reduce((a, b) => a + b, 0) / arr.length);
+        return { moy, min: Math.min(...arr), max: Math.max(...arr) };
+      };
+
+      const statsPriseEnCharge = calcStats(delaisPriseEnCharge);
+
+      // ==========================================
+      // DÉLAIS DE TRAITEMENT (réception → comité)
+      // Basé sur le premier passage en_commision dans DemandeStatusHistory
+      // Exclut les demandes avec plusieurs passages en_commision
+      // ==========================================
+
+      const demandesAvecCommision = await this.prisma.demande.findMany({
+        where: { createdAt: { gte: debut3Mois, lte: fin3Mois } },
+        select: {
+          id: true,
+          createdAt: true,
+          demandeStatusHistories: {
+            where: { status: 'en_commision' },
+            orderBy: { createdAt: 'asc' },
+            select: { createdAt: true },
+          },
+        },
+      });
+
+      const delaisTraitement: number[] = [];
+      for (const d of demandesAvecCommision) {
+        // Exclure les demandes avec plusieurs passages en_commision
+        if (d.demandeStatusHistories.length !== 1) continue;
+        if (!d.createdAt) continue;
+        const diffMs = d.demandeStatusHistories[0].createdAt.getTime() - d.createdAt.getTime();
+        const diffJours = Math.round(diffMs / (1000 * 60 * 60 * 24));
+        if (diffJours >= 0) delaisTraitement.push(diffJours);
+      }
+
+      const statsTraitement = calcStats(delaisTraitement);
 
       // Versements annulés dans le mois
       const versementsAnnules = await this.prisma.versement.aggregate({
@@ -256,12 +343,24 @@ export class MonthlyReportCronService {
                   <div class="kpi-label">Backlog</div>
                 </div>
               </div>
+              <!-- DÉLAIS -->
+              <div class="section-title" style="margin-top:8px;">Délais (${periode3MoisStr})</div>
+              <div class="kpi-grid">
+                <div class="kpi-card" style="border-left-color:#7c3aed;">
+                  <div class="kpi-value" style="font-size:22px;">${statsPriseEnCharge.moy !== null ? statsPriseEnCharge.moy + ' j' : 'N/A'}</div>
+                  <div class="kpi-label">Délai de prise en charge moyen<br/><span style="font-size:10px;">min ${statsPriseEnCharge.min ?? '—'} j · max ${statsPriseEnCharge.max ?? '—'} j</span></div>
+                </div>
+                <div class="kpi-card" style="border-left-color:#0891b2;">
+                  <div class="kpi-value" style="font-size:22px;">${statsTraitement.moy !== null ? statsTraitement.moy + ' j' : 'N/A'}</div>
+                  <div class="kpi-label">Délais de traitement moyen<br/><span style="font-size:10px;">min ${statsTraitement.min ?? '—'} j · max ${statsTraitement.max ?? '—'} j</span></div>
+                </div>
+              </div>
               <div class="visites-box">
                 <div class="visites-title">Visites bénévoles</div>
                 <div class="visites-value">${visitesProg} programmées</div>
                 <div class="visites-note">Attribuées à un bénévole. La date de réalisation effective est rarement mise à jour — chiffre sous-estimé.</div>
               </div>
-              <div class="note-text">Acceptées/Refusées : basées sur la date de décision. Backlog : stock total des demandes au statut « reçue ».</div>
+              <div class="note-text">Acceptées/Refusées : basées sur la date de décision. Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le passage en comité.</div>
             </div>
             <div class="col-right">
               <div class="section-title">Répartition par département</div>

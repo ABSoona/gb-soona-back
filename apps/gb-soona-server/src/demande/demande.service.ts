@@ -85,6 +85,7 @@ export class DemandeService extends DemandeServiceBase {
   
     if (demande.status && current?.status && current?.status !== demande.status) {
       await logStatusChange(this.prisma, current.status, demande.status, demande.id);
+      
       await this.notificationService.notifyStatusChange(demande.id, current.status, demande.status);
     }
   
