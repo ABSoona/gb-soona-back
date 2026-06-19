@@ -19,7 +19,7 @@ export class MonthlyReportCronService {
   ) {}
 
   // Exécution le 1er de chaque mois à 08:00
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron('0 8 1 * *')
   async handleMonthlyReport() {
     this.logger.log('Début de la génération du rapport mensuel...');
 
@@ -411,7 +411,7 @@ export class MonthlyReportCronService {
                 <div class="info-label">Montant total des aides</div>
                 <div class="info-value">${formatEuro(aides._sum.montant)}</div>
               </div>
-              <div class="note-text">Toutes les aides sont de nature financière. Comptabilisées selon la date de création (createdAt).</div>
+              <div class="note-text">Toutes les aides sont de nature financière. Comptabilisées selon la date de création </div>
             </div>
             <div class="col-half right">
               <div class="section-title">Versements effectués</div>
