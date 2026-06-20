@@ -18,16 +18,17 @@ export function buildCommitteeKeyboard(demandeId: number) {
         "⏸️ On en parle en comité",
         `vote:${demandeId}:postpone`
       )
-    )
+    );
 }
 
 /**
- * Construction du message Telegram à partir d’un payload fourni par le front
+ * Construction du message Telegram à partir d'un payload fourni par le front
  */
 export function buildCommitteeMessage(
   payload: PublishCommitteePayload,
-  results: { accept: number; postpone: number; },
-  closed = false
+  results: { accept: number; postpone: number },
+  closed = false,
+  voterNames: string[] = []
 ): string {
   const lines: string[] = [];
 
@@ -40,21 +41,24 @@ export function buildCommitteeMessage(
     lines.push(`• ${line}`);
   }
   lines.push("");
-  lines.push(`Recommandation de l'AS : ${payload.recommandation=="accept"?"Accorder":"Rejet"}`);
+  lines.push(`Recommandation de l'AS : ${payload.recommandation == "accept" ? "Accorder" : "Rejet"}`);
   lines.push(`${payload.message}`);
   lines.push("");
   lines.push(`🔗 Lien vers la demande :`);
   lines.push(`${payload.demandeUrl}`);
-  
-  if(payload.authoriseVote){
-  // Bloc décision
-      lines.push("");
-      lines.push(closed ? "Vote finale du comité :" : "Vote du comité :");
-      lines.push(`Accord : ${results.accept}`);
-      lines.push(`Ajournement : ${results.postpone}`);
-      //lines.push(`Refus : ${results.reject}`);
-  }
 
+  if (payload.authoriseVote) {
+    lines.push("");
+
+    // Votants affichés au-dessus du bloc vote
+    if (voterNames.length > 0) {
+      lines.push(`Votants : ${voterNames.join(", ")}`);
+    }
+
+    lines.push(closed ? "Vote finale du comité :" : "Vote du comité :");
+    lines.push(`Accord : ${results.accept}`);
+    lines.push(`Ajournement : ${results.postpone}`);
+  }
 
   if (closed) {
     lines.push("");
@@ -76,9 +80,7 @@ export function parseVoteData(
   const demandeId = Number(demandeIdRaw);
 
   if (!Number.isFinite(demandeId)) return null;
-  if (voteRaw !== "accept" && voteRaw !== "postpone") {
-    return null;
-  }
+  if (voteRaw !== "accept" && voteRaw !== "postpone") return null;
 
   return { demandeId, vote: voteRaw };
 }

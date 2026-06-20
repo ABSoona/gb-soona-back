@@ -6,7 +6,7 @@ import {
   buildCommitteeKeyboard,
   buildCommitteeMessage,
 } from "./telegram.utils";
-import { clearVotes, getResults, setVote } from "./vote.store";
+import { clearVotes, getResults, getVoterNames, setVote } from "./vote.store";
 import type { PublishCommitteePayload } from "./telegram.types";
 import { CommitteeService } from "src/committee/commitee.service";
 
@@ -24,9 +24,9 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
   private publishedMessages = new Map<number, { chatId: number; messageId: number }>();
   private closedDemandes = new Set<number>();
 
-  constructor(private readonly config: ConfigService,
-  private readonly committeeService: CommitteeService
-
+  constructor(
+    private readonly config: ConfigService,
+    private readonly committeeService: CommitteeService
   ) {}
 
   // =========================
@@ -126,7 +126,12 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
         return;
       }
 
-      setVote(demandeId, ctx.from.id, vote);
+      // Récupération du nom d'affichage du votant
+      const username = ctx.from.username
+        ? `@${ctx.from.username}`
+        : ctx.from.first_name;
+
+      setVote(demandeId, ctx.from.id, vote, username);
 
       const payload = this.publishedPayloads.get(demandeId);
       if (!payload) {
@@ -172,16 +177,17 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
 
       const results = getResults(demandeId);
 
-    // 🔴 ICI : mise à jour MÉTIER (DB)
-    await this.committeeService.closeDemande(demandeId, results,payload.recommandation);
-    // marque clôturée côté bot
-    this.closedDemandes.add(demandeId);
-    
-    // met à jour Telegram
-    await this.refreshMessage(demandeId, payload, true, ref);
-    clearVotes(demandeId);
-    await ctx.reply(`Vote clôturé pour la demande #${demandeId}.`);
-        });
+      // Mise à jour métier (DB)
+      await this.committeeService.closeDemande(demandeId, results, payload.recommandation);
+
+      // Marque clôturée côté bot
+      this.closedDemandes.add(demandeId);
+
+      // Met à jour Telegram
+      await this.refreshMessage(demandeId, payload, true, ref);
+      clearVotes(demandeId);
+      await ctx.reply(`Vote clôturé pour la demande #${demandeId}.`);
+    });
   }
 
   // =========================
@@ -194,7 +200,8 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
     ref?: { chatId: number; messageId: number }
   ) {
     const results = getResults(demandeId);
-    const text = buildCommitteeMessage(payload, results, closed);
+    const names = getVoterNames(demandeId);
+    const text = buildCommitteeMessage(payload, results, closed, names);
     const keyboard = closed ? undefined : buildCommitteeKeyboard(demandeId);
 
     const messageRef = ref ?? this.publishedMessages.get(demandeId);
@@ -205,11 +212,13 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
         messageRef.chatId,
         messageRef.messageId,
         text,
-        { reply_markup: keyboard,
-          link_preview_options: { is_disabled: true }, }
+        {
+          reply_markup: keyboard,
+          link_preview_options: { is_disabled: true },
+        }
       );
     } catch {
-      // édition parfois refusée si texte identique
+      // Édition parfois refusée si texte identique
     }
   }
 
@@ -218,16 +227,16 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
   // =========================
   async publishCommittee(payload: PublishCommitteePayload) {
     if (!this.bot) throw new Error("Bot Telegram non initialisé");
-  
+
     this.publishedPayloads.set(payload.demandeId, payload);
-  
+
     const results = getResults(payload.demandeId);
     const text = buildCommitteeMessage(payload, results, false);
-  
+
     const keyboard = payload.authoriseVote
       ? buildCommitteeKeyboard(payload.demandeId)
       : undefined;
-  
+
     const msg = await this.bot.api.sendMessage(
       this.committeeChatId,
       text,
@@ -236,30 +245,28 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
         link_preview_options: { is_disabled: true },
       }
     );
-  
+
     this.publishedMessages.set(payload.demandeId, {
       chatId: msg.chat.id,
       messageId: msg.message_id,
     });
   }
-  // Dans telegram.bot.ts, ajoutez cette méthode publique
 
-async sendDocument(
-  filePath: string,
-  fileName: string,
-  caption: string,
-  chatId?: number
-): Promise<void> {
-  if (!this.bot) throw new Error('Bot Telegram non initialisé');
+  async sendDocument(
+    filePath: string,
+    fileName: string,
+    caption: string,
+    chatId?: number
+  ): Promise<void> {
+    if (!this.bot) throw new Error("Bot Telegram non initialisé");
 
-  const targetChatId = chatId ?? this.bureauChatId;
-  const { InputFile } = await import('grammy');
+    const targetChatId = chatId ?? this.bureauChatId;
+    const { InputFile } = await import("grammy");
 
-  await this.bot.api.sendDocument(
-    targetChatId,
-    new InputFile(filePath, fileName),
-    { caption, parse_mode: 'Markdown' }
-  );
-}
-
+    await this.bot.api.sendDocument(
+      targetChatId,
+      new InputFile(filePath, fileName),
+      { caption, parse_mode: "Markdown" }
+    );
+  }
 }
