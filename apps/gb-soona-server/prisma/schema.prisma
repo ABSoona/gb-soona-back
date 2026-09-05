@@ -10,8 +10,8 @@ generator client {
 model Aide {
   contact           Contact            @relation(fields: [contactId], references: [id])
   contactId         Int
-  acteurVersement   User?                          @relation(name: "acteurVersement", fields: [acteurVersementId], references: [id])
-  acteurVersementId   String?
+  acteurVersement   User?              @relation(name: "acteurVersement", fields: [acteurVersementId], references: [id])
+  acteurVersementId String?
   createdAt         DateTime           @default(now())
   crediteur         EnumAideCrediteur?
   dateAide          DateTime?
@@ -32,53 +32,52 @@ model Aide {
   typeField         EnumAideTypeField?
   updatedAt         DateTime           @updatedAt
   versements        Versement[]
-  acteurAlertSent         Boolean            @default(false)
+  acteurAlertSent   Boolean            @default(false)
 }
 
 model Demande {
-  acteur                   User?                          @relation(name: "acteur", fields: [acteurId], references: [id])
-  acteurId                 String?
-  agesEnfants              String?
-  aides                    Aide[]
-  apl                      Int?
-  autresAides              String?
-  autresCharges            Int?
-  categorieDemandeur       EnumDemandeCategorieDemandeur?
-  contact                  Contact                        @relation(fields: [contactId], references: [id])
-  contactId                Int
-  createdAt                DateTime?                      @default(now())
-  dateVisite               DateTime?
-  demandeStatusHistories   DemandeStatusHistory[]
-  demandeActivities        DemandeActivity[]
-  dernierContact           DateTime?
-  derniereRelance          DateTime?
-  dettes                   Int?
-  documents                Document[]
-  facturesEnergie          Int?
-  id                       Int                            @id @default(autoincrement())
-  loyer                    Int?
-  natureDettes             String?
-  nombreEnfants            Int?                           @default(0)
-  nombreRelances           Int?
-  proprietaire             User?                          @relation(name: "demandesEnPropriete", fields: [proprietaireId], references: [id])
-  proprietaireId           String?
-  recommandation           String?
-  remarques                String?
-  revenus                  Int?
-  revenusConjoint          Int?
-  situationFamiliale       String?
-  situationProConjoint     String?
-  situationProfessionnelle String?
-  status                   String?
-  updatedAt                DateTime                       @updatedAt
-  visites                  Visite[]
-  fullSearch               String?
-  nombrePersonnes          Int?   
-  decisionDate             DateTime?
-  telegramComiteeAction    Boolean                      @default(false)                         
+  acteur                    User?                          @relation(name: "acteur", fields: [acteurId], references: [id])
+  acteurId                  String?
+  agesEnfants               String?
+  aides                     Aide[]
+  apl                       Int?
+  autresAides               String?
+  autresCharges             Int?
+  categorieDemandeur        EnumDemandeCategorieDemandeur?
+  contact                   Contact                        @relation(fields: [contactId], references: [id])
+  contactId                 Int
+  createdAt                 DateTime?                      @default(now())
+  dateVisite                DateTime?
+  demandeStatusHistories    DemandeStatusHistory[]
+  demandeSituationHistories DemandeSituationHistory[]
+  demandeActivities         DemandeActivity[]
+  dernierContact            DateTime?
+  derniereRelance           DateTime?
+  dettes                    Int?
+  documents                 Document[]
+  facturesEnergie           Int?
+  id                        Int                            @id @default(autoincrement())
+  loyer                     Int?
+  natureDettes              String?
+  nombreEnfants             Int?                           @default(0)
+  nombreRelances            Int?
+  proprietaire              User?                          @relation(name: "demandesEnPropriete", fields: [proprietaireId], references: [id])
+  proprietaireId            String?
+  recommandation            String?
+  remarques                 String?
+  revenus                   Int?
+  revenusConjoint           Int?
+  situationFamiliale        String?
+  situationProConjoint      String?
+  situationProfessionnelle  String?
+  status                    String?
+  updatedAt                 DateTime                       @updatedAt
+  visites                   Visite[]
+  fullSearch                String?
+  nombrePersonnes           Int?
+  decisionDate              DateTime?
+  telegramComiteeAction     Boolean                        @default(false)
 }
-
-
 
 model Contact {
   adresse         String?
@@ -86,7 +85,7 @@ model Contact {
   aides           Aide[]
   codePostal      Int?
   createdAt       DateTime   @default(now())
-  dateNaissance    DateTime?
+  dateNaissance   DateTime?
   dateVisite      DateTime?
   demandes        Demande[]
   documents       Document[]
@@ -103,14 +102,15 @@ model Contact {
 }
 
 model User {
-  adresseCodePostal   String?
-  adresseRue          String?
-  adresseVille        String?
+  adresseCodePostal           String?
+  adresseRue                  String?
+  adresseVille                String?
   createdAt                   DateTime                     @default(now())
-  demandeActivities DemandeActivity[]
-  demandesActeurs     Demande[]                            @relation(name: "acteur")
-  versementsActeurs     Aide[]                           @relation(name: "acteurVersement")
-  demandesEnPropriete Demande[]                            @relation(name: "demandesEnPropriete")
+  demandeActivities           DemandeActivity[]
+  demandeSituationHistories   DemandeSituationHistory[]
+  demandesActeurs             Demande[]                    @relation(name: "acteur")
+  versementsActeurs           Aide[]                       @relation(name: "acteurVersement")
+  demandesEnPropriete         Demande[]                    @relation(name: "demandesEnPropriete")
   email                       String?                      @unique
   firstName                   String?
   hasAccess                   Boolean                      @default(true)
@@ -120,14 +120,14 @@ model User {
   role                        String?
   roles                       Json
   status                      String?
-  subordonnes         User[]                              @relation(name: "subordonnes")
-  superieur           User?                               @relation(name: "subordonnes", fields: [superieurId], references: [id])
-  superieurId         String?
+  subordonnes                 User[]                       @relation(name: "subordonnes")
+  superieur                   User?                        @relation(name: "subordonnes", fields: [superieurId], references: [id])
+  superieurId                 String?
   token                       String?
   updatedAt                   DateTime                     @updatedAt
   userNotificationPreferences UserNotificationPreference[]
   username                    String                       @unique
-  visites             Visite[]
+  visites                     Visite[]
 }
 
 model TypeDocument {
@@ -140,13 +140,13 @@ model TypeDocument {
   rattachement EnumTypeDocumentRattachement
   updatedAt    DateTime                     @updatedAt
 }
+
 enum EnumTypeDocumentRattachement {
   Contact
   Demande
   Suivi
   Aide
 }
-
 
 model Document {
   aide           Aide?         @relation(fields: [aideId], references: [id])
@@ -167,12 +167,13 @@ model Document {
   visites        Visite?       @relation(fields: [visitesId], references: [id])
   visitesId      Int?          @unique
 }
+
 model Visite {
   acteur     User              @relation(fields: [acteurId], references: [id])
   acteurId   String
   createdAt  DateTime          @default(now())
   dateVisite DateTime?
-  demande    Demande          @relation(fields: [demandeId], references: [id], onDelete: Cascade)
+  demande    Demande           @relation(fields: [demandeId], references: [id], onDelete: Cascade)
   demandeId  Int
   document   Document?
   id         Int               @id @default(autoincrement())
@@ -187,7 +188,6 @@ enum EnumVisiteStatus {
   Annulee
   Planifiee
 }
-
 
 model UserNotificationPreference {
   active    Boolean
@@ -239,24 +239,51 @@ model WebsiteDemande {
   telephoneDemandeur       String?
   updatedAt                DateTime                 @updatedAt
   villeDemandeur           String?
-  forceNewContact          Boolean            @default(false)
+  forceNewContact          Boolean                  @default(false)
   contactId                Int?
 }
 
 model DemandeStatusHistory {
   createdAt DateTime @default(now())
-  demande   Demande  @relation(fields: [demandeId], references: [id] , onDelete: Cascade)
+  demande   Demande  @relation(fields: [demandeId], references: [id], onDelete: Cascade)
   demandeId Int
   id        Int      @id @default(autoincrement())
   status    String
   updatedAt DateTime @updatedAt
 }
 
+model DemandeSituationHistory {
+  id                       Int                            @id @default(autoincrement())
+  demande                  Demande                        @relation(fields: [demandeId], references: [id], onDelete: Cascade)
+  demandeId                Int
+  creePar                  User?                          @relation(fields: [creeParId], references: [id])
+  creeParId                String?
+  nombreEnfants            Int?
+  nombrePersonnes          Int?
+  agesEnfants              String?
+  situationFamiliale       String?
+  situationProfessionnelle String?
+  situationProConjoint     String?
+  revenus                  Int?
+  revenusConjoint          Int?
+  loyer                    Int?
+  facturesEnergie          Int?
+  dettes                   Int?
+  natureDettes             String?
+  autresAides              String?
+  autresCharges            Int?
+  apl                      Int?
+  categorieDemandeur       EnumDemandeCategorieDemandeur?
+  remarques                String?
+  createdAt                DateTime                       @default(now())
+  updatedAt                DateTime                       @updatedAt
+}
+
 model DemandeActivity {
   aide      Aide?    @relation(fields: [aideId], references: [id])
   aideId    Int?
   createdAt DateTime @default(now())
-  demande   Demande  @relation(fields: [demandeId], references: [id] , onDelete: Cascade)
+  demande   Demande  @relation(fields: [demandeId], references: [id], onDelete: Cascade)
   demandeId Int
   id        Int      @id @default(autoincrement())
   message   String?
@@ -277,9 +304,7 @@ model Versement {
   montant       Float
   status        EnumVersementStatus
   updatedAt     DateTime            @updatedAt
-  
 }
-
 
 enum EnumAideCrediteur {
   LeBNFiciaire
@@ -298,6 +323,7 @@ enum EnumAideTypeField {
   AssistanceAdministrative
   FinanciRe
 }
+
 enum EnumUserNotificationPreferenceTypeField {
   NouvelleDemande
   DemandeEnVisite
@@ -314,15 +340,18 @@ enum EnumWebsiteDemandeStatus {
   Trait
   Recue
 }
+
 enum EnumDemandeCategorieDemandeur {
   LourdementEndett
   NCessiteux
   Pauvre
 }
+
 enum EnumAideStatus {
   EnCours
   Expir
 }
+
 enum EnumVersementStatus {
   AVerser
   Verse
