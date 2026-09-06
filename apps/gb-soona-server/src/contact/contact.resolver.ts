@@ -8,6 +8,8 @@ import { ContactResolverBase } from "./base/contact.resolver.base";
 import { Contact } from "./base/Contact";
 import { Aide } from "../aide/base/Aide";
 import { AideFindManyArgs } from "../aide/base/AideFindManyArgs";
+import { Document } from "../document/base/Document";
+import { DocumentFindManyArgs } from "../document/base/DocumentFindManyArgs";
 import { ContactService } from "./contact.service";
 
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -41,6 +43,32 @@ export class ContactResolver extends ContactResolverBase {
       return preloaded;
     }
     const results = await this.service.findAides(parent.id, args);
+    if (!results) {
+      return [];
+    }
+    return results;
+  }
+
+  // Evite le N+1 : quand le contact provient de ContactService.contacts()
+  // (liste), ses documents sont deja precharges (voir l'include cote
+  // service) et on les retourne sans nouvelle requete.
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Document], { name: "documents" })
+  @nestAccessControl.UseRoles({
+    resource: "Document",
+    action: "read",
+    possession: "any",
+  })
+  async findDocuments(
+    @graphql.Parent() parent: Contact,
+    @graphql.Args() args: DocumentFindManyArgs
+  ): Promise<Document[]> {
+    const preloaded = (parent as any).documents;
+    const hasCustomFilter = !!args?.where || !!args?.skip || !!args?.take || !!args?.orderBy;
+    if (Array.isArray(preloaded) && !hasCustomFilter) {
+      return preloaded;
+    }
+    const results = await this.service.findDocuments(parent.id, args);
     if (!results) {
       return [];
     }

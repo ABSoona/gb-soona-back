@@ -249,6 +249,7 @@ input ContactWhereInput {
   demandes: DemandeListRelationFilter
   documents: DocumentListRelationFilter
   email: StringNullableFilter
+  fullSearch: StringNullableFilter
   id: IntFilter
   nom: StringNullableFilter
   numBeneficiaire: StringNullableFilter
