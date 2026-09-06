@@ -25,6 +25,25 @@ export class DemandeService extends DemandeServiceBase {
     super(prisma);
   }
 
+  // Precharge en une seule requete les relations systematiquement demandees
+  // par le frontend (contact+aides, demandeActivities+user, acteur) pour
+  // eviter le N+1 (une requete par ligne et par relation) sur la liste des
+  // demandes. Les resolvers getContact/getActeur/findDemandeActivities du
+  // resolver utilisent ces donnees deja chargees quand elles sont presentes.
+  async demandes(args: Prisma.DemandeFindManyArgs): Promise<PrismaDemande[]> {
+    return super.demandes({
+      ...args,
+      include: {
+        contact: { include: { aides: true } },
+        demandeActivities: {
+          orderBy: { createdAt: 'desc' },
+          include: { user: true },
+        },
+        acteur: true,
+      },
+    });
+  }
+
   async createDemande(args: Prisma.DemandeCreateArgs): Promise<PrismaDemande> {
     const demande = await super.createDemande(args);
 

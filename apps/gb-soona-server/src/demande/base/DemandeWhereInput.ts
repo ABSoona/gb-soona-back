@@ -12,12 +12,13 @@ https://docs.amplication.com/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { ValidateNested, IsOptional, IsEnum } from "class-validator";
+import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { AideListRelationFilter } from "../../aide/base/AideListRelationFilter";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 import { EnumDemandeCategorieDemandeur } from "./EnumDemandeCategorieDemandeur";
+import { EnumDemandeCategorieDemandeurNullableFilter } from "./EnumDemandeCategorieDemandeurNullableFilter";
 import { ContactWhereUniqueInput } from "../../contact/base/ContactWhereUniqueInput";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { DemandeActivityListRelationFilter } from "../../demandeActivity/base/DemandeActivityListRelationFilter";
@@ -100,14 +101,14 @@ class DemandeWhereInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumDemandeCategorieDemandeur,
+    type: EnumDemandeCategorieDemandeurNullableFilter,
   })
-  @IsEnum(EnumDemandeCategorieDemandeur)
+  @Type(() => EnumDemandeCategorieDemandeurNullableFilter)
   @IsOptional()
-  @Field(() => EnumDemandeCategorieDemandeur, {
+  @Field(() => EnumDemandeCategorieDemandeurNullableFilter, {
     nullable: true,
   })
-  categorieDemandeur?: "LourdementEndett" | "NCessiteux" | "Pauvre";
+  categorieDemandeur?: EnumDemandeCategorieDemandeurNullableFilter;
 
   @ApiProperty({
     required: false,

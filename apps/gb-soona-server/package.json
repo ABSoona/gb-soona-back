@@ -22,7 +22,9 @@
     "generate:schema": "ts-node -r tsconfig-paths/register src/main.ts",
     "import:beneficiaires": "ts-node scripts/import-beneficiaires.ts",
     "import:demandes": "ts-node scripts/import-demandes.ts",
-    "update:fullsearch": "ts-node --transpile-only scripts/update-fullsearch.ts"
+    "update:fullsearch": "ts-node --transpile-only scripts/update-fullsearch.ts",
+    "update:fullsearch-aide": "ts-node --transpile-only scripts/update-fullsearch-aide.ts",
+    "update:fullsearch-contact": "ts-node --transpile-only scripts/update-fullsearch-contact.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",

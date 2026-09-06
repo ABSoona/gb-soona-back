@@ -12,6 +12,7 @@ model Aide {
   contactId         Int
   acteurVersement   User?              @relation(name: "acteurVersement", fields: [acteurVersementId], references: [id])
   acteurVersementId String?
+  fullSearch        String?
   createdAt         DateTime           @default(now())
   crediteur         EnumAideCrediteur?
   dateAide          DateTime?
@@ -89,6 +90,7 @@ model Contact {
   dateVisite      DateTime?
   demandes        Demande[]
   documents       Document[]
+  fullSearch      String?
   email           String?
   id              Int        @id @default(autoincrement())
   nom             String?

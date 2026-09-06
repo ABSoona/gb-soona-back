@@ -121,15 +121,17 @@ input AideUpdateManyWithoutDemandesInput {
 input AideWhereInput {
   acteurAlertSent: BooleanFilter
   acteurVersement: UserWhereUniqueInput
+  acteurVersementId: StringNullableFilter
   contact: ContactWhereUniqueInput
   createdAt: DateTimeFilter
-  crediteur: EnumAideCrediteur
+  crediteur: EnumAideCrediteurNullableFilter
   dateAide: DateTimeNullableFilter
   dateExpiration: DateTimeNullableFilter
   demande: DemandeWhereUniqueInput
   demandeActivities: DemandeActivityListRelationFilter
   documents: DocumentListRelationFilter
-  frequence: EnumAideFrequence
+  frequence: EnumAideFrequenceNullableFilter
+  fullSearch: StringNullableFilter
   id: IntFilter
   infosCrediteur: StringNullableFilter
   montant: IntNullableFilter
@@ -247,6 +249,7 @@ input ContactWhereInput {
   demandes: DemandeListRelationFilter
   documents: DocumentListRelationFilter
   email: StringNullableFilter
+  fullSearch: StringNullableFilter
   id: IntFilter
   nom: StringNullableFilter
   numBeneficiaire: StringNullableFilter
@@ -694,7 +697,7 @@ input DemandeWhereInput {
   apl: IntNullableFilter
   autresAides: StringNullableFilter
   autresCharges: IntNullableFilter
-  categorieDemandeur: EnumDemandeCategorieDemandeur
+  categorieDemandeur: EnumDemandeCategorieDemandeurNullableFilter
   contact: ContactWhereUniqueInput
   createdAt: DateTimeNullableFilter
   dateVisite: DateTimeNullableFilter
@@ -846,12 +849,24 @@ enum EnumAideCrediteur {
   UnCrAncier
 }
 
+input EnumAideCrediteurNullableFilter {
+  equals: EnumAideCrediteur
+  in: [EnumAideCrediteur!]
+  notIn: [EnumAideCrediteur!]
+}
+
 enum EnumAideFrequence {
   BiMensuelle
   Hebdomadaire
   Mensuelle
   Trimestrielle
   UneFois
+}
+
+input EnumAideFrequenceNullableFilter {
+  equals: EnumAideFrequence
+  in: [EnumAideFrequence!]
+  notIn: [EnumAideFrequence!]
 }
 
 enum EnumAideStatus {
@@ -868,6 +883,12 @@ enum EnumDemandeCategorieDemandeur {
   LourdementEndett
   NCessiteux
   Pauvre
+}
+
+input EnumDemandeCategorieDemandeurNullableFilter {
+  equals: EnumDemandeCategorieDemandeur
+  in: [EnumDemandeCategorieDemandeur!]
+  notIn: [EnumDemandeCategorieDemandeur!]
 }
 
 enum EnumTypeDocumentRattachement {

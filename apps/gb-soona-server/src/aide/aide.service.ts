@@ -14,6 +14,7 @@ import { EnumVersementStatus } from 'src/versement/base/EnumVersementStatus';
 import { addMonths } from 'date-fns';
 import { generateAideActivityMessage, generateAideSuspendActivityMessage as generateAideSuspendActivityMessage, generateVersements } from './aide.logic';
 import { MailService } from 'src/mail/mail.service';
+import { buildFullSearch } from 'src/util/misc';
 
 
 
@@ -27,10 +28,31 @@ export class AideService extends AideServiceBase {
     super(prisma);
   }
 
+  // Precharge contact, demande, versements et acteurVersement en une seule
+  // requete (evite le N+1 : jusqu'a 4 requetes par ligne auparavant sur la
+  // liste des aides). Meme pattern que demande/document/visite.
+  async aides(args: Prisma.AideFindManyArgs): Promise<PrismaAide[]> {
+    return super.aides({
+      ...args,
+      include: {
+        contact: true,
+        demande: true,
+        versements: true,
+        acteurVersement: true,
+      },
+    });
+  }
+
   async createAide(args: Prisma.AideCreateArgs): Promise<PrismaAide> {
    
     const aide = await super.createAide(args);
     const contact = await this.prisma.contact.findUnique({where : {id:aide.contactId}})
+    if (contact) {
+      await this.prisma.aide.update({
+        where: { id: aide.id },
+        data: { fullSearch: buildFullSearch(contact) },
+      });
+    }
     await this.createRelatedVersement(aide);
     await this.addCreateActivity(aide);
     aide.demandeId && await this.demandeService.updateDemande({
