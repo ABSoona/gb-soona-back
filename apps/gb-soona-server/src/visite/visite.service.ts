@@ -16,6 +16,19 @@ export class VisiteService extends VisiteServiceBase {
     super(prisma);
   }
 
+  // Precharge acteur(+superieur), document(+typeDocument) et demande(+contact)
+  // en une seule requete (evite le N+1 sur la liste des visites d'une demande).
+  async visites(args: Prisma.VisiteFindManyArgs): Promise<Visite[]> {
+    return super.visites({
+      ...args,
+      include: {
+        acteur: { include: { superieur: true } },
+        document: { include: { typeDocument: true } },
+        demande: { include: { contact: true } },
+      },
+    });
+  }
+
   async createVisite(args: Prisma.VisiteCreateArgs): Promise<Visite> {
 
     const visite = await super.createVisite(args);
