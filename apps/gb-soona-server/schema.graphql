@@ -121,15 +121,17 @@ input AideUpdateManyWithoutDemandesInput {
 input AideWhereInput {
   acteurAlertSent: BooleanFilter
   acteurVersement: UserWhereUniqueInput
+  acteurVersementId: StringNullableFilter
   contact: ContactWhereUniqueInput
   createdAt: DateTimeFilter
-  crediteur: EnumAideCrediteur
+  crediteur: EnumAideCrediteurNullableFilter
   dateAide: DateTimeNullableFilter
   dateExpiration: DateTimeNullableFilter
   demande: DemandeWhereUniqueInput
   demandeActivities: DemandeActivityListRelationFilter
   documents: DocumentListRelationFilter
-  frequence: EnumAideFrequence
+  frequence: EnumAideFrequenceNullableFilter
+  fullSearch: StringNullableFilter
   id: IntFilter
   infosCrediteur: StringNullableFilter
   montant: IntNullableFilter
@@ -846,12 +848,24 @@ enum EnumAideCrediteur {
   UnCrAncier
 }
 
+input EnumAideCrediteurNullableFilter {
+  equals: EnumAideCrediteur
+  in: [EnumAideCrediteur!]
+  notIn: [EnumAideCrediteur!]
+}
+
 enum EnumAideFrequence {
   BiMensuelle
   Hebdomadaire
   Mensuelle
   Trimestrielle
   UneFois
+}
+
+input EnumAideFrequenceNullableFilter {
+  equals: EnumAideFrequence
+  in: [EnumAideFrequence!]
+  notIn: [EnumAideFrequence!]
 }
 
 enum EnumAideStatus {

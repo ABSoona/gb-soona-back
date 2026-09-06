@@ -18,6 +18,8 @@ import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 import { EnumAideCrediteur } from "./EnumAideCrediteur";
+import { EnumAideCrediteurNullableFilter } from "./EnumAideCrediteurNullableFilter";
+import { EnumAideFrequenceNullableFilter } from "./EnumAideFrequenceNullableFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { DemandeWhereUniqueInput } from "../../demande/base/DemandeWhereUniqueInput";
 import { DemandeActivityListRelationFilter } from "../../demandeActivity/base/DemandeActivityListRelationFilter";
@@ -60,14 +62,14 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumAideCrediteur,
+    type: EnumAideCrediteurNullableFilter,
   })
-  @IsEnum(EnumAideCrediteur)
+  @Type(() => EnumAideCrediteurNullableFilter)
   @IsOptional()
-  @Field(() => EnumAideCrediteur, {
+  @Field(() => EnumAideCrediteurNullableFilter, {
     nullable: true,
   })
-  crediteur?: "LeBNFiciaire" | "UnCrAncier";
+  crediteur?: EnumAideCrediteurNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -142,19 +144,14 @@ class AideWhereInput {
 
   @ApiProperty({
     required: false,
-    enum: EnumAideFrequence,
+    type: EnumAideFrequenceNullableFilter,
   })
-  @IsEnum(EnumAideFrequence)
+  @Type(() => EnumAideFrequenceNullableFilter)
   @IsOptional()
-  @Field(() => EnumAideFrequence, {
+  @Field(() => EnumAideFrequenceNullableFilter, {
     nullable: true,
   })
-  frequence?:
-    | "Mensuelle"
-    | "BiMensuelle"
-    | "Trimestrielle"
-    | "Hebdomadaire"
-    | "Unefois";
+  frequence?: EnumAideFrequenceNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -177,6 +174,28 @@ class AideWhereInput {
     nullable: true,
   })
   infosCrediteur?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  fullSearch?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  acteurVersementId?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
