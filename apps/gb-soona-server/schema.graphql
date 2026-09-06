@@ -694,7 +694,7 @@ input DemandeWhereInput {
   apl: IntNullableFilter
   autresAides: StringNullableFilter
   autresCharges: IntNullableFilter
-  categorieDemandeur: EnumDemandeCategorieDemandeur
+  categorieDemandeur: EnumDemandeCategorieDemandeurNullableFilter
   contact: ContactWhereUniqueInput
   createdAt: DateTimeNullableFilter
   dateVisite: DateTimeNullableFilter
@@ -868,6 +868,12 @@ enum EnumDemandeCategorieDemandeur {
   LourdementEndett
   NCessiteux
   Pauvre
+}
+
+input EnumDemandeCategorieDemandeurNullableFilter {
+  equals: EnumDemandeCategorieDemandeur
+  in: [EnumDemandeCategorieDemandeur!]
+  notIn: [EnumDemandeCategorieDemandeur!]
 }
 
 enum EnumTypeDocumentRattachement {
