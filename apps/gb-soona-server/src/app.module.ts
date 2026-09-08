@@ -25,6 +25,7 @@ import { TypeDocumentModule } from "./typeDocument/typeDocument.module";
 
 import { DemandeStatusHistoryModuleBase } from "./demandeStatusHistory/base/demandeStatusHistory.module.base";
 import { DemandeSituationHistoryModule } from "./demandeSituationHistory/demandeSituationHistory.module";
+import { DemandeAutreChargeModule } from "./demandeAutreCharge/demandeAutreCharge.module";
 import { DemandeActivityModule } from "./demandeActivity/demandeActivity.module";
 import { VersementModule } from "./versement/versement.module";
 import { VisiteModule } from "./visite/visite.module";
@@ -52,6 +53,7 @@ import { CommitteeModule } from "./committee/committee.module";
     WebsiteDemandeModule,
     DemandeActivityModule,
     DemandeSituationHistoryModule,
+    DemandeAutreChargeModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
