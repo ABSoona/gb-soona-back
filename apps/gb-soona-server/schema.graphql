@@ -511,6 +511,44 @@ input DemandeCreateNestedManyWithoutUsersInput {
   connect: [DemandeWhereUniqueInput!]
 }
 
+type DemandeDetteDetail {
+  createdAt: DateTime!
+  demande: Demande
+  id: Float!
+  montant: Float!
+  nom: String!
+  updatedAt: DateTime!
+}
+
+input DemandeDetteDetailCreateInput {
+  demande: DemandeWhereUniqueInput!
+  montant: Float!
+  nom: String!
+}
+
+input DemandeDetteDetailOrderByInput {
+  createdAt: SortOrder
+  demandeId: SortOrder
+  id: SortOrder
+  nom: SortOrder
+  updatedAt: SortOrder
+}
+
+input DemandeDetteDetailUpdateInput {
+  demande: DemandeWhereUniqueInput
+  montant: Float
+  nom: String
+}
+
+input DemandeDetteDetailWhereInput {
+  demande: DemandeWhereUniqueInput
+  id: IntFilter
+}
+
+input DemandeDetteDetailWhereUniqueInput {
+  id: Float!
+}
+
 input DemandeListRelationFilter {
   every: DemandeWhereInput
   none: DemandeWhereInput
@@ -1065,6 +1103,7 @@ type Mutation {
   createDemande(data: DemandeCreateInput!): Demande!
   createDemandeActivity(data: DemandeActivityCreateInput!): DemandeActivity!
   createDemandeAutreCharge(data: DemandeAutreChargeCreateInput!): DemandeAutreCharge!
+  createDemandeDetteDetail(data: DemandeDetteDetailCreateInput!): DemandeDetteDetail!
   createDemandeSituationHistory(data: DemandeSituationHistoryCreateInput!): DemandeSituationHistory!
   createDocument(data: DocumentCreateInput!): Document!
   createInvitation(data: InvitationCreateInput!): Invitation!
@@ -1080,6 +1119,7 @@ type Mutation {
   deleteDemande(where: DemandeWhereUniqueInput!): Demande!
   deleteDemandeActivity(where: DemandeActivityWhereUniqueInput!): DemandeActivity!
   deleteDemandeAutreCharge(where: DemandeAutreChargeWhereUniqueInput!): DemandeAutreCharge!
+  deleteDemandeDetteDetail(where: DemandeDetteDetailWhereUniqueInput!): DemandeDetteDetail!
   deleteDemandeSituationHistory(where: DemandeSituationHistoryWhereUniqueInput!): DemandeSituationHistory!
   deleteDocument(where: DocumentWhereUniqueInput!): Document!
   deleteInvitation(where: InvitationWhereUniqueInput!): Invitation!
@@ -1095,6 +1135,7 @@ type Mutation {
   updateDemande(data: DemandeUpdateInput!, where: DemandeWhereUniqueInput!): Demande!
   updateDemandeActivity(data: DemandeActivityUpdateInput!, where: DemandeActivityWhereUniqueInput!): DemandeActivity!
   updateDemandeAutreCharge(data: DemandeAutreChargeUpdateInput!, where: DemandeAutreChargeWhereUniqueInput!): DemandeAutreCharge!
+  updateDemandeDetteDetail(data: DemandeDetteDetailUpdateInput!, where: DemandeDetteDetailWhereUniqueInput!): DemandeDetteDetail!
   updateDemandeSituationHistory(data: DemandeSituationHistoryUpdateInput!, where: DemandeSituationHistoryWhereUniqueInput!): DemandeSituationHistory!
   updateDocument(data: DocumentUpdateInput!, where: DocumentWhereUniqueInput!): Document!
   updateInvitation(data: InvitationUpdateInput!, where: InvitationWhereUniqueInput!): Invitation!
@@ -1112,6 +1153,7 @@ type Query {
   _contactsMeta(where: ContactWhereInput): MetaQueryPayload!
   _demandeActivitiesMeta(where: DemandeActivityWhereInput): MetaQueryPayload!
   _demandeAutreChargesMeta(where: DemandeAutreChargeWhereInput): MetaQueryPayload!
+  _demandeDetteDetailsMeta(where: DemandeDetteDetailWhereInput): MetaQueryPayload!
   _demandeSituationHistoriesMeta(where: DemandeSituationHistoryWhereInput): MetaQueryPayload!
   _demandesMeta(where: DemandeWhereInput): MetaQueryPayload!
   _documentsMeta(where: DocumentWhereInput): MetaQueryPayload!
@@ -1131,6 +1173,8 @@ type Query {
   demandeActivity(where: DemandeActivityWhereUniqueInput!): DemandeActivity
   demandeAutreCharge(where: DemandeAutreChargeWhereUniqueInput!): DemandeAutreCharge
   demandeAutreCharges(orderBy: [DemandeAutreChargeOrderByInput!], skip: Float, take: Float, where: DemandeAutreChargeWhereInput): [DemandeAutreCharge!]!
+  demandeDetteDetail(where: DemandeDetteDetailWhereUniqueInput!): DemandeDetteDetail
+  demandeDetteDetails(orderBy: [DemandeDetteDetailOrderByInput!], skip: Float, take: Float, where: DemandeDetteDetailWhereInput): [DemandeDetteDetail!]!
   demandeSituationHistories(orderBy: [DemandeSituationHistoryOrderByInput!], skip: Float, take: Float, where: DemandeSituationHistoryWhereInput): [DemandeSituationHistory!]!
   demandeSituationHistory(where: DemandeSituationHistoryWhereUniqueInput!): DemandeSituationHistory
   demandes(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
