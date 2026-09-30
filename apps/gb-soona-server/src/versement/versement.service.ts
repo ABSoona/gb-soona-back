@@ -1,9 +1,11 @@
 import { Injectable } from "@nestjs/common";
+import { Response } from "express";
 import { PrismaService } from "../prisma/prisma.service";
 import { VersementServiceBase } from "./base/versement.service.base";
 import { Prisma, Versement } from "@prisma/client";
 import { DemandeService } from "src/demande/demande.service";
 import { MailService } from "src/mail/mail.service";
+import { generateVersementsExportCac } from "./versement-export-cac.helper";
 
 
 @Injectable()
@@ -29,6 +31,10 @@ export class VersementService extends VersementServiceBase {
 
     return versement;
   }
+  async exportCac(versementIds: number[], res: Response): Promise<void> {
+    return generateVersementsExportCac(versementIds, this.prisma, res);
+  }
+
   async notifyAideExpire(aideId : number) {
       const notifs = await this.prisma.userNotificationPreference.findMany({
         where: { active: true, typeField: 'AideExpir' },
