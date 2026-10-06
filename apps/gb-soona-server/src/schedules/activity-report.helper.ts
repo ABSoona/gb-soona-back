@@ -145,25 +145,27 @@ export async function getActivityReportData(
     }
   }
 
-  // Delai de traitement : reception -> passage en comite (en_commision).
-  // Exclut les demandes avec plusieurs passages en_commision.
-  const demandesAvecCommission = await prisma.demande.findMany({
+  // Delai de traitement : reception -> premier passage en statut 'EnCours'
+  // ou 'refusée' (le premier des deux a survenir). Meme definition que le
+  // rapport "Tableau rectificatif mensuel" (rapportMensuelService.ts),
+  // pour que les deux rapports donnent le meme chiffre.
+  const demandesAvecTraitement = await prisma.demande.findMany({
     where: { createdAt: { gte: debut3Mois, lte: fin3Mois } },
     select: {
       id: true,
       createdAt: true,
       demandeStatusHistories: {
-        where: { status: 'en_commision' },
+        where: { status: { in: ['EnCours', 'refusée'] } },
         orderBy: { createdAt: 'asc' },
+        take: 1,
         select: { createdAt: true },
       },
     },
   });
 
   const delaisTraitement: number[] = [];
-  for (const d of demandesAvecCommission) {
-    if (d.demandeStatusHistories.length !== 1) continue;
-    if (!d.createdAt) continue;
+  for (const d of demandesAvecTraitement) {
+    if (!d.createdAt || d.demandeStatusHistories.length === 0) continue;
     const diffJours = Math.round(
       (d.demandeStatusHistories[0].createdAt.getTime() - d.createdAt.getTime()) / 86400000,
     );
@@ -345,7 +347,7 @@ export function buildActivityReportHtml(data: ActivityReportData, periodLabel: s
                 <div class="visites-value">${data.visitesProg} programmées</div>
                 <div class="visites-note">Attribuées à un bénévole. La date de réalisation effective est rarement mise à jour — chiffre sous-estimé.</div>
               </div>
-              <div class="note-text">Acceptées/Refusées : basées sur la date de décision. Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le passage en comité.</div>
+              <div class="note-text">Acceptées/Refusées : basées sur la date de décision. Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le premier passage en statut « En cours » ou « Refusée ».</div>
             </div>
             <div class="col-right">
               <div class="section-title">Répartition par département</div>
