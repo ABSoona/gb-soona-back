@@ -32,6 +32,7 @@ import { VersementModule } from "./versement/versement.module";
 import { VisiteModule } from "./visite/visite.module";
 import { TelegramModule } from "./telegram/telegram.module";
 import { CommitteeModule } from "./committee/committee.module";
+import { RapportsModule } from "./rapports/rapports.module";
 
 @Module({
   controllers: [],
@@ -62,6 +63,7 @@ import { CommitteeModule } from "./committee/committee.module";
     VersementModule,
     TelegramModule,
     CommitteeModule,
+    RapportsModule,
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRootAsync({
       useClass: ServeStaticOptionsService,
