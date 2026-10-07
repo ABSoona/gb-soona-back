@@ -5,6 +5,12 @@ import * as path from 'path';
 import { format, subMonths } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
+// Alignes sur la definition de "Demandes Traités" du rapport "Tableau
+// rectificatif mensuel" (rapportMensuelService.ts) : Acceptées + Refusées
+// doit redonner le meme total que Traités.
+const STATUTS_ACCEPTES = ['EnCours'];
+const STATUTS_REFUSES = ['refusée'];
+
 export interface ActivityReportStats {
   moy: number | null;
   min: number | null;
@@ -70,21 +76,45 @@ export async function getActivityReportData(
     select: { id: true, contact: { select: { codePostal: true } } },
   });
 
-  const demAccepteesList = await prisma.demande.findMany({
+  // Demandes "acceptées" / "refusées" : basé sur le premier changement de
+  // statut de la demande vers l'un de ces statuts-cibles, figé dans
+  // DemandeStatusHistory — pas sur le statut actuel ni sur `decisionDate`
+  // (ecrasee a chaque changement de statut, donc pas une date stable dans
+  // le temps : regenerer ce rapport plus tard pour la meme periode donnerait
+  // un resultat different si le statut a change depuis). Une demande n'est
+  // comptee qu'une seule fois, au mois de ce premier changement, dans la
+  // categorie correspondant a la direction prise a ce moment-la.
+  const demandesAvecPremiereDecision = await prisma.demande.findMany({
     where: {
-      status: { in: ['clôturée', 'en_commision', 'en_visite', 'EnCours'] },
-      decisionDate: { gte: debut, lte: fin },
+      demandeStatusHistories: {
+        some: { status: { in: [...STATUTS_ACCEPTES, ...STATUTS_REFUSES] } },
+      },
     },
-    select: { id: true, contact: { select: { codePostal: true } } },
+    select: {
+      id: true,
+      contact: { select: { codePostal: true } },
+      demandeStatusHistories: {
+        where: { status: { in: [...STATUTS_ACCEPTES, ...STATUTS_REFUSES] } },
+        orderBy: { createdAt: 'asc' },
+        take: 1,
+        select: { status: true, createdAt: true },
+      },
+    },
   });
 
-  const demRefuseesList = await prisma.demande.findMany({
-    where: {
-      status: { in: ['refusée', 'Abandonnée'] },
-      decisionDate: { gte: debut, lte: fin },
-    },
-    select: { id: true, contact: { select: { codePostal: true } } },
-  });
+  type DemandeAvecContact = { contact: { codePostal: number | null } | null };
+  const demAccepteesList: DemandeAvecContact[] = [];
+  const demRefuseesList: DemandeAvecContact[] = [];
+
+  for (const demande of demandesAvecPremiereDecision) {
+    const premiere = demande.demandeStatusHistories[0];
+    if (!premiere || premiere.createdAt < debut || premiere.createdAt > fin) continue;
+    if (STATUTS_ACCEPTES.includes(premiere.status)) {
+      demAccepteesList.push({ contact: demande.contact });
+    } else if (STATUTS_REFUSES.includes(premiere.status)) {
+      demRefuseesList.push({ contact: demande.contact });
+    }
+  }
 
   // Backlog : stock total des demandes au statut 'recue', independant de la periode.
   const demBacklogList = await prisma.demande.findMany({
@@ -347,7 +377,7 @@ export function buildActivityReportHtml(data: ActivityReportData, periodLabel: s
                 <div class="visites-value">${data.visitesProg} programmées</div>
                 <div class="visites-note">Attribuées à un bénévole. La date de réalisation effective est rarement mise à jour — chiffre sous-estimé.</div>
               </div>
-              <div class="note-text">Acceptées/Refusées : basées sur la date de décision. Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le premier passage en statut « En cours » ou « Refusée ».</div>
+              <div class="note-text">Acceptées : premier passage en statut « En cours ». Refusées : premier passage en statut « Refusée » (Acceptées + Refusées = Demandes Traités du tableau rectificatif mensuel). Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le premier passage en statut « En cours » ou « Refusée ».</div>
             </div>
             <div class="col-right">
               <div class="section-title">Répartition par département</div>
