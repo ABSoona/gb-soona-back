@@ -3,13 +3,15 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { ContactServiceBase } from "./base/contact.service.base";
 import { Prisma, Contact as PrismaContact } from "@prisma/client";
-import { buildFullSearch } from "src/util/misc";
+import { buildFullSearch, toWhatsAppPhone } from "src/util/misc";
 import { TokenService } from "src/auth/token.service";
+import { WhatsappService } from "src/whatsapp/whatsapp.service";
 @Injectable()
 export class ContactService extends ContactServiceBase {
   constructor(protected readonly prisma: PrismaService,
     protected readonly mailService : MailService,
-    private readonly tokenService: TokenService ) {
+    private readonly tokenService: TokenService,
+    private readonly whatsappService: WhatsappService ) {
     super(prisma);
   }
 
@@ -66,5 +68,16 @@ export class ContactService extends ContactServiceBase {
       .split("[bouton_justificatif]").join(boutonHtml);
 
     await this.mailService.sendHtmlMail(bodyAvecVariables, objet, contact.email, process.env.SMTP_FROM_NAME_EXTERNAL);
+  }
+
+  async sendWhatsAppMessage(body: string, contactId: number) {
+    const contact = await this.prisma.contact.findUnique({ where: { id: contactId } });
+    const to = toWhatsAppPhone(contact?.telephone);
+    if (!to) return;
+
+    const nomComplet = `${contact?.prenom ?? ""} ${contact?.nom ?? ""}`.trim();
+    const bodyAvecVariables = body.split("[Nom]").join(nomComplet);
+
+    await this.whatsappService.sendTextMessage(to, bodyAvecVariables);
   }
 }

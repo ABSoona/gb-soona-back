@@ -34,6 +34,7 @@ import { TelegramModule } from "./telegram/telegram.module";
 import { CommitteeModule } from "./committee/committee.module";
 import { RapportsModule } from "./rapports/rapports.module";
 import { EmailTemplateModule } from "./emailTemplate/emailTemplate.module";
+import { WhatsappModule } from "./whatsapp/whatsapp.module";
 
 @Module({
   controllers: [],
@@ -66,6 +67,7 @@ import { EmailTemplateModule } from "./emailTemplate/emailTemplate.module";
     CommitteeModule,
     RapportsModule,
     EmailTemplateModule,
+    WhatsappModule,
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRootAsync({
       useClass: ServeStaticOptionsService,

@@ -42,3 +42,17 @@ export const docRequestDefaultTemplate = {
     "<p class='py-2' dir='rtl' style='text-align: start;'>AB SOO’NA</p>" +
     "<p>[bouton_justificatif]</p>",
 };
+
+// Message WhatsApp : texte brut (pas de HTML, WhatsApp ne le rend pas).
+export const docRequestDefaultTemplateWhatsapp = {
+  objet: "",
+  corps:
+    "Assalamo Aleikoum [Nom]\n\n" +
+    "Afin de pouvoir étudier votre dossier, merci de nous envoyer vos documents " +
+    "directement ici sur WhatsApp : pièce d'identité, justificatif de domicile, " +
+    "avis d'imposition, RIB, etc.\n\n" +
+    "Vous pouvez envoyer plusieurs photos ou PDF, un message par document.\n\n" +
+    "Bien cordialement,\n" +
+    "Soo'na",
+};
+

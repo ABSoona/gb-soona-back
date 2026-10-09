@@ -5,9 +5,10 @@ import { ContactService } from "./contact.service";
 import { ContactController } from "./contact.controller";
 import { ContactResolver } from "./contact.resolver";
 import { MailModule } from "src/mail/mail.module";
+import { WhatsappModule } from "src/whatsapp/whatsapp.module";
 
 @Module({
-  imports: [ContactModuleBase, forwardRef(() => AuthModule),MailModule],
+  imports: [ContactModuleBase, forwardRef(() => AuthModule),MailModule,WhatsappModule],
   controllers: [ContactController],
   providers: [ContactService, ContactResolver],
   exports: [ContactService],

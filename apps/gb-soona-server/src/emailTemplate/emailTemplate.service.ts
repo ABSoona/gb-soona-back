@@ -1,9 +1,10 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
-import { docRequestDefaultTemplate } from "./defaultTemplates";
+import { docRequestDefaultTemplate, docRequestDefaultTemplateWhatsapp } from "./defaultTemplates";
 
 const DEFAULT_TEMPLATES: Record<string, { objet: string; corps: string }> = {
   DEMANDE_JUSTIFICATIFS: docRequestDefaultTemplate,
+  DEMANDE_JUSTIFICATIFS_WHATSAPP: docRequestDefaultTemplateWhatsapp,
 };
 
 @Injectable()
