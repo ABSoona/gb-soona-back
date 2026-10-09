@@ -17,13 +17,13 @@ export class ContactController extends ContactControllerBase {
     super(service, rolesBuilder);
   }
 
-  @Post("/:id/send-message")  
-  
+  @Post("/:id/send-message")
+
   async sendMessage(
     @common.Param() params: ContactWhereUniqueInput,
-    @common.Body() data: {objet:string,message:string}): Promise<void> {
-    
-    this.service.sendMessage(data.message,data.objet,params.id)
-    
+    @common.Body() data: {objet:string,message:string,demandeId?:number,includeUploadLink?:boolean}): Promise<void> {
+
+    this.service.sendMessage(data.message,data.objet,params.id,data.demandeId,data.includeUploadLink)
+
   }
 }

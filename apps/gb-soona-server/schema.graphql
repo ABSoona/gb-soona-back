@@ -811,6 +811,7 @@ input DemandeWhereUniqueInput {
 
 type Document {
   aide: Aide
+  consultedAt: DateTime
   contact: Contact
   contenu: JSON
   createdAt: DateTime!
@@ -819,6 +820,7 @@ type Document {
   name: String
   typeDocument: TypeDocument
   updatedAt: DateTime!
+  uploadedByBeneficiaire: Boolean!
   versements: Versement
   visites: Visite
 }
@@ -906,12 +908,14 @@ input DocumentUpdateManyWithoutTypeDocumentsInput {
 
 input DocumentWhereInput {
   aide: AideWhereUniqueInput
+  consultedAt: DateTimeNullableFilter
   contact: ContactWhereUniqueInput
   contenu: JsonFilter
   demande: DemandeWhereUniqueInput
   id: StringFilter
   name: StringNullableFilter
   typeDocument: TypeDocumentWhereUniqueInput
+  uploadedByBeneficiaire: BooleanFilter
   versements: VersementWhereUniqueInput
   visites: VisiteWhereUniqueInput
 }
@@ -1239,20 +1243,24 @@ input StringNullableFilter {
 
 type TypeDocument {
   createdAt: DateTime!
+  description: String
   documents(orderBy: [DocumentOrderByInput!], skip: Float, take: Float, where: DocumentWhereInput): [Document!]!
   id: Float!
   internalCode: String
   isInternal: Boolean!
   label: String!
+  publicUploadEnabled: Boolean!
   rattachement: EnumTypeDocumentRattachement
   updatedAt: DateTime!
 }
 
 input TypeDocumentCreateInput {
+  description: String
   documents: DocumentCreateNestedManyWithoutTypeDocumentsInput
   internalCode: String
   isInternal: Boolean!
   label: String!
+  publicUploadEnabled: Boolean
   rattachement: EnumTypeDocumentRattachement!
 }
 
@@ -1267,10 +1275,12 @@ input TypeDocumentOrderByInput {
 }
 
 input TypeDocumentUpdateInput {
+  description: String
   documents: DocumentUpdateManyWithoutTypeDocumentsInput
   internalCode: String
   isInternal: Boolean
   label: String
+  publicUploadEnabled: Boolean
   rattachement: EnumTypeDocumentRattachement
 }
 

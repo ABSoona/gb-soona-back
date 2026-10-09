@@ -100,6 +100,27 @@ class TypeDocument {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  // Champs ajoutes a la main (hors generation Amplication) pour la page
+  // publique de depot de justificatifs.
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @Field(() => Boolean)
+  publicUploadEnabled!: boolean;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  description!: string | null;
 }
 
 export { TypeDocument as TypeDocument };

@@ -4,10 +4,12 @@ import { PrismaService } from "../prisma/prisma.service";
 import { ContactServiceBase } from "./base/contact.service.base";
 import { Prisma, Contact as PrismaContact } from "@prisma/client";
 import { buildFullSearch } from "src/util/misc";
+import { TokenService } from "src/auth/token.service";
 @Injectable()
 export class ContactService extends ContactServiceBase {
   constructor(protected readonly prisma: PrismaService,
-    protected readonly mailService : MailService ) {
+    protected readonly mailService : MailService,
+    private readonly tokenService: TokenService ) {
     super(prisma);
   }
 
@@ -36,9 +38,33 @@ export class ContactService extends ContactServiceBase {
     });
   }
 
-  async sendMessage(body: string , objet:string, contactId: number) {
-   
+  async sendMessage(
+    body: string,
+    objet: string,
+    contactId: number,
+    demandeId?: number,
+    includeUploadLink?: boolean,
+  ) {
     const contact = await this.prisma.contact.findUnique({where:{id:contactId}})
-    contact?.email && await this.mailService.sendHtmlMail(body,objet,contact?.email,process.env.SMTP_FROM_NAME_EXTERNAL/* ,false */);
+    if (!contact?.email) return;
+
+    let boutonHtml = "";
+    if (includeUploadLink && demandeId) {
+      const token = await this.tokenService.createTokenForDocumentUpload(demandeId);
+      const lien = `${process.env.FRONTEND_URL}/depot-justificatifs?token=${token}`;
+      boutonHtml = `
+        <div style="margin-top:24px;text-align:center;">
+          <a href="${lien}" style="background-color:#2aa8c4;color:#ffffff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:bold;display:inline-block;">
+            Déposer mes justificatifs en ligne
+          </a>
+        </div>`;
+    }
+
+    const nomComplet = `${contact.prenom ?? ""} ${contact.nom ?? ""}`.trim();
+    const bodyAvecVariables = body
+      .split("[Nom]").join(nomComplet)
+      .split("[bouton_justificatif]").join(boutonHtml);
+
+    await this.mailService.sendHtmlMail(bodyAvecVariables, objet, contact.email, process.env.SMTP_FROM_NAME_EXTERNAL);
   }
 }

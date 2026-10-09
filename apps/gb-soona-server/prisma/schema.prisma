@@ -143,6 +143,12 @@ model TypeDocument {
   label        String
   rattachement EnumTypeDocumentRattachement
   updatedAt    DateTime                     @updatedAt
+  // Champs ajoutes a la main (hors generation Amplication) pour la page
+  // publique de depot de justificatifs par le beneficiaire : visibilite de
+  // ce type sur cette page, et courte description affichee sur son item.
+  // Defaut a true pour ne rien masquer retroactivement a la migration.
+  publicUploadEnabled Boolean @default(true)
+  description         String?
 }
 
 enum EnumTypeDocumentRattachement {
@@ -153,23 +159,28 @@ enum EnumTypeDocumentRattachement {
 }
 
 model Document {
-  aide           Aide?         @relation(fields: [aideId], references: [id])
-  aideId         Int?
-  contact        Contact?      @relation(fields: [contactId], references: [id])
-  contactId      Int?
-  contenu        Json?
-  createdAt      DateTime      @default(now())
-  demande        Demande?      @relation(fields: [demandeId], references: [id])
-  demandeId      Int?
-  id             String        @id @default(cuid())
-  name           String?
-  typeDocument   TypeDocument? @relation(fields: [typeDocumentId], references: [id])
-  typeDocumentId Int?
-  updatedAt      DateTime      @updatedAt
-  versements     Versement?    @relation(fields: [versementsId], references: [id])
-  versementsId   Int?          @unique
-  visites        Visite?       @relation(fields: [visitesId], references: [id])
-  visitesId      Int?          @unique
+  aide                   Aide?         @relation(fields: [aideId], references: [id])
+  aideId                 Int?
+  contact                Contact?      @relation(fields: [contactId], references: [id])
+  contactId              Int?
+  contenu                Json?
+  createdAt              DateTime      @default(now())
+  demande                Demande?      @relation(fields: [demandeId], references: [id])
+  demandeId              Int?
+  id                     String        @id @default(cuid())
+  name                   String?
+  typeDocument           TypeDocument? @relation(fields: [typeDocumentId], references: [id])
+  typeDocumentId         Int?
+  updatedAt              DateTime      @updatedAt
+  versements             Versement?    @relation(fields: [versementsId], references: [id])
+  versementsId           Int?          @unique
+  visites                Visite?       @relation(fields: [visitesId], references: [id])
+  visitesId              Int?          @unique
+  // Deposé par le beneficiaire via la page publique de depot de
+  // justificatifs (jamais positionne pour un upload fait par un membre de
+  // l'equipe). Sert a afficher une pastille "non consulte" dans l'app.
+  uploadedByBeneficiaire Boolean       @default(false)
+  consultedAt            DateTime?
 }
 
 model Visite {
@@ -328,6 +339,18 @@ model Versement {
   montant       Float
   status        EnumVersementStatus
   updatedAt     DateTime            @updatedAt
+}
+
+// Modele HTML configurable depuis les parametres (ex: texte par defaut du
+// mail de demande de justificatifs), avec substitution de variables type
+// [Nom]/[bouton_justificatif] au moment de l'envoi.
+model EmailTemplate {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  objet     String
+  corps     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum EnumAideCrediteur {
