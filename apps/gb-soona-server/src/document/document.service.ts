@@ -38,12 +38,14 @@ export class DocumentService extends DocumentServiceBase {
     });
   }
 
-  // Seuls les types non internes rattaches a la Demande ou au Contact ont
-  // un sens pour un beneficiaire (Suivi/Aide sont des usages internes).
+  // "isInternal" (verrouille dans Types de documents) et "publicUploadEnabled"
+  // sont deux notions independantes : un type interne (ex: Rib) peut tout a
+  // fait etre propose au beneficiaire si l'administrateur l'active. Seul le
+  // rattachement (Contact/Demande) reste une contrainte dure, car un document
+  // Suivi/Aide n'a pas de sens pour un beneficiaire.
   async getTypeDocumentsForPublicUpload() {
     return this.prisma.typeDocument.findMany({
       where: {
-        isInternal: false,
         rattachement: { in: ["Contact", "Demande"] },
         publicUploadEnabled: true,
       },

@@ -82,7 +82,6 @@ export class DocumentController extends DocumentControllerBase {
     const typeDoc = await this.service.getTypeDocumentById(Number(typeDocumentId));
     if (
       !typeDoc ||
-      typeDoc.isInternal ||
       !typeDoc.publicUploadEnabled ||
       !["Contact", "Demande"].includes(typeDoc.rattachement)
     ) {
