@@ -73,6 +73,28 @@ class TypeDocumentCreateInput {
   @IsEnum(EnumTypeDocumentRattachement)
   @Field(() => EnumTypeDocumentRattachement)
   rattachement!: "Contact" | "Demande" | "Suivi"  | "Aide";
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  publicUploadEnabled?: boolean;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  description?: string | null;
 }
 
 export { TypeDocumentCreateInput as TypeDocumentCreateInput };

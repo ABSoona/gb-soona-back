@@ -130,6 +130,26 @@ class Document {
   @Type(() => Visite)
   @IsOptional()
   visites?: Visite | null;
+
+  // Champs ajoutes a la main (hors generation Amplication) pour le suivi
+  // des depots publics de justificatifs par le beneficiaire.
+  @ApiProperty({
+    required: true,
+    type: Boolean,
+  })
+  @Field(() => Boolean)
+  uploadedByBeneficiaire!: boolean;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @IsOptional()
+  @Field(() => Date, {
+    nullable: true,
+  })
+  consultedAt!: Date | null;
 }
 
 

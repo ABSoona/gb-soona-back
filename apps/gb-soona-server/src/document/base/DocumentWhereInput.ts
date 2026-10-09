@@ -22,6 +22,8 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { TypeDocumentWhereUniqueInput } from "../../typeDocument/base/TypeDocumentWhereUniqueInput";
 import { VersementWhereUniqueInput } from "../../versement/base/VersementWhereUniqueInput";
 import { VisiteWhereUniqueInput } from "../../visite/base/VisiteWhereUniqueInput";
+import { BooleanFilter } from "../../util/BooleanFilter";
+import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 
 @InputType()
 class DocumentWhereInput {
@@ -128,7 +130,33 @@ class DocumentWhereInput {
     nullable: true,
   })
   visites?: VisiteWhereUniqueInput;
-  
+
+  // Champs ajoutes a la main (hors generation Amplication) pour permettre de
+  // filtrer les documents deposes par le beneficiaire et non consultes (ex :
+  // cloche de notifications).
+  @ApiProperty({
+    required: false,
+    type: () => BooleanFilter,
+  })
+  @ValidateNested()
+  @Type(() => BooleanFilter)
+  @IsOptional()
+  @Field(() => BooleanFilter, {
+    nullable: true,
+  })
+  uploadedByBeneficiaire?: BooleanFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => DateTimeNullableFilter,
+  })
+  @ValidateNested()
+  @Type(() => DateTimeNullableFilter)
+  @IsOptional()
+  @Field(() => DateTimeNullableFilter, {
+    nullable: true,
+  })
+  consultedAt?: DateTimeNullableFilter;
 }
 
 export { DocumentWhereInput as DocumentWhereInput };

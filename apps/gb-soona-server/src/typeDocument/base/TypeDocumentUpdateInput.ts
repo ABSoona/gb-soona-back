@@ -82,6 +82,28 @@ class TypeDocumentUpdateInput {
     nullable: true,
   })
   rattachement?: "Contact" | "Demande" | "Suivi"  | "Aide";
+
+  @ApiProperty({
+    required: false,
+    type: Boolean,
+  })
+  @IsBoolean()
+  @IsOptional()
+  @Field(() => Boolean, {
+    nullable: true,
+  })
+  publicUploadEnabled?: boolean;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  description?: string | null;
 }
 
 export { TypeDocumentUpdateInput as TypeDocumentUpdateInput };
