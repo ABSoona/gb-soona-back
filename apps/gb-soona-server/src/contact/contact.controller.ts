@@ -23,7 +23,24 @@ export class ContactController extends ContactControllerBase {
     @common.Param() params: ContactWhereUniqueInput,
     @common.Body() data: {objet:string,message:string,demandeId?:number,includeUploadLink?:boolean}): Promise<void> {
 
-    this.service.sendMessage(data.message,data.objet,params.id,data.demandeId,data.includeUploadLink)
+    try {
+      await this.service.sendMessage(data.message,data.objet,params.id,data.demandeId,data.includeUploadLink)
+    } catch (e) {
+      throw new common.BadRequestException((e as Error).message);
+    }
+
+  }
+
+  @Post("/:id/send-whatsapp-message")
+  async sendWhatsappMessage(
+    @common.Param() params: ContactWhereUniqueInput,
+    @common.Body() data: { message: string }): Promise<void> {
+
+    try {
+      await this.service.sendWhatsAppMessage(data.message, params.id)
+    } catch (e) {
+      throw new common.BadRequestException((e as Error).message);
+    }
 
   }
 }
