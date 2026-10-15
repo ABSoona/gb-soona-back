@@ -767,6 +767,7 @@ input DemandeUpdateManyWithoutUsersInput {
 }
 
 input DemandeWhereInput {
+  OR: [DemandeWhereInput!]
   acteur: UserWhereUniqueInput
   agesEnfants: StringNullableFilter
   aides: AideListRelationFilter

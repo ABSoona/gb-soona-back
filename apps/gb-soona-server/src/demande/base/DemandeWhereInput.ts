@@ -31,6 +31,20 @@ import { BooleanFilter } from "src/util/BooleanFilter";
 
 @InputType()
 class DemandeWhereInput {
+  // Ajoute a la main (hors generation Amplication) pour permettre une
+  // recherche combinee (ex : nom OU numero de demande).
+  @ApiProperty({
+    required: false,
+    type: () => [DemandeWhereInput],
+  })
+  @ValidateNested()
+  @Type(() => DemandeWhereInput)
+  @IsOptional()
+  @Field(() => [DemandeWhereInput], {
+    nullable: true,
+  })
+  OR?: DemandeWhereInput[];
+
   @ApiProperty({
     required: false,
     type: () => UserWhereUniqueInput,
