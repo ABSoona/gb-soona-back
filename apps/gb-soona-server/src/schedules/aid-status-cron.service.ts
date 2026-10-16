@@ -60,7 +60,7 @@ for (const aide of aides) {
       (otherAide) => otherAide.reetudier === true
     );
     if(allAidesExpired){
-    const newDemandeStatus = hasReetudier? 'en_commision':'clôturée'
+    const newDemandeStatus = hasReetudier? 'en_pre_commision':'clôturée'
     await this.demandeService.updateDemande({
       where: { id: aide.demandeId },
       data: { status: newDemandeStatus },
@@ -70,7 +70,7 @@ for (const aide of aides) {
     
   }
 
-  this.logger.log(`✅ Aide ${aide.id} expirée, demande ${aide.demandeId} → en_commision`);
+  this.logger.log(`✅ Aide ${aide.id} expirée (demande ${aide.demandeId})`);
 } 
 
   }
