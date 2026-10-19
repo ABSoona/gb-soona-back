@@ -13,6 +13,12 @@ const DECISION_INCLUDE_WITH_DEMANDE = {
   demande: { include: { contact: true } },
 };
 
+const DECISION_TYPE_LABELS: Record<string, string> = {
+  Approbation: "Approuvée",
+  Refus: "Refusée",
+  Ajournement: "Ajournée",
+};
+
 @Injectable()
 export class DecisionService {
   constructor(
@@ -42,6 +48,16 @@ export class DecisionService {
         ...(input.acteurId ? { acteur: { connect: { id: input.acteurId } } } : {}),
       },
       include: DECISION_INCLUDE,
+    });
+
+    await this.prisma.demandeActivity.create({
+      data: {
+        demandeId: input.demandeId,
+        titre: `Décision du comité : ${DECISION_TYPE_LABELS[input.type] ?? input.type}`,
+        typeField: "comiteDecision",
+        message: input.motivation ?? null,
+        ...(input.acteurId ? { userId: input.acteurId } : {}),
+      },
     });
 
     // Reutilise DemandeService.updateDemande (et non prisma.demande.update)
