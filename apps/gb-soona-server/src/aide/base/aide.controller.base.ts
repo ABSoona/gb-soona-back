@@ -74,6 +74,12 @@ export class AideControllerBase {
               connect: data.demande,
             }
           : undefined,
+
+        decision: data.decision
+          ? {
+              connect: data.decision,
+            }
+          : undefined,
       },
       select: {
         contact: {

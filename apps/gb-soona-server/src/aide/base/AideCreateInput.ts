@@ -38,6 +38,7 @@ import { EnumAideStatus } from "./EnumAideStatus";
 import { EnumAideTypeField } from "./EnumAideTypeField";
 import { VersementCreateNestedManyWithoutAidesInput } from "./VersementCreateNestedManyWithoutAidesInput";
 import { UserWhereUniqueInput } from "src/user/base/UserWhereUniqueInput";
+import { DecisionWhereUniqueInput } from "src/decision/dto/decision-where-unique.input";
 
 @InputType()
 class AideCreateInput {
@@ -94,6 +95,20 @@ class AideCreateInput {
     nullable: true,
   })
   demande?: DemandeWhereUniqueInput | null;
+
+  // Ajoute a la main (hors generation Amplication, voir src/decision/) pour
+  // rattacher l'aide a la decision de comite qui l'a autorisee.
+  @ApiProperty({
+    required: false,
+    type: () => DecisionWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => DecisionWhereUniqueInput)
+  @IsOptional()
+  @Field(() => DecisionWhereUniqueInput, {
+    nullable: true,
+  })
+  decision?: DecisionWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,

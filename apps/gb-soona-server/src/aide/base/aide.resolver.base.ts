@@ -108,6 +108,12 @@ export class AideResolverBase {
             }
           : undefined,
 
+        decision: args.data.decision
+          ? {
+              connect: args.data.decision,
+            }
+          : undefined,
+
         acteurVersement: args.data.acteurVersement
           ? {
               connect: args.data.acteurVersement,

@@ -35,6 +35,8 @@ import { CommitteeModule } from "./committee/committee.module";
 import { RapportsModule } from "./rapports/rapports.module";
 import { EmailTemplateModule } from "./emailTemplate/emailTemplate.module";
 import { WhatsappModule } from "./whatsapp/whatsapp.module";
+import { DecisionModule } from "./decision/decision.module";
+import { OrganizationSettingsModule } from "./organizationSettings/organizationSettings.module";
 
 @Module({
   controllers: [],
@@ -59,6 +61,8 @@ import { WhatsappModule } from "./whatsapp/whatsapp.module";
     DemandeSituationHistoryModule,
     DemandeAutreChargeModule,
     DemandeDetteDetailModule,
+    DecisionModule,
+    OrganizationSettingsModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,
