@@ -34,6 +34,7 @@ input AideCreateInput {
   crediteur: EnumAideCrediteur
   dateAide: DateTime
   dateExpiration: DateTime
+  decision: DecisionWhereUniqueInput
   demande: DemandeWhereUniqueInput
   demandeActivities: DemandeActivityCreateNestedManyWithoutAidesInput
   documents: DocumentCreateNestedManyWithoutAidesInput
@@ -159,6 +160,16 @@ input BooleanNullableFilter {
   not: Boolean
 }
 
+type Comite {
+  createdAt: DateTime!
+  date: DateTime!
+  id: Int!
+  nombreAjournes: Int!
+  nombreApprouves: Int!
+  nombreRefuses: Int!
+  nombreTraites: Int!
+}
+
 type Contact {
   adresse: String
   age: Float
@@ -264,6 +275,13 @@ input ContactWhereUniqueInput {
   id: Float!
 }
 
+input CreateDecisionInput {
+  acteurId: String
+  demandeId: Int!
+  motivation: String
+  type: EnumDecisionType!
+}
+
 input Credentials {
   password: String!
   username: String!
@@ -294,6 +312,22 @@ input DateTimeNullableFilter {
   lte: DateTime
   not: DateTime
   notIn: [DateTime!]
+}
+
+type Decision {
+  acteur: User
+  aides: [Aide!]!
+  comite: Comite!
+  createdAt: DateTime!
+  demande: Demande
+  id: Int!
+  motivation: String
+  situationHistory: DemandeSituationHistory
+  type: EnumDecisionType!
+}
+
+input DecisionWhereUniqueInput {
+  id: Float!
 }
 
 type Demande {
@@ -960,6 +994,12 @@ enum EnumAideTypeField {
   FinanciRe
 }
 
+enum EnumDecisionType {
+  Ajournement
+  Approbation
+  Refus
+}
+
 enum EnumDemandeCategorieDemandeur {
   LourdementEndett
   NCessiteux
@@ -1103,8 +1143,10 @@ type MetaQueryPayload {
 }
 
 type Mutation {
+  attachAideToDecision(aideId: Int!, decisionId: Int!): Decision!
   createAide(data: AideCreateInput!): Aide!
   createContact(data: ContactCreateInput!): Contact!
+  createDecision(data: CreateDecisionInput!): Decision!
   createDemande(data: DemandeCreateInput!): Demande!
   createDemandeActivity(data: DemandeActivityCreateInput!): DemandeActivity!
   createDemandeAutreCharge(data: DemandeAutreChargeCreateInput!): DemandeAutreCharge!
@@ -1137,6 +1179,7 @@ type Mutation {
   login(credentials: Credentials!): UserInfo!
   updateAide(data: AideUpdateInput!, where: AideWhereUniqueInput!): Aide!
   updateContact(data: ContactUpdateInput!, where: ContactWhereUniqueInput!): Contact!
+  updateDecisionMotivation(decisionId: Int!, motivation: String!): Decision!
   updateDemande(data: DemandeUpdateInput!, where: DemandeWhereUniqueInput!): Demande!
   updateDemandeActivity(data: DemandeActivityUpdateInput!, where: DemandeActivityWhereUniqueInput!): DemandeActivity!
   updateDemandeAutreCharge(data: DemandeAutreChargeUpdateInput!, where: DemandeAutreChargeWhereUniqueInput!): DemandeAutreCharge!
@@ -1171,8 +1214,11 @@ type Query {
   _websiteDemandesMeta(where: WebsiteDemandeWhereInput): MetaQueryPayload!
   aide(where: AideWhereUniqueInput!): Aide
   aides(orderBy: [AideOrderByInput!], skip: Float, take: Float, where: AideWhereInput): [Aide!]!
+  comites: [Comite!]!
   contact(where: ContactWhereUniqueInput!): Contact
   contacts(orderBy: [ContactOrderByInput!], skip: Float, take: Float, where: ContactWhereInput): [Contact!]!
+  decisionsByComite(comiteId: Int!): [Decision!]!
+  decisionsByDemande(demandeId: Int!): [Decision!]!
   demande(where: DemandeWhereUniqueInput!): Demande
   demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
   demandeActivity(where: DemandeActivityWhereUniqueInput!): DemandeActivity

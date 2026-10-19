@@ -12,6 +12,8 @@ model Aide {
   contactId         Int
   acteurVersement   User?              @relation(name: "acteurVersement", fields: [acteurVersementId], references: [id])
   acteurVersementId String?
+  decision          Decision?          @relation(fields: [decisionId], references: [id])
+  decisionId        Int?
   fullSearch        String?
   createdAt         DateTime           @default(now())
   crediteur         EnumAideCrediteur?
@@ -41,6 +43,7 @@ model Demande {
   acteurId                  String?
   agesEnfants               String?
   aides                     Aide[]
+  decisions                 Decision[]
   apl                       Int?
   autresAides               String?
   autresCharges             Int?
@@ -132,6 +135,7 @@ model User {
   userNotificationPreferences UserNotificationPreference[]
   username                    String                       @unique
   visites                     Visite[]
+  decisions                   Decision[]
 }
 
 model TypeDocument {
@@ -292,6 +296,10 @@ model DemandeSituationHistory {
   remarques                String?
   createdAt                DateTime                       @default(now())
   updatedAt                DateTime                       @updatedAt
+  // Ajoute a la main (hors generation Amplication) : instantane financier
+  // fige au moment d'une decision d'approbation - voir src/decision/.
+  decisionId               Int?                           @unique
+  decision                 Decision?                      @relation(fields: [decisionId], references: [id])
 }
 
 model DemandeAutreCharge {
@@ -349,6 +357,52 @@ model EmailTemplate {
   code      String   @unique
   objet     String
   corps     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Modeles ajoutes a la main (hors generation Amplication, voir
+// src/decision/ pour le module NestJS associe) pour tracer les decisions
+// prises en comite sur une demande (approbation/refus/ajournement).
+model Comite {
+  id        Int        @id @default(autoincrement())
+  date      DateTime   @unique @db.Date
+  createdAt DateTime   @default(now())
+  decisions Decision[]
+}
+
+enum EnumDecisionType {
+  Approbation
+  Refus
+  Ajournement
+}
+
+model Decision {
+  id         Int              @id @default(autoincrement())
+  type       EnumDecisionType
+  motivation String?
+  comite     Comite           @relation(fields: [comiteId], references: [id])
+  comiteId   Int
+  demande    Demande          @relation(fields: [demandeId], references: [id], onDelete: Cascade)
+  demandeId  Int
+  acteur     User?            @relation(fields: [acteurId], references: [id])
+  acteurId   String?
+  aides      Aide[]
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+  situationHistory DemandeSituationHistory?
+}
+
+// Coordonnees de l'association, affichees sur les documents officiels
+// (PDF de decision de comite). Ligne unique (id fixe a 1), modifiable
+// depuis les parametres - voir src/organizationSettings/.
+model OrganizationSettings {
+  id        Int      @id @default(1)
+  nom       String?
+  adresse   String?
+  rna       String?
+  email     String?
+  telephone String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
