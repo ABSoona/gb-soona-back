@@ -100,6 +100,72 @@ function eur(v: number | null | undefined): string {
   return `${(v ?? 0).toLocaleString("fr-FR")} €`;
 }
 
+// ---------------------------------------------------------------------------
+// Conversion d'un montant en toutes lettres (francais standard), pour les
+// aides accordees dans le compte rendu - ex: 400 -> "quatre cents".
+// ---------------------------------------------------------------------------
+const UNITS = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix",
+  "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"];
+const TENS = ["", "", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingt", "quatre-vingt-dix"];
+
+function convertBelowThousand(num: number): string {
+  if (num === 0) return "";
+  if (num < 20) return UNITS[num];
+  if (num < 100) {
+    const ten = Math.floor(num / 10);
+    const unit = num % 10;
+    if (ten === 7 || ten === 9) {
+      const base = ten === 7 ? "soixante" : "quatre-vingt";
+      return unit === 0 ? `${base}-dix` : `${base}-${UNITS[10 + unit]}`;
+    }
+    if (ten === 8) {
+      return unit === 0 ? "quatre-vingts" : `quatre-vingt-${UNITS[unit]}`;
+    }
+    if (unit === 0) return TENS[ten];
+    if (unit === 1) return `${TENS[ten]}-et-un`;
+    return `${TENS[ten]}-${UNITS[unit]}`;
+  }
+  const hundred = Math.floor(num / 100);
+  const rest = num % 100;
+  let str = hundred === 1 ? "cent" : `${UNITS[hundred]} cent`;
+  if (rest === 0 && hundred > 1) str += "s";
+  if (rest > 0) str += ` ${convertBelowThousand(rest)}`;
+  return str;
+}
+
+function numberToFrenchWords(n: number): string {
+  if (n === 0) return "zéro";
+  if (n < 0) return `moins ${numberToFrenchWords(-n)}`;
+
+  const parts: string[] = [];
+  const millions = Math.floor(n / 1000000);
+  const thousands = Math.floor((n % 1000000) / 1000);
+  const remainder = n % 1000;
+
+  if (millions > 0) {
+    parts.push(millions === 1 ? "un million" : `${convertBelowThousand(millions)} millions`);
+  }
+  if (thousands > 0) {
+    parts.push(thousands === 1 ? "mille" : `${convertBelowThousand(thousands)} mille`);
+  }
+  if (remainder > 0) {
+    parts.push(convertBelowThousand(remainder));
+  }
+  return parts.join(" ").trim();
+}
+
+// Combine toutes-lettres + chiffres, ex: "quatre cents euros (400 €)". Si le
+// montant n'est pas un nombre entier (rare pour une aide), on reste sur les
+// chiffres pour eviter d'inventer une ecriture des centimes en lettres.
+function montantEnLettres(v: number | null | undefined): string {
+  const montant = v ?? 0;
+  if (!Number.isInteger(montant)) {
+    return eur(montant);
+  }
+  const mot = montant <= 1 ? "un euro" : `${numberToFrenchWords(montant)} euros`;
+  return `${mot} (${eur(montant)})`;
+}
+
 function formatDate(d: Date | string | null | undefined): string {
   if (!d) return null as unknown as string;
   return new Date(d).toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" });
@@ -108,17 +174,17 @@ function formatDate(d: Date | string | null | undefined): string {
 function describeAide(aide: AideForPdf): string {
   if (aide.typeField === "AssistanceAdministrative") {
     const fin = aide.dateExpiration ? ` jusqu'au ${formatDate(aide.dateExpiration)}` : "";
-    return `une assistance administrative${fin}`;
+    return `Une assistance administrative${fin}.`;
   }
   let freqLabel = aide.frequence ? FREQUENCE_LABELS[aide.frequence] ?? aide.frequence : "";
   if (aide.frequence === "Mensuelle" && aide.reetudier) {
     freqLabel = `${freqLabel} renouvelable`;
   }
   if (aide.frequence === "Unefois") {
-    return `une aide ponctuelle de ${eur(aide.montant)}, versée à partir du ${formatDate(aide.dateAide)}`;
+    return `Une aide ponctuelle de ${montantEnLettres(aide.montant)}, versée à partir du ${formatDate(aide.dateAide)}.`;
   }
   const fin = aide.dateExpiration ? ` jusqu'au ${formatDate(aide.dateExpiration)}` : "";
-  return `une aide ${freqLabel} de ${eur(aide.montant)}, à compter du ${formatDate(aide.dateAide)}${fin}`;
+  return `Une aide ${freqLabel} de ${montantEnLettres(aide.montant)}, à compter du ${formatDate(aide.dateAide)}${fin}.`;
 }
 
 function joinFrench(items: string[]): string {
@@ -128,10 +194,12 @@ function joinFrench(items: string[]): string {
 }
 
 // ---------------------------------------------------------------------------
-// Construction du paragraphe de situation, en texte continu (et non en
-// tableau), a la demande de l'equipe - voir conversation produit.
+// Construction de la liste a puces "{Nom} declare etre :" (situation,
+// revenus/charges/reste a vivre, dettes, detail des charges en sous-liste).
 // ---------------------------------------------------------------------------
-function buildSituationParagraphe(s: DecisionForPdf["situationHistory"], nomComplet: string): string {
+function buildSituationItems(s: DecisionForPdf["situationHistory"]): string[] {
+  const items: string[] = [];
+
   const clausesIdentite: string[] = [];
   const famille = situationFamilialeLabel(s.situationFamiliale);
   const pro = situationProLabel(s.situationProfessionnelle);
@@ -140,7 +208,9 @@ function buildSituationParagraphe(s: DecisionForPdf["situationHistory"], nomComp
   if (s.nombreEnfants && s.nombreEnfants > 0) {
     clausesIdentite.push(`${s.nombreEnfants} enfant${s.nombreEnfants > 1 ? "s" : ""} à charge`);
   }
-  const identite = clausesIdentite.length > 0 ? ` (${joinFrench(clausesIdentite)})` : "";
+  if (clausesIdentite.length > 0) {
+    items.push(`${capitalize(joinFrench(clausesIdentite))}.`);
+  }
 
   const totalRevenus = (s.revenus ?? 0) + (s.revenusConjoint ?? 0) + (s.apl ?? 0);
   const totalCharges = (s.loyer ?? 0) + (s.facturesEnergie ?? 0) + (s.autresCharges ?? 0);
@@ -148,25 +218,28 @@ function buildSituationParagraphe(s: DecisionForPdf["situationHistory"], nomComp
   const resteAVivreParPersonne =
     resteAVivre > 0 && s.nombrePersonnes ? resteAVivre / s.nombrePersonnes / 30 : null;
 
-  const detteClause =
-    s.dettes && s.dettes > 0
-      ? ` et une dette de ${eur(s.dettes)}${s.natureDettes ? ` (${s.natureDettes})` : ""}`
-      : "";
+  items.push(
+    `Dispose de revenus de ${eur(totalRevenus)} par mois pour des charges de ${eur(totalCharges)} par mois, soit un reste à vivre estimé à <strong>${eur(resteAVivre)}</strong> par mois${resteAVivreParPersonne !== null ? ` (environ ${resteAVivreParPersonne.toLocaleString("fr-FR", { maximumFractionDigits: 2 })} € par jour et par personne)` : ""}.`
+  );
 
-  // 1ere phrase : chiffres de synthese (charges, revenus, reste a vivre, dettes).
-  const synthese = `Compte tenu de la situation de <strong>${nomComplet}</strong>${identite}, le foyer dispose de revenus de ${eur(totalRevenus)} par mois pour des charges de ${eur(totalCharges)} par mois, soit un reste à vivre estimé à <strong>${eur(resteAVivre)}</strong> par mois${resteAVivreParPersonne !== null ? ` (environ ${resteAVivreParPersonne.toLocaleString("fr-FR", { maximumFractionDigits: 2 })} € par jour et par personne)` : ""}${detteClause}.`;
+  if (s.dettes && s.dettes > 0) {
+    items.push(`Une dette de ${eur(s.dettes)}${s.natureDettes ? ` (${s.natureDettes})` : ""}.`);
+  }
 
-  // 2e phrase : detail de la composition des charges.
-  const chargesClauses: string[] = [];
-  if (s.loyer) chargesClauses.push(`${eur(s.loyer)} de loyer`);
-  if (s.facturesEnergie) chargesClauses.push(`${eur(s.facturesEnergie)} de factures d'énergie`);
-  if (s.autresCharges) chargesClauses.push(`${eur(s.autresCharges)} de charges diverses`);
-  const detailCharges =
-    chargesClauses.length > 0
-      ? ` Ces charges se décomposent comme suit : ${joinFrench(chargesClauses)} par mois.`
-      : "";
+  const chargesSubItems: string[] = [];
+  if (s.loyer) chargesSubItems.push(`${eur(s.loyer)} de loyer.`);
+  if (s.facturesEnergie) chargesSubItems.push(`${eur(s.facturesEnergie)} de factures d'énergie.`);
+  if (s.autresCharges) chargesSubItems.push(`${eur(s.autresCharges)} de charges diverses par mois.`);
+  if (chargesSubItems.length > 0) {
+    const sousListe = `<ul class="sub-list">${chargesSubItems.map((c) => `<li>${c}</li>`).join("")}</ul>`;
+    items.push(`Ces charges se décomposent comme suit :${sousListe}`);
+  }
 
-  return `${synthese}${detailCharges}`;
+  return items;
+}
+
+function capitalize(s: string): string {
+  return s.length > 0 ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 }
 
 function buildHtml(decision: DecisionForPdf, org: OrganizationSettings): string {
@@ -177,10 +250,10 @@ function buildHtml(decision: DecisionForPdf, org: OrganizationSettings): string 
   const dateComite = formatDate(decision.comite.date);
   const s = decision.situationHistory;
 
-  const aidesClause =
-    decision.aides.length > 0
-      ? joinFrench(decision.aides.map(describeAide))
-      : "une aide (détail à préciser)";
+  const situationItems = buildSituationItems(s);
+  const aideItems = decision.aides.length > 0
+    ? decision.aides.map(describeAide)
+    : ["Une aide (détail à préciser)."];
 
   return /* html */ `<!DOCTYPE html>
 <html lang="fr">
@@ -240,6 +313,30 @@ function buildHtml(decision: DecisionForPdf, org: OrganizationSettings): string 
       text-align: justify;
     }
 
+    .section-heading {
+      margin-bottom: 10px;
+    }
+
+    ul.main-list {
+      margin: 0 0 18px 0;
+      padding-left: 22px;
+      line-height: 1.7;
+    }
+
+    ul.main-list > li {
+      margin-bottom: 8px;
+    }
+
+    ul.sub-list {
+      margin: 6px 0 0 0;
+      padding-left: 22px;
+      list-style-type: circle;
+    }
+
+    ul.sub-list > li {
+      margin-bottom: 4px;
+    }
+
     .signature {
       margin-top: 56px;
       display: flex;
@@ -283,13 +380,15 @@ function buildHtml(decision: DecisionForPdf, org: OrganizationSettings): string 
     enregistré sous le n°&nbsp;${decision.demande.id}, et dont la pièce d'identité est ci-jointe.
   </div>
 
-  <div class="paragraph">
-    ${buildSituationParagraphe(s, nomComplet)}
-  </div>
+  <div class="section-heading"><strong>${nomComplet}</strong> déclare être :</div>
+  <ul class="main-list">
+    ${situationItems.map((item) => `<li>${item}</li>`).join("")}
+  </ul>
 
-  <div class="paragraph">
-    Au regard de cette situation, le comité a décidé d'accorder à <strong>${nomComplet}</strong> ${aidesClause}.
-  </div>
+  <div class="section-heading">Au regard de cette situation, le comité a décidé d'accorder à <strong>${nomComplet}</strong> :</div>
+  <ul class="main-list">
+    ${aideItems.map((item) => `<li>${item}</li>`).join("")}
+  </ul>
 
   <div class="signature">
     <div class="signature-block">
