@@ -12,7 +12,7 @@ export class DemandeActivityService extends DemandeActivityServiceBase {
 
     const demandeActivity = await super.createDemandeActivity(args);
     demandeActivity.typeField === "priseContactReussie" && await this.prisma.demande.update({where:{id:demandeActivity.demandeId},data:{dernierContact: new Date(Date.now()),nombreRelances:0,derniereRelance:null}})
-    if (demandeActivity.typeField === "priseContactEchec") {
+    if (demandeActivity.typeField === "priseContactEchec" || demandeActivity.typeField === "relanceEcrite") {
       const demande = await this.prisma.demande.findUnique({
         where: { id: demandeActivity.demandeId },
         select: { nombreRelances: true },
