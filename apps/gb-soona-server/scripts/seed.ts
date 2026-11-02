@@ -75,6 +75,36 @@ if (!wpApiPass) {
     create: apiUser,
   });
 
+  // Compte de service pour Fitra (plateforme inter-associative de zakat
+  // al-fitr) : role en lecture seule, voir src/grants.json. Le mot de passe
+  // n'est jamais ecrit dans le depot : si FITRA_API_PASSWORD n'est pas
+  // defini (ex: poste de dev sans besoin de ce compte), on saute sa creation.
+  const fitraApiPass = process.env.FITRA_API_PASSWORD;
+  if (fitraApiPass) {
+    const fitraUser = {
+      username: "fitra",
+      email: "fitra@soona.fr",
+      firstName: "Fitra",
+      lastName: "(compte de service)",
+      status: "active",
+      password: await hash(fitraApiPass, bcryptSalt),
+      roles: ["fitra"],
+      role: "fitra",
+    };
+
+    await client.user.upsert({
+      where: {
+        username: fitraUser.username,
+      },
+
+      update: {},
+      create: fitraUser,
+    });
+  } else {
+    console.info(
+      "FITRA_API_PASSWORD non defini : le compte de service 'fitra' n'a pas ete cree."
+    );
+  }
 
   const internalTypes = [
     { label: "Rapport de visite", internalCode: "rapport_visite",isInternal: true,rattachement: EnumTypeDocumentRattachement.Suivi},
