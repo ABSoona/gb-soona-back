@@ -6,7 +6,7 @@ import { capitalizeFirstLetter } from "src/util/misc";
 import puppeteer from "puppeteer";
 
 // ---------------------------------------------------------------------------
-// Logo SOONA — chargé depuis le disque et converti en data-URI au démarrage
+// Logo SOONA - chargé depuis le disque et converti en data-URI au démarrage
 // ---------------------------------------------------------------------------
 const LOGO_PATH = path.resolve(__dirname, "../../assets/soona-logo.png");
 const LOGO_SRC = `data:image/png;base64,${fs.readFileSync(LOGO_PATH).toString("base64")}`;
@@ -358,11 +358,11 @@ function buildHtml(demande: Demande, contact: Contact): string {
   <!-- Pied de page -->
   <div class="footer">
     <span>Demande N° ${demande.id}</span>
-    <span>Document généré automatiquement — usage interne uniquement</span>
+    <span>Document généré automatiquement - usage interne uniquement</span>
   </div>
 
   <!-- ════════════════════════════════════════════════════════════ -->
-  <!-- Page 2 — Mission bénévole                                   -->
+  <!-- Page 2 - Mission bénévole                                   -->
   <!-- ════════════════════════════════════════════════════════════ -->
   <div class="page-break">
 
@@ -413,7 +413,7 @@ function buildHtml(demande: Demande, contact: Contact): string {
     <div class="practices-box practices">
       <div class="practices-title">Les bonnes pratiques</div>
       <ul>
-        <li>Ne jamais s'engager ou pronostiquer sur l'issue du dossier — seul le comité est habilité à statuer.</li>
+        <li>Ne jamais s'engager ou pronostiquer sur l'issue du dossier - seul le comité est habilité à statuer.</li>
         <li>Éviter le contact physique avec les demandeurs et les familles.</li>
         <li>Demander l'autorisation des demandeurs pour pénétrer dans leur domicile.</li>
         <li>Garder confidentielles les informations recueillies auprès des demandeurs.</li>
@@ -425,7 +425,7 @@ function buildHtml(demande: Demande, contact: Contact): string {
     <!-- Pied de page 2 -->
     <div class="footer">
       <span>Demande N° ${demande.id}</span>
-      <span>Document généré automatiquement — usage interne uniquement</span>
+      <span>Document généré automatiquement - usage interne uniquement</span>
     </div>
 
   </div>

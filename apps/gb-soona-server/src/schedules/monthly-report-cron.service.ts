@@ -54,7 +54,7 @@ export class MonthlyReportCronService {
       await this.telegramBot.sendDocument(
         filePath,
         fileName,
-        `📊 *Rapport d'activité — ${periodLabel}*`,
+        `📊 *Rapport d'activité - ${periodLabel}*`,
       );
 
       this.logger.log('Rapport envoyé avec succès sur Telegram.');

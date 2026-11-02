@@ -39,7 +39,9 @@ export class TelegramBot implements OnModuleInit, OnModuleDestroy {
     this.initVoteHandlers();
     this.initCloseCommand();
 
-    this.bot.start();
+    this.bot.start().catch((err) => {
+      this.logger.error(`Échec du démarrage du bot Telegram : ${err.message}`);
+    });
     this.logger.log("Bot Telegram démarré (long polling).");
   }
 
