@@ -91,5 +91,19 @@ export class UserService extends UserServiceBase {
     // 3. Retourner l’utilisateur comme d’habitude
     return user;
   }
- 
+
+  // Le role "fitra" est un compte de service (lecture seule, utilise par la
+  // plateforme Fitra) : il ne doit jamais apparaitre dans les listes
+  // d'utilisateurs affichees dans l'app (affectation, comites,
+  // notifications, Telegram, rapports...). On le filtre ici, au point
+  // d'entree unique de la liste des users, plutot que dans chaque ecran.
+  async users(args: Prisma.UserFindManyArgs): Promise<PrismaUser[]> {
+    const users = await super.users(args);
+    return users.filter((user) => !this.hasFitraRole(user));
+  }
+
+  private hasFitraRole(user: PrismaUser): boolean {
+    return Array.isArray(user.roles) && (user.roles as string[]).includes("fitra");
+  }
+
 }
