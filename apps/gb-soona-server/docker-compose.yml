@@ -19,7 +19,6 @@ services:
       context: .
       args:
         NPM_LOG_LEVEL: notice
-    command: npm run db:init
     working_dir: /app/server
     environment:
       BCRYPT_SALT: ${BCRYPT_SALT}

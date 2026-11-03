@@ -75,7 +75,6 @@ if (!wpApiPass) {
     create: apiUser,
   });
 
-
   const internalTypes = [
     { label: "Rapport de visite", internalCode: "rapport_visite",isInternal: true,rattachement: EnumTypeDocumentRattachement.Suivi},
     { label: "Autre document de suivi", internalCode: "autre_suivi",isInternal: false,rattachement:EnumTypeDocumentRattachement.Suivi },

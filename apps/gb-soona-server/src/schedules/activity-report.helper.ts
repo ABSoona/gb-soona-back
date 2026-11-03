@@ -78,7 +78,7 @@ export async function getActivityReportData(
 
   // Demandes "acceptées" / "refusées" : basé sur le premier changement de
   // statut de la demande vers l'un de ces statuts-cibles, figé dans
-  // DemandeStatusHistory — pas sur le statut actuel ni sur `decisionDate`
+  // DemandeStatusHistory - pas sur le statut actuel ni sur `decisionDate`
   // (ecrasee a chaque changement de statut, donc pas une date stable dans
   // le temps : regenerer ce rapport plus tard pour la meme periode donnerait
   // un resultat different si le statut a change depuis). Une demande n'est
@@ -375,7 +375,7 @@ export function buildActivityReportHtml(data: ActivityReportData, periodLabel: s
               <div class="visites-box">
                 <div class="visites-title">Visites bénévoles</div>
                 <div class="visites-value">${data.visitesProg} programmées</div>
-                <div class="visites-note">Attribuées à un bénévole. La date de réalisation effective est rarement mise à jour — chiffre sous-estimé.</div>
+                <div class="visites-note">Attribuées à un bénévole. La date de réalisation effective est rarement mise à jour - chiffre sous-estimé.</div>
               </div>
               <div class="note-text">Acceptées : premier passage en statut « En cours ». Refusées : premier passage en statut « Refusée » (Acceptées + Refusées = Demandes Traités du tableau rectificatif mensuel). Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le premier passage en statut « En cours » ou « Refusée ».</div>
             </div>

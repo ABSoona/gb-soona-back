@@ -1582,5 +1582,43 @@
     "resource": "DemandeDetteDetail",
     "action": "delete:any",
     "attributes": "*"
+  },
+  {
+    "role": "fitra",
+    "resource": "Contact",
+    "action": "read:any",
+    "attributes": [
+      "id",
+      "nom",
+      "prenom",
+      "telephone",
+      "email",
+      "adresse",
+      "codePostal",
+      "ville",
+      "numBeneficiaire",
+      "updatedAt"
+    ]
+  },
+  {
+    "role": "fitra",
+    "resource": "Demande",
+    "action": "read:any",
+    "attributes": [
+      "id",
+      "status",
+      "categorieDemandeur",
+      "situationFamiliale",
+      "nombreEnfants",
+      "nombrePersonnes",
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  {
+    "role": "fitra",
+    "resource": "User",
+    "action": "read:own",
+    "attributes": "*"
   }
 ]
