@@ -5,6 +5,7 @@ export const demandeStatusLabels = [
     { value: 'clôturée', label: 'cloturée' },
     { value: 'refusée', label: 'refusée' },
     { value: 'acceptée', label: 'acceptée' },
+    { value: 'en_pre_commision', label: 'en pré-comité' },
     { value: 'en_commision', label: 'en commision' },
     { value: 'EnCours', label: 'en cours' },
     { value: 'EnAttente', label: 'en attente' },
