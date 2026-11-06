@@ -9,6 +9,7 @@ export const DEFAULT_ORGANIZATION_SETTINGS = {
   rna: "W784003736",
   email: "contact@soona.fr",
   telephone: "+33 7 70 79 52 56",
+  exigerVisitesRealiseesComite: true,
 };
 
 @Injectable()

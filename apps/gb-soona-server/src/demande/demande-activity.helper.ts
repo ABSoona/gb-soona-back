@@ -3,8 +3,10 @@ import { PrismaClient, Demande } from "@prisma/client";
 import { demandeStatusLabels } from "./demande.data";
 
 export async function logStatusChange(prisma: PrismaClient, oldStatus: string, newStatus: string, demandeId: number) {
-  const previousLabel = demandeStatusLabels.find(e => e.value === oldStatus)?.label;
-  const currentLabel = demandeStatusLabels.find(e => e.value === newStatus)?.label;
+  // Repli sur le code brut pour ne jamais afficher "undefined" si un
+  // statut n'a pas (encore) de libelle dans demandeStatusLabels.
+  const previousLabel = demandeStatusLabels.find(e => e.value === oldStatus)?.label ?? oldStatus;
+  const currentLabel = demandeStatusLabels.find(e => e.value === newStatus)?.label ?? newStatus;
 
   await prisma.demandeStatusHistory.create({
     data: { demandeId, status: newStatus },
