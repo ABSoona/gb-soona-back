@@ -10,13 +10,15 @@ import { DemandeNotificationService } from "./demande-notification.service";
 import { TokenService } from "src/auth/token.service";
 import { JwtService } from "@nestjs/jwt";
 import { SecretsManagerService } from "src/providers/secrets/secretsManager.service";
+import { OrganizationSettingsModule } from "src/organizationSettings/organizationSettings.module";
 
 
 @Module({
   imports: [
     DemandeModuleBase,
     forwardRef(() => AuthModule), // ✅ injecte bien AuthModule
-    MailModule
+    MailModule,
+    OrganizationSettingsModule,
   ],
   controllers: [DemandeController],
   providers: [

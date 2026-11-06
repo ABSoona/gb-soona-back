@@ -17,7 +17,15 @@ export class OrganizationSettingsController {
 
   @common.Put()
   async update(
-    @common.Body() data: { nom?: string; adresse?: string; rna?: string; email?: string; telephone?: string }
+    @common.Body()
+    data: {
+      nom?: string;
+      adresse?: string;
+      rna?: string;
+      email?: string;
+      telephone?: string;
+      exigerVisitesRealiseesComite?: boolean;
+    }
   ) {
     return this.service.update(data);
   }

@@ -403,6 +403,9 @@ model OrganizationSettings {
   rna       String?
   email     String?
   telephone String?
+  // Controle avant passage "En comite" : au moins une visite non annulee,
+  // et toutes les visites non annulees realisees - voir DemandeService.
+  exigerVisitesRealiseesComite Boolean @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
