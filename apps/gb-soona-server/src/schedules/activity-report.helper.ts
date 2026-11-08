@@ -42,6 +42,7 @@ export interface ActivityReportData {
     periodeLabel: string;
     priseEnCharge: ActivityReportStats;
     traitement: ActivityReportStats;
+    justificatifs: ActivityReportStats;
   };
 }
 
@@ -202,6 +203,49 @@ export async function getActivityReportData(
     if (diffJours >= 0) delaisTraitement.push(diffJours);
   }
 
+  // Delai de reception des justificatifs, mesure pour CHAQUE passage en
+  // statut 'EnAttenteDocs' (demande de justificatifs, relances comprises) :
+  // date du passage -> premier document rattache a la demande ensuite et
+  // avant le passage suivant, depose par le beneficiaire ou ajoute par
+  // l'equipe (justificatifs recus par mail). Les rapports de visite et
+  // preuves de virement, aussi rattaches a la demande, sont exclus. Un
+  // passage compte si sa date tombe dans la fenetre ; un passage sans
+  // document recu avant le suivant (ou a ce jour) ne compte pas.
+  const demandesAvecDemandeJustificatifs = await prisma.demande.findMany({
+    where: {
+      demandeStatusHistories: {
+        some: { status: 'EnAttenteDocs', createdAt: { gte: debut3Mois, lte: fin3Mois } },
+      },
+    },
+    select: {
+      demandeStatusHistories: {
+        where: { status: 'EnAttenteDocs' },
+        orderBy: { createdAt: 'asc' },
+        select: { createdAt: true },
+      },
+      documents: {
+        where: { visitesId: null, versementsId: null },
+        orderBy: { createdAt: 'asc' },
+        select: { createdAt: true },
+      },
+    },
+  });
+
+  const delaisJustificatifs: number[] = [];
+  for (const d of demandesAvecDemandeJustificatifs) {
+    const passages = d.demandeStatusHistories;
+    passages.forEach((passage, i) => {
+      const demandeLe = passage.createdAt;
+      if (demandeLe < debut3Mois || demandeLe > fin3Mois) return;
+      const passageSuivant = passages[i + 1]?.createdAt;
+      const recu = d.documents.find(
+        (doc) => doc.createdAt > demandeLe && (!passageSuivant || doc.createdAt < passageSuivant),
+      );
+      if (!recu) return;
+      delaisJustificatifs.push(Math.round((recu.createdAt.getTime() - demandeLe.getTime()) / 86400000));
+    });
+  }
+
   const deptStats: Record<string, { recues: number; acceptees: number; refusees: number; backlog: number }> = {};
   const allDepts = new Set<string>();
   const processList = (
@@ -243,6 +287,7 @@ export async function getActivityReportData(
       periodeLabel,
       priseEnCharge: calcStats(delaisPriseEnCharge),
       traitement: calcStats(delaisTraitement),
+      justificatifs: calcStats(delaisJustificatifs),
     },
   };
 }
@@ -271,7 +316,7 @@ export function buildActivityReportHtml(data: ActivityReportData, periodLabel: s
     )
     .join('');
 
-  const { priseEnCharge, traitement } = data.delais;
+  const { priseEnCharge, traitement, justificatifs } = data.delais;
 
   return `
       <!DOCTYPE html>
@@ -371,13 +416,16 @@ export function buildActivityReportHtml(data: ActivityReportData, periodLabel: s
                   <div class="kpi-value" style="font-size:22px;">${traitement.moy !== null ? traitement.moy + ' j' : 'N/A'}</div>
                   <div class="kpi-label">Délais de traitement moyen<br/><span style="font-size:10px;">min ${traitement.min ?? '—'} j · max ${traitement.max ?? '—'} j</span></div>
                 </div>
+                <div class="kpi-card" style="border-left-color:#db2777; grid-column: 1 / -1;">
+                  <div class="kpi-value" style="font-size:22px;">${justificatifs.moy !== null ? justificatifs.moy + ' j' : 'N/A'}</div>
+                  <div class="kpi-label">Délai moyen de réception des justificatifs <span style="font-size:10px;">· min ${justificatifs.min ?? '—'} j · max ${justificatifs.max ?? '—'} j</span></div>
+                </div>
               </div>
               <div class="visites-box">
                 <div class="visites-title">Visites bénévoles</div>
                 <div class="visites-value">${data.visitesProg} programmées</div>
                 <div class="visites-note">Attribuées à un bénévole. La date de réalisation effective est rarement mise à jour - chiffre sous-estimé.</div>
               </div>
-              <div class="note-text">Acceptées : premier passage en statut « En cours ». Refusées : premier passage en statut « Refusée » (Acceptées + Refusées = Demandes Traités du tableau rectificatif mensuel). Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le premier passage en statut « En cours » ou « Refusée ».</div>
             </div>
             <div class="col-right">
               <div class="section-title">Répartition par département</div>
@@ -402,6 +450,7 @@ export function buildActivityReportHtml(data: ActivityReportData, periodLabel: s
                   </tr>
                 </tbody>
               </table>
+              <div class="note-text">Acceptées : premier passage en statut « En cours ». Refusées : premier passage en statut « Refusée » (Acceptées + Refusées = Demandes Traités du tableau rectificatif mensuel). Backlog : stock total des demandes au statut « reçue ». Délai de prise en charge : entre la réception et la première prise de contact avec le bénéficiaire. Délai de traitement : entre la réception et le premier passage en statut « En cours » ou « Refusée ». Réception des justificatifs : entre chaque demande de justificatifs (relances comprises) et le premier document ajouté à la demande ensuite.</div>
             </div>
           </div>
         </div>
