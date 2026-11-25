@@ -130,6 +130,7 @@ model User {
   subordonnes                 User[]                       @relation(name: "subordonnes")
   superieur                   User?                        @relation(name: "subordonnes", fields: [superieurId], references: [id])
   superieurId                 String?
+  telephone                   String?
   token                       String?
   updatedAt                   DateTime                     @updatedAt
   userNotificationPreferences UserNotificationPreference[]

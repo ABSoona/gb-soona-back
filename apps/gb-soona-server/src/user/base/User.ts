@@ -67,6 +67,18 @@ class User {
   adresseVille!: string | null;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  telephone!: string | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
