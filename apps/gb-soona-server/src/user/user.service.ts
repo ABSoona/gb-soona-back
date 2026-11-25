@@ -13,6 +13,7 @@ import {
 import { InvitationService } from "src/invitation/invitation.service";
 import { UserNotificationPreferenceService } from 'src/userNotificationPreference/userNotificationPreference.service';
 import { Public } from 'src/decorators/public.decorator';
+import { normalizeTelephone } from './telephone.util';
 @Injectable()
 export class UserService extends UserServiceBase {
   constructor(
@@ -35,6 +36,7 @@ export class UserService extends UserServiceBase {
 
       throw new ConflictException('Un utilisateur avec cet email existe déjà');
     }
+    args.data.telephone = normalizeTelephone(args.data.telephone);
     const user = await super.createUser(args);
 
     // 2. Créer les préférences de notifications
@@ -53,6 +55,16 @@ export class UserService extends UserServiceBase {
 
     // 3. Retourner l’utilisateur comme d’habitude
     return user;
+  }
+
+  async updateUser(args: Prisma.UserUpdateArgs): Promise<PrismaUser> {
+    const telephone = args.data.telephone;
+    if (typeof telephone === "string" || telephone === null) {
+      args.data.telephone = normalizeTelephone(telephone);
+    } else if (telephone && typeof telephone === "object" && "set" in telephone) {
+      telephone.set = normalizeTelephone(telephone.set);
+    }
+    return super.updateUser(args);
   }
 
   async deleteUser(args: Prisma.UserDeleteArgs): Promise<PrismaUser> {

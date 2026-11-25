@@ -1351,6 +1351,7 @@ type User {
   adresseCodePostal: String
   adresseRue: String
   adresseVille: String
+  telephone: String
   createdAt: DateTime!
   demandeActivities(orderBy: [DemandeActivityOrderByInput!], skip: Float, take: Float, where: DemandeActivityWhereInput): [DemandeActivity!]!
   demandesActeurs(orderBy: [DemandeOrderByInput!], skip: Float, take: Float, where: DemandeWhereInput): [Demande!]!
@@ -1376,6 +1377,7 @@ input UserCreateInput {
   adresseCodePostal: String
   adresseRue: String
   adresseVille: String
+  telephone: String
   demandeActivities: DemandeActivityCreateNestedManyWithoutUsersInput
   demandesActeurs: DemandeCreateNestedManyWithoutUsersInput
   demandesEnPropriete: DemandeCreateNestedManyWithoutUsersInput
@@ -1473,6 +1475,7 @@ input UserOrderByInput {
   adresseCodePostal: SortOrder
   adresseRue: SortOrder
   adresseVille: SortOrder
+  telephone: SortOrder
   createdAt: SortOrder
   email: SortOrder
   firstName: SortOrder
@@ -1493,6 +1496,7 @@ input UserUpdateInput {
   adresseCodePostal: String
   adresseRue: String
   adresseVille: String
+  telephone: String
   demandeActivities: DemandeActivityUpdateManyWithoutUsersInput
   demandesActeurs: DemandeUpdateManyWithoutUsersInput
   demandesEnPropriete: DemandeUpdateManyWithoutUsersInput
@@ -1522,6 +1526,7 @@ input UserWhereInput {
   adresseCodePostal: StringNullableFilter
   adresseRue: StringNullableFilter
   adresseVille: StringNullableFilter
+  telephone: StringNullableFilter
   demandeActivities: DemandeActivityListRelationFilter
   demandesActeurs: DemandeListRelationFilter
   demandesEnPropriete: DemandeListRelationFilter

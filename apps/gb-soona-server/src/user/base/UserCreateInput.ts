@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsString,
   MaxLength,
+  Matches,
   IsOptional,
   ValidateNested,
   IsBoolean,
@@ -66,6 +67,21 @@ class UserCreateInput {
     nullable: true,
   })
   adresseVille?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @Matches(/^(?:(?:\+|00)33\s?|0)[1-9](?:[\s.-]?\d{2}){4}$/, {
+    message: "telephone doit etre un numero francais valide",
+  })
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  telephone?: string | null;
 
   @ApiProperty({
     required: false,

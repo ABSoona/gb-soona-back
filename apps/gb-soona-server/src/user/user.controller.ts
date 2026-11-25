@@ -52,6 +52,7 @@ export class UserController extends UserControllerBase {
       adresseRue: true,
       adresseCodePostal: true,
       adresseVille:true,
+      telephone: true,
 
     }, } 
     );
